@@ -1,0 +1,312 @@
+﻿<h1>
+	{{name}} Class
+	{{#if extends}}
+	    <sub class="extends">
+	        {{#crossLink extends}}{{/crossLink}} 상속
+	    </sub>
+	{{/if}}
+</h1>
+{{#if uses}}
+    <div class="box uses">
+        <ul>
+            {{#uses}}
+                <li><a href="{{.}}.html">{{.}}</a></li>
+            {{/uses}}
+        </ul>
+        에 의존적
+    </div>
+{{/if}}
+
+<!--
+<div class="box meta">
+    {{#if uses}}
+        <div class="uses">
+            의존성 : 
+            <ul class="inline commas">
+                {{#uses}}
+                    <li><a href="{{.}}.html">{{.}}</a></li>
+                {{/uses}}
+            </ul>
+        </div>
+    {{/if}}
+
+    {{#if extends}}
+        <div class="extends">
+            Extends {{#crossLink extends}}{{/crossLink}}
+        </div>
+    {{/if}}
+
+    {{#if foundAt}}
+        <div class="foundat">
+            Defined in: <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a>
+        </div>
+    {{/if}}
+
+    {{#if module}}
+        {{#if submodule}}
+            Module: {{#crossLinkModule submodule}}{{/crossLinkModule}}<br>
+            Parent Module: {{#crossLinkModule module}}{{/crossLinkModule}}
+        {{else}}
+            Module: {{#crossLinkModule module}}{{/crossLinkModule}}
+        {{/if}}
+    {{/if}}
+
+    {{#if since}}
+        <p>Available since {{since}}</p>
+    {{/if}}
+</div>
+-->
+
+{{#if deprecated}}
+    <div class="box deprecated">
+        <p>
+        {{#if deprecationMessage}}
+            <strong>Deprecated:</strong> {{deprecationMessage}}
+        {{else}}
+            This class is deprecated.
+        {{/if}}
+        </p>
+    </div>
+{{/if}}
+
+<div class="box intro">
+    {{{classDescription}}}
+</div>
+
+<!--
+{{#is_constructor}}
+    <div class="constructor">
+        <h2>Constructor</h2>
+        {{>method}}
+    </div>
+{{/is_constructor}}
+-->
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">목차</a></li>
+        {{#if constructors}}
+            <li class="api-class-tab constructors"><a href="#constructors">생성자</a></li>
+        {{/if}}
+        {{#if methods}}
+            <li class="api-class-tab methods"><a href="#methods">메서드</a></li>
+        {{/if}}
+        {{#if properties}}
+            <li class="api-class-tab properties"><a href="#properties">프로퍼티</a></li>
+        {{/if}}
+        {{#if attrs}}
+            <li class="api-class-tab attrs"><a href="#attrs">속성</a></li>
+        {{/if}}
+        {{#if events}}
+            <li class="api-class-tab events"><a href="#events">이벤트</a></li>
+        {{/if}}
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+
+            {{#if constructors}}
+                <div class="index-section constructors">
+                    <h2>생성자</h2>
+
+                    <ul class="index-list constructors{{#if extends}} extends{{/if}}">
+                        {{#constructors}}
+                            <li class="index-item constructor{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                            
+                    			<a href="#constructor_{{name}}">{{class}}</a>
+
+                                {{#if params}}
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                        {{#params}}
+                                            <li class="arg">
+                                                {{#if optional}}
+                                                    <code class="optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
+                                                {{else}}
+                                                    <code>{{name}}</code>
+                                                {{/if}}
+                                            </li>
+                                        {{/params}}
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                                {{else}}
+                                    <span class="paren">()</span>
+                                {{/if}}
+
+                                {{#if static}}
+                                    <span class="flag static">static</span>
+                                {{/if}}
+                                {{#if deprecated}}
+                                    <span class="flag deprecated">deprecated</span>
+                                {{/if}}
+                                
+                                <div class="description">
+                                    {{{constructorDescription}}}
+                                </div>
+                                
+                            </li>
+                        {{/constructors}}
+                    </ul>
+                </div>
+            {{/if}}
+
+            {{#if methods}}
+                <div class="index-section methods">
+                    <h2>메서드</h2>
+
+                    <ul class="index-list methods{{#if extends}} extends{{/if}}">
+                        {{#methods}}
+                            <li class="index-item method{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                            
+                                <a href="#method_{{name}}">{{name}}</a>
+
+                                {{#if params}}
+                                    <div class="args">
+                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                        {{#params}}
+                                            <li class="arg">
+                                                {{#if optional}}
+                                                    <code class="optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
+                                                {{else}}
+                                                    <code>{{name}}</code>
+                                                {{/if}}
+                                            </li>
+                                        {{/params}}
+                                        </ul><span class="paren">)</span>
+                                    </div>
+                                {{else}}
+                                    <span class="paren">()</span>
+                                {{/if}}
+
+                                {{#if return}}
+                                    <span class="type returns-inline">
+                                        <span class="type">&lt;{{#crossLink returnType}}{{/crossLink}}&gt;</span>
+                                    </span>
+                                {{/if}}
+                                
+                                {{#if static}}
+                                    <span class="flag static">static</span>
+                                {{/if}}
+                                {{#if deprecated}}
+                                    <span class="flag deprecated">deprecated</span>
+                                {{/if}}
+                                <div class="description">
+                                    {{{methodDescription}}}
+                                </div>
+                                
+                            </li>
+                        {{/methods}}
+                    </ul>
+                </div>
+            {{/if}}
+
+            {{#if properties}}
+                <div class="index-section properties">
+                    <h2>프로퍼티</h2>
+
+                    <ul class="index-list properties{{#if extends}} extends{{/if}}">
+                        {{#properties}}
+                            <li class="index-item property{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                                <a href="#property_{{name}}">{{name}}</a>
+
+                                {{#if static}}
+                                    <span class="flag static">static</span>
+                                {{/if}}
+                                {{#if deprecated}}
+                                    <span class="flag deprecated">deprecated</span>
+                                {{/if}}
+                            </li>
+                        {{/properties}}
+                    </ul>
+                </div>
+            {{/if}}
+
+            {{#if attrs}}
+                <div class="index-section attrs">
+                    <h2>속성</h2>
+
+                    <ul class="index-list attrs{{#if extends}} extends{{/if}}">
+                        {{#attrs}}
+                            <li class="index-item attr{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                                <a href="#attr_{{name}}">{{name}}</a>
+                            </li>
+                        {{/attrs}}
+                    </ul>
+                </div>
+            {{/if}}
+
+            {{#if events}}
+                <div class="index-section events">
+                    <h2>이벤트</h2>
+
+                    <ul class="index-list events{{#if extends}} extends{{/if}}">
+                        {{#events}}
+                            <li class="index-item event{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
+                                <a href="#event_{{name}}">{{name}}</a>
+
+                                {{#if static}}
+                                    <span class="flag static">static</span>
+                                {{/if}}
+                                {{#if deprecated}}
+                                    <span class="flag deprecated">deprecated</span>
+                                {{/if}}
+                                <div class="description">
+                                    {{{eventDescription}}}
+                                </div>
+                            </li>
+                        {{/events}}
+                    </ul>
+                </div>
+            {{/if}}
+        </div>
+
+        {{#if constructors}}
+            <div id="constructors" class="api-class-tabpanel index-list">
+	            <h2 class="off-left">생성자</h2>
+                {{#constructors}}
+                    {{>constructor}}
+                {{/constructors}}
+            </div>
+        {{/if}}
+
+        {{#if methods}}
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">메서드</h2>
+
+                {{#methods}}
+                    {{>method}}
+                {{/methods}}
+            </div>
+        {{/if}}
+
+        {{#if properties}}
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">프로퍼티</h2>
+
+                {{#properties}}
+                    {{>props}}
+                {{/properties}}
+            </div>
+        {{/if}}
+
+        {{#if attrs}}
+            <div id="attrs" class="api-class-tabpanel">
+                <h2 class="off-left">속성</h2>
+
+                {{#attrs}}
+                    {{>attrs}}
+                {{/attrs}}
+            </div>
+        {{/if}}
+
+        {{#if events}}
+            <div id="events" class="api-class-tabpanel">
+                <h2 class="off-left">이벤트</h2>
+
+                {{#events}}
+                    {{>events}}
+                {{/events}}
+            </div>
+        {{/if}}
+    </div>
+</div>

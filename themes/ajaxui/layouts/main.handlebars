@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>AjaxUI@NHN : Front-end Engineering</title>
+	<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>{{htmlTitle}}</title>
+    <link rel="stylesheet" href="{{yuiGridsUrl}}" />
+    <link rel="stylesheet" href="{{projectAssets}}/vendor/prettify/prettify-min.css" />
+	<link rel="stylesheet" href="{{projectAssets}}/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{{projectAssets}}/css/screen.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{{projectAssets}}/css/search.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{{projectAssets}}/css/apidocs.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="http://jindo.nhncorp.com/ajaxui_home/js/jindo.desktop.all.js"></script>
+    <!--<link rel="stylesheet" href="{{projectAssets}}/css/main.css" id="site_styles" />-->
+    <link rel="shortcut icon" type="image/png" href="{{projectAssets}}/favicon.png" />
+    <script src="{{yuiSeedUrl}}"></script>
+</head>
+<body class="api-page"><div id="header-bg"></div>
+	
+	<div id="wrap">
+		
+		<!-- navigation -->
+		<div id="nav">
+			<ul>
+				<li><a href="http://jindo.nhncorp.com/ajaxui_home/index.html">HOME</a></li>
+				<li><a href="http://jindo.nhncorp.com/ajaxui_home/library.html">LIBRARY</a></li>
+				<li class="selected"><a href="http://jindo.nhncorp.com/ajaxui_home/tech_guide.html">TECH GUIDE</a></li>
+				<li><a href="http://jindo.nhncorp.com/ajaxui_home/experiment.html">EXPERIMENT</a></li>
+				<li><a href="http://jindo.nhncorp.com/ajaxui_home/support.html">SUPPORT</a></li>
+			</ul>
+
+			<form id="quick-search" class="sc_search">
+				<p>
+					<label for="qsearch">Search:</label>
+					<input class="tbox" id="search_txt" type="text" name="qsearch" placeholder="Jindo API 검색" title="Start typing and hit ENTER" />
+					<input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="{{projectAssets}}/images/search.gif"  onclick="return false;"/>
+				</p>
+				<div id="search_suggest" class="ly_sug"></div>
+			</form>
+			
+			<div class="clear-both"></div>
+		</div>
+		
+		<!-- header -->
+		<div id="header">						
+			<div class="background-pattern"></div>
+			<h1 id="logo-text">
+				<a href="index.html">
+					AjaxUI
+					<span class="at">@</span><img src="{{projectAssets}}/images/nhn_ci.png" alt="nhn" />					
+				</a>
+			</h1>
+			<p id="intro">Front-end Engineering</p>
+		</div>
+		
+		<!-- left-columns -->
+		<div id="left-columns">
+			<div class="sidemenu">	
+				{{>sidebar}}
+			</div>
+		</div>
+		
+		<!-- main content -->		
+		<div id="main">
+
+            {{>options}}
+            <div class="apidocs" id="docs-main">
+                {{>layout_content}}
+            </div>
+
+		</div>
+		
+		<!-- footer -->
+		<div id="footer">
+			<p>Copyright ⓒ <a href="http://nhncorp.com/" target="_blank">NHN</a> - AjaxUI Lab. All Rights Reserved.</p>						
+		</div>
+
+	</div>
+
+	<div id="footer-bg"></div>
+	<!--
+	<script type="text/javascript" charset="utf-8" src="http://jindo.nhncorp.com/docs/jindo/search/js/background.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://jindo.nhncorp.com/docs/jindo/search/js/app.js"></script>
+	-->
+    <script src="{{projectAssets}}/vendor/prettify/prettify-min.js"></script>
+    <script>prettyPrint();</script>
+    <script src="{{projectAssets}}/js/yui-prettify.js"></script>
+    <script src="{{projectAssets}}/../api.js"></script>
+    <script src="{{projectAssets}}/js/api-filter.js"></script>
+    <script src="{{projectAssets}}/js/api-list.js"></script>
+    <script src="{{projectAssets}}/js/api-search.js"></script>
+    <script src="{{projectAssets}}/js/apidocs.js"></script>
+</body>
+</html>

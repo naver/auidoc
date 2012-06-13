@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* KyungilPark 111228 */
+
+/* Common */
+#nav .sc_search { z-index:20; width:270px; margin:0; padding:0; text-align:left; border:1px solid #888; }
+
+#nav .sc_search .ly_sug { }
+
+#nav .sc_search p { overflow:hidden; }
+
+#nav .sc_search ul,
+#nav .sc_search ol { list-style:none; margin:0; padding:0; float:none;height:auto; }
+
+#nav .sc_search .ly_sug ul { background:#fff; width:100%; overflow:auto; overflow-x:hidden; margin-top:-1px; max-height:200px;}
+
+#nav .sc_search .ly_sug li { padding:5px 10px; border-top:1px solid #eee; cursor:pointer; _cursor:hand; float:none; }
+
+#nav .sc_search .ly_sug li.on { background:#eee; }
+
+#nav .sc_search .ly_sug strong { color:#f76d1a; }
+#nav .sc_search .ly_sug .type{color:#3eaf0e}
+#nav .sc_search .ly_sug .desc { color:#aaa; }

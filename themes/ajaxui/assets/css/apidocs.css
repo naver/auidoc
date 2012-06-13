@@ -1,0 +1,238 @@
+@charset "utf-8";
+
+.apidocs h1 {
+	font-size:2em; color: #000;
+	line-height:100%;
+	padding:20px 5px 5px 5px;
+	border-bottom: 1px solid #ebebeb;
+	margin-bottom: 5px;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, .2); 
+	font-weight: bold;
+}
+
+#api-options {
+    text-align:right;
+    margin:-1em 1em;
+}
+
+#api-options input {
+    vertical-align:middle;
+}
+
+.apidocs sub.extends {
+	font-weight:normal;
+	font-size:.5em;
+	text-shadow:none;
+	margin-left:.5em;
+	color:#888;
+}
+
+.apidocs sub.extends::before {
+	content:'─▶';
+	font-family:'Arial';
+	color:#666;
+	letter-spacing:-.2em;
+	margin-right:.5em;
+	font-size:1.2em;
+}
+
+.apidocs div.uses {
+	background:#eee;
+	padding:5px;
+}
+
+.apidocs div.uses ul {
+	display:inline;
+}
+
+.apidocs div.uses ul li {
+	color:#000;
+	display:inline;
+	margin:0 2px;
+}
+
+.apidocs .intro p {
+	margin:5px;
+	font-size:1.1em;
+	line-height:150%;
+}
+
+.apidocs .api-class-tabs {
+	background-image:linear-gradient(bottom, #eee 0%, #fff 50%, #fff 100%);
+	background-image:-ms-linear-gradient(bottom, #eee 0%, #fff 50%, #fff 100%);
+	background-image:-webkit-linear-gradient(bottom, #eee 0%, #fff 100%);
+	background-image:-o-linear-gradient(bottom, #eee 0%, #fff 50%, #fff 100%);
+	background-image:-moz-linear-gradient(bottom, #eee 0%, #fff 50%, #fff 100%);
+	padding-top:30px;
+	margin:0 -10px 10px -10px;
+	border-bottom:1px solid #ddd;
+}
+
+.apidocs .api-class-tabs .yui3-tab-selected {
+	background-color:#fff;
+	border-top:1px solid #EA2D81;
+	margin-bottom:-1px;
+	padding-top:1px;
+}
+
+#main .apidocs a:hover {
+	border:0;
+}
+
+#main .apidocs h2 {
+
+}
+
+.apidocs .index-list {
+	margin-bottom:20px;
+}
+
+.apidocs .index-item {
+	margin:15px 0 0 20px;
+	font-size:1.1em;
+}
+
+.apidocs .item {
+	margin:15px 0 10px 20px;
+	font-size:1.1em;
+	padding-bottom:5px;
+	border-bottom:1px solid #ddd;
+}
+
+.apidocs .item:last-child {
+	border:0;
+}
+
+.apidocs .item h3 {
+	display:inline;
+}
+
+.apidocs .index-item a, .apidocs .item h3 {
+	color:#000;
+	font-size:1.2em;
+}
+
+.apidocs .index-item .description, .apidocs .item .description {
+	margin-left:20px;
+}
+
+.apidocs .args, .apidocs ul.inline {
+	display:inline;
+}
+
+.apidocs ul.inline li {
+	display:inline;
+}
+
+.apidocs .params, .apidocs .returns, .apidocs .example {
+	margin:10px 0 10px 20px;
+}
+
+.apidocs h4 {
+	color:#000;
+	font-weight:bold;
+	font-size:1.1em;
+}
+
+.apidocs .params-list {
+	padding-left:20px;
+}
+
+.apidocs a.code {
+	background:url(../images/code.png) no-repeat;
+	text-indent:-9em;
+	width:24px; height:24px;
+	overflow:hidden;
+	display:inline-block;
+	vertical-align:bottom;
+	margin-right:5px;
+	margin-bottom:2px;
+} 
+
+.apidocs .params-list .params-list {
+	margin-left:20px;
+	border-left:2px solid #ddd;
+}
+
+.apidocs .params-list .param {
+	margin:10px 0;
+}
+
+.apidocs .params-list .param-name {
+	color:#000;
+	font-size:1.1em;
+}
+
+.apidocs .params-list .param-description {
+	margin-left:20px;
+}
+
+.apidocs .returns-description {
+	margin-left:40px;
+}
+
+.apidocs .params-list .type, .apidocs .returns-inline .type, .apidocs .returns .type {
+	font-family:Consolas;
+	margin-left:.5em;
+	color:#EA4D91;
+	font-size:.95em;
+}
+
+.apidocs .returns .type {
+	margin-left:20px;
+}
+
+.apidocs .params-list code.optional {
+	font-style:italic;
+}
+
+.apidocs .params-list span.optional {
+	color:#888;
+}
+
+.apidocs div.file {
+	margin:10px;
+	border:1px solid #ddd;
+	background-color:#888;
+	color:#fff;
+}
+
+.apidocs div.file ol.linenums {
+	background-color:#fff;
+	list-style:decimal;
+	margin-left:4em;
+}
+
+.apidocs div.file ol.linenums li {
+	list-style:decimal;
+	padding:0 3px;
+	font-family:나눔고딕코딩, Consolas;
+	white-space:pre-wrap;
+}
+
+.apidocs span.flag {
+	background-color:#888;
+	color:#fff;
+	border-radius:5px;
+	padding:1px 5px;
+	font-size:7px;
+	font-family:Consolas;
+	margin-left:3px;
+	vertical-align:bottom;
+}
+
+.apidocs span.flag.deprecated {
+	background-color:#844;
+}
+
+.apidocs .example-content {
+	margin-left:20px;
+}
+
+.apidocs .example-content pre.code {
+	font-family:나눔고딕코딩, Consolas;
+	padding:5px;
+	margin:10px 0;
+	border:1px solid #ddd;
+	background-color:#eee;
+}

@@ -1,0 +1,123 @@
+<div id="constructor_{{name}}" class="constructor item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
+
+    {{#if foundAt}}
+    <a href="{{foundAt}}" class="code" title="{{{file}}}:{{{line}}}">코드보기</a>
+    {{/if}}
+
+    <h3 class="name"><code>{{class}}</code></h3>
+
+    {{#if params}}
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            {{#params}}
+                <li class="arg">
+                    {{#if optional}}
+                        <code class="optional">[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]</code>
+                    {{else}}
+                        <code>{{name}}</code>
+                    {{/if}}
+                </li>
+            {{/params}}
+            </ul><span class="paren">)</span>
+        </div>
+    {{else}}
+        <span class="paren">()</span>
+    {{/if}}
+
+	<!--
+    {{#if return}}
+        <span class="returns-inline">
+            <span class="type">&lt;{{#crossLink returnType}}{{/crossLink}}&gt;</span>
+        </span>
+    {{/if}}
+    -->
+
+    {{#if deprecated}}
+        <span class="flag deprecated"{{#if deprecationMessage}} title="{{deprecationMessage}}"{{/if}}>deprecated</span>
+    {{/if}}
+
+    {{#if access}}
+        <span class="flag {{access}}">{{access}}</span>
+    {{/if}}
+
+    {{#if final}}
+        <span class="flag final">final</span>
+    {{/if}}
+
+    {{#if static}}
+        <span class="flag static">static</span>
+    {{/if}}
+
+    {{#if chainable}}
+        <span class="flag chainable">chainable</span>
+    {{/if}}
+
+    {{#if async}}
+        <span class="flag async">async</span>
+    {{/if}}
+    
+    <div class="meta">
+        {{#if overwritten_from}}
+            <p>Inherited from
+            <a href="{{crossLinkRaw overwritten_from/class}}#constructor_{{overwritten_from/name}}">
+                {{overwritten_from/class}}
+            </a>
+            <!--
+            {{#if foundAt}}
+            but overwritten in
+            {{/if}}
+            -->
+        {{else}}
+            {{#if extended_from}}
+                <p>Inherited from
+                <a href="{{crossLinkRaw extended_from}}#constructor_{{name}}">{{extended_from}}</a>:
+            {{else}}
+                {{#providedBy}}
+                    <p>Provided by the <a href="../modules/{{.}}.html">{{.}}</a> module.</p>
+                {{/providedBy}}
+                <p>
+                <!--
+                {{#if foundAt}}
+                Defined in
+                {{/if}}
+                -->
+            {{/if}}
+        {{/if}}
+        
+        </p>
+
+        {{#if deprecationMessage}}
+            <p>Deprecated: {{deprecationMessage}}</p>
+        {{/if}}
+
+        {{#if since}}
+            <p>Available since {{since}}</p>
+        {{/if}}
+    </div>
+
+    <div class="description">
+        {{{constructorDescription}}}
+    </div>
+
+    {{#if params}}
+        <div class="params">
+            <h4>파라미터</h4>
+
+            <ul class="params-list">
+            {{#params}}
+                {{>param}}
+            {{/params}}
+            </ul>
+        </div>
+    {{/if}}
+
+    {{#example}}
+        <div class="example">
+            <h4>예제</h4>
+
+            <div class="example-content">
+                {{{.}}}
+            </div>
+        </div>
+    {{/example}}
+</div>
