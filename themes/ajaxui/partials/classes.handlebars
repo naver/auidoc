@@ -100,10 +100,11 @@
         {{#if events}}
             <li class="api-class-tab events"><a href="#events">이벤트</a></li>
         {{/if}}
+        <li style="clear:both; float:none;"></li>
     </ul>
 
-    <div>
-        <div id="index" class="api-class-tabpanel index">
+    <div class="api-class-panels">
+        <div id="index" class="api-class-panel index">
 
             {{#if constructors}}
                 <div class="index-section constructors">
@@ -261,7 +262,7 @@
         </div>
 
         {{#if constructors}}
-            <div id="constructors" class="api-class-tabpanel index-list">
+            <div id="constructors" class="api-class-panel constructors">
 	            <h2 class="off-left">생성자</h2>
                 {{#constructors}}
                     {{>constructor}}
@@ -270,7 +271,7 @@
         {{/if}}
 
         {{#if methods}}
-            <div id="methods" class="api-class-tabpanel">
+            <div id="methods" class="api-class-panel methods">
                 <h2 class="off-left">메서드</h2>
 
                 {{#methods}}
@@ -280,7 +281,7 @@
         {{/if}}
 
         {{#if properties}}
-            <div id="properties" class="api-class-tabpanel">
+            <div id="properties" class="api-class-panel properties">
                 <h2 class="off-left">프로퍼티</h2>
 
                 {{#properties}}
@@ -290,7 +291,7 @@
         {{/if}}
 
         {{#if attrs}}
-            <div id="attrs" class="api-class-tabpanel">
+            <div id="attrs" class="api-class-panel attrs">
                 <h2 class="off-left">속성</h2>
 
                 {{#attrs}}
@@ -300,7 +301,7 @@
         {{/if}}
 
         {{#if events}}
-            <div id="events" class="api-class-tabpanel">
+            <div id="events" class="api-class-panel events">
                 <h2 class="off-left">이벤트</h2>
 
                 {{#events}}
