@@ -3,9 +3,9 @@
 .apidocs h1 {
 	font-size:2em; color: #000;
 	line-height:100%;
-	padding:20px 5px 5px 5px;
+	padding:5px;
 	border-bottom: 1px solid #ebebeb;
-	margin-bottom: 5px;
+	margin: 5px 0;
 	text-shadow: 2px 2px 5px rgba(0, 0, 0, .2); 
 	font-weight: bold;
 }
@@ -215,7 +215,7 @@
 	color:#fff;
 	border-radius:5px;
 	padding:1px 5px;
-	font-size:7px;
+	font-size:10px;
 	font-family:Consolas;
 	margin-left:3px;
 	vertical-align:bottom;
@@ -320,5 +320,75 @@ section.api-search #api-filter {
 	font-size:1.5em !important;
 	color:#000 !important;
 	margin:0 !important;
+	padding-left:20px;
+	background:url(../images/tag.png) no-repeat;
+}
+
+.sidemenu .api-result {
+	display:none;
+}
+
+.show-result .sidemenu .api-result {
+	display:block;
+}
+
+.show-result .sidemenu .api-all-list {
+	display:none;
+}
+
+.sidemenu .no-result-msg {
+	display:none;
+	text-align:center;
+}
+
+.no-result .sidemenu .api-class-panel {
+	display:none;
+}
+
+.no-result .sidemenu .api-class-tabs {
+	display:none;
+}
+
+.no-result .sidemenu .no-result-msg {
+	display:block;
+}
+
+.sidemenu .api-class-panel a {
+	margin:5px; padding:0;
+	color:#666 !important;
+}
+
+.sidemenu .api-class-panel strong {
+	font-weight:bold;
+	color:#EA2D81;
+}
+
+.sidemenu .api-class-panel ul {
+	margin:0 0 15px 0;
+}
+
+.sidemenu .api-class-panel a:hover {
+	color:#EA2D81 !important;
+}
+
+#main .class-list li {
+	border:1px solid #ddd;
+	border-radius:10px;
+	width:318px;
+	padding:15px;
+	margin:5px;
+	float:left;
+}
+
+.sidemenu h3 a {
+	color:#666;
+}
+
+#main .class-list li h2 {
+	padding:0; border:0;
+	margin:0 0 10px 0; 
+}
+
+#main .class-list li p {
 	
 }

@@ -1,10 +1,8 @@
-﻿<h1>
-	{{name}} Class
-	{{#if extends}}
-	    <sub class="extends">
-	        {{#crossLink extends}}{{/crossLink}} 상속
-	    </sub>
-	{{/if}}
+<h1 id="el-top">
+    {{name}} 클래스
+    {{#if extends}}
+        <sub class="extends">{{#crossLink extends}}{{/crossLink}} 상속</sub>
+    {{/if}}
 </h1>
 {{#if uses}}
     <div class="box uses">
@@ -84,30 +82,30 @@
 
 <div id="classdocs" class="tabview">
     <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">목차</a></li>
+        <li class="api-class-tab index"><a id="el-index" href="#index">목차</a></li>
         {{#if constructors}}
-            <li class="api-class-tab constructors"><a href="#constructors">생성자</a></li>
+            <li class="api-class-tab constructor"><a id="el-constructor" href="#constructor">생성자</a></li>
         {{/if}}
         {{#if methods}}
-            <li class="api-class-tab methods"><a href="#methods">메서드</a></li>
+            <li class="api-class-tab method"><a id="el-method" href="#method">메서드</a></li>
         {{/if}}
         {{#if properties}}
-            <li class="api-class-tab properties"><a href="#properties">프로퍼티</a></li>
+            <li class="api-class-tab property"><a id="el-property" href="#property">프로퍼티</a></li>
         {{/if}}
         {{#if attrs}}
-            <li class="api-class-tab attrs"><a href="#attrs">속성</a></li>
+            <li class="api-class-tab attr"><a id="el-attr" href="#attr">속성</a></li>
         {{/if}}
         {{#if events}}
-            <li class="api-class-tab events"><a href="#events">이벤트</a></li>
+            <li class="api-class-tab event"><a id="el-event" href="#event">이벤트</a></li>
         {{/if}}
         <li style="clear:both; float:none;"></li>
     </ul>
 
     <div class="api-class-panels">
-        <div id="index" class="api-class-panel index">
+        <div class="api-class-panel index">
 
             {{#if constructors}}
-                <div class="index-section constructors">
+                <div class="index-section constructor">
                     <h2>생성자</h2>
 
                     <ul class="index-list constructors{{#if extends}} extends{{/if}}">
@@ -152,7 +150,7 @@
             {{/if}}
 
             {{#if methods}}
-                <div class="index-section methods">
+                <div class="index-section method">
                     <h2>메서드</h2>
 
                     <ul class="index-list methods{{#if extends}} extends{{/if}}">
@@ -202,7 +200,7 @@
             {{/if}}
 
             {{#if properties}}
-                <div class="index-section properties">
+                <div class="index-section property">
                     <h2>프로퍼티</h2>
 
                     <ul class="index-list properties{{#if extends}} extends{{/if}}">
@@ -223,7 +221,7 @@
             {{/if}}
 
             {{#if attrs}}
-                <div class="index-section attrs">
+                <div class="index-section attr">
                     <h2>속성</h2>
 
                     <ul class="index-list attrs{{#if extends}} extends{{/if}}">
@@ -237,7 +235,7 @@
             {{/if}}
 
             {{#if events}}
-                <div class="index-section events">
+                <div class="index-section event">
                     <h2>이벤트</h2>
 
                     <ul class="index-list events{{#if extends}} extends{{/if}}">
@@ -262,7 +260,7 @@
         </div>
 
         {{#if constructors}}
-            <div id="constructors" class="api-class-panel constructors">
+            <div class="api-class-panel constructor">
 	            <h2 class="off-left">생성자</h2>
                 {{#constructors}}
                     {{>constructor}}
@@ -271,7 +269,7 @@
         {{/if}}
 
         {{#if methods}}
-            <div id="methods" class="api-class-panel methods">
+            <div class="api-class-panel method">
                 <h2 class="off-left">메서드</h2>
 
                 {{#methods}}
@@ -281,7 +279,7 @@
         {{/if}}
 
         {{#if properties}}
-            <div id="properties" class="api-class-panel properties">
+            <div class="api-class-panel property">
                 <h2 class="off-left">프로퍼티</h2>
 
                 {{#properties}}
@@ -291,7 +289,7 @@
         {{/if}}
 
         {{#if attrs}}
-            <div id="attrs" class="api-class-panel attrs">
+            <div class="api-class-panel attr">
                 <h2 class="off-left">속성</h2>
 
                 {{#attrs}}
@@ -301,7 +299,7 @@
         {{/if}}
 
         {{#if events}}
-            <div id="events" class="api-class-panel events">
+            <div class="api-class-panel event">
                 <h2 class="off-left">이벤트</h2>
 
                 {{#events}}
