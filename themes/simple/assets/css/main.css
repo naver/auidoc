@@ -411,7 +411,7 @@ ul li p {
     margin-top: 0;
 }
 
-.method .name {
+.constructor .name, .method .name {
     font-size: 110%;
 }
 

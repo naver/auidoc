@@ -325,10 +325,11 @@ ul li p {
     margin-top: 0;
 }
 
-.method .name {
+.constructor .name, .method .name {
     font-size: 110%;
 }
 
+.apidocs .constructors .extends .constructor,
 .apidocs .methods .extends .method,
 .apidocs .properties .extends .property,
 .apidocs .attrs .extends .attr,
@@ -336,6 +337,7 @@ ul li p {
     font-weight: bold;
 }
 
+.apidocs .constructors .extends .inherited,
 .apidocs .methods .extends .inherited,
 .apidocs .properties .extends .inherited,
 .apidocs .attrs .extends .inherited,

@@ -19,14 +19,11 @@
 <span class="foundat">Class defined in: <a href="../{{foundAt}}">`{{file}}:{{line}}`</a></span>
 <div class="intro">{{{classDescription}}}</div>
 
-{{#if is_constructor}}
-    {{#is_constructor}}
-    {{>method}}
-    {{/is_constructor}}
-{{/if}}
-
 <div id="classdocs">
     <ul>
+        {{#if constructors}}
+        <li><a href="#constructors">Constructors</a></li>
+        {{/if}}
         {{#if methods}}
         <li><a href="#methods">Methods</a></li>
         {{/if}}
@@ -41,6 +38,13 @@
         {{/if}}
     </ul>
     <div>
+        {{#if constructors}}
+            <div id="constructors">
+            {{#constructors}}
+                {{>constructor}}
+            {{/constructors}}
+            </div>
+        {{/if}}
         {{#if methods}}
             <div id="methods">
             {{#methods}}
