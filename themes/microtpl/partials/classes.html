@@ -1,0 +1,230 @@
+<h1><%=this.name%> Class</h1>
+<div class="box meta">
+    <% if (HAS(this.uses)) { %>
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+            	<% EACH(this.uses, function() { %>
+                    <li><a href="<%=this%>.html"><%=this%></a></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <% if (HAS(this.extends)) { %>
+        <div class="extends">
+            Extends <%=crossLink(this.extends)%>
+        </div>
+    <% } %>
+
+    <% if (HAS(this.foundAt)) { %>
+        <div class="foundat">
+            Defined in: <a href="<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a>
+        </div>
+    <% } %>
+
+    <% if (HAS(this.module)) { %>
+        <% if (HAS(this.submodule)) { %>
+            Module: <%=crossLinkModule(this.submodule)%><br>
+            Parent Module: <%=crossLinkModule(this.module)%>
+        <% } else { %>
+            Module: <%=crossLinkModule(this.module)%>
+        <% } %>
+    <% } %>
+
+    <% if (HAS(this.since)) { %>
+        <p>Available since <%=this.since%></p>
+    <% } %>
+</div>
+
+<% if (HAS(this.deprecated)) { %>
+    <div class="box deprecated">
+        <p>
+        <% if (HAS(this.deprecationMessage)) { %>
+            <strong>Deprecated:</strong> <%=this.deprecationMessage%>
+        <% } else { %>
+            This class is deprecated.
+        <% } %>
+        </p>
+    </div>
+<% } %>
+
+<div class="box intro">
+    <%=this.classDescription%>
+</div>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        <% if (HAS(this.constructors, 1)) { %>
+            <li class="api-class-tab constructors"><a href="#constructors">Constructors</a></li>
+        <% } %>
+        <% if (HAS(this.methods, 11)) { %>
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        <% } %>
+        <% if (HAS(this.properties, 111)) { %>
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        <% } %>
+        <% if (HAS(this.attrs, 1111)) { %>
+            <li class="api-class-tab attrs"><a href="#attrs">Attributes</a></li>
+        <% } %>
+        <% if (HAS(this.events, 11111)) { %>
+            <li class="api-class-tab events"><a href="#events">Events</a></li>
+        <% } %>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            <% if (HAS(this.constructors)) { %>
+                <div class="index-section constructors">
+                    <h3>Constructors</h3>
+
+                    <ul class="index-list constructors<% if (HAS(this.extends)) { %> extends<% } %>">
+                        <% EACH(this.constructors, function() { %>
+                            <li class="index-item constructor<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#constructor_<%=this.name%>"><%=this['class']%></a>
+
+                                <% if (HAS(this.static)) { %>
+                                    <span class="flag static">static</span>
+                                <% } %>
+                                <% if (HAS(this.deprecated)) { %>
+                                    <span class="flag deprecated">deprecated</span>
+                                <% } %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <% if (HAS(this.methods)) { %>
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods<% if (HAS(this.extends)) { %> extends<% } %>">
+                        <% EACH(this.methods, function() { %>
+                            <li class="index-item method<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#method_<%=this.name%>"><%=this.name%></a>
+
+                                <% if (HAS(this.static)) { %>
+                                    <span class="flag static">static</span>
+                                <% } %>
+                                <% if (HAS(this.deprecated)) { %>
+                                    <span class="flag deprecated">deprecated</span>
+                                <% } %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <% if (HAS(this.properties)) { %>
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties<% if (this.extends) { %> extends<% } %>">
+                        <% EACH(this.properties, function() { %>
+                            <li class="index-item property<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#property_<%=this.name%>"><%=this.name%></a>
+
+                                <% if (HAS(this.static)) { %>
+                                    <span class="flag static">static</span>
+                                <% } %>
+                                <% if (HAS(this.deprecated)) { %>
+                                    <span class="flag deprecated">deprecated</span>
+                                <% } %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <% if (HAS(this.attrs)) { %>
+                <div class="index-section attrs">
+                    <h3>Attributes</h3>
+
+                    <ul class="index-list attrs<% if (this.extends) { %> extends<% } %>">
+                        <% EACH(this.attrs, function() { %>
+                            <li class="index-item attr<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#attr_<%=this.name%>"><%=this.name%></a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <% if (HAS(this.events)) { %>
+                <div class="index-section events">
+                    <h3>Events</h3>
+
+                    <ul class="index-list events<% if (this.extends) { %> extends<% } %>">
+                        <% EACH(this.events, function() { %>
+                            <li class="index-item event<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#event_<%=this.name%>"><%=this.name%></a>
+
+                                <% if (HAS(this.static)) { %>
+                                    <span class="flag static">static</span>
+                                <% } %>
+                                <% if (HAS(this.deprecated)) { %>
+                                    <span class="flag deprecated">deprecated</span>
+                                <% } %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+        </div>
+
+        <% if (HAS(this.constructors)) { %>
+            <div id="constructors" class="api-class-tabpanel">
+                <h2 class="off-left">Constructors</h2>
+
+                <% EACH(this.constructors, function() { %>
+                    <%=INCLUDE("constructor", this)%>
+	            <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.methods)) { %>
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                <% EACH(this.methods, function() { %>
+                    <%=INCLUDE("method", this)%>
+	            <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.properties)) { %>
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                <% EACH(this.properties, function() { %>
+                    <%=INCLUDE("props", this)%>
+	            <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.attrs)) { %>
+            <div id="attrs" class="api-class-tabpanel">
+                <h2 class="off-left">Attributes</h2>
+
+                <% EACH(this.attrs, function() { %>
+                    <%=INCLUDE("attrs", this)%>
+	            <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.events)) { %>
+            <div id="events" class="api-class-tabpanel">
+                <h2 class="off-left">Events</h2>
+
+                <% EACH(this.events, function() { %>
+                    <%=INCLUDE("events", this)%>
+	            <% }); %>
+            </div>
+        <% } %>
+    </div>
+</div>
