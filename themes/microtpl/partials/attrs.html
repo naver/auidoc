@@ -1,83 +1,83 @@
-<div id="attr_{{name}}" class="attr item{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if extended_from}} inherited{{/if}}">
-    <a name="config_{{name}}"></a> {{! For backwards compatibility }}
-    <h3 class="name"><code>{{name}}</code></h3>
-    <span class="type">{{#crossLink type}}{{/crossLink}}</span>
+<div id="attr_<%=this.name%>" class="attr item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+    <a name="config_<%=this.name%>"></a> {{! For backwards compatibility }}
+    <h3 class="name"><code><%=this.name%></code></h3>
+    <span class="type"><%=crossLink(this.type)%></span>
 
-    {{#if deprecated}}
-        <span class="flag deprecated"{{#if deprecationMessage}} title="{{deprecationMessage}}"{{/if}}>deprecated</span>
-    {{/if}}
+    <% if (HAS(this.deprecated)) { %>
+        <span class="flag deprecated"<% if (HAS(this.deprecationMessage)) { %> title="<%=this.deprecationMessage%>"<% } %>>deprecated</span>
+    <% } %>
 
-    {{#if access}}
-        <span class="flag {{access}}">{{access}}</span>
-    {{/if}}
+    <% if (HAS(this.access)) { %>
+        <span class="flag <%=this.access%>"><%=this.access%></span>
+    <% } %>
 
-    {{#if final}}
+    <% if (HAS(this.final)) { %>
         <span class="flag final">final</span>
-    {{/if}}
+    <% } %>
 
-    {{#if static}}
+    <% if (HAS(this.static)) { %>
         <span class="flag static">static</span>
-    {{/if}}
+    <% } %>
 
-    {{#if optional}}
+    <% if (HAS(this.optional)) { %>
         <span class="flag optional">optional</span>
-    {{/if}}
+    <% } %>
 
-    {{#if required}}
+    <% if (HAS(this.required)) { %>
         <span class="flag required">required</span>
-    {{/if}}
+    <% } %>
 
     <div class="meta">
-        {{#if overwritten_from}}
+        <% if (HAS(this.overwritten_from)) { %>
             <p>Inherited from
-            <a href="{{crossLinkRaw overwritten_from/class}}#attr_{{overwritten_from/name}}">
-                {{overwritten_from/class}}
+            <a href="<%=crossLinkRaw(this.overwritten_from.class)%>#method_<%=this.overwritten_from.name%>">
+                <%=this.overwritten_from.class%>
             </a>
-            {{#if foundAt}}
+            <% if (HAS(this.foundAt)) { %>
             but overwritten in
-            {{/if}}
-        {{else}}
-            {{#if extended_from}}
+            <% } %>
+        <% } else { %>
+            <% if (HAS(this.extended_from)) { %>
                 <p>Inherited from
-                <a href="{{crossLinkRaw extended_from}}#attr_{{name}}">{{extended_from}}</a>:
-            {{else}}
-                {{#providedBy}}
-                    <p>Provided by the <a href="../modules/{{.}}.html">{{.}}</a> module.</p>
-                {{/providedBy}}
+                <a href="<%=crossLinkRaw(this.extended_from)%>#method_<%=this.name%>"><%=this.extended_from%></a>:
+            <% } else { %>
+                <% EACH(this.providedBy, function() { %>
+                    <p>Provided by the <a href="../modules/<%=this%>.html"><%=this%></a> module.</p>
+                <% }); %>
                 <p>
-                {{#if foundAt}}
+                <% if (HAS(this.foundAt)) { %>
                 Defined in
-                {{/if}}
-            {{/if}}
-        {{/if}}
-        {{#if foundAt}}
-        <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a>
-        {{/if}}
+                <% } %>
+            <% } %>
+        <% } %>
+        <% if (HAS(this.foundAt)) { %>
+        <a href="<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a>
+        <% } %>
         </p>
 
-        {{#if deprecationMessage}}
-            <p>Deprecated: {{deprecationMessage}}</p>
-        {{/if}}
+        <% if (HAS(this.deprecationMessage)) { %>
+            <p>Deprecated: <%=this.deprecationMessage%></p>
+        <% } %>
 
-        {{#if since}}
-            <p>Available since {{since}}</p>
-        {{/if}}
+        <% if (HAS(this.since)) { %>
+            <p>Available since <%=this.since%></p>
+        <% } %>
     </div>
 
     <div class="description">
-        {{{attrDescription}}}
+        <%=this.attrDescription%>
     </div>
 
-    {{#if default}}
-        <p><strong>Default:</strong> {{default}}</p>
-    {{/if}}
+    <% if (HAS(this.default)) { %>
+        <p><strong>Default:</strong> <%=this.default%></p>
+    <% } %>
 
-    {{#if emit}}
+    <% if (HAS(this.emit)) { %>
         <div class="emits box">
-            <h4>Fires event <code>{{name}}Change</code></h4>
+            <h4>Fires event <code><%=this.name%>Change</code></h4>
 
             <p>
-            Fires when the value for the configuration attribute `{{{name}}}` is
+            Fires when the value for the configuration attribute `<%=this.name%>` is
             changed. You can listen for the event using the `on` method if you
             wish to be notified before the attribute's value has changed, or
             using the `after` method if you wish to be notified after the
@@ -90,7 +90,7 @@
                 <ul class="params-list">
                     <li class="param">
                         <code class="param-name">e</code>
-                        <span class="type">{{#crossLink "EventFacade"}}{{/crossLink}}</span>
+                        <span class="type"><%=crossLink("EventFacade")%><% }); %></span>
 
                         <div class="param-description">
                             An Event Facade object with the following
@@ -110,12 +110,12 @@
                             </li>
                             <li class="param">
                                 <code class="param-name">attrName</code>
-                                <span class="type">{{#crossLink "String"}}{{/crossLink}}</span>
+                                <span class="type"><%=crossLink("String")%><% }); %></span>
                                 <div class="param-description">The name of the attribute being set.</div>
                             </li>
                             <li class="param">
                                 <code class="param-name">subAttrName</code>
-                                <span class="type">{{#crossLink "String"}}{{/crossLink}}</span>
+                                <span class="type"><%=crossLink("String")%><% }); %></span>
                                 <div class="param-description">If setting a property within the attribute's value, the name of the sub-attribute property being set.</div>
                             </li>
                         </ul>
@@ -123,15 +123,15 @@
                 </ul>
             </div>
         </div>
-    {{/if}}
+    <% } %>
 
-    {{#example}}
+    <% EACH(this.example, function() { %>
         <div class="example">
             <h4>Example:</h4>
 
             <div class="example-content">
-                {{{.}}}
+                <%=this%>
             </div>
         </div>
-    {{/example}}
+    <% }); %>
 </div>
