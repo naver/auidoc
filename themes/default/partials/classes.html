@@ -1,230 +1,230 @@
-<h1>{{name}} Class</h1>
+<h1><%=this.name%> Class</h1>
 <div class="box meta">
-    {{#if uses}}
+    <% if (HAS(this.uses)) { %>
         <div class="uses">
             Uses
             <ul class="inline commas">
-                {{#uses}}
-                    <li><a href="{{.}}.html">{{.}}</a></li>
-                {{/uses}}
+            	<% EACH(this.uses, function() { %>
+                    <li><a href="<%=this%>.html"><%=this%></a></li>
+                <% }); %>
             </ul>
         </div>
-    {{/if}}
+    <% } %>
 
-    {{#if extends}}
+    <% if (HAS(this.extends)) { %>
         <div class="extends">
-            Extends {{#crossLink extends}}{{/crossLink}}
+            Extends <%=crossLink(this.extends)%>
         </div>
-    {{/if}}
+    <% } %>
 
-    {{#if foundAt}}
+    <% if (HAS(this.foundAt)) { %>
         <div class="foundat">
-            Defined in: <a href="{{foundAt}}">`{{{file}}}:{{{line}}}`</a>
+            Defined in: <a href="<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a>
         </div>
-    {{/if}}
+    <% } %>
 
-    {{#if module}}
-        {{#if submodule}}
-            Module: {{#crossLinkModule submodule}}{{/crossLinkModule}}<br>
-            Parent Module: {{#crossLinkModule module}}{{/crossLinkModule}}
-        {{else}}
-            Module: {{#crossLinkModule module}}{{/crossLinkModule}}
-        {{/if}}
-    {{/if}}
+    <% if (HAS(this.module)) { %>
+        <% if (HAS(this.submodule)) { %>
+            Module: <%=crossLinkModule(this.submodule)%><br>
+            Parent Module: <%=crossLinkModule(this.module)%>
+        <% } else { %>
+            Module: <%=crossLinkModule(this.module)%>
+        <% } %>
+    <% } %>
 
-    {{#if since}}
-        <p>Available since {{since}}</p>
-    {{/if}}
+    <% if (HAS(this.since)) { %>
+        <p>Available since <%=this.since%></p>
+    <% } %>
 </div>
 
-{{#if deprecated}}
+<% if (HAS(this.deprecated)) { %>
     <div class="box deprecated">
         <p>
-        {{#if deprecationMessage}}
-            <strong>Deprecated:</strong> {{deprecationMessage}}
-        {{else}}
+        <% if (HAS(this.deprecationMessage)) { %>
+            <strong>Deprecated:</strong> <%=this.deprecationMessage%>
+        <% } else { %>
             This class is deprecated.
-        {{/if}}
+        <% } %>
         </p>
     </div>
-{{/if}}
+<% } %>
 
 <div class="box intro">
-    {{{classDescription}}}
+    <%=this.classDescription%>
 </div>
 
 <div id="classdocs" class="tabview">
     <ul class="api-class-tabs">
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-        {{#if constructors}}
+        <% if (HAS(this.constructors)) { %>
             <li class="api-class-tab constructors"><a href="#constructors">Constructors</a></li>
-        {{/if}}
-        {{#if methods}}
+        <% } %>
+        <% if (HAS(this.methods)) { %>
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        {{/if}}
-        {{#if properties}}
+        <% } %>
+        <% if (HAS(this.properties)) { %>
             <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
-        {{/if}}
-        {{#if attrs}}
+        <% } %>
+        <% if (HAS(this.attrs)) { %>
             <li class="api-class-tab attrs"><a href="#attrs">Attributes</a></li>
-        {{/if}}
-        {{#if events}}
+        <% } %>
+        <% if (HAS(this.events)) { %>
             <li class="api-class-tab events"><a href="#events">Events</a></li>
-        {{/if}}
+        <% } %>
     </ul>
 
     <div>
         <div id="index" class="api-class-tabpanel index">
             <h2 class="off-left">Item Index</h2>
 
-            {{#if constructors}}
+            <% if (HAS(this.constructors)) { %>
                 <div class="index-section constructors">
                     <h3>Constructors</h3>
 
-                    <ul class="index-list constructors{{#if extends}} extends{{/if}}">
-                        {{#constructors}}
-                            <li class="index-item constructor{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
-                                <a href="#constructor_{{name}}">{{class}}</a>
+                    <ul class="index-list constructors<% if (HAS(this.extends)) { %> extends<% } %>">
+                        <% EACH(this.constructors, function() { %>
+                            <li class="index-item constructor<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#constructor_<%=this.name%>"><%=this['class']%></a>
 
-                                {{#if static}}
+                                <% if (HAS(this.static)) { %>
                                     <span class="flag static">static</span>
-                                {{/if}}
-                                {{#if deprecated}}
+                                <% } %>
+                                <% if (HAS(this.deprecated)) { %>
                                     <span class="flag deprecated">deprecated</span>
-                                {{/if}}
+                                <% } %>
                             </li>
-                        {{/constructors}}
+                        <% }); %>
                     </ul>
                 </div>
-            {{/if}}
+            <% } %>
 
-            {{#if methods}}
+            <% if (HAS(this.methods)) { %>
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods{{#if extends}} extends{{/if}}">
-                        {{#methods}}
-                            <li class="index-item method{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
-                                <a href="#method_{{name}}">{{name}}</a>
+                    <ul class="index-list methods<% if (HAS(this.extends)) { %> extends<% } %>">
+                        <% EACH(this.methods, function() { %>
+                            <li class="index-item method<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#method_<%=this.name%>"><%=this.name%></a>
 
-                                {{#if static}}
+                                <% if (HAS(this.static)) { %>
                                     <span class="flag static">static</span>
-                                {{/if}}
-                                {{#if deprecated}}
+                                <% } %>
+                                <% if (HAS(this.deprecated)) { %>
                                     <span class="flag deprecated">deprecated</span>
-                                {{/if}}
+                                <% } %>
                             </li>
-                        {{/methods}}
+                        <% }); %>
                     </ul>
                 </div>
-            {{/if}}
+            <% } %>
 
-            {{#if properties}}
+            <% if (HAS(this.properties)) { %>
                 <div class="index-section properties">
                     <h3>Properties</h3>
 
-                    <ul class="index-list properties{{#if extends}} extends{{/if}}">
-                        {{#properties}}
-                            <li class="index-item property{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
-                                <a href="#property_{{name}}">{{name}}</a>
+                    <ul class="index-list properties<% if (this.extends) { %> extends<% } %>">
+                        <% EACH(this.properties, function() { %>
+                            <li class="index-item property<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#property_<%=this.name%>"><%=this.name%></a>
 
-                                {{#if static}}
+                                <% if (HAS(this.static)) { %>
                                     <span class="flag static">static</span>
-                                {{/if}}
-                                {{#if deprecated}}
+                                <% } %>
+                                <% if (HAS(this.deprecated)) { %>
                                     <span class="flag deprecated">deprecated</span>
-                                {{/if}}
+                                <% } %>
                             </li>
-                        {{/properties}}
+                        <% }); %>
                     </ul>
                 </div>
-            {{/if}}
+            <% } %>
 
-            {{#if attrs}}
+            <% if (HAS(this.attrs)) { %>
                 <div class="index-section attrs">
                     <h3>Attributes</h3>
 
-                    <ul class="index-list attrs{{#if extends}} extends{{/if}}">
-                        {{#attrs}}
-                            <li class="index-item attr{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
-                                <a href="#attr_{{name}}">{{name}}</a>
+                    <ul class="index-list attrs<% if (this.extends) { %> extends<% } %>">
+                        <% EACH(this.attrs, function() { %>
+                            <li class="index-item attr<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#attr_<%=this.name%>"><%=this.name%></a>
                             </li>
-                        {{/attrs}}
+                        <% }); %>
                     </ul>
                 </div>
-            {{/if}}
+            <% } %>
 
-            {{#if events}}
+            <% if (HAS(this.events)) { %>
                 <div class="index-section events">
                     <h3>Events</h3>
 
-                    <ul class="index-list events{{#if extends}} extends{{/if}}">
-                        {{#events}}
-                            <li class="index-item event{{#if access}} {{access}}{{/if}}{{#if deprecated}} deprecated{{/if}}{{#if overwritten_from}} inherited{{/if}}{{#if extended_from}} inherited{{/if}}">
-                                <a href="#event_{{name}}">{{name}}</a>
+                    <ul class="index-list events<% if (this.extends) { %> extends<% } %>">
+                        <% EACH(this.events, function() { %>
+                            <li class="index-item event<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                                <a href="#event_<%=this.name%>"><%=this.name%></a>
 
-                                {{#if static}}
+                                <% if (HAS(this.static)) { %>
                                     <span class="flag static">static</span>
-                                {{/if}}
-                                {{#if deprecated}}
+                                <% } %>
+                                <% if (HAS(this.deprecated)) { %>
                                     <span class="flag deprecated">deprecated</span>
-                                {{/if}}
+                                <% } %>
                             </li>
-                        {{/events}}
+                        <% }); %>
                     </ul>
                 </div>
-            {{/if}}
+            <% } %>
         </div>
 
-        {{#if constructors}}
+        <% if (HAS(this.constructors)) { %>
             <div id="constructors" class="api-class-tabpanel">
                 <h2 class="off-left">Constructors</h2>
 
-                {{#constructors}}
-                    {{>constructor}}
-                {{/constructors}}
+                <% EACH(this.constructors, function() { %>
+                    <%=INCLUDE("constructor", this)%>
+	            <% }); %>
             </div>
-        {{/if}}
+        <% } %>
 
-        {{#if methods}}
+        <% if (HAS(this.methods)) { %>
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">Methods</h2>
 
-                {{#methods}}
-                    {{>method}}
-                {{/methods}}
+                <% EACH(this.methods, function() { %>
+                    <%=INCLUDE("method", this)%>
+	            <% }); %>
             </div>
-        {{/if}}
+        <% } %>
 
-        {{#if properties}}
+        <% if (HAS(this.properties)) { %>
             <div id="properties" class="api-class-tabpanel">
                 <h2 class="off-left">Properties</h2>
 
-                {{#properties}}
-                    {{>props}}
-                {{/properties}}
+                <% EACH(this.properties, function() { %>
+                    <%=INCLUDE("props", this)%>
+	            <% }); %>
             </div>
-        {{/if}}
+        <% } %>
 
-        {{#if attrs}}
+        <% if (HAS(this.attrs)) { %>
             <div id="attrs" class="api-class-tabpanel">
                 <h2 class="off-left">Attributes</h2>
 
-                {{#attrs}}
-                    {{>attrs}}
-                {{/attrs}}
+                <% EACH(this.attrs, function() { %>
+                    <%=INCLUDE("attrs", this)%>
+	            <% }); %>
             </div>
-        {{/if}}
+        <% } %>
 
-        {{#if events}}
+        <% if (HAS(this.events)) { %>
             <div id="events" class="api-class-tabpanel">
                 <h2 class="off-left">Events</h2>
 
-                {{#events}}
-                    {{>events}}
-                {{/events}}
+                <% EACH(this.events, function() { %>
+                    <%=INCLUDE("events", this)%>
+	            <% }); %>
             </div>
-        {{/if}}
+        <% } %>
     </div>
 </div>
