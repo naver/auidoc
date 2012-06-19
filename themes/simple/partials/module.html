@@ -1,32 +1,28 @@
 
-<h2><%=this.moduleName%></h2>
-<div class="intro"><%=this.moduleDescription%></div>
+<h2>{{moduleName}}</h2>
+<div class="intro">{{{moduleDescription}}}</div>
 
 <div class="yui3-g">
     <div class="yui3-u-1-2">
-        <% if (HAS(this.moduleClasses)) { %>
+        {{#if moduleClasses}}
         <p>This module has the following classes:</p>
         <ul>
-        <% EACH(this.moduleClasses, function() { %>
-            <li><a href="{{../projectRoot}}classes/<%=this.name%>.html"><%=this.displayName%></a></li>
-        <% }); %>
+        {{#moduleClasses}}
+            <li><a href="{{../projectRoot}}classes/{{name}}.html">{{displayName}}</a></li>
+        {{/moduleClasses}}
         </ul>
-        <% } %>
+        {{/if}}
     </div>
     <div class="yui3-u-1-2">
-        <% if (HAS(this.subModules)) { %>
+        {{#if subModules}}
         <p>This module has the following submodules:</p>
         <ul>
-        <% EACH(this.subModules, function() { %>
-            <li id="<%=this.name%>"><a href="{{../projectRoot}}modules/<%=this.name%>.html"><%=this.displayName%></a><p><%=this.description%></p></li>
-        <% }); %>
+        {{#subModules}}
+            <li id="{{name}}"><a href="{{../projectRoot}}modules/{{name}}.html">{{displayName}}</a><p>{{{description}}}</p></li>
+        {{/subModules}}
         </ul>
-        <% } %>
+        {{/if}}
     </div>
 </div>
 <br><br>
-<span class="foundat">Module description found: <a href="../<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a></span>
->:<%=this.line%>`</a></span>
-line%>`</a></span>
->:<%=this.line%>`</a></span>
-/a></span>
+<span class="foundat">Module description found: <a href="../{{foundAt}}">`{{file}}:{{line}}`</a></span>

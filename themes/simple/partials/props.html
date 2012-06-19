@@ -1,17 +1,10 @@
-<a name="props_<%=this.name%>"></a>
+<a name="props_{{name}}"></a>
 <div class="props item">
-    `<%=this.name%>` &lt;<strong><%=crossLink(this.type)%></strong>&gt;<% if (HAS(this.final)) { %> <em>(final)</em><% }); %><% if (HAS(this.static)) { %> <em>(static)</em><% }); %><br>
-    <span class="foundat"><a href="../<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a></span>
-    <%=this.propertyDescription%>
-    <% if (HAS(this.example)) { %>
+    `{{name}}` &lt;<strong>{{#crossLink type}}{{/crossLink}}</strong>&gt;{{#if final}} <em>(final)</em>{{/if}}{{#if static}} <em>(static)</em>{{/if}}<br>
+    <span class="foundat"><a href="../{{foundAt}}">`{{file}}:{{line}}`</a></span>
+    {{{propertyDescription}}}
+    {{#if example}}
         <h5>Example</h5>
-        <%=this.example%>
-    <% }); %>
+        {{{example}}}
+    {{/if}}
 </div>
-     <%=this.example%>
-    <% }); %>
-</div>
->
-    <% }); %>
-</div>
->
