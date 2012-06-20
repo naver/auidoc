@@ -4,17 +4,17 @@
     </div>
     <div class="bd">
         <ul>
-            {{#modules}}
-                <li><a href="{{../projectRoot}}modules/{{name}}.html">{{displayName}}</a>
-                {{#if submodules}}
+            <% EACH(this.modules, function(projectRoot) { %>
+                <li><a href="<%=projectRoot%>modules/<%=this.name%>.html"><%=this.displayName%></a>
+                <% if (HAS(this.submodules)) { %>
                     <ul>
-                        {{#submodules}}
-                            <li><a href="{{../../../projectRoot}}modules/{{../name}}.html#{{displayName}}">{{displayName}}</a></li>
-                        {{/submodules}}
+                        <% EACH(this.submodules, function(name) { %>
+                            <li><a href="<%=projectRoot%>modules/<%=name%>.html#<%=this.displayName%>"><%=this.displayName%></a></li>
+                        <% }, [ this.name ]); %>
                     </ul>
-                {{/if}}
+                <% } %>
                 </li>
-            {{/modules}}
+            <% }, [ this.projectRoot ]); %>
         </ul>
     </div>
 </div>
@@ -25,81 +25,81 @@
     </div>
     <div class="bd">
         <ul>
-            {{#classes}}
-                <li><a href="{{../projectRoot}}classes/{{name}}.html">{{displayName}}</a></li>
-            {{/classes}}
+            <% EACH(this.classes, function(projectRoot) { %>
+                <li><a href="<%=projectRoot%>classes/<%=this.name%>.html"><%=this.displayName%></a></li>
+            <% }, [ this.projectRoot ]); %>
         </ul>
     </div>
 </div>
 
-{{#if methods}}
+<% if (HAS(this.methods)) { %>
 <div id="methods-on-page" class="sidebox on-page">
     <div class="hd">
         <h2 class="no-toc">Methods On Page</h2>
     </div>
     <div class="bd">
         <ul>
-            {{#methods}}
-                <li><a href="#methods_{{name}}">{{name}}</a></li>
-            {{/methods}}
+            <% EACH(this.methods, function() { %>
+                <li><a href="#methods_<%=this.name%>"><%=this.name%></a></li>
+            <% }); %>
         </ul>
     </div>
 </div>
-{{/if}}
+<% } %>
 
-{{#if events}}
+<% if (HAS(this.events)) { %>
 <div id="events-on-page" class="sidebox on-page">
     <div class="hd">
         <h2 class="no-toc">Events On Page</h2>
     </div>
     <div class="bd">
         <ul>
-            {{#events}}
-                <li><a href="#events_{{name}}">{{name}}</a></li>
-            {{/events}}
+            <% EACH(this.events, function() { %>
+                <li><a href="#events_<%=this.name%>"><%=this.name%></a></li>
+            <% }); %>
         </ul>
     </div>
 </div>
-{{/if}}
+<% } %>
 
-{{#if props}}
+<% if (HAS(this.props)) { %>
 <div id="props-on-page" class="sidebox">
     <div class="hd">
         <h2 class="no-toc">Props On Page</h2>
     </div>
     <div class="bd">
         <ul>
-            {{#events}}
-                <li><a href="#props_{{name}}">{{name}}</a></li>
-            {{/events}}
+            <% EACH(this.events, function() { %>
+                <li><a href="#props_<%=this.name%>"><%=this.name%></a></li>
+            <% }); %>
         </ul>
     </div>
 </div>
-{{/if}}
+<% } %>
 
-{{#if attributes}}
+<% if (HAS(this.attributes)) { %>
 <div id="attrs-on-page" class="sidebox on-page">
     <div class="hd">
         <h2 class="no-toc">Attributes On Page</h2>
     </div>
     <div class="bd">
         <ul>
-            {{#events}}
-                <li><a href="#attrs_{{name}}">{{name}}</a></li>
-            {{/events}}
+            <% EACH(this.events, function() { %>
+                <li><a href="#attrs_<%=this.name%>"><%=this.name%></a></li>
+            <% }); %>
         </ul>
     </div>
 </div>
-{{/if}}
+<% } %>
 
-{{#if fileTree}}
+<% if (HAS(this.fileTree)) { %>
 <div id="fileTree" class="sidebox">
     <div class="hd">
         <h2 class="no-toc">Files</h2>
     </div>
     <div class="bd">
-        {{#buildFileTree fileTree}}{{/buildFileTree}}
+        <%=buildFileTree(this.fileTree)%>
     </div>
 </div>
-{{/if}}
+<% } %>
 

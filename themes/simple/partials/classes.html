@@ -1,77 +1,77 @@
-<h4>Class {{moduleName}}</h4>
-{{#if uses}}
+<h4>Class <%=this.moduleName%></h4>
+<% if (HAS(this.uses)) { %>
     Uses:
-    {{#each uses}}
-        <a href="{{this}}.html">{{this}}</a>
-    {{/each}}
+    <% EACH(this.uses, function() { %>
+        <a href="<%=this.this%>.html"><%=this.this%></a>
+    <% }); %>
     <br>
-{{/if}}
-{{#if extension_for}}
+<% } %>
+<% if (HAS(this.extension_for)) { %>
     Extension For:
-    {{#each extension_for}}
-        <a href="{{this}}.html">{{this}}</a>
-    {{/each}}
+    <% EACH(this.extension_for, function() { %>
+        <a href="<%=this.this%>.html"><%=this.this%></a>
+    <% }); %>
     <br>
-{{/if}}
-{{#if extends}}
-    Extends: {{#crossLink extends}}{{/crossLink}}<br>
-{{/if}}
-<span class="foundat">Class defined in: <a href="../{{foundAt}}">`{{file}}:{{line}}`</a></span>
-<div class="intro">{{{classDescription}}}</div>
+<% } %>
+<% if (HAS(this.extends)) { %>
+    Extends: <%=crossLink(this.extends)%><br>
+<% } %>
+<span class="foundat">Class defined in: <a href="../<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a></span>
+<div class="intro"><%=this.classDescription%></div>
 
 <div id="classdocs">
     <ul>
-        {{#if constructors}}
+        <% if (HAS(this.constructors)) { %>
         <li><a href="#constructors">Constructors</a></li>
-        {{/if}}
-        {{#if methods}}
+        <% } %>
+        <% if (HAS(this.methods)) { %>
         <li><a href="#methods">Methods</a></li>
-        {{/if}}
-        {{#if properties}}
+        <% } %>
+        <% if (HAS(this.properties)) { %>
         <li><a href="#props">Properties</a></li>
-        {{/if}}
-        {{#if attrs}}
+        <% } %>
+        <% if (HAS(this.attrs)) { %>
         <li><a href="#attrs">Attributes</a></li>
-        {{/if}}
-        {{#if events}}
+        <% } %>
+        <% if (HAS(this.events)) { %>
         <li><a href="#events">Events</a></li>
-        {{/if}}
+        <% } %>
     </ul>
     <div>
-        {{#if constructors}}
+        <% if (HAS(this.constructors)) { %>
             <div id="constructors">
-            {{#constructors}}
-                {{>constructor}}
-            {{/constructors}}
+            <% EACH(this.constructors, function() { %>
+                <%=INCLUDE("constructor", this)%>
+            <% }); %>
             </div>
-        {{/if}}
-        {{#if methods}}
+        <% } %>
+        <% if (HAS(this.methods)) { %>
             <div id="methods">
-            {{#methods}}
-                {{>method}}
-            {{/methods}}
+            <% EACH(this.methods, function() { %>
+                <%=INCLUDE("method", this)%>
+            <% }); %>
             </div>
-        {{/if}}
-        {{#if properties}}
+        <% } %>
+        <% if (HAS(this.properties)) { %>
             <div id="props">
-            {{#properties}}
-                {{>props}}
-            {{/properties}}
+            <% EACH(this.properties, function() { %>
+                <%=INCLUDE("props", this)%>
+            <% }); %>
             </div>
-        {{/if}}
-        {{#if attrs}}
+        <% } %>
+        <% if (HAS(this.attrs)) { %>
             <div id="attrs">
-            {{#attrs}}
-                {{>attrs}}
-            {{/attrs}}
+            <% EACH(this.attrs, function() { %>
+                <%=INCLUDE("attrs", this)%>
+            <% }); %>
             </div>
-        {{/if}}
-        {{#if events}}
+        <% } %>
+        <% if (HAS(this.events)) { %>
             <div id="events">
-            {{#events}}
-                {{>events}}
-            {{/events}}
+            <% EACH(this.events, function() { %>
+                <%=INCLUDE("events", this)%>
+            <% }); %>
             </div>
-        {{/if}}
+        <% } %>
     </div>
 </div>

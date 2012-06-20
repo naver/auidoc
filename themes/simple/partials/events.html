@@ -1,35 +1,35 @@
-<a name="events_{{name}}"></a>
+<a name="events_<%=this.name%>"></a>
 <div class="events item">
-    `{{name}}` {{#if type}}<strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong>{{/if}}
-    {{#if extended_from}}<em>`/* Extended from {{extended_from}} */</em>`{{/if}}
-    {{#if overwritten_from}}<em>`/* Overwritten from {{name}} */`</em>{{/if}}
+    `<%=this.name%>` <% if (HAS(this.type)) { %><strong>&lt;<%=crossLink(this.type)%>&gt;</strong><% } %>
+    <% if (HAS(this.extended_from)) { %><em>`/* Extended from <%=this.extended_from%> */</em>`<% } %>
+    <% if (HAS(this.overwritten_from)) { %><em>`/* Overwritten from <%=this.name%> */`</em><% } %>
     <br>
-    <span class="foundat"><a href="../{{foundAt}}">`{{file}}:{{line}}`</a></span>
-    {{{eventDescription}}}
-    {{#if params}}
+    <span class="foundat"><a href="../<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a></span>
+    <%=this.eventDescription%>
+    <% if (HAS(this.params)) { %>
     <strong>Extra event object properties:</strong>
     <ul>
-    {{#params}}
+    <% EACH(this.params, function() { %>
         <li>
-        {{#if optional}}
-            `[{{name}}{{#if optdefault}}={{optdefault}}{{/if}}]` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong>
-        {{else}}
-            `{{name}}` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong>
-        {{/if}}
-        {{#if multiple}}
+        <% if (HAS(this.optional)) { %>
+            `[<%=this.name%><% if (HAS(this.optdefault)) { %>=<%=this.optdefault%><% } %>]` <strong>&lt;<%=crossLink(this.type)%>&gt;</strong>
+        <% } else { %>
+            `<%=this.name%>` <strong>&lt;<%=crossLink(this.type)%>&gt;</strong>
+        <% } %>
+        <% if (HAS(this.multiple)) { %>
             <abbr title="Denotes that this argument can contain (n) number">(*..n)</abbr>
-        {{/if}}
-        {{{description}}}
-            {{#if props}}
+        <% } %>
+        <%=this.description%>
+            <% if (HAS(this.props)) { %>
             <ul>
-            {{#props}}
-                <li>`{{name}}` <strong>&lt;{{#crossLink type}}{{/crossLink}}&gt;</strong> {{{description}}}
-            {{/props}}
+            <% EACH(this.props, function() { %>
+                <li>`<%=this.name%>` <strong>&lt;<%=crossLink(this.type)%>&gt;</strong> <%=this.description%>
+            <% }); %>
             </ul>
-            {{/if}}
+            <% } %>
         </li>
-    {{/params}}
+    <% }); %>
     </ul>
-    {{/if}}
+    <% } %>
 </div>
 
