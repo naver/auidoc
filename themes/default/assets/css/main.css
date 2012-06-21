@@ -126,8 +126,9 @@ pre.code {
 }
 
 pre.syntax {
-    background: #FFF;
+    background: #F8F8F8;
     border: 1px solid #DDD;
+    margin:.5em 0 1em 0 !important;
 }
 
 pre.terminal, pre.cmd {

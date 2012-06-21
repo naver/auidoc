@@ -25,6 +25,8 @@
         <span class="flag async">async</span>
     <% } %>
     
+    <pre class="code syntax"><code class="prettyprint"><%=this.syntax%></code></pre>
+    
     <div class="meta">
         <% if (HAS(this.overwritten_from)) { %>
             <p>Inherited from
@@ -62,8 +64,6 @@
             <p>Available since <%=this.since%></p>
         <% } %>
     </div>
-
-    <pre class="code syntax"><code class="prettyprint"><%=this.syntax%></code></pre>
 
     <div class="description">
         <%=this.constructorDescription%>
