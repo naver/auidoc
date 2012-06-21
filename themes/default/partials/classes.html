@@ -49,6 +49,10 @@
     </div>
 <% } %>
 
+<div class="box intro">
+    <%=this.classDescription%>
+</div>
+
 <% if (HAS(this.screenshots)) { %>
     <div id="screenshots">
         <h2>ScreenShots</h2>
@@ -59,10 +63,6 @@
         </ul>
     </div>
 <% } %>
-
-<div class="box intro">
-    <%=this.classDescription%>
-</div>
 
 <div id="classdocs" class="tabview">
     <ul class="api-class-tabs">
@@ -102,7 +102,7 @@
                     <ul class="index-list constructors<% if (HAS(this.extends)) { %> extends<% } %>">
                         <% EACH(this.constructors, function() { %>
                             <li class="index-item constructor<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-                                <a href="#constructor_<%=this.name%>"><%=this['class']%></a>
+                                <a href="#constructor_<%=this.name%>" title="<%=this.syntax%>"><%=this['class']%></a>
 
                                 <% if (HAS(this.static)) { %>
                                     <span class="flag static">static</span>
@@ -123,7 +123,7 @@
                     <ul class="index-list methods<% if (HAS(this.extends)) { %> extends<% } %>">
                         <% EACH(this.methods, function() { %>
                             <li class="index-item method<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-                                <a href="#method_<%=this.name%>"><%=this.name%></a>
+                                <a href="#method_<%=this.name%>" title="<%=this.syntax%>"><%=this.name%></a>
 
                                 <% if (HAS(this.static)) { %>
                                     <span class="flag static">static</span>
