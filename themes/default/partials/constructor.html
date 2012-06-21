@@ -1,6 +1,6 @@
 <div id="constructor_<%=this.name%>" class="constructor item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
     <h3 class="name"><code><%=this.class%></code></h3>
-
+    
     <% if (HAS(this.params)) { %>
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
