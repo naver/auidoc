@@ -1,30 +1,6 @@
 <div id="constructor_<%=this.name%>" class="constructor item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
     <h3 class="name"><code><%=this.class%></code></h3>
     
-    <% if (HAS(this.params)) { %>
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            <% EACH(this.params, function() { %>
-                <li class="arg">
-                    <% if (HAS(this.optional)) { %>
-                        <code class="optional">[<%=this.name%><% if (HAS(this.optdefault)) { %>=<%=this.optdefault%><% } %>]</code>
-                    <% } else { %>
-                        <code><%=this.name%></code>
-                    <% } %>
-                </li>
-            <% }); %>
-            </ul><span class="paren">)</span>
-        </div>
-    <% } else { %>
-        <span class="paren">()</span>
-    <% } %>
-
-    <% if (HAS(this.return)) { %>
-        <span class="returns-inline">
-            <span class="type"><%=crossLink(this.returnType)%></span>
-        </span>
-    <% } %>
-
     <% if (HAS(this.deprecated)) { %>
         <span class="flag deprecated"<% if (HAS(this.deprecationMessage)) { %> title="<%=this.deprecationMessage%>"<% } %>>deprecated</span>
     <% } %>
@@ -48,7 +24,7 @@
     <% if (HAS(this.async)) { %>
         <span class="flag async">async</span>
     <% } %>
-
+    
     <div class="meta">
         <% if (HAS(this.overwritten_from)) { %>
             <p>Inherited from
@@ -86,6 +62,8 @@
             <p>Available since <%=this.since%></p>
         <% } %>
     </div>
+
+    <pre class="code syntax"><code class="prettyprint"><%=this.syntax%></code></pre>
 
     <div class="description">
         <%=this.constructorDescription%>

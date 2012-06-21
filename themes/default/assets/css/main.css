@@ -125,6 +125,11 @@ pre.code {
     border-left-width: 5px;
 }
 
+pre.syntax {
+    background: #FFF;
+    border: 1px solid #DDD;
+}
+
 pre.terminal, pre.cmd {
     background: #F0EFFC;
     border: 1px solid #D0CBFB;
