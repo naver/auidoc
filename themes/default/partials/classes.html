@@ -49,6 +49,17 @@
     </div>
 <% } %>
 
+<% if (HAS(this.screenshots)) { %>
+    <div id="screenshots">
+        <h2>ScreenShots</h2>
+        <ul>
+        <% EACH(this.screenshots, function() { %>
+            <li><img src="<%=this.href%>" title="<%=this.name%>" /></li>
+        <% }); %>
+        </ul>
+    </div>
+<% } %>
+
 <div class="box intro">
     <%=this.classDescription%>
 </div>
@@ -71,6 +82,12 @@
         <% } %>
         <% if (HAS(this.events)) { %>
             <li class="api-class-tab events"><a href="#events">Events</a></li>
+        <% } %>
+        <% if (HAS(this.demos)) { %>
+            <li class="api-class-tab demos"><a href="#demos">Demos</a></li>
+        <% } %>
+        <% if (HAS(this.manuals)) { %>
+            <li class="api-class-tab manuals"><a href="#manuals">Manuals</a></li>
         <% } %>
     </ul>
 
@@ -213,7 +230,7 @@
 
                 <% EACH(this.attrs, function() { %>
                     <%=INCLUDE("attrs", this)%>
-	            <% }); %>
+                <% }); %>
             </div>
         <% } %>
 
@@ -223,7 +240,27 @@
 
                 <% EACH(this.events, function() { %>
                     <%=INCLUDE("events", this)%>
-	            <% }); %>
+                <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.demos)) { %>
+            <div id="demos" class="api-class-tabpanel">
+                <h2 class="off-left">Demos</h2>
+
+                <% EACH(this.demos, function() { %>
+                    <%=INCLUDE("demo", this)%>
+                <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.manuals)) { %>
+            <div id="manuals" class="api-class-tabpanel">
+                <h2 class="off-left">Manuals</h2>
+
+                <% EACH(this.manuals, function() { %>
+                    <%=INCLUDE("manual", this)%>
+                <% }); %>
             </div>
         <% } %>
     </div>

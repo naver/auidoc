@@ -226,6 +226,10 @@ pjax.updateTabState = function (src) {
         }
     } else {
         tab = Y.one('#classdocs .api-class-tab.' + defaultTab);
+		if (!tab) {
+			defaultTab = 'index';
+			tab = Y.one('#classdocs .api-class-tab.' + defaultTab);
+		}
 
         if (classTabView.get('rendered')) {
             Y.Widget.getByNode(tab).set('selected', 1);

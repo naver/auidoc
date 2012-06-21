@@ -782,3 +782,6 @@ kbd .cmd { font-family: Monaco, Helvetica; }
     font-weight: bold;
 }
 
+#screenshots ul { margin:0; padding:0; list-style:none; }
+#screenshots li { display:inline; margin:.5em; padding:0; }
+#screenshots li img { width:100px; height:100px; border:1px solid #aaa; }
