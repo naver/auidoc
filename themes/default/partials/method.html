@@ -96,41 +96,7 @@
                     <% if (HAS(this.props)) { %>
                         <ul class="params-list">
                             <% EACH(this.props, function() { %>
-                            <li class="param">
-                                <% if (HAS(this.optional)) { %>
-                                    <code class="param-name optional">[<%=this.name%><% if (HAS(this.optdefault)) { %>=<%=this.optdefault%><% } %>]</code>
-                                    <span class="type"><%=crossLink(this.type)%></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                <% } else { %>
-                                    <code class="param-name"><%=this.name%></code>
-                                    <span class="type"><%=crossLink(this.type)%></span>
-                                <% } %>
-
-                                <div class="param-description">
-                                    <%=this.description%>
-                                </div>
-
-                                <% if (HAS(this.props)) { %>
-                                    <ul class="params-list">
-                                        <% EACH(this.props, function() { %>
-                                        <li class="param">
-                                            <% if (HAS(this.optional)) { %>
-                                                <code class="param-name optional">[<%=this.name%><% if (HAS(this.optdefault)) { %>=<%=this.optdefault%><% } %>]</code>
-                                                <span class="type"><%=crossLink(this.type)%></span>
-                                                <span class="flag optional" title="This parameter is optional.">optional</span>
-                                            <% } else { %>
-                                                <code class="param-name"><%=this.name%></code>
-                                                <span class="type"><%=crossLink(this.type)%></span>
-                                            <% } %>
-
-                                            <div class="param-description">
-                                                <%=this.description%>
-                                            </div>
-                                        </li>
-                                        <% }); %>
-                                    </ul>
-                                <% } %>
-                            </li>
+                                <%=INCLUDE("param", this)%>
                             <% }); %>
                         </ul>
                     <% } %>
@@ -145,17 +111,20 @@
             <h4>Returns:</h4>
 
             <div class="returns-description">
-                <% if (HAS(this.description)) { %>
-                    <% if (HAS(this.type)) { %>
-                        <span class="type"><%=crossLink(this.type)%></span>:
-                    <% } %>
-                    <%=this.description%>
-                <% } else { %>
-                    <% if (HAS(this.type)) { %>
-                        <span class="type"><%=crossLink(this.type)%></span>:
-                    <% } %>
+                <% if (HAS(this.type)) { %>
+                    <span class="type"><%=crossLink(this.type)%></span>:
                 <% } %>
+                <%=this.description%>
             </div>
+            
+            <% if (HAS(this.props)) { %>
+                <ul class="params-list">
+                    <% EACH(this.props, function() { %>
+                        <%=INCLUDE("param", this)%>
+                    <% }); %>
+                </ul>
+            <% } %>
+            
         </div>
     <% }); %>
 
