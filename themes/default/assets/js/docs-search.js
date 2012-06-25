@@ -1,12 +1,57 @@
 YUI.add('docs-search', function(Y) {
+    
+    var tabname = null;
+
+    Y.DocsSearch = function() {
+        
+    };
+    
+    function toSingular(p) {
+        
+        var s = p.replace(/s$/, ''); 
+        
+        return {
+            'classe' : 'class',
+            'propertie' : 'property',
+            'attr' : 'attribute'            
+        }[s] || s;
+        
+    };
+    
+    function toPlural(s) {
+        
+        var p = s + 's'; 
+        
+        return {
+            'classs' : 'classes',
+            'propertys' : 'properties',
+            'attributes' : 'attrs'            
+        }[p] || p;
+        
+    };
+    
+    Y.DocsSearch.prototype.changeTab = function(name) {
+        tabname = name;
+        refreshResults();
+    };
 
     var Search      = Y.namespace('Search'),
-        inputNode   = Y.one('#search-filter'),
-        resultNode  = Y.one('#search-result'),
-        classesNode = Y.one('#all-classes');
+        inputNode   = Y.one('#api-filter'),
+        resultNode  = {
+            tags : Y.one('#api-tags'),
+            classes : Y.one('#api-classes'),
+            methods : Y.one('#api-methods'),
+            properties : Y.one('#api-properties'),
+            attrs : Y.one('#api-attrs'),
+            events : Y.one('#api-events')
+        },
+        searchingNode = Y.one('#api-tabview'),
+        notSearchingNode = Y.one('#no-search');
     
     var data = Y.YUIDoc;
-    var maximum = 5;
+    var MAXIMUM = 15;
+    
+    searchingNode.hide();
     
     function highlightMatch(sStr, sNeedle) {
         
@@ -25,6 +70,7 @@ YUI.add('docs-search', function(Y) {
     function getResults(data, field, value) {
         
         var result = null;
+        if (!value) { return result; }
         
         var lists = data.detail[field] || [];
         for (var i = 0, len = lists.length; i < len; i++) {
@@ -39,7 +85,7 @@ YUI.add('docs-search', function(Y) {
             result = result || [];
             result.push(item);
             
-            if (result.length === 5) {
+            if (result.length === MAXIMUM) {
                 break;
             }
             
@@ -48,74 +94,85 @@ YUI.add('docs-search', function(Y) {
         return result;
         
     }
+    
+    var memberAnchor = function(item, itemtype) {
+        return projectRoot + 'classes/' + item['class'] + '.html#' + toSingular(itemtype) + '_' + item.name
+    };
+    
+    var memberDetail = function(item, itemtype) {
+        return [
+            item.description ? '<div class="description">' + item.description.replace(/<[^>]+>/g, '') + '</div>' : '',
+            '<span class="className">' + item['class'] + '</span>'
+        ].join('');
+    };
+    
+    var typeAnchors = {
+        'tags' : function(item) { return projectRoot + 'tags/' + item.name + '.html'; },
+        'classes' : function(item) { return projectRoot + 'classes/' + item.name + '.html'; },
+        'modules' : function(item) { return projectRoot + 'modules/' + item.name + '.html'; },
+        'methods' : memberAnchor,
+        'properties' : memberAnchor,
+        'attrs' : memberAnchor,
+        'events' : memberAnchor        
+    };
 
-    inputNode.on('keyup', function(evt) {
-        
-        var value = this._node.value;
-        
-        var result;
-        
-        var html = [];
-        var fields = [ 'tags', 'classes', 'modules', 'methods', 'properties', 'attrs', 'events' ];
-        
-        var typeDetails = {
-            'tags' : function(item) {
-                var html = [ '<h3>' + item.matchName + '</h3>' ];
-                return html.join('');  
-            },
-            'classes' : function(item) {
-                return '<h3 class="title">' + item.matchName + '<h3>';  
-            },
-            'modules' : function(item) {
-                return item.matchName + ' 클래스';  
-            },
-            'methods' : function(item) {
-                return item.matchName + ' 클래스';  
-            },
-            'properties' : function(item) {
-                return item.matchName + ' 클래스';  
-            },
-            'attrs' : function(item) {
-                return item.matchName + ' 클래스';  
-            },
-            'events' : function(item) {
-                return item.matchName + ' 클래스';  
-            }
-        };
-        
-        for (var i = 0, len = fields.length; i < len; i++) {
-            
-            var field = fields[i];
-            result = getResults(data, field, value);
-            
-            if (!result) { continue; }
-             
-            html.push('<ul class="search">');
-            for (var j = 0, cnt = result.length; j < cnt; j++) {
-                
-                var item = result[j];
-                
-                html.push([
-                    '<li class="result">',
-                        '<a href="#">',
-                            '<h3 class="title">' + item.matchName + '</h3>',
-                            '<span class="type">' + field + '</span>',
-                            '<div class="description">테스트입니다' + /*typeDetails[field](result[j]) + */ '</div>',
-                            '<span class="className">jindo.className</span>',
-                        '</a>',
-                    '</li>'
-                ].join(''));
+    var typeDetails = {
+        'tags' : function(item) {
+            var html = [ '<ul>' ];
+            for (var i = 0, len = item['class'].length; i < len; i++) {
+                html.push('<li>' + item['class'][i] + '</li>');   
             }
             html.push('</ul>');
-            
+            return html.join('');  
+        },
+        'classes' : function(item) { return item.description ? '<div class="description">' + item.description.replace(/<[^>]+>/g, '') + '</div>' : ''; },
+        'modules' : function(item) { return ''; },
+        'methods' : memberDetail,
+        'properties' : memberDetail,
+        'attrs' : memberDetail,
+        'events' : memberDetail
+    };
+    
+    function refreshResults() {
+        
+        var value = inputNode._node.value;
+        if (value) {
+            searchingNode.show();
+            notSearchingNode.hide();
+        } else {
+            searchingNode.hide();
+            notSearchingNode.show();
         }
         
-        resultNode.setHTML(html.join(''));
-        console.dir(result);
+        var html = [];
+
+        var results = getResults(data, tabname, value) || [];
+        for (var j = 0, cnt = results.length; j < cnt; j++) {
+            
+            var item = results[j];
+            
+            html.push([
+                '<li class="result">',
+                    '<a href="' + typeAnchors[tabname](item, tabname) + '">',
+                        '<h3 class="title">' + item.matchName + '</h3>',
+                        '<span class="type">' + toSingular(tabname) + '</span>',
+                        typeDetails[tabname](item, tabname),
+                    '</a>',
+                '</li>'
+            ].join(''));
+        }
         
-    });
+        if (!results.length) {
+            html.push('<li class="no-result">No results found.</li>');   
+        }
+        
+        resultNode[tabname].setHTML(html.join(''));        
+        
+    }
     
+    inputNode.on('keyup', refreshResults);
+    inputNode.on('click', refreshResults);
         
-}, '0.0.9', {
+}, '0.0.1', {
     requires : [ ]
 });

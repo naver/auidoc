@@ -1,6 +1,6 @@
 YUI().use(
     'yuidoc-meta',
-    'tabview', 'docs-search', /*'api-list', */'history-hash', 'node-screen', 'node-style', 'pjax',
+    'api-list', 'history-hash', 'node-screen', 'node-style', 'pjax',
 function (Y) {
 
 var win          = Y.config.win,
@@ -17,6 +17,9 @@ var win          = Y.config.win,
 if (!Y.getLocation().protocol.match(/^https?\:/)) {
     Y.Router.html5 = false;
 }
+
+// pjax of YUI has critical bugs.
+Y.Router.html5 = false;
 
 pjax = new Y.Pjax({
     container      : '#docs-main',
@@ -113,7 +116,7 @@ pjax.initClassTabView = function () {
         classTabView.destroy();
         selectedTab = null;
     }
-    
+
     classTabView = new Y.TabView({
         srcNode: '#classdocs',
 
@@ -233,7 +236,7 @@ pjax.updateTabState = function (src) {
 
         if (classTabView.get('rendered')) {
             Y.Widget.getByNode(tab).set('selected', 1);
-        } else {
+        } else if (tab) {
             tab.addClass('yui3-tab-selected');
         }
     }
@@ -344,7 +347,7 @@ pjax.initLineNumbers();
 pjax.updateVisibility();
 pjax.upgrade();
 
-// Y.APIList.rootPath = pjax.get('root');
+Y.APIList.rootPath = pjax.get('root');
 
 Y.one('#api-options').delegate('click', pjax.onOptionClick, 'input');
 
