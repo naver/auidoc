@@ -1,6 +1,6 @@
 YUI().use(
     'yuidoc-meta',
-    'api-list', 'history-hash', 'node-screen', 'node-style', 'pjax',
+    'tabview', /*'api-list', */'history-hash', 'node-screen', 'node-style', 'pjax',
 function (Y) {
 
 var win          = Y.config.win,
@@ -113,7 +113,7 @@ pjax.initClassTabView = function () {
         classTabView.destroy();
         selectedTab = null;
     }
-
+    
     classTabView = new Y.TabView({
         srcNode: '#classdocs',
 
@@ -344,7 +344,7 @@ pjax.initLineNumbers();
 pjax.updateVisibility();
 pjax.upgrade();
 
-Y.APIList.rootPath = pjax.get('root');
+// Y.APIList.rootPath = pjax.get('root');
 
 Y.one('#api-options').delegate('click', pjax.onOptionClick, 'input');
 
