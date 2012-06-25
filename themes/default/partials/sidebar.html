@@ -27,4 +27,9 @@
         </div>
     </div>
     -->
+    <ul id="api-classes" class="apis classes">
+    <% EACH(this.classes, function(projectRoot) { %>
+        <li><a href="<%=projectRoot%>classes/<%=this.name%>.html"><%=this.displayName%></a></li>
+    <% }, [ this.projectRoot ]); %>
+    </ul>
 </div>
