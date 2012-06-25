@@ -42,7 +42,10 @@ pjax = new Y.Pjax({
         {path: '/files/*file', callback: '_defaultRoute'},
 
         // -- /modules/* -------------------------------------------------------
-        {path: '/modules/:module.html*', callback: '_defaultRoute'}
+        {path: '/modules/:module.html*', callback: '_defaultRoute'},
+
+        // -- /tags/* -------------------------------------------------------
+        {path: '/tags/:tag.html*', callback: '_defaultRoute'}
     ]
 });
 
