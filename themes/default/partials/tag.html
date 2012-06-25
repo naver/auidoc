@@ -1,0 +1,26 @@
+<h1><%=this.name%> Tag</h1>
+<div class="box clearfix meta">
+    <% EACH(this.extra, function() { %>
+        <% EACH(this.selleck, function() { %>
+            <a class="button link-docs" href="/yui/docs/<%=this.name%>">User Guide &amp; Examples</a>
+        <% }); %>
+    <% }); %>
+</div>
+
+<div class="yui3-g">
+    <div class="yui3-u-1-2">
+        <% if (HAS(this.tagClasses)) { %>
+            <p>This tag provides the following classes:</p>
+
+            <ul class="tag-classes">
+            <% EACH(this.tagClasses, function(projectRoot) { %>
+                <li class="tag-class">
+                    <a href="<%=projectRoot%>classes/<%=this.name%>.html">
+                        <%=this.displayName%>
+                    </a>
+                </li>
+            <% }, [ this.projectRoot ]); %>
+            </ul>
+        <% } %>
+    </div>
+</div>
