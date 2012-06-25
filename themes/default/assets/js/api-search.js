@@ -1,10 +1,8 @@
-YUI.add('docs-search', function(Y) {
+YUI.add('api-search', function(Y) {
     
     var tabname = null;
 
-    Y.DocsSearch = function() {
-        
-    };
+    Y.APISearch = function() {};
     
     function toSingular(p) {
         
@@ -30,7 +28,7 @@ YUI.add('docs-search', function(Y) {
         
     };
     
-    Y.DocsSearch.prototype.changeTab = function(name) {
+    Y.APISearch.prototype.changeTab = function(name) {
         tabname = name;
         refreshResults();
     };
