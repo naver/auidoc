@@ -1,6 +1,6 @@
 YUI().use(
     'yuidoc-meta',
-    'tabview', /*'api-list', */'history-hash', 'node-screen', 'node-style', 'pjax',
+    'tabview', 'docs-search', /*'api-list', */'history-hash', 'node-screen', 'node-style', 'pjax',
 function (Y) {
 
 var win          = Y.config.win,
