@@ -3,6 +3,8 @@ YUI().use(
     'api-list', 'history-hash', 'node-screen', 'node-style', 'pjax',
 function (Y) {
 
+var DEFAULT_TAB = 'index';
+    
 var win          = Y.config.win,
     localStorage = win.localStorage,
 
@@ -70,7 +72,7 @@ pjax.checkVisibility = function (tab) {
     panelNode.all('.no-visible-items').remove();
 
     if (!visibleItems) {
-        if (Y.one('#indexes .index-item')) {
+        if (Y.one('#' + DEFAULT_TAB + ' .index-item')) {
             panelNode.append(
                 '<div class="no-visible-items">' +
                     '<p>' +
@@ -179,6 +181,7 @@ pjax.initRoot = function () {
 };
 
 pjax.updateTabState = function (src) {
+    
     var hash = win.location.hash.substring(1),
         defaultTab, node, tab, tabPanel;
 
@@ -206,13 +209,13 @@ pjax.updateTabState = function (src) {
     }
 
     if (src === 'hashchange' && !hash) {
-        defaultTab = 'indexes';
+        defaultTab = DEFAULT_TAB;
     } else {
         if (localStorage) {
             defaultTab = localStorage.getItem('tab_' + pjax.getPath()) ||
-                'indexes';
+                DEFAULT_TAB;
         } else {
-            defaultTab = 'indexes';
+            defaultTab = DEFAULT_TAB;
         }
     }
     
@@ -240,7 +243,7 @@ pjax.updateTabState = function (src) {
         tab = (
             Y.one('#classdocs .api-class-tab.tab-' + hash) ||
             Y.one('#classdocs .api-class-tab.' + defaultTab) ||
-            Y.one('#classdocs .api-class-tab.' + (defaultTab = 'indexes'))
+            Y.one('#classdocs .api-class-tab.' + (defaultTab = DEFAULT_TAB))
         );
 
         if (classTabView.get('rendered')) {
