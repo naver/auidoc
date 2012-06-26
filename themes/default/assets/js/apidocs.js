@@ -44,8 +44,8 @@ pjax = new Y.Pjax({
         // -- /modules/* -------------------------------------------------------
         {path: '/modules/:module.html*', callback: '_defaultRoute'},
 
-        // -- /tags/* -------------------------------------------------------
-        {path: '/tags/:tag.html*', callback: '_defaultRoute'}
+        // -- /keywords/* -------------------------------------------------------
+        {path: '/keywords/:keyword.html*', callback: '_defaultRoute'}
     ]
 });
 

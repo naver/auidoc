@@ -8,7 +8,7 @@
     <div id="api-tabview" class="tabview" style="display:none;">
 
         <ul class="tabs">
-            <li><a href="#api-tags">Tags</a></li>
+            <li><a href="#api-keywords">Keywords</a></li>
             <li><a href="#api-classes">Classes</a></li>
             <li><a href="#api-methods">Methods</a></li>
             <li><a href="#api-properties">Properties</a></li>
@@ -17,7 +17,7 @@
         </ul>
 
         <div id="api-tabview-panel">
-            <ul id="api-tags" class="apis tags search"></ul>
+            <ul id="api-keywords" class="apis keywords search"></ul>
             <ul id="api-classes" class="apis classes search"></ul>
             <ul id="api-methods" class="apis methods search"></ul>
             <ul id="api-properties" class="apis properties search"></ul>
@@ -26,6 +26,10 @@
         </div>
     
     </div>
+
+    <script>
+        console.log(new Date().getTime(), <%=JSON.stringify(this)%>, <%=JSON.stringify(this.keyword)%>);
+    </script>
     
     <div id="no-search">
         <ul class="apis classes">

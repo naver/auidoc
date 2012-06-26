@@ -36,7 +36,7 @@ YUI.add('api-search', function(Y) {
     var Search      = Y.namespace('Search'),
         inputNode   = Y.one('#api-filter'),
         resultNode  = {
-            tags : Y.one('#api-tags'),
+            keywords : Y.one('#api-keywords'),
             classes : Y.one('#api-classes'),
             methods : Y.one('#api-methods'),
             properties : Y.one('#api-properties'),
@@ -105,7 +105,7 @@ YUI.add('api-search', function(Y) {
     };
     
     var typeAnchors = {
-        'tags' : function(item) { return projectRoot + 'tags/' + item.name + '.html'; },
+        'keywords' : function(item) { return projectRoot + 'keywords/' + item.name + '.html'; },
         'classes' : function(item) { return projectRoot + 'classes/' + item.name + '.html'; },
         'modules' : function(item) { return projectRoot + 'modules/' + item.name + '.html'; },
         'methods' : memberAnchor,
@@ -115,7 +115,7 @@ YUI.add('api-search', function(Y) {
     };
 
     var typeDetails = {
-        'tags' : function(item) {
+        'keywords' : function(item) {
             var html = [ '<ul>' ];
             for (var i = 0, len = item['class'].length; i < len; i++) {
                 html.push('<li>' + item['class'][i] + '</li>');   
