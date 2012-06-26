@@ -27,11 +27,186 @@
     
     </div>
     
+    <script>
+        console.log(<%=JSON.stringify(this)%>);
+    </script>
+    
+
     <div id="no-search">
-        <ul class="apis classes">
-        <% EACH(this.classes, function(projectRoot) { %>
-            <li><a href="<%=projectRoot%>classes/<%=this.name%>.html"><%=this.displayName%></a></li>
-        <% }, [ this.projectRoot ]); %>
+        <ul class="apis">
+        <% if (this.tag === 'class') { %>
+            <h3><%=this.name%> Class</h3>
+
+            <div class="manuals">
+            <% if (HAS(this.constructors)) { %>
+                <h4>Constructors</h4>
+
+                <ul class="constructors<% if (HAS(this.extends)) { %> extends<% } %>">
+                    <% EACH(this.constructors, function() { %>
+                        <li class="constructor<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                            <a href="#constructor_<%=this.name%>" title="<%=this.syntax%>"><%=this['class']%></a>
+
+                            <% if (HAS(this.static)) { %>
+                                <span class="flag static">static</span>
+                            <% } %>
+                            <% if (HAS(this.deprecated)) { %>
+                                <span class="flag deprecated">deprecated</span>
+                            <% } %>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+
+            <% if (HAS(this.methods)) { %>
+                <h4>Methods</h4>
+
+                <ul class="methods<% if (HAS(this.extends)) { %> extends<% } %>">
+                    <% EACH(this.methods, function() { %>
+                        <li class="method<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                            <a href="#method_<%=this.name%>" title="<%=this.syntax%>"><%=this.name%></a>
+
+                            <% if (HAS(this.static)) { %>
+                                <span class="flag static">static</span>
+                            <% } %>
+                            <% if (HAS(this.deprecated)) { %>
+                                <span class="flag deprecated">deprecated</span>
+                            <% } %>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+
+            <% if (HAS(this.properties)) { %>
+                <h4>Properties</h4>
+
+                <ul class="properties<% if (this.extends) { %> extends<% } %>">
+                    <% EACH(this.properties, function() { %>
+                        <li class="property<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                            <a href="#property_<%=this.name%>"><%=this.name%></a>
+
+                            <% if (HAS(this.static)) { %>
+                                <span class="flag static">static</span>
+                            <% } %>
+                            <% if (HAS(this.deprecated)) { %>
+                                <span class="flag deprecated">deprecated</span>
+                            <% } %>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+
+            <% if (HAS(this.attrs)) { %>
+                <h4>Attributes</h4>
+
+                <ul class="attrs<% if (this.extends) { %> extends<% } %>">
+                    <% EACH(this.attrs, function() { %>
+                        <li class="attr<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                            <a href="#attr_<%=this.name%>"><%=this.name%></a>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+
+            <% if (HAS(this.events)) { %>
+                <h4>Events</h4>
+
+                <ul class="events<% if (this.extends) { %> extends<% } %>">
+                    <% EACH(this.events, function() { %>
+                        <li class="event<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+                            <a href="#event_<%=this.name%>"><%=this.name%></a>
+
+                            <% if (HAS(this.static)) { %>
+                                <span class="flag static">static</span>
+                            <% } %>
+                            <% if (HAS(this.deprecated)) { %>
+                                <span class="flag deprecated">deprecated</span>
+                            <% } %>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+
+            <% if (HAS(this.demos)) { %>
+                <h4>Demos</h4>
+
+                <ul class="demos">
+                    <% EACH(this.demos, function() { %>
+                        <li class="demo">
+                            <a href="#demo_<%=this.name%>"><%=this.description%></a>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+
+            <% if (HAS(this.manuals)) { %>
+                <h4>Manuals</h4>
+
+                <ul class="manuals">
+                    <% EACH(this.manuals, function() { %>
+                        <li class="manual">
+                            <a href="#manual_<%=this.name%>"><%=this.description%></a>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+            </div>
+            
+        <% } else if (this.tag === 'module') { %>
+            <h3><%=this.name%> Module</h3>
+        
+           <% if (HAS(this.moduleClasses)) { %>
+                <h4>Classes</h4>
+    
+                <ul class="module-classes">
+                <% EACH(this.moduleClasses, function(projectRoot) { %>
+                    <li class="module-class">
+                        <a href="<%=projectRoot%>classes/<%=this.name%>.html">
+                            <%=this.displayName%>
+                        </a>
+                    </li>
+                <% }, [ this.projectRoot ]); %>
+                </ul>
+            <% } %>
+
+            <% if (HAS(this.subModules)) { %>
+                <h4>Sub-Modules</h4>
+    
+                <ul class="module-submodules">
+                <% EACH(this.subModules, function(projectRoot) { %>
+                    <li class="module-submodule">
+                        <a href="<%=projectRoot%>modules/<%=this.name%>.html">
+                            <%=this.displayName%>
+                        </a>
+    
+                        <div class="module-submodule-description">
+                            <%=this.description%>
+                        </div>
+                    </li>
+                <% }, [ this.projectRoot ]); %>
+                </ul>
+            <% } %>
+        
+        <% } else if (this.tag === 'keyword') { %>
+            <h3><%=this.name%> Keyword</h3>
+        
+           <% if (HAS(this.keywordClasses)) { %>
+    
+                <ul class="keyword-classes">
+                <% EACH(this.keywordClasses, function(projectRoot) { %>
+                    <li class="keyword-class">
+                        <a href="<%=projectRoot%>classes/<%=this.name%>.html">
+                            <%=this.displayName%>
+                        </a>
+                    </li>
+                <% }, [ this.projectRoot ]); %>
+                </ul>
+            <% } %>
+        
+        <% } else { %>
+            <% EACH(this.classes, function(projectRoot) { %>
+                <li><a href="<%=projectRoot%>classes/<%=this.name%>.html"><%=this.displayName%></a></li>
+            <% }, [ this.projectRoot ]); %>
+        <% } %>
         </ul>
     </div>
             

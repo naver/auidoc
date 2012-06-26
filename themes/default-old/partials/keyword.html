@@ -7,9 +7,9 @@
     <% }); %>
 </div>
 
-<div>
-    <% if (HAS(this.keywordClasses)) { %>
-        <div>
+<div class="yui3-g">
+    <div class="yui3-u-1-2">
+        <% if (HAS(this.keywordClasses)) { %>
             <p>This keyword provides the following classes:</p>
 
             <ul class="keyword-classes">
@@ -18,13 +18,9 @@
                     <a href="<%=projectRoot%>classes/<%=this.name%>.html">
                         <%=this.displayName%>
                     </a>
-                    <p><%=this.description%></p>
-                    <% if (HAS(this.screenshots)) { %>
-                        <img src="<%=this.screenshots[0].href%>" title="<%==this.screenshots[0].description%>" />
-                    <% } %>
                 </li>
             <% }, [ this.projectRoot ]); %>
             </ul>
-        </div>
-    <% } %>
+        <% } %>
+    </div>
 </div>

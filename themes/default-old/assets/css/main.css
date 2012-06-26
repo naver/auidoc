@@ -863,17 +863,3 @@ kbd .cmd { font-family: Monaco, Helvetica; }
 #classdocs .highlight {
 	background-color:yellow;
 }
-
-.content .module-classes, .content .module-submodules, .content .keyword-classes {
-	list-style:none;
-	margin:0; padding:0;
-}
-
-.content .module-class, .content .module-submodule, .content .keyword-class {
-	float:left;
-	width:300px;
-	margin:10px;
-	padding:10px;
-	border:1px solid #ddd;
-	border-radius:10px;
-}
