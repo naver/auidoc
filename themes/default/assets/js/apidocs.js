@@ -70,7 +70,7 @@ pjax.checkVisibility = function (tab) {
     panelNode.all('.no-visible-items').remove();
 
     if (!visibleItems) {
-        if (Y.one('#index .index-item')) {
+        if (Y.one('#indexes .index-item')) {
             panelNode.append(
                 '<div class="no-visible-items">' +
                     '<p>' +
@@ -124,6 +124,10 @@ pjax.initClassTabView = function () {
         srcNode: '#classdocs',
 
         on: {
+            click : function(e) {
+                var tabId = (e.domEvent.target._node.getAttribute('href') || '').substring(1);
+                tabId && (location.hash = tabId);
+            },
             selectionChange: pjax.onTabSelectionChange
         }
     });
@@ -201,16 +205,16 @@ pjax.updateTabState = function (src) {
     }
 
     if (src === 'hashchange' && !hash) {
-        defaultTab = 'index';
+        defaultTab = 'indexes';
     } else {
         if (localStorage) {
             defaultTab = localStorage.getItem('tab_' + pjax.getPath()) ||
-                'index';
+                'indexes';
         } else {
-            defaultTab = 'index';
+            defaultTab = 'indexes';
         }
     }
-
+    
     if (hash && (node = Y.one('#classdocs').getById(hash))) {
         if ((tabPanel = node.ancestor('.api-class-tabpanel', true))) {
             if ((tab = Y.one('#classdocs .api-class-tab.' + tabPanel.get('id')))) {
@@ -231,11 +235,12 @@ pjax.updateTabState = function (src) {
             }
         }
     } else {
-        tab = Y.one('#classdocs .api-class-tab.' + defaultTab);
-		if (!tab) {
-			defaultTab = 'index';
-			tab = Y.one('#classdocs .api-class-tab.' + defaultTab);
-		}
+        
+        tab = (
+            Y.one('#classdocs .api-class-tab.tab-' + hash) ||
+            Y.one('#classdocs .api-class-tab.' + defaultTab) ||
+            Y.one('#classdocs .api-class-tab.' + (defaultTab = 'indexes'))
+        );
 
         if (classTabView.get('rendered')) {
             Y.Widget.getByNode(tab).set('selected', 1);
