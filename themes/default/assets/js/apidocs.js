@@ -125,8 +125,9 @@ pjax.initClassTabView = function () {
 
         on: {
             click : function(e) {
-                var tabId = (e.domEvent.target._node.getAttribute('href') || '').substring(1);
-                tabId && (location.hash = tabId);
+                var href = e.domEvent.target._node.getAttribute('href');
+                if (!href) { return; }
+                location.hash = href.substring(1);
             },
             selectionChange: pjax.onTabSelectionChange
         }
