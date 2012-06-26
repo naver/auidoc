@@ -9,7 +9,7 @@
     <link rel="shortcut icon" type="image/png" href="<%=this.projectAssets%>/favicon.png">
     <script src="<%=this.yuiSeedUrl%>"></script>
     <script>
-        console.log(<%=JSON.stringify(this)%>);
+        var projectRoot = location.href.replace(/\/[^\/]*$/, '') + "/<%=this.projectRoot%>";
     </script>
 </head>
 <body class="yui3-skin-sam">
@@ -49,7 +49,6 @@
 <script>prettyPrint();</script>
 <script src="<%=this.projectAssets%>/js/yui-prettify.js"></script>
 <script src="<%=this.projectAssets%>/../api.js"></script>
-<script src="<%=this.projectAssets%>/js/api-filter.js"></script>
 <script src="<%=this.projectAssets%>/js/api-list.js"></script>
 <script src="<%=this.projectAssets%>/js/api-search.js"></script>
 <script src="<%=this.projectAssets%>/js/apidocs.js"></script>

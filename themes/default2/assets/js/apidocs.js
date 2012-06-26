@@ -3,6 +3,8 @@ YUI().use(
     'api-list', 'history-hash', 'node-screen', 'node-style', 'pjax',
 function (Y) {
 
+var DEFAULT_TAB = 'index';
+    
 var win          = Y.config.win,
     localStorage = win.localStorage,
 
@@ -17,6 +19,9 @@ var win          = Y.config.win,
 if (!Y.getLocation().protocol.match(/^https?\:/)) {
     Y.Router.html5 = false;
 }
+
+// pjax of YUI has critical bugs.
+Y.Router.html5 = false;
 
 pjax = new Y.Pjax({
     container      : '#docs-main',
@@ -39,7 +44,10 @@ pjax = new Y.Pjax({
         {path: '/files/*file', callback: '_defaultRoute'},
 
         // -- /modules/* -------------------------------------------------------
-        {path: '/modules/:module.html*', callback: '_defaultRoute'}
+        {path: '/modules/:module.html*', callback: '_defaultRoute'},
+
+        // -- /keywords/* -------------------------------------------------------
+        {path: '/keywords/:keyword.html*', callback: '_defaultRoute'}
     ]
 });
 
@@ -64,7 +72,7 @@ pjax.checkVisibility = function (tab) {
     panelNode.all('.no-visible-items').remove();
 
     if (!visibleItems) {
-        if (Y.one('#index .index-item')) {
+        if (Y.one('#' + DEFAULT_TAB + ' .index-item')) {
             panelNode.append(
                 '<div class="no-visible-items">' +
                     '<p>' +
@@ -118,6 +126,11 @@ pjax.initClassTabView = function () {
         srcNode: '#classdocs',
 
         on: {
+            click : function(e) {
+                var href = e.domEvent.target._node.getAttribute('href');
+                if (!href) { return; }
+                location.hash = href.substring(1);
+            },
             selectionChange: pjax.onTabSelectionChange
         }
     });
@@ -168,6 +181,7 @@ pjax.initRoot = function () {
 };
 
 pjax.updateTabState = function (src) {
+    
     var hash = win.location.hash.substring(1),
         defaultTab, node, tab, tabPanel;
 
@@ -195,16 +209,16 @@ pjax.updateTabState = function (src) {
     }
 
     if (src === 'hashchange' && !hash) {
-        defaultTab = 'index';
+        defaultTab = DEFAULT_TAB;
     } else {
         if (localStorage) {
             defaultTab = localStorage.getItem('tab_' + pjax.getPath()) ||
-                'index';
+                DEFAULT_TAB;
         } else {
-            defaultTab = 'index';
+            defaultTab = DEFAULT_TAB;
         }
     }
-
+    
     if (hash && (node = Y.one('#classdocs').getById(hash))) {
         if ((tabPanel = node.ancestor('.api-class-tabpanel', true))) {
             if ((tab = Y.one('#classdocs .api-class-tab.' + tabPanel.get('id')))) {
@@ -225,18 +239,33 @@ pjax.updateTabState = function (src) {
             }
         }
     } else {
-        tab = Y.one('#classdocs .api-class-tab.' + defaultTab);
-		if (!tab) {
-			defaultTab = 'index';
-			tab = Y.one('#classdocs .api-class-tab.' + defaultTab);
-		}
+        
+        tab = (
+            Y.one('#classdocs .api-class-tab.tab-' + hash) ||
+            Y.one('#classdocs .api-class-tab.' + defaultTab) ||
+            Y.one('#classdocs .api-class-tab.' + (defaultTab = DEFAULT_TAB))
+        );
 
         if (classTabView.get('rendered')) {
             Y.Widget.getByNode(tab).set('selected', 1);
-        } else {
+        } else if (tab) {
             tab.addClass('yui3-tab-selected');
         }
     }
+    
+    setTimeout(function() {
+        
+        (function highlightElement(el) {
+            
+            if (!el) { return; }
+            
+            el.addClass('highlight');
+            setTimeout(function() { el.removeClass('highlight'); }, 500);
+            
+        })(Y.one('#classdocs').getById(hash));
+        
+    }, 1);
+    
 };
 
 pjax.updateVisibility = function () {

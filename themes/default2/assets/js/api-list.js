@@ -5,13 +5,17 @@ var Lang   = Y.Lang,
 
     APIList = Y.namespace('APIList'),
 
+    listNode    = Y.one('#api-list'),
     classesNode    = Y.one('#api-classes'),
     inputNode      = Y.one('#api-filter'),
     modulesNode    = Y.one('#api-modules'),
     tabviewNode    = Y.one('#api-tabview'),
 
     tabs = APIList.tabs = {},
+    
+    search = APIList.search = new Y.APISearch(),
 
+    /*
     filter = APIList.filter = new Y.APIFilter({
         inputNode : inputNode,
         maxResults: 1000,
@@ -30,6 +34,7 @@ var Lang   = Y.Lang,
             results: onSearchResults
         }
     }),
+    */
 
     tabview = APIList.tabview = new Y.TabView({
         srcNode  : tabviewNode,
@@ -41,7 +46,7 @@ var Lang   = Y.Lang,
         }
     }),
 
-    focusManager = APIList.focusManager = tabviewNode.plug(Y.Plugin.NodeFocusManager, {
+    focusManager = APIList.focusManager = listNode.plug(Y.Plugin.NodeFocusManager, {
         circular   : true,
         descendants: '#api-filter, .yui3-tab-panel-selected .api-list-item a, .yui3-tab-panel-selected .result a',
         keys       : {next: 'down:40', previous: 'down:38'}
@@ -80,7 +85,7 @@ tabview.each(function (tab, index) {
 });
 
 // Switch tabs on Ctrl/Cmd-Left/Right arrows.
-tabviewNode.on('key', onTabSwitchKey, 'down:37,39');
+listNode.on('key', onTabSwitchKey, 'down:37,39');
 
 // Focus the filter input when the `/` key is pressed.
 Y.one(Y.config.doc).on('key', onSearchKey, 'down:83');
@@ -91,11 +96,12 @@ inputNode.on('focus', function () {
 });
 
 // Update all tabview links to resolved URLs.
-tabview.get('panelNode').all('a').each(function (link) {
+listNode.all('a').each(function (link) {
     link.setAttribute('href', link.get('href'));
 });
 
 // -- Private Functions --------------------------------------------------------
+/*
 function getFilterResultNode() {
     return filter.get('queryType') === 'classes' ? classesNode : modulesNode;
 }
@@ -135,6 +141,7 @@ function onSearchClear(e) {
 
     focusManager.refresh();
 }
+*/
 
 function onSearchKey(e) {
     var target = e.target;
@@ -150,6 +157,7 @@ function onSearchKey(e) {
     focusManager.refresh();
 }
 
+/*
 function onSearchResults(e) {
     var frag = Y.one(Y.config.doc.createDocumentFragment());
 
@@ -169,10 +177,11 @@ function onSearchResults(e) {
 
     focusManager.refresh();
 }
+*/
 
 function onTabSelectionChange(e) {
     var tab  = e.newVal,
-        name = tab.get('label').toLowerCase();
+        name = /\-([^\-]+)$/.test(tab.get('panelNode')._node.id) && RegExp.$1;
 
     tabs.selected = {
         index: tab.get('index'),
@@ -183,6 +192,7 @@ function onTabSelectionChange(e) {
     switch (name) {
     case 'classes': // fallthru
     case 'modules':
+        /*
         filter.setAttrs({
             minQueryLength: 0,
             queryType     : name
@@ -211,7 +221,10 @@ function onTabSelectionChange(e) {
         // WTF? We shouldn't be here!
         filter.set('minQueryLength', -1);
         search.set('minQueryLength', -1);
+        */
     }
+    
+    search.changeTab(name);
 
     if (focusManager) {
         setTimeout(function () {
@@ -247,5 +260,5 @@ function onTabSwitchKey(e) {
 }
 
 }, '3.4.0', {requires: [
-    'api-filter', 'api-search', 'event-key', 'node-focusmanager', 'tabview'
+    'event-key', 'node-focusmanager', 'tabview', 'api-search'
 ]});

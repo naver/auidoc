@@ -66,33 +66,33 @@
 
 <div id="classdocs" class="tabview">
     <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+        <li class="api-class-tab tab-index"><a href="#index">Index</a></li>
 
         <% if (HAS(this.constructors)) { %>
-            <li class="api-class-tab constructors"><a href="#constructors">Constructors</a></li>
+            <li class="api-class-tab tab-constructors"><a href="#constructors">Constructors</a></li>
         <% } %>
         <% if (HAS(this.methods)) { %>
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+            <li class="api-class-tab tab-methods"><a href="#methods">Methods</a></li>
         <% } %>
         <% if (HAS(this.properties)) { %>
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+            <li class="api-class-tab tab-properties"><a href="#properties">Properties</a></li>
         <% } %>
         <% if (HAS(this.attrs)) { %>
-            <li class="api-class-tab attrs"><a href="#attrs">Attributes</a></li>
+            <li class="api-class-tab tab-attrs"><a href="#attrs">Attributes</a></li>
         <% } %>
         <% if (HAS(this.events)) { %>
-            <li class="api-class-tab events"><a href="#events">Events</a></li>
+            <li class="api-class-tab tab-events"><a href="#events">Events</a></li>
         <% } %>
         <% if (HAS(this.demos)) { %>
-            <li class="api-class-tab demos"><a href="#demos">Demos</a></li>
+            <li class="api-class-tab tab-demos"><a href="#demos">Demos</a></li>
         <% } %>
         <% if (HAS(this.manuals)) { %>
-            <li class="api-class-tab manuals"><a href="#manuals">Manuals</a></li>
+            <li class="api-class-tab tab-manuals"><a href="#manuals">Manuals</a></li>
         <% } %>
     </ul>
 
     <div>
-        <div id="index" class="api-class-tabpanel index">
+        <div id="tab-index" class="api-class-tabpanel">
             <h2 class="off-left">Item Index</h2>
 
             <% if (HAS(this.constructors)) { %>
@@ -223,7 +223,7 @@
         </div>
 
         <% if (HAS(this.constructors)) { %>
-            <div id="constructors" class="api-class-tabpanel">
+            <div id="tab-constructors" class="api-class-tabpanel">
                 <h2 class="off-left">Constructors</h2>
 
                 <% EACH(this.constructors, function() { %>
@@ -233,7 +233,7 @@
         <% } %>
 
         <% if (HAS(this.methods)) { %>
-            <div id="methods" class="api-class-tabpanel">
+            <div id="tab-methods" class="api-class-tabpanel">
                 <h2 class="off-left">Methods</h2>
 
                 <% EACH(this.methods, function() { %>
@@ -243,7 +243,7 @@
         <% } %>
 
         <% if (HAS(this.properties)) { %>
-            <div id="properties" class="api-class-tabpanel">
+            <div id="tab-properties" class="api-class-tabpanel">
                 <h2 class="off-left">Properties</h2>
 
                 <% EACH(this.properties, function() { %>
@@ -253,7 +253,7 @@
         <% } %>
 
         <% if (HAS(this.attrs)) { %>
-            <div id="attrs" class="api-class-tabpanel">
+            <div id="tab-attrs" class="api-class-tabpanel">
                 <h2 class="off-left">Attributes</h2>
 
                 <% EACH(this.attrs, function() { %>
@@ -263,7 +263,7 @@
         <% } %>
 
         <% if (HAS(this.events)) { %>
-            <div id="events" class="api-class-tabpanel">
+            <div id="tab-events" class="api-class-tabpanel">
                 <h2 class="off-left">Events</h2>
 
                 <% EACH(this.events, function() { %>
@@ -273,7 +273,7 @@
         <% } %>
 
         <% if (HAS(this.demos)) { %>
-            <div id="demos" class="api-class-tabpanel">
+            <div id="tab-demos" class="api-class-tabpanel">
                 <h2 class="off-left">Demos</h2>
 
                 <% EACH(this.demos, function() { %>
@@ -283,7 +283,7 @@
         <% } %>
 
         <% if (HAS(this.manuals)) { %>
-            <div id="manuals" class="api-class-tabpanel">
+            <div id="tab-manuals" class="api-class-tabpanel">
                 <h2 class="off-left">Manuals</h2>
 
                 <% EACH(this.manuals, function() { %>

@@ -1,0 +1,171 @@
+<div id="constructor_<%=this.name%>" class="constructor item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+    <h3 class="name"><code><%=this.class%></code></h3>
+    
+    <% if (HAS(this.deprecated)) { %>
+        <span class="flag deprecated"<% if (HAS(this.deprecationMessage)) { %> title="<%=this.deprecationMessage%>"<% } %>>deprecated</span>
+    <% } %>
+
+    <% if (HAS(this.access)) { %>
+        <span class="flag <%=this.access%>"><%=this.access%></span>
+    <% } %>
+
+    <% if (HAS(this.final)) { %>
+        <span class="flag final">final</span>
+    <% } %>
+
+    <% if (HAS(this.static)) { %>
+        <span class="flag static">static</span>
+    <% } %>
+
+    <% if (HAS(this.chainable)) { %>
+        <span class="flag chainable">chainable</span>
+    <% } %>
+
+    <% if (HAS(this.async)) { %>
+        <span class="flag async">async</span>
+    <% } %>
+    
+    <pre class="code syntax"><code class="prettyprint"><%=this.syntax%></code></pre>
+    
+    <div class="meta">
+        <% if (HAS(this.overwritten_from)) { %>
+            <p>Inherited from
+            <a href="<%=crossLinkRaw(this.overwritten_from.class)%>#method_<%=this.overwritten_from.name%>">
+                <%=this.overwritten_from.class%>
+            </a>
+            <% if (HAS(this.foundAt)) { %>
+            but overwritten in
+            <% } %>
+        <% } else { %>
+            <% if (HAS(this.extended_from)) { %>
+                <p>Inherited from
+                <a href="<%=crossLinkRaw(this.extended_from)%>#method_<%=this.name%>"><%=this.extended_from%></a>:
+            <% } else { %>
+                <% EACH(this.providedBy, function() { %>
+                    <p>Provided by the <a href="../modules/<%=this%>.html"><%=this%></a> module.</p>
+                <% }); %>
+                <p>
+                <% if (HAS(this.foundAt)) { %>
+                Defined in
+                <% } %>
+            <% } %>
+        <% } %>
+        <% if (HAS(this.foundAt)) { %>
+        <a href="<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a>
+        <% } %>
+        </p>
+
+
+        <% if (HAS(this.deprecationMessage)) { %>
+            <p>Deprecated: <%=this.deprecationMessage%></p>
+        <% } %>
+
+        <% if (HAS(this.since)) { %>
+            <p>Available since <%=this.since%></p>
+        <% } %>
+    </div>
+
+    <div class="description">
+        <%=this.constructorDescription%>
+    </div>
+
+    <% if (HAS(this.params)) { %>
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            <% EACH(this.params, function() { %>
+                <li class="param">
+                    <% if (HAS(this.optional)) { %>
+                        <code class="param-name optional">[<%=this.name%><% if (HAS(this.optdefault)) { %>=<%=this.optdefault%><% } %>]</code>
+                        <span class="type"><%=crossLink(this.type)%></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    <% } else { %>
+                        <code class="param-name"><%=this.name%></code>
+                        <span class="type"><%=crossLink(this.type)%></span>
+                    <% } %>
+
+                    <% if (HAS(this.multiple)) { %>
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                    <% } %>
+
+                    <div class="param-description">
+                        <%=this.description%>
+                    </div>
+
+                    <% if (HAS(this.props)) { %>
+                        <ul class="params-list">
+                            <% EACH(this.props, function() { %>
+                            <li class="param">
+                                <% if (HAS(this.optional)) { %>
+                                    <code class="param-name optional">[<%=this.name%><% if (HAS(this.optdefault)) { %>=<%=this.optdefault%><% } %>]</code>
+                                    <span class="type"><%=crossLink(this.type)%></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                <% } else { %>
+                                    <code class="param-name"><%=this.name%></code>
+                                    <span class="type"><%=crossLink(this.type)%></span>
+                                <% } %>
+
+                                <div class="param-description">
+                                    <%=this.description%>
+                                </div>
+
+                                <% if (HAS(this.props)) { %>
+                                    <ul class="params-list">
+                                        <% EACH(this.props, function() { %>
+                                        <li class="param">
+                                            <% if (HAS(this.optional)) { %>
+                                                <code class="param-name optional">[<%=this.name%><% if (HAS(this.optdefault)) { %>=<%=this.optdefault%><% } %>]</code>
+                                                <span class="type"><%=crossLink(this.type)%></span>
+                                                <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            <% } else { %>
+                                                <code class="param-name"><%=this.name%></code>
+                                                <span class="type"><%=crossLink(this.type)%></span>
+                                            <% } %>
+
+                                            <div class="param-description">
+                                                <%=this.description%>
+                                            </div>
+                                        </li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                            </li>
+                            <% }); %>
+                        </ul>
+                    <% } %>
+                </li>
+            <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <% EACH(this.return, function() { %>
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                <% if (HAS(this.description)) { %>
+                    <% if (HAS(this.type)) { %>
+                        <span class="type"><%=crossLink(this.type)%></span>:
+                    <% } %>
+                    <%=this.description%>
+                <% } else { %>
+                    <% if (HAS(this.type)) { %>
+                        <span class="type"><%=crossLink(this.type)%></span>:
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+    <% }); %>
+
+    <% EACH(this.example, function() { %>
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <%=this%>
+            </div>
+        </div>
+    <% }); %>
+</div>

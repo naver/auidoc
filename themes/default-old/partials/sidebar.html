@@ -1,38 +1,27 @@
 <div id="api-list">
-    <h2 class="off-left"><a href="<%=this.projectRoot%>index.html">APIs</a></h2>
-    
-    <div id="api-tabview-filter">
-        <input type="search" id="api-filter" placeholder="Type to filter APIs">
-    </div>
-
-    <div id="api-tabview" class="tabview" style="display:none;">
-
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
         <ul class="tabs">
-            <li><a href="#api-keywords">Keywords</a></li>
             <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-methods">Methods</a></li>
-            <li><a href="#api-properties">Properties</a></li>
-            <li><a href="#api-attrs">Attributes</a></li>
-            <li><a href="#api-events">Events</a></li>
+            <li><a href="#api-modules">Modules</a></li>
         </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
 
         <div id="api-tabview-panel">
-            <ul id="api-keywords" class="apis keywords search"></ul>
-            <ul id="api-classes" class="apis classes search"></ul>
-            <ul id="api-methods" class="apis methods search"></ul>
-            <ul id="api-properties" class="apis properties search"></ul>
-            <ul id="api-attrs" class="apis attrs search"></ul>
-            <ul id="api-events" class="apis events search"></ul>
+            <ul id="api-classes" class="apis classes">
+            <% EACH(this.classes, function(projectRoot) { %>
+                <li><a href="<%=projectRoot%>classes/<%=this.name%>.html" class="a"><%=this.displayName%></a></li>
+            <% }, [ this.projectRoot ]); %>
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            <% EACH(this.allModules, function(projectRoot) { %>
+                <li><a href="<%=projectRoot%>modules/<%=this.name%>.html" class="a"><%=this.displayName%></a></li>
+            <% }, [ this.projectRoot ]); %>
+            </ul>
         </div>
-    
     </div>
-    
-    <div id="no-search">
-        <ul class="apis classes">
-        <% EACH(this.classes, function(projectRoot) { %>
-            <li><a href="<%=projectRoot%>classes/<%=this.name%>.html"><%=this.displayName%></a></li>
-        <% }, [ this.projectRoot ]); %>
-        </ul>
-    </div>
-            
 </div>
