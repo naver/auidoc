@@ -851,3 +851,15 @@ kbd .cmd { font-family: Monaco, Helvetica; }
 	padding:1em 0;
 	text-align:center;
 }
+
+#classdocs [id] {
+	transition:background-color .5s linear;
+	-o-transition:background-color .5s linear;
+	-ms-transition:background-color .5s linear;
+	-moz-transition:background-color .5s linear;
+	-webkit-transition:background-color .5s linear;
+}
+
+#classdocs .highlight {
+	background-color:yellow;
+}

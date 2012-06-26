@@ -249,6 +249,20 @@ pjax.updateTabState = function (src) {
             tab.addClass('yui3-tab-selected');
         }
     }
+    
+    setTimeout(function() {
+        
+        (function highlightElement(el) {
+            
+            if (!el) { return; }
+            
+            el.addClass('highlight');
+            setTimeout(function() { el.removeClass('highlight'); }, 500);
+            
+        })(Y.one('#classdocs').getById(hash));
+        
+    }, 1);
+    
 };
 
 pjax.updateVisibility = function () {
