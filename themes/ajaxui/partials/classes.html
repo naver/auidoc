@@ -1,0 +1,163 @@
+<h1><%=this.name%> Class</h1>
+<div class="box meta">
+    <% if (HAS(this.uses)) { %>
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+            	<% EACH(this.uses, function() { %>
+                    <li><a href="<%=this%>.html"><%=this%></a></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <% if (HAS(this.extends)) { %>
+        <div class="extends">
+            Extends <%=crossLink(this.extends)%>
+        </div>
+    <% } %>
+
+    <% if (HAS(this.foundAt)) { %>
+        <div class="foundat">
+            Defined in: <a href="<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a>
+        </div>
+    <% } %>
+
+    <% if (HAS(this.module)) { %>
+        <% if (HAS(this.submodule)) { %>
+            Module: <%=crossLinkModule(this.submodule)%><br>
+            Parent Module: <%=crossLinkModule(this.module)%>
+        <% } else { %>
+            Module: <%=crossLinkModule(this.module)%>
+        <% } %>
+    <% } %>
+
+    <% if (HAS(this.since)) { %>
+        <p>Available since <%=this.since%></p>
+    <% } %>
+</div>
+
+<% if (HAS(this.deprecated)) { %>
+    <div class="box deprecated">
+        <p>
+        <% if (HAS(this.deprecationMessage)) { %>
+            <strong>Deprecated:</strong> <%=this.deprecationMessage%>
+        <% } else { %>
+            This class is deprecated.
+        <% } %>
+        </p>
+    </div>
+<% } %>
+
+<div class="box intro">
+    <%=this.classDescription%>
+</div>
+
+<% if (HAS(this.screenshots)) { %>
+    <div id="screenshots">
+        <h2>ScreenShots</h2>
+        <ul>
+        <% EACH(this.screenshots, function() { %>
+            <li><img src="<%=this.href%>" title="<%=this.description%>" /></li>
+        <% }); %>
+        </ul>
+    </div>
+<% } %>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <% if (HAS(this.constructors)) { %>
+            <li class="api-class-tab tab-constructors"><a href="#constructors">Constructors</a></li>
+        <% } %>
+        <% if (HAS(this.methods)) { %>
+            <li class="api-class-tab tab-methods"><a href="#methods">Methods</a></li>
+        <% } %>
+        <% if (HAS(this.properties)) { %>
+            <li class="api-class-tab tab-properties"><a href="#properties">Properties</a></li>
+        <% } %>
+        <% if (HAS(this.attrs)) { %>
+            <li class="api-class-tab tab-attrs"><a href="#attrs">Attributes</a></li>
+        <% } %>
+        <% if (HAS(this.events)) { %>
+            <li class="api-class-tab tab-events"><a href="#events">Events</a></li>
+        <% } %>
+        <% if (HAS(this.demos)) { %>
+            <li class="api-class-tab tab-demos"><a href="#demos">Demos</a></li>
+        <% } %>
+        <% if (HAS(this.manuals)) { %>
+            <li class="api-class-tab tab-manuals"><a href="#manuals">Manuals</a></li>
+        <% } %>
+    </ul>
+
+    <div>
+        <% if (HAS(this.constructors)) { %>
+            <div id="tab-constructors" class="api-class-tabpanel">
+                <h2 class="off-left">Constructors</h2>
+
+                <% EACH(this.constructors, function() { %>
+                    <%=INCLUDE("constructor", this)%>
+	            <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.methods)) { %>
+            <div id="tab-methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                <% EACH(this.methods, function() { %>
+                    <%=INCLUDE("method", this)%>
+	            <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.properties)) { %>
+            <div id="tab-properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                <% EACH(this.properties, function() { %>
+                    <%=INCLUDE("props", this)%>
+	            <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.attrs)) { %>
+            <div id="tab-attrs" class="api-class-tabpanel">
+                <h2 class="off-left">Attributes</h2>
+
+                <% EACH(this.attrs, function() { %>
+                    <%=INCLUDE("attrs", this)%>
+                <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.events)) { %>
+            <div id="tab-events" class="api-class-tabpanel">
+                <h2 class="off-left">Events</h2>
+
+                <% EACH(this.events, function() { %>
+                    <%=INCLUDE("events", this)%>
+                <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.demos)) { %>
+            <div id="tab-demos" class="api-class-tabpanel">
+                <h2 class="off-left">Demos</h2>
+
+                <% EACH(this.demos, function() { %>
+                    <%=INCLUDE("demo", this)%>
+                <% }); %>
+            </div>
+        <% } %>
+
+        <% if (HAS(this.manuals)) { %>
+            <div id="tab-manuals" class="api-class-tabpanel">
+                <h2 class="off-left">Manuals</h2>
+
+                <% EACH(this.manuals, function() { %>
+                    <%=INCLUDE("manual", this)%>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</div>
