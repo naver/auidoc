@@ -1,3 +1,12 @@
+<%
+    function METHOD(str) {
+        return str.
+            replace(/\(([^\)]*)\)/g, '<span class="args">($1)</span>').
+            replace(/\[([^\)]*)\]/g, '<span class="optional">[$1]</span>').
+            replace(/\n/g, '<br/>').
+            replace(/new /g, '');
+    }
+%>
 <div id="api-list">
     <h2 class="off-left"><a href="<%=this.projectRoot%>index.html">APIs</a></h2>
     
@@ -27,15 +36,10 @@
     
     </div>
     
-    <script>
-        console.log(<%=JSON.stringify(this)%>);
-    </script>
-    
-
     <div id="no-search">
         <ul class="apis">
         <% if (this.tag === 'class') { %>
-            <h3><%=this.name%> Class</h3>
+            <h3><%=this.name%> Class <a href="<%=this.projectRoot%>index.html">[상위]</a></h3>
 
             <div class="manuals">
             <% if (HAS(this.constructors)) { %>
@@ -44,13 +48,10 @@
                 <ul class="constructors<% if (HAS(this.extends)) { %> extends<% } %>">
                     <% EACH(this.constructors, function() { %>
                         <li class="constructor<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-                            <a href="#constructor_<%=this.name%>" title="<%=this.syntax%>"><%=this['class']%></a>
+                            <a href="#constructor_<%=this.name%>"><%=METHOD(this.syntax)%></a>
 
                             <% if (HAS(this.static)) { %>
                                 <span class="flag static">static</span>
-                            <% } %>
-                            <% if (HAS(this.deprecated)) { %>
-                                <span class="flag deprecated">deprecated</span>
                             <% } %>
                         </li>
                     <% }); %>
@@ -63,13 +64,10 @@
                 <ul class="methods<% if (HAS(this.extends)) { %> extends<% } %>">
                     <% EACH(this.methods, function() { %>
                         <li class="method<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-                            <a href="#method_<%=this.name%>" title="<%=this.syntax%>"><%=this.name%></a>
+                            <a href="#method_<%=this.name%>" title="<%==this.description%>"><%=METHOD(this.syntax)%></a>
 
                             <% if (HAS(this.static)) { %>
                                 <span class="flag static">static</span>
-                            <% } %>
-                            <% if (HAS(this.deprecated)) { %>
-                                <span class="flag deprecated">deprecated</span>
                             <% } %>
                         </li>
                     <% }); %>
@@ -82,7 +80,7 @@
                 <ul class="properties<% if (this.extends) { %> extends<% } %>">
                     <% EACH(this.properties, function() { %>
                         <li class="property<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-                            <a href="#property_<%=this.name%>"><%=this.name%></a>
+                            <a href="#property_<%=this.name%>" title="<%==this.description%>"><%=this.name%></a>
 
                             <% if (HAS(this.static)) { %>
                                 <span class="flag static">static</span>
@@ -101,7 +99,7 @@
                 <ul class="attrs<% if (this.extends) { %> extends<% } %>">
                     <% EACH(this.attrs, function() { %>
                         <li class="attr<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-                            <a href="#attr_<%=this.name%>"><%=this.name%></a>
+                            <a href="#attr_<%=this.name%>" title="<%==this.description%>"><%=this.name%></a>
                         </li>
                     <% }); %>
                 </ul>
@@ -113,7 +111,7 @@
                 <ul class="events<% if (this.extends) { %> extends<% } %>">
                     <% EACH(this.events, function() { %>
                         <li class="event<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-                            <a href="#event_<%=this.name%>"><%=this.name%></a>
+                            <a href="#event_<%=this.name%>" title="<%==this.description%>"><%=this.name%></a>
 
                             <% if (HAS(this.static)) { %>
                                 <span class="flag static">static</span>
@@ -152,7 +150,7 @@
             </div>
             
         <% } else if (this.tag === 'module') { %>
-            <h3><%=this.name%> Module</h3>
+            <h3><%=this.name%> Module <a href="<%=this.projectRoot%>index.html">[상위]</a></h3>
         
            <% if (HAS(this.moduleClasses)) { %>
                 <h4>Classes</h4>
@@ -187,7 +185,7 @@
             <% } %>
         
         <% } else if (this.tag === 'keyword') { %>
-            <h3><%=this.name%> Keyword</h3>
+            <h3><%=this.name%> Keyword <a href="<%=this.projectRoot%>index.html">[상위]</a></h3>
         
            <% if (HAS(this.keywordClasses)) { %>
     

@@ -864,16 +864,36 @@ kbd .cmd { font-family: Monaco, Helvetica; }
 	background-color:yellow;
 }
 
-.content .module-classes, .content .module-submodules, .content .keyword-classes {
+.content .module-classes, .content .module-submodules, .content .keyword-classes, .content .classes {
 	list-style:none;
 	margin:0; padding:0;
 }
 
-.content .module-class, .content .module-submodule, .content .keyword-class {
+.content .module-class, .content .module-submodule, .content .keyword-class, .content .class {
 	float:left;
 	width:300px;
 	margin:10px;
 	padding:10px;
 	border:1px solid #ddd;
 	border-radius:10px;
+}
+
+.apidocs ul.apis h3 a {
+	display:inline;
+	font-weight:normal;
+	font-size:.7em;
+}
+
+.apidocs ul.apis .args {
+	margin:0 0 0 .2em;
+	color:#aaa;
+}
+
+.apidocs ul.apis .optional {
+	margin:0 0 0 0;
+	font-style:italic;
+}
+
+.apidocs ul.apis .deprecated a {
+	color:#A2BCF2;
 }
