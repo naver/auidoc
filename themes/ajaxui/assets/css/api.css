@@ -1,0 +1,8 @@
+.api-page .options {
+	text-align:right;
+}
+	
+	.api-page .options * {
+		vertical-align:middle;
+	}
+	
