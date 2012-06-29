@@ -106,6 +106,12 @@
     <script type="text/javascript" charset="utf-8" src="/docs/jindo/search/js/app.js"></script>
     -->
     <script type="text/javascript" charset="utf-8" src="<%=this.projectAssets%>/lib/prettify/prettify-min.js"></script>
-    <script type="text/javascript" charset="utf-8">prettyPrint();</script>
+    <script type="text/javascript" charset="utf-8">
+    
+        prettyPrint();
+        
+        var oDocsTab = new jindo.TabControl(jindo.$('docs-tab'))
+        
+    </script>
 </body>
 </html>

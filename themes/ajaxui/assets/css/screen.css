@@ -270,8 +270,7 @@ form#quick-search label {
 	border-left:1px dotted #ddd;
 }
 
-.end-page #main h1,
-.api-page #main h1 {
+.end-page #main h1 {
 	font-size:1.75em;
 	line-height:100%;
 	border-top:5px solid #888;
@@ -517,6 +516,7 @@ form#quick-search label {
 #footer {
 	position:relative;
 	background-color:#444;
+	clear:both;
 	color:#ccc;
 	text-align:center;
 	padding:15px 0;
