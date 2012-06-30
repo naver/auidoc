@@ -19,10 +19,6 @@
             <span class="flag static">static</span>
         <% } %>
     
-        <% if (HAS(this.chainable)) { %>
-            <span class="flag chainable">chainable</span>
-        <% } %>
-    
         <% if (HAS(this.async)) { %>
             <span class="flag async">async</span>
         <% } %>
@@ -63,16 +59,6 @@
         <p class="default"><%==this.default%></p>
     <% } %>
 
-    <% EACH(this.example, function() { %>
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <%=this%>
-            </div>
-        </div>
-    <% }); %>
-
     <% if (HAS(this.subprops)) { %>
         <h4>하위 프로퍼티</h4>
 
@@ -83,4 +69,14 @@
         </ul>
 
     <% } %>
+
+    <% EACH(this.example, function() { %>
+        <div class="example">
+            <h4>에제</h4>
+
+            <div class="example-content">
+                <%=this%>
+            </div>
+        </div>
+    <% }); %>
 </div>

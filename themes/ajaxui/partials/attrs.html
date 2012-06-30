@@ -1,77 +1,70 @@
 <div id="attr_<%=this.name%>" class="attr item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-    <a name="config_<%=this.name%>"></a> {{! For backwards compatibility }}
-    <h3 class="name"><code><%=this.name%></code></h3>
-    <span class="type"><%=crossLink(this.type)%></span>
 
-    <% if (HAS(this.deprecated)) { %>
-        <span class="flag deprecated"<% if (HAS(this.deprecationMessage)) { %> title="<%=this.deprecationMessage%>"<% } %>>deprecated</span>
-    <% } %>
-
-    <% if (HAS(this.access)) { %>
-        <span class="flag <%=this.access%>"><%=this.access%></span>
-    <% } %>
-
-    <% if (HAS(this.final)) { %>
-        <span class="flag final">final</span>
-    <% } %>
-
-    <% if (HAS(this.static)) { %>
-        <span class="flag static">static</span>
-    <% } %>
-
-    <% if (HAS(this.optional)) { %>
-        <span class="flag optional">optional</span>
-    <% } %>
-
-    <% if (HAS(this.required)) { %>
-        <span class="flag required">required</span>
-    <% } %>
-
-    <div class="meta">
-        <% if (HAS(this.overwritten_from)) { %>
-            <p>Inherited from
-            <a href="<%=crossLinkRaw(this.overwritten_from.class)%>#method_<%=this.overwritten_from.name%>">
-                <%=this.overwritten_from.class%>
-            </a>
-            <% if (HAS(this.foundAt)) { %>
-            but overwritten in
-            <% } %>
-        <% } else { %>
-            <% if (HAS(this.extended_from)) { %>
-                <p>Inherited from
-                <a href="<%=crossLinkRaw(this.extended_from)%>#method_<%=this.name%>"><%=this.extended_from%></a>:
-            <% } else { %>
-                <% EACH(this.providedBy, function() { %>
-                    <p>Provided by the <a href="../modules/<%=this%>.html"><%=this%></a> module.</p>
-                <% }); %>
-                <p>
-                <% if (HAS(this.foundAt)) { %>
-                Defined in
-                <% } %>
-            <% } %>
+    <h3 class="name">
+        <%=this.name%>
+        <span class="type">&lt;<%=crossLink(this.type)%>&gt;</span>
+        
+        <% if (HAS(this.deprecated)) { %>
+            <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>">deprecated</span>
         <% } %>
-        <% if (HAS(this.foundAt)) { %>
-        <a href="<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a>
+    
+        <% if (HAS(this.access)) { %>
+            <span class="flag <%=this.access%>"><%=this.access%></span>
         <% } %>
-        </p>
-
-        <% if (HAS(this.deprecationMessage)) { %>
-            <p>Deprecated: <%=this.deprecationMessage%></p>
+    
+        <% if (HAS(this.final)) { %>
+            <span class="flag final">final</span>
         <% } %>
-
-        <% if (HAS(this.since)) { %>
-            <p>Available since <%=this.since%></p>
+    
+        <% if (HAS(this.static)) { %>
+            <span class="flag static">static</span>
         <% } %>
-    </div>
+    
+        <% if (HAS(this.optional)) { %>
+            <span class="flag optional">optional</span>
+        <% } %>
+    
+        <% if (HAS(this.required)) { %>
+            <span class="flag required">required</span>
+        <% } %>
+    
+        <span class="foundAt"><a href="<%=this.foundAt%>" title="<%==this.file%>:<%=this.line%>">소스코드</a></span>
+    </h3>
 
     <div class="description">
         <%=this.attrDescription%>
     </div>
 
+    <dl class="relation">
+        
+        <% if (HAS(this.overwritten_from)) { %>
+            <dt>상속</dt>
+            <dd>
+                <a href="<%=crossLinkRaw(this.overwritten_from.class)%>#attr_<%=this.overwritten_from.name%>">
+                    <%=this.overwritten_from.class%>
+                </a>
+            </dd>
+        <% } else if (HAS(this.extended_from)) { %>
+            <dt>상속</dt>
+            <dd>
+                <a href="<%=crossLinkRaw(this.extended_from)%>#attr_<%=this.name%>">
+                    <%=this.extended_from%>
+                </a>
+            </dd>
+        <% } %>
+        
+        <% if (HAS(this.since)) { %>
+            <dt>호환성</dt>
+            <dd><%=this.since%>~</dd>
+        <% } %>
+    </dl>
+
     <% if (HAS(this.default)) { %>
-        <p><strong>Default:</strong> <%=this.default%></p>
+        <h4>기본값</h4>
+        <p class="default"><%==this.default%></p>
     <% } %>
 
+    <!--
     <% if (HAS(this.emit)) { %>
         <div class="emits box">
             <h4>Fires event <code><%=this.name%>Change</code></h4>
@@ -124,10 +117,11 @@
             </div>
         </div>
     <% } %>
+    -->
 
     <% EACH(this.example, function() { %>
         <div class="example">
-            <h4>Example:</h4>
+            <h4>에제</h4>
 
             <div class="example-content">
                 <%=this%>
