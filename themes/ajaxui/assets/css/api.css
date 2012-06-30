@@ -1,3 +1,7 @@
+#wrap {
+	background:url(../images/bg.gif) repeat-y #fff;	
+}
+
 #main a {
 	color:inherit;
 }
@@ -75,7 +79,7 @@
 	font-weight:normal;
 	background-color:#888;
 	color:#fff;
-	padding:2px 4px;
+	padding:0 4px;
 	margin:0 5px;
 	border-radius:5px;
 	cursor:default;
@@ -252,4 +256,83 @@
 	background-color:#fff;
 }
 
-	
+.api-page .sidemenu {
+	padding-bottom:10px;
+}
+
+.api-page .sidemenu h3 a {
+	color:#666;
+}
+
+.api-page .sidemenu .filter {
+	padding:0 10px;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	border-bottom:1px solid #aaa;
+}
+
+.api-page .sidemenu #api-filter {
+	width:190px;
+	padding:3px;
+	font-size:1.2em;
+	box-sizing:content-box;
+}
+
+.api-page .sidemenu h4 {
+	font-size:1.4em;
+	color:#000;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	margin-bottom:10px;
+	font-weight:bold;
+}
+
+.api-page .sidemenu h5 {
+	font-size:1.2em;
+	color:#000;
+}
+
+.api-page .sidemenu .manuals {
+
+}
+
+.api-page .sidemenu ul {
+	margin:5px 0 5px 10px;
+}
+
+.api-page .sidemenu ul.apis a {
+	margin:2px 7px 2px 2px;
+	padding:1px 3px;
+	border-radius:5px;
+	display:block;
+}
+
+.api-page .sidemenu ul.apis a:hover {
+	background-color:#eee;
+}
+
+.api-page .sidemenu ul.apis a.goup {
+	padding:0;
+	margin:0;
+	border-radius:0;
+	display:inline;
+}
+
+.api-page .sidemenu ul.apis .flag {
+	margin:0;
+	color:#fff;
+}
+
+.api-page .sidemenu span {
+	color:#666;
+}
+
+.api-page .sidemenu .args {
+	margin-left:2px;
+}
+
+.api-page .sidemenu span.optional {
+	font-style:italic;
+}
+
