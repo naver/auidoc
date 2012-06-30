@@ -1,119 +1,86 @@
 <div id="method_<%=this.name%>" class="method item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-    <h3 class="name"><code><%=this.name%></code></h3>
+    <h3 class="name">
+        <%=this.name%>
+        
+        <% if (HAS(this.deprecated)) { %>
+            <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>">deprecated</span>
+        <% } %>
     
-    <% if (HAS(this.deprecated)) { %>
-        <span class="flag deprecated"<% if (HAS(this.deprecationMessage)) { %> title="<%=this.deprecationMessage%>"<% } %>>deprecated</span>
-    <% } %>
-
-    <% if (HAS(this.access)) { %>
-        <span class="flag <%=this.access%>"><%=this.access%></span>
-    <% } %>
-
-    <% if (HAS(this.final)) { %>
-        <span class="flag final">final</span>
-    <% } %>
-
-    <% if (HAS(this.static)) { %>
-        <span class="flag static">static</span>
-    <% } %>
-
-    <% if (HAS(this.chainable)) { %>
-        <span class="flag chainable">chainable</span>
-    <% } %>
-
-    <% if (HAS(this.async)) { %>
-        <span class="flag async">async</span>
-    <% } %>
-
-    <pre class="code syntax"><code class="prettyprint"><%=this.syntax%></code></pre>
-
-    <div class="meta">
-        <% if (HAS(this.overwritten_from)) { %>
-            <p>Inherited from
-            <a href="<%=crossLinkRaw(this.overwritten_from.class)%>#method_<%=this.overwritten_from.name%>">
-                <%=this.overwritten_from.class%>
-            </a>
-            <% if (HAS(this.foundAt)) { %>
-            but overwritten in
-            <% } %>
-        <% } else { %>
-            <% if (HAS(this.extended_from)) { %>
-                <p>Inherited from
-                <a href="<%=crossLinkRaw(this.extended_from)%>#method_<%=this.name%>"><%=this.extended_from%></a>:
-            <% } else { %>
-                <% EACH(this.providedBy, function() { %>
-                    <p>Provided by the <a href="../modules/<%=this%>.html"><%=this%></a> module.</p>
-                <% }); %>
-                <p>
-                <% if (HAS(this.foundAt)) { %>
-                Defined in
-                <% } %>
-            <% } %>
+        <% if (HAS(this.access)) { %>
+            <span class="flag <%=this.access%>"><%=this.access%></span>
         <% } %>
-        <% if (HAS(this.foundAt)) { %>
-        <a href="<%=this.foundAt%>">`<%=this.file%>:<%=this.line%>`</a>
-        <% } %>
-        </p>
-
-
-        <% if (HAS(this.deprecationMessage)) { %>
-            <p>Deprecated: <%=this.deprecationMessage%></p>
-        <% } %>
-
-        <% if (HAS(this.since)) { %>
-            <p>Available since <%=this.since%></p>
-        <% } %>
-    </div>
     
+        <% if (HAS(this.final)) { %>
+            <span class="flag final">final</span>
+        <% } %>
+    
+        <% if (HAS(this.static)) { %>
+            <span class="flag static">static</span>
+        <% } %>
+    
+        <% if (HAS(this.chainable)) { %>
+            <span class="flag chainable">chainable</span>
+        <% } %>
+    
+        <% if (HAS(this.async)) { %>
+            <span class="flag async">async</span>
+        <% } %>
+
+        <span class="foundAt"><a href="<%=this.foundAt%>" title="<%==this.file%>:<%=this.line%>">소스코드</a></span>
+    </h3>
+
     <div class="description">
         <%=this.methodDescription%>
     </div>
 
+    <dl class="relation">
+        
+        <% if (HAS(this.overwritten_from)) { %>
+            <dt>상속</dt>
+            <dd>
+                <a href="<%=crossLinkRaw(this.overwritten_from.class)%>#method_<%=this.overwritten_from.name%>">
+                    <%=this.overwritten_from.class%>
+                </a>
+            </dd>
+        <% } else if (HAS(this.extended_from)) { %>
+            <dt>상속</dt>
+            <dd>
+                <a href="<%=crossLinkRaw(this.extended_from)%>#method_<%=this.name%>">
+                    <%=this.extended_from%>
+                </a>
+            </dd>
+        <% } %>
+        
+        <% if (HAS(this.since)) { %>
+            <dt>호환성</dt>
+            <dd><%=this.since%>~</dd>
+        <% } %>
+    </dl>
+
+    <pre class="code syntax"><code class="prettyprint"><%=this.syntax%></code></pre>
+        
     <% if (HAS(this.params)) { %>
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>파라미터</h4>
 
             <ul class="params-list">
             <% EACH(this.params, function() { %>
-                <li class="param">
-                    <% if (HAS(this.optional)) { %>
-                        <code class="param-name optional">[<%=this.name%><% if (HAS(this.optdefault)) { %>=<%=this.optdefault%><% } %>]</code>
-                        <span class="type"><%=crossLink(this.type)%></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    <% } else { %>
-                        <code class="param-name"><%=this.name%></code>
-                        <span class="type"><%=crossLink(this.type)%></span>
-                    <% } %>
-
-                    <% if (HAS(this.multiple)) { %>
-                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
-                    <% } %>
-
-                    <div class="param-description">
-                        <%=this.description%>
-                    </div>
-
-                    <% if (HAS(this.props)) { %>
-                        <ul class="params-list">
-                            <% EACH(this.props, function() { %>
-                                <%=INCLUDE("param", this)%>
-                            <% }); %>
-                        </ul>
-                    <% } %>
-                </li>
+                <%=INCLUDE("param", this)%>
             <% }); %>
             </ul>
         </div>
     <% } %>
     
     <% EACH(this.return, function() { %>
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
+        <div class="returns param">
+            <h4>
+                반환값
                 <% if (HAS(this.type)) { %>
-                    <span class="type"><%=crossLink(this.type)%></span>:
+                    <span class="type">&lt;<%=crossLink(this.type)%>&gt;</span>
                 <% } %>
+            </h4>
+
+            <div class="description">
                 <%=this.description%>
             </div>
             
@@ -130,7 +97,7 @@
 
     <% EACH(this.example, function() { %>
         <div class="example">
-            <h4>Example:</h4>
+            <h4>에제</h4>
 
             <div class="example-content">
                 <%=this%>
