@@ -1,3 +1,7 @@
+#main a {
+	color:inherit;
+}
+
 .api-page .content a {
 	border-bottom:1px solid #FF8DC1;
 }
@@ -25,25 +29,25 @@
 		position:absolute;
 	}
 
-.api-page .main-description {
-	border:1px solid #ebebeb;
-	border-radius:5px;
-	padding:.5em;
-	font-size:1.1em;
-	color:#000;
+.api-page .description {
+	padding:0 .5em;
+	margin:10px 0;
+	font-size:1.2em;
+	color:#666;
 }
 
 .api-page .content h1 {
 	font-size:2em;
 	text-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
-	font-weight: bold;
+	color:#000;
+	font-weight: normal;
 }
 
 .api-page dl.relation {
 	display:block;
 	clear:both;
 	overflow:hidden;
-	margin:20px 10px; padding:0;
+	margin:10px; padding:0;
 }
 
 .api-page .relation dt,
@@ -51,7 +55,6 @@
 	margin:0; padding:0;
 	float:left;
 	height:20px;
-	color:#000;
 }
 
 .api-page .relation dt {
@@ -59,11 +62,13 @@
 	width:3em;
 	text-align:right;
 	padding-right:1em;
+	color:#000;
 	font-size:1.2em;
-	font-weight:bold;
+	font-weight:normal;
+	text-shadow:2px 2px 5px rgba(0, 0, 0, .2);
 }
 
-.api-page .box {
+.api-page .flag {
 	font-size:11px;
 	font-family:Arial;
 	text-shadow:none;
@@ -71,7 +76,21 @@
 	background-color:#888;
 	color:#fff;
 	padding:2px 4px;
+	margin:0 5px;
 	border-radius:5px;
+	cursor:default;
+}
+
+.api-page .flag.deprecated {
+	background-color:#000;
+}
+
+.api-page .flag.optional {
+	background-color:#bbb;
+}
+
+.api-page .flag.static {
+	background-color:#aa7;
 }
 
 .api-page .screenshots ul {
@@ -133,7 +152,7 @@
 
 .api-page #docs-tab .tc-panel {
 	display:none;
-	padding:10px 0;
+	padding:1px 0;
 }
 
 .api-page #docs-tab .tc-panel h2 {
@@ -144,3 +163,75 @@
 	display:block;
 }
 
+.api-page .item {
+	margin:1em 0;
+}
+
+.api-page .item h3 {
+	font-size:1.6em;
+	text-shadow:2px 2px 5px rgba(0, 0, 0, .2);
+	color:#000;
+}
+
+.api-page .item h4 {
+	font-size:1.4em;
+	color:#000;
+}
+
+.api-page .item .params-list {
+	margin:5px 0 5px 10px;
+	padding-left:10px;
+}
+
+.api-page .item .param {
+	margin:15px 0;
+}
+
+.api-page .item .params-list .params-list {
+	border-left:2px solid #ddd;
+	margin:-5px 0 0 10px;
+	padding-left:15px;
+}
+
+.api-page .item .param-name {
+	margin:10px 0;
+}
+
+.api-page .item .type {
+	margin:10px 0;
+}
+
+.api-page .param .description {
+	margin:0 0 0 10px;
+	padding:0;
+	font-size:1.1em;
+}
+
+.api-page .param .description ul {
+	list-style:square;
+	margin:5px 0 0 2em;
+}
+
+.api-page .param .name {
+	color:#000;
+	font-size:1.2em;
+}
+
+.api-page .param .type {
+	color:#24a;
+}
+
+.api-page pre.code {
+	padding:5px;
+	font-size:1.1em;
+	border:1px solid #ddd;
+	margin:10px 0;
+	background-color:#eee;
+	font-family:나눔고딕코딩, Consolas, 'Lucida Console';
+}
+
+.api-page pre.syntax {
+	background-color:#fff;
+}
+
+	

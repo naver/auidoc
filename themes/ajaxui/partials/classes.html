@@ -2,11 +2,16 @@
     <%=this.name%> 클래스
 
     <% if (HAS(this.deprecated)) { %>
-        <span class="box deprecated" title="<%==this.deprecationMessage||'deprecated'%>">deprecated</span>
+        <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>">deprecated</span>
     <% } %>
 
     <span class="foundAt"><a href="<%=this.foundAt%>" title="<%==this.file%>:<%=this.line%>">소스코드</a></span>
 </h1>
+
+<div class="description">
+    <%=this.classDescription%>
+</div>
+
 <dl class="relation">
     <% if (HAS(this.uses)) { %>
         <dt>확장</dt>
@@ -30,13 +35,9 @@
     
     <% if (HAS(this.since)) { %>
         <dt>호환성</dt>
-        <dd><%=this.since%></dd>
+        <dd><%=this.since%>~</dd>
     <% } %>
 </dl>
-
-<div class="main-description description">
-    <%=this.classDescription%>
-</div>
 
 <% if (HAS(this.screenshots)) { %>
     <div class="screenshots">

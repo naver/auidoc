@@ -1,18 +1,18 @@
 <li class="param">
     <% if (HAS(this.optional)) { %>
-        <code class="param-name optional">[<%=this.name%><% if (HAS(this.optdefault)) { %>=<%=this.optdefault%><% } %>]</code>
-        <span class="type"><%=crossLink(this.type)%></span>
-        <span class="flag optional" title="This parameter is optional.">optional</span>
+        <code class="name optional"><%=this.name%></code>
+        <span class="type">&lt;<%=crossLink(this.type)%>&gt;</span>
+        <span class="flag optional" title="<% if (HAS(this.optdefault)) { %>기본값 : <%==this.optdefault%><% } else { %>생략 가능<% } %>">optional</span>
     <% } else { %>
-        <code class="param-name"><%=this.name%></code>
-        <span class="type"><%=crossLink(this.type)%></span>
+        <code class="name"><%=this.name%></code>
+        <span class="type">&lt;<%=crossLink(this.type)%>&gt;</span>
     <% } %>
 
     <% if (HAS(this.multiple)) { %>
-        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+        <span class="flag multiple" title="이 파라미터는 한번 이상 반복 될 수 있습니다.">multiple</span>
     <% } %>
 
-    <div class="param-description">
+    <div class="description">
         <%=this.description%>
     </div>
 
