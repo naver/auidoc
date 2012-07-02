@@ -442,4 +442,38 @@
 	color:#000;
 }
 
+.api-page .class-list {
+	margin-top:10px;
+	overflow:hidden;
+}
 
+.api-page .class-list li {
+	padding:10px;
+	margin:5px;
+	width:327px;
+	height:100px;
+	float:left;
+	overflow:hidden;
+	border:1px solid #ccc;
+	border-radius:5px;
+}
+
+.api-page .class-list h2 {
+	border:0 !important;
+	margin:0 !important;
+	padding:0 !important;
+}
+
+.api-page .class-list img {
+	float:right;
+	width:100px;
+	height:100px;
+}
+
+.api-page .class-list .description {
+	padding:0 0 0 15px;
+	font-size:1.1em;
+	overflow:hidden; text-overflow:ellipsis;
+	display:-webkit-box;
+	-webkit-line-clamp:4; -webkit-box-orient:vertical
+}
