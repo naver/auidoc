@@ -149,6 +149,8 @@ var APISearch = (function() {
     inputNode.attach('keyup', refreshResults);
     inputNode.attach('click', refreshResults);
     
+    setTimeout(function() { refreshResults(); }, 0);
+    
     //////////////////////////////////////////
     
     var oTab = new jindo.TabControl('search-tab').attach({
@@ -158,8 +160,7 @@ var APISearch = (function() {
     });
     
     return {
-        setData : setData,
-        changeTab : changeTab
+        setData : setData
     };
     
 })();

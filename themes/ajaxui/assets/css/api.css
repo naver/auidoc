@@ -1,3 +1,13 @@
+#left-columns {
+	overflow:hidden;
+	position:relative;
+}
+
+.sidemenu {
+	position:absolute;
+	z-index:1;
+}
+
 #wrap {
 	background:url(../images/bg.gif) repeat-y #fff;	
 }
@@ -364,7 +374,7 @@
 	display:inline-block;
 	margin:-1px 0 0 -1px;
 	font-size:11px;
-	padding:3px 5px;
+	padding:3px 4px;
 	cursor:pointer;
 	_cursor:hand;
 	background-color:#ccc;
@@ -400,6 +410,11 @@
 	position:relative;
 	padding:5px; margin:5px 0;
 	color:#666;
+}
+
+#search-tab .result strong {
+	color:#CA2D71;
+	font-weight:bold;
 }
 
 #search-tab .result .category {
