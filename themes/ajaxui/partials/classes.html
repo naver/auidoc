@@ -39,6 +39,28 @@
     <% } %>
 </dl>
 
+<% if (HAS(this.history)) { %>
+    <div class="history">
+        <h2>히스토리</h2>
+        <div class="history-table">
+            <table>
+                <thead>
+                    <th class="version">릴리즈</th>
+                    <th class="category">종류</th>
+                    <th class="description">내용</th>
+                </thead>
+            <% EACH(this.history, function() { %>
+                <tbody>
+                    <td class="version"><%==this.version%></td>
+                    <td class="category <%==this.category%>"><%==this.category%></td>
+                    <td class="description"><%==this.description%></td>
+                </tbody>
+            <% }); %>
+            </table>
+        </div>
+    </div>
+<% } %>
+
 <% if (HAS(this.screenshots)) { %>
     <div class="screenshots">
         <h2>스크린샷</h2>

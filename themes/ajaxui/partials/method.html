@@ -56,9 +56,31 @@
             <dd><%=this.since%>~</dd>
         <% } %>
     </dl>
-
+    
     <pre class="code syntax"><code class="prettyprint"><%=this.syntax%></code></pre>
         
+    <% if (HAS(this.history)) { %>
+        <div class="history">
+            <h4>히스토리</h4>
+            <div class="history-table">
+                <table>
+                    <thead>
+                        <th class="version">릴리즈</th>
+                        <th class="category">종류</th>
+                        <th class="description">내용</th>
+                    </thead>
+                <% EACH(this.history, function() { %>
+                    <tbody>
+                        <td class="version"><%==this.version%></td>
+                        <td class="category <%==this.category%>"><%==this.category%></td>
+                        <td class="description"><%==this.description%></td>
+                    </tbody>
+                <% }); %>
+                </table>
+            </div>
+        </div>
+    <% } %>
+
     <% if (HAS(this.params)) { %>
         <div class="params">
             <h4>파라미터</h4>

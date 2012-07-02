@@ -80,7 +80,7 @@
 	background-color:#888;
 	color:#fff;
 	padding:0 4px;
-	margin:0 5px;
+	margin:0;
 	border-radius:5px;
 	cursor:default;
 }
@@ -189,6 +189,10 @@
 	font-size:1.4em;
 	color:#000;
 	padding-top:5px;
+}
+
+.api-page .item .history-table {
+	margin:10px 0 10px 20px;
 }
 
 .api-page .item .params-list {
@@ -476,4 +480,45 @@
 	overflow:hidden; text-overflow:ellipsis;
 	display:-webkit-box;
 	-webkit-line-clamp:4; -webkit-box-orient:vertical
+}
+
+.api-page .history table {
+	border-collapse:collapse;
+	width:100%;
+}
+
+.api-page .history th {
+	text-align:center;
+	font-weight:bold;
+	font-size:1.2em !important;
+	background-color:#eee;
+}
+
+.api-page .history th,
+.api-page .history td {
+	border:1px solid #ccc;
+	border-width:1px 0;
+	padding:3px 5px;
+}
+
+.api-page .history .version,
+.api-page .history .category {
+	width:100px;
+	text-align:center;
+}
+
+.api-page .history .description {
+	font-size:1em;
+}
+
+.api-page .file {
+	margin-top:15px;
+}
+
+.api-page .file ol {
+	padding-left:3em;
+}
+
+.api-page .file li {
+	list-style:decimal;
 }
