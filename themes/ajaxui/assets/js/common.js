@@ -3,10 +3,22 @@ $Element(document).attach('domready', function() {
 	var elLeft = $('left-columns');
 	var elMain = $('main');
 
+    /*
     var oScroll = new iScroll(elLeft, {
         hScroll : false,
-        deltaScale : 3
+        deltaScale : 3,
+        onBeforeScrollStart : function(e) {
+            var el = $Event(e).element;
+            var tagName = el.tagName.toUpperCase();
+            
+            if (tagName !== 'INPUT' && tagName !== 'TEXTAREA') {
+                e.preventDefault();
+            }
+        }
     });
+    
+    $Element(elLeft).attach('mousewheel', function(o) { o.stopDefault(); });
+    */
 		
 	// Relocation left-columns
 	(function() {
@@ -31,7 +43,7 @@ $Element(document).attach('domready', function() {
             var nClientHeight = $Document().clientSize().height;
             elLeft.style.height = nClientHeight + Math.min(0, nScrollTop - 140) + 'px';
             
-            oScroll.refresh();
+            // oScroll.refresh();
 
 		};
 		
@@ -40,7 +52,6 @@ $Element(document).attach('domready', function() {
 		$Element(window).attach('scroll', fpRelocate);
 		$Element(window).attach('resize', fpRelocate);
 
-        $Element(elLeft).attach('mousewheel', function(o) { o.stopDefault(); });
 	})();
 	
 });

@@ -376,7 +376,7 @@ iScroll.prototype = {
 		that.startTime = e.timeStamp || Date.now();
 
 		if (that.options.onScrollStart) that.options.onScrollStart.call(that, e);
-
+		
 		that._bind(MOVE_EV);
 		that._bind(END_EV);
 		that._bind(CANCEL_EV);

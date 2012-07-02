@@ -1,5 +1,6 @@
 #left-columns {
 	overflow:hidden;
+	overflow-y:scroll;
 	position:relative;
 }
 
@@ -272,6 +273,7 @@
 
 .api-page .sidemenu {
 	padding-bottom:10px;
+	width:100%;
 }
 
 .api-page .sidemenu h3 a {
@@ -286,13 +288,14 @@
 }
 
 .api-page .sidemenu #api-filter {
-	width:190px;
-	padding:3px;
+	width:100%;
+	padding:3px 0;
 	font-size:1.2em;
 	box-sizing:content-box;
 }
 
 .api-page .sidemenu h4 {
+	display:none;
 	font-size:1.4em;
 	color:#000;
 	white-space:nowrap;
@@ -303,8 +306,6 @@
 }
 
 .api-page .sidemenu h5 {
-	border-top:1px solid #bbb;
-	padding-top:5px;
 	font-size:1.2em;
 	color:#000;
 }
@@ -374,7 +375,7 @@
 	display:inline-block;
 	margin:-1px 0 0 -1px;
 	font-size:11px;
-	padding:3px 4px;
+	padding:3px 10px;
 	cursor:pointer;
 	_cursor:hand;
 	background-color:#ccc;
