@@ -11,9 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<%=this.projectAssets%>/css/api.css" />
     <script type="text/javascript" src="<%=this.projectAssets%>/lib/jindo.desktop.min.js"></script>
     <script type="text/javascript" src="<%=this.projectAssets%>/lib/jindo_component.min.js"></script>
-    <script type="text/javascript">
-        var projectRoot = location.href.replace(/\/[^\/]*$/, '') + "/<%=this.projectRoot%>";
-    </script>
+    <script type="text/javascript" src="<%=this.projectAssets%>/lib/hash.js"></script>
 </head>
 <body class="api-page"><div id="header-bg"></div>
     
@@ -106,11 +104,13 @@
     <script type="text/javascript" charset="utf-8" src="/docs/jindo/search/js/app.js"></script>
     -->
     <script type="text/javascript" charset="utf-8" src="<%=this.projectAssets%>/lib/prettify/prettify-min.js"></script>
+    <script type="text/javascript" src="<%=this.projectAssets%>/js/api-list.js"></script>
+    <script type="text/javascript" src="<%=this.projectAssets%>/js/api-search.js"></script>
+    <script type="text/javascript" src="<%=this.projectAssets%>/../api.js?callback=APISearch.setData"></script>
     <script type="text/javascript" charset="utf-8">
     
-        prettyPrint();
-        
-        var oDocsTab = new jindo.TabControl(jindo.$('docs-tab'))
+        var projectRoot = location.href.replace(/\/[^\/]*$/, '') + "/<%=this.projectRoot%>";
+        apiDocs(projectRoot);
         
     </script>
 </body>

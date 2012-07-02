@@ -1,264 +1,69 @@
-YUI.add('api-list', function (Y) {
-
-var Lang   = Y.Lang,
-    YArray = Y.Array,
-
-    APIList = Y.namespace('APIList'),
-
-    listNode    = Y.one('#api-list'),
-    classesNode    = Y.one('#api-classes'),
-    inputNode      = Y.one('#api-filter'),
-    modulesNode    = Y.one('#api-modules'),
-    tabviewNode    = Y.one('#api-tabview'),
-
-    tabs = APIList.tabs = {},
+var apiDocs = function(projectRoot) {
     
-    search = APIList.search = new Y.APISearch(),
-
-    /*
-    filter = APIList.filter = new Y.APIFilter({
-        inputNode : inputNode,
-        maxResults: 1000,
-
-        on: {
-            results: onFilterResults
-        }
-    }),
-
-    search = APIList.search = new Y.APISearch({
-        inputNode : inputNode,
-        maxResults: 100,
-
-        on: {
-            clear  : onSearchClear,
-            results: onSearchResults
-        }
-    }),
-    */
-
-    tabview = APIList.tabview = new Y.TabView({
-        srcNode  : tabviewNode,
-        panelNode: '#api-tabview-panel',
-        render   : true,
-
-        on: {
-            selectionChange: onTabSelectionChange
-        }
-    }),
-
-    focusManager = APIList.focusManager = listNode.plug(Y.Plugin.NodeFocusManager, {
-        circular   : true,
-        descendants: '#api-filter, .yui3-tab-panel-selected .api-list-item a, .yui3-tab-panel-selected .result a',
-        keys       : {next: 'down:40', previous: 'down:38'}
-    }).focusManager,
-
-    LIST_ITEM_TEMPLATE =
-        '<li class="api-list-item {typeSingular}">' +
-            '<a href="{rootPath}{typePlural}/{name}.html">{displayName}</a>' +
-        '</li>';
-
-// -- Init ---------------------------------------------------------------------
-
-// Duckpunch FocusManager's key event handling to prevent it from handling key
-// events when a modifier is pressed.
-Y.before(function (e, activeDescendant) {
-    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
-        return new Y.Do.Prevent();
-    }
-}, focusManager, '_focusPrevious', focusManager);
-
-Y.before(function (e, activeDescendant) {
-    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
-        return new Y.Do.Prevent();
-    }
-}, focusManager, '_focusNext', focusManager);
-
-// Create a mapping of tabs in the tabview so we can refer to them easily later.
-tabview.each(function (tab, index) {
-    var name = tab.get('label').toLowerCase();
-
-    tabs[name] = {
-        index: index,
-        name : name,
-        tab  : tab
-    };
-});
-
-// Switch tabs on Ctrl/Cmd-Left/Right arrows.
-listNode.on('key', onTabSwitchKey, 'down:37,39');
-
-// Focus the filter input when the `/` key is pressed.
-Y.one(Y.config.doc).on('key', onSearchKey, 'down:83');
-
-// Keep the Focus Manager up to date.
-inputNode.on('focus', function () {
-    focusManager.set('activeDescendant', inputNode);
-});
-
-// Update all tabview links to resolved URLs.
-listNode.all('a').each(function (link) {
-    link.setAttribute('href', link.get('href'));
-});
-
-// -- Private Functions --------------------------------------------------------
-/*
-function getFilterResultNode() {
-    return filter.get('queryType') === 'classes' ? classesNode : modulesNode;
-}
-
-// -- Event Handlers -----------------------------------------------------------
-function onFilterResults(e) {
-    var frag         = Y.one(Y.config.doc.createDocumentFragment()),
-        resultNode   = getFilterResultNode(),
-        typePlural   = filter.get('queryType'),
-        typeSingular = typePlural === 'classes' ? 'class' : 'module';
-
-    if (e.results.length) {
-        YArray.each(e.results, function (result) {
-            frag.append(Lang.sub(LIST_ITEM_TEMPLATE, {
-                rootPath    : APIList.rootPath,
-                displayName : filter.getDisplayName(result.highlighted),
-                name        : result.text,
-                typePlural  : typePlural,
-                typeSingular: typeSingular
-            }));
-        });
-    } else {
-        frag.append(
-            '<li class="message">' +
-                'No ' + typePlural + ' found.' +
-            '</li>'
-        );
-    }
-
-    resultNode.empty(true);
-    resultNode.append(frag);
-
-    focusManager.refresh();
-}
-
-function onSearchClear(e) {
-
-    focusManager.refresh();
-}
-*/
-
-function onSearchKey(e) {
-    var target = e.target;
-
-    if (target.test('input,select,textarea')
-            || target.get('isContentEditable')) {
-        return;
-    }
-
-    e.preventDefault();
-
-    inputNode.focus();
-    focusManager.refresh();
-}
-
-/*
-function onSearchResults(e) {
-    var frag = Y.one(Y.config.doc.createDocumentFragment());
-
-    if (e.results.length) {
-        YArray.each(e.results, function (result) {
-            frag.append(result.display);
-        });
-    } else {
-        frag.append(
-            '<li class="message">' +
-                'No results found. Maybe you\'ll have better luck with a ' +
-                'different query?' +
-            '</li>'
-        );
-    }
-
-
-    focusManager.refresh();
-}
-*/
-
-function onTabSelectionChange(e) {
-    var tab  = e.newVal,
-        name = /\-([^\-]+)$/.test(tab.get('panelNode')._node.id) && RegExp.$1;
-
-    tabs.selected = {
-        index: tab.get('index'),
-        name : name,
-        tab  : tab
-    };
-
-    switch (name) {
-    case 'classes': // fallthru
-    case 'modules':
-        /*
-        filter.setAttrs({
-            minQueryLength: 0,
-            queryType     : name
-        });
-
-        search.set('minQueryLength', -1);
-
-        // Only send a request if this isn't the initially-selected tab.
-        if (e.prevVal) {
-            filter.sendRequest(filter.get('value'));
-        }
-        break;
-
-    case 'everything':
-        filter.set('minQueryLength', -1);
-        search.set('minQueryLength', 1);
-
-        if (search.get('value')) {
-            search.sendRequest(search.get('value'));
-        } else {
-            inputNode.focus();
-        }
-        break;
-
-    default:
-        // WTF? We shouldn't be here!
-        filter.set('minQueryLength', -1);
-        search.set('minQueryLength', -1);
-        */
-    }
+    prettyPrint();
     
-    search.changeTab(name);
-
-    if (focusManager) {
-        setTimeout(function () {
-            focusManager.refresh();
-        }, 1);
-    }
-}
-
-function onTabSwitchKey(e) {
-    var currentTabIndex = tabs.selected.index;
-
-    if (!(e.ctrlKey || e.metaKey)) {
-        return;
-    }
-
-    e.preventDefault();
-
-    switch (e.keyCode) {
-    case 37: // left arrow
-        if (currentTabIndex > 0) {
-            tabview.selectChild(currentTabIndex - 1);
-            inputNode.focus();
+    var elDocsTabWrap = jindo.$('docs-tab');
+    
+    var oDocsTab = elDocsTabWrap && new jindo.TabControl(elDocsTabWrap).attach({
+        
+        'click' : function(oCustomEvent) {
+            var weEvt = oCustomEvent.weEvent;
+            var elTab = weEvt.element;
+            
+            if (!$$.getSingle('! .tc-tab', elTab)) { return; }
+            
+            oCustomEvent.stop();
         }
-        break;
-
-    case 39: // right arrow
-        if (currentTabIndex < (Y.Object.size(tabs) - 2)) {
-            tabview.selectChild(currentTabIndex + 1);
-            inputNode.focus();
+        
+    });
+    
+    var getTabIndex = function(sTabName) {
+        
+        var aTabs = jindo.$$('li.tc-tab a', jindo.$('docs-tab'));
+        for (var i = 0, len = aTabs.length; i < len; i++) {
+            var elTab = aTabs[i];
+            if (new RegExp('#' + sTabName + '$').test(elTab.href)) {
+                return i;
+            }
         }
-        break;
-    }
-}
+        
+        return -1;
+        
+    };
+    
+    var onHashChange = function(oCustomEvent) {
+        
+        var sHash = oCustomEvent.hash;
+        
+        /^([a-z0-9]+)(_(.+))?$/i.test(sHash);
+        
+        var sTabName = RegExp.$1;
+        var sItemName = RegExp.$3;
+        
+        var nIndex = getTabIndex(sTabName);
+        
+        nIndex > -1 && oDocsTab.selectTab(nIndex);
+        
+    };
+    
+    var oHash = new jindo.Hash({
+        'frameSrc' : projectRoot + '/assets/lib/hash.html'
+    }).attach('change', onHashChange);
+    
+    onHashChange({ hash : oHash.get() });
+    
+    $Element(document).delegate('click', 'a', function(oEvent) {
+        
+        var el = oEvent.element;
+        var sHref = el.getAttribute('href');
+        
+        if (/^#(.*)$/.test(sHref)) {
+            var sHash = RegExp.$1;
+            oHash.set(sHash);
+            
+            oEvent.stopDefault();   
+        }
 
-}, '3.4.0', {requires: [
-    'event-key', 'node-focusmanager', 'tabview', 'api-search'
-]});
+    });
+    
+};

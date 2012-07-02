@@ -1,21 +1,19 @@
-YUI.add('api-search', function(Y) {
-    
-    var tabname = null;
+var APISearch = (function() {
 
-    Y.APISearch = function() {};
+    var MAXIMUM = 15;
     
-    function toSingular(p) {
+    var data = {};
+
+    var tabs = [ 'keyword', 'class', /*'module',*/ 'method', 'property', 'attribute', 'event' ];
+    var tabIdx = 0;
+
+    var inputNode   = $Element('api-filter'),
+        searchingNode = $Element('search-tab'),
+        notSearchingNode = $Element('no-search'),
+        resultNode  = searchingNode.queryAll('.tc-panel');
         
-        var s = p.replace(/s$/, ''); 
-        
-        return {
-            'classe' : 'class',
-            'propertie' : 'property',
-            'attr' : 'attribute'            
-        }[s] || s;
-        
-    };
-    
+    searchingNode.hide();
+
     function toPlural(s) {
         
         var p = s + 's'; 
@@ -26,30 +24,12 @@ YUI.add('api-search', function(Y) {
             'attributes' : 'attrs'            
         }[p] || p;
         
-    };
+    }
     
-    Y.APISearch.prototype.changeTab = function(name) {
-        tabname = name;
+    function changeTab(idx) {
+        tabIdx = idx;
         refreshResults();
-    };
-
-    var Search      = Y.namespace('Search'),
-        inputNode   = Y.one('#api-filter'),
-        resultNode  = {
-            keywords : Y.one('#api-keywords'),
-            classes : Y.one('#api-classes'),
-            methods : Y.one('#api-methods'),
-            properties : Y.one('#api-properties'),
-            attrs : Y.one('#api-attrs'),
-            events : Y.one('#api-events')
-        },
-        searchingNode = Y.one('#api-tabview'),
-        notSearchingNode = Y.one('#no-search');
-    
-    var data = Y.YUIDoc;
-    var MAXIMUM = 15;
-    
-    searchingNode.hide();
+    }
     
     function highlightMatch(sStr, sNeedle) {
         
@@ -63,12 +43,14 @@ YUI.add('api-search', function(Y) {
         
         return bMatch ? sRet : null;
         
-    }    
-    
+    }
+
     function getResults(data, field, value) {
         
         var result = null;
         if (!value) { return result; }
+        
+        var field = toPlural(field);
         
         var lists = data.detail[field] || [];
         for (var i = 0, len = lists.length; i < len; i++) {
@@ -93,47 +75,38 @@ YUI.add('api-search', function(Y) {
         
     }
     
-    var memberAnchor = function(item, itemtype) {
-        return projectRoot + 'classes/' + item['class'] + '.html#' + toSingular(itemtype) + '_' + item.name
-    };
+    function memberAnchor(item, itemtype) {
+        switch (itemtype) {
+        case 'keyword': case 'class':
+            return projectRoot + toPlural(itemtype) + '/' + item.name + '.html';
+        }
+        
+        return projectRoot + 'classes/' + item['class'] + '.html#' + itemtype + '_' + item.name
+    }
     
-    var memberDetail = function(item, itemtype) {
-        return [
-            item.description ? '<div class="description">' + item.description.replace(/<[^>]+>/g, '') + '</div>' : '',
-            '<span class="className">' + item['class'] + '</span>'
-        ].join('');
-    };
-    
-    var typeAnchors = {
-        'keywords' : function(item) { return projectRoot + 'keywords/' + item.name + '.html'; },
-        'classes' : function(item) { return projectRoot + 'classes/' + item.name + '.html'; },
-        'modules' : function(item) { return projectRoot + 'modules/' + item.name + '.html'; },
-        'methods' : memberAnchor,
-        'properties' : memberAnchor,
-        'attrs' : memberAnchor,
-        'events' : memberAnchor        
-    };
-
-    var typeDetails = {
-        'keywords' : function(item) {
+    function memberDetail(item, itemtype) {
+        switch (itemtype) {
+        case 'keyword':
             var html = [ '<ul>' ];
             for (var i = 0, len = item['class'].length; i < len; i++) {
                 html.push('<li>' + item['class'][i] + '</li>');   
             }
             html.push('</ul>');
             return html.join('');  
-        },
-        'classes' : function(item) { return item.description ? '<div class="description">' + item.description.replace(/<[^>]+>/g, '') + '</div>' : ''; },
-        'modules' : function(item) { return ''; },
-        'methods' : memberDetail,
-        'properties' : memberDetail,
-        'attrs' : memberDetail,
-        'events' : memberDetail
-    };
-    
+        
+        case 'class':
+            return item.description ? '<div class="description">' + item.description.replace(/<[^>]+>/g, '') + '</div>' : '';
+        }
+        
+        return [
+            item.description ? '<div class="description">' + item.description.replace(/<[^>]+>/g, '') + '</div>' : '',
+            '<span class="className type">&lt;' + item['class'] + '&gt;</span>'
+        ].join('');
+    }
+  
     function refreshResults() {
         
-        var value = inputNode._node.value;
+        var value = inputNode.$value().value;
         if (value) {
             searchingNode.show();
             notSearchingNode.hide();
@@ -144,33 +117,49 @@ YUI.add('api-search', function(Y) {
         
         var html = [];
 
-        var results = getResults(data, tabname, value) || [];
+        var type = tabs[tabIdx];
+        var results = getResults(data, type, value) || [];
         for (var j = 0, cnt = results.length; j < cnt; j++) {
             
             var item = results[j];
             
             html.push([
                 '<li class="result">',
-                    '<a href="' + typeAnchors[tabname](item, tabname) + '">',
-                        '<h3 class="title">' + item.matchName + '</h3>',
-                        '<span class="type">' + toSingular(tabname) + '</span>',
-                        typeDetails[tabname](item, tabname),
+                    '<a href="' + memberAnchor(item, type) + '">',
+                        '<h5 class="title">' + item.matchName + '</h5>',
+                        '<span class="flag category">' + type + '</span>',
+                        memberDetail(item, type),
                     '</a>',
                 '</li>'
             ].join(''));
         }
         
         if (!results.length) {
-            html.push('<li class="no-result">No results found.</li>');   
+            html.push('<li class="no-result">검색 결과가 없습니다.</li>');   
         }
         
-        resultNode[tabname].setHTML(html.join(''));        
+        resultNode[tabIdx].html(html.join(''));        
         
     }
     
-    inputNode.on('keyup', refreshResults);
-    inputNode.on('click', refreshResults);
-        
-}, '0.0.1', {
-    requires : [ ]
-});
+    function setData(_data) {
+        data = _data;
+    }
+    
+    inputNode.attach('keyup', refreshResults);
+    inputNode.attach('click', refreshResults);
+    
+    //////////////////////////////////////////
+    
+    var oTab = new jindo.TabControl('search-tab').attach({
+        select : function(oCustomEvent) {
+            changeTab(oCustomEvent.nIndex);            
+        }
+    });
+    
+    return {
+        setData : setData,
+        changeTab : changeTab
+    };
+    
+})();

@@ -289,6 +289,8 @@
 }
 
 .api-page .sidemenu h5 {
+	border-top:1px solid #bbb;
+	padding-top:5px;
 	font-size:1.2em;
 	color:#000;
 }
@@ -301,14 +303,16 @@
 	margin:5px 0 5px 10px;
 }
 
-.api-page .sidemenu ul.apis a {
+.api-page .sidemenu ul.apis a,
+#search-tab .panels a {
 	margin:2px 7px 2px 2px;
 	padding:1px 3px;
 	border-radius:5px;
 	display:block;
 }
 
-.api-page .sidemenu ul.apis a:hover {
+.api-page .sidemenu ul.apis a:hover,
+#search-tab .panels a:hover {
 	background-color:#eee;
 }
 
@@ -335,4 +339,107 @@
 .api-page .sidemenu span.optional {
 	font-style:italic;
 }
+
+
+#search-tab h4 {
+	margin-left:10px;
+}
+
+#search-tab h5 {
+	border:0;
+	padding:0 0 3px 0;
+}
+
+#search-tab .tabs {
+	margin:0;
+	text-align:center;
+	font-size:0;
+}
+
+#search-tab .tabs .tc-tab {
+	display:inline-block;
+	margin:-1px 0 0 -1px;
+	font-size:11px;
+	padding:3px 5px;
+	cursor:pointer;
+	_cursor:hand;
+	background-color:#ccc;
+	border:1px solid #aaa;
+	position:relative;
+}
+
+#search-tab .tabs .tc-selected {
+	background-color:#ddd;
+	background-image:linear-gradient(top, #fff 0%, #ddd 100%);
+	background-image:-ms-linear-gradient(top, #fff 0%, #ddd 100%);
+	background-image:-webkit-linear-gradient(top, #fff 0%, #ddd 100%);
+	background-image:-o-linear-gradient(top, #fff 0%, #ddd 100%);
+	background-image:-moz-linear-gradient(top, #fff 0%, #ddd 100%);
+	font-weight:bold;
+	border-bottom:1px solid #ddd;
+}
+
+#search-tab .panels {
+	border-top:1px solid #aaa;
+	margin-top:-1px;
+}
+
+#search-tab .panels .tc-panel {
+	display:none;
+}
+
+#search-tab .panels .tc-selected {
+	display:block;
+}
+
+#search-tab .result a {
+	position:relative;
+	padding:5px; margin:5px 0;
+	color:#666;
+}
+
+#search-tab .result .category {
+	position:absolute;
+	right:5px; top:5px;
+	margin:0;
+	color:#fff;
+	background-color:#aaa;
+	font-family:Arial;
+}
+
+#search-tab .result ul {
+	margin:0 0 0 15px;
+}
+
+#search-tab .result .description,
+#search-tab .result .className {
+	margin:0 0 0 15px;
+	padding:0;
+	font-size:11px;
+}
+
+#search-tab .result .description {
+	overflow:hidden;
+	text-overflow:ellipsis;
+	
+	display:-webkit-box;
+	-webkit-line-clamp:2; -webkit-box-orient:vertical
+}
+
+#search-tab .result .className {
+	color:#CA2D71;
+}
+
+#search-tab .no-result {
+	padding:20px 0;
+	text-align:center;
+	font-size:1.2em;
+}
+
+#api-keywords,
+.tc-panel {
+	margin:5px !important;
+	color:#000;
+}
+
 

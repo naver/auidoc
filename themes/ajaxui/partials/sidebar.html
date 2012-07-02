@@ -13,24 +13,26 @@
     <input type="search" id="api-filter" placeholder="검색어를 입력하세요.">
 </div>
 
-<div id="api-tabview" class="tabview" style="display:none;">
+<div id="search-tab">
+    
+    <h4>검색결과</h4>
 
     <ul class="tabs">
-        <li><a href="#api-keywords">Keywords</a></li>
-        <li><a href="#api-classes">Classes</a></li>
-        <li><a href="#api-methods">Methods</a></li>
-        <li><a href="#api-properties">Properties</a></li>
-        <li><a href="#api-attrs">Attributes</a></li>
-        <li><a href="#api-events">Events</a></li>
+        <li class="tc-tab tc-selected">키워드</li>
+        <li class="tc-tab">클래스</li>
+        <li class="tc-tab">메서드</li>
+        <li class="tc-tab">프로퍼티</li>
+        <li class="tc-tab" style="display:none;">속성</li>
+        <li class="tc-tab">이벤트</li>
     </ul>
 
-    <div id="api-tabview-panel">
-        <ul id="api-keywords" class="apis keywords search"></ul>
-        <ul id="api-classes" class="apis classes search"></ul>
-        <ul id="api-methods" class="apis methods search"></ul>
-        <ul id="api-properties" class="apis properties search"></ul>
-        <ul id="api-attrs" class="apis attrs search"></ul>
-        <ul id="api-events" class="apis events search"></ul>
+    <div class="panels">
+        <ul id="api-keywords" class="tc-panel"></ul>
+        <ul id="api-classes" class="tc-panel"></ul>
+        <ul id="api-methods" class="tc-panel"></ul>
+        <ul id="api-properties" class="tc-panel"></ul>
+        <ul id="api-attrs" class="tc-panel"></ul>
+        <ul id="api-events" class="tc-panel"></ul>
     </div>
 
 </div>
