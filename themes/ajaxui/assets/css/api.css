@@ -61,6 +61,7 @@
 
 .api-page .content h1 {
 	font-size:2em;
+	margin-top:15px;
 	text-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
 	color:#000;
 	font-weight:bold;
@@ -213,15 +214,41 @@
 }
 
 .api-page .item .params-list {
-	margin:5px 0 5px 10px;
+	margin:5px 0 5px 15px;
 	padding-left:10px;
+}
+
+.api-page .item .returns .params-list {
+	margin:-5px 0 0 45px;
+	padding-left:15px;
+	border-left:2px solid #ddd;
+}
+
+.api-page .item .collapsed .params-list {
+	display:none;
 }
 
 .api-page .item .param {
 	margin:10px 0;
 }
 
-.api-page .item .returns .params-list,
+.api-page .item button.fold {
+	width:14px;
+	height:14px;
+	background-color:yellow;
+	overflow:hidden;
+	border:0; margin:0;
+	margin:0 6px 0 -23px;
+	text-indent:-9em;
+	vertical-align:middle;
+	background:url(../images/minus.png) no-repeat left top;
+}
+
+.api-page .item .collapsed button.fold {
+	background:url(../images/plus.png) no-repeat left top;
+}
+
+.api-page .item .returns .params-list .params-list,
 .api-page .item .params-list .params-list {
 	border-left:2px solid #ddd;
 	margin:-5px 0 0 20px;
@@ -234,8 +261,16 @@
 	font-size:1.1em;
 }
 
+.api-page .returns .description {
+	margin:0 0 0 25px;	
+}
+
+.api-page .returns .param .description {
+	margin:0 0 0 20px;	
+}
+
 .api-page .param .description ul {
-	list-style:square;
+	list-style:disc;
 	margin:5px 0 0 2em;
 }
 
@@ -566,3 +601,14 @@
 	font-size:1em;
 }
 
+.api-page .sidemenu h3 a {
+	background:url(../images/home.png) no-repeat right 1px;
+	padding-right:30px;
+}
+
+.api-page .sidemenu h3 a span {
+	border-bottom:1px solid #EA2D81;
+}
+.api-page .sidemenu h3 a:hover span {
+	color:#EA4D91;
+}

@@ -1,4 +1,8 @@
-<li class="param">
+<% var hasProps = HAS(this.props); %>
+<li class="param <% if (hasProps) { %>collapsed<% } %>">
+    <% if (hasProps) { %>
+        <button class="fold">자세히 보기</button>
+    <% } %>
     <% if (HAS(this.optional)) { %>
         <code class="name optional"><%=this.name%></code>
         <span class="type">&lt;<%=crossLink(this.type)%>&gt;</span>
@@ -16,7 +20,7 @@
         <%=this.description%>
     </div>
 
-    <% if (HAS(this.props)) { %>
+    <% if (hasProps) { %>
         <ul class="params-list">
             <% EACH(this.props, function() { %>
                 <%=INCLUDE("param", this)%>

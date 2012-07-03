@@ -54,4 +54,17 @@ $Element(document).attach('domready', function() {
 
 	})();
 	
+	(function() {
+	    
+	    $Element(document).delegate('click', 'button.fold', function(oEvent) {
+	        
+	        var elButton = oEvent.element;
+	        var elParent = $$.getSingle('! .param', elButton);
+	        
+	        elParent && $Element(elParent).toggleClass('collapsed');
+	        
+	    });
+	    
+	})();
+	
 });

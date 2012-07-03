@@ -94,7 +94,7 @@
     <% } %>
     
     <% EACH(this.return, function() { %>
-        <div class="returns param">
+        <div class="returns param collapsed">
             <h4>
                 반환값
                 <% if (HAS(this.type)) { %>
@@ -103,6 +103,9 @@
             </h4>
 
             <div class="description">
+                <% if (HAS(this.props)) { %>
+                    <button class="fold">자세히 보기</button>
+                <% } %>
                 <%=this.description%>
             </div>
             
