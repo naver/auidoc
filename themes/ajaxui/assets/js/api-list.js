@@ -44,6 +44,18 @@ var apiDocs = function(projectRoot) {
         
         nIndex > -1 && oDocsTab.selectTab(nIndex);
         
+        var welEl = jindo.$Element(sHash);
+        if (welEl) {
+            
+            var nTop = welEl.offset().top;
+            document.documentElement.scrollTop = document.body.scrollTop = nTop - 15;
+            
+            welEl.addClass('highlight');
+            setTimeout(function() {
+                welEl.removeClass('highlight');
+            }, 500);
+        }
+        
     };
     
     var oHash = new jindo.Hash({
