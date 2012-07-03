@@ -48,7 +48,9 @@ var apiDocs = function(projectRoot) {
         if (welEl) {
             
             var nTop = welEl.offset().top;
+            
             document.documentElement.scrollTop = document.body.scrollTop = nTop - 15;
+            window.scrollBy(0, 0);
             
             welEl.addClass('highlight');
             setTimeout(function() {

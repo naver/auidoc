@@ -544,3 +544,25 @@
 .api-page .file li {
 	list-style:decimal;
 }
+
+.api-page .demo .description,
+.api-page .manual .description {
+	padding:0;
+	margin:15px 0 0 15px;
+}
+
+.api-page .demo p,
+.api-page .manual p {
+	margin:10px 0;
+}
+
+.api-page .demo em,
+.api-page .manual em {
+	font-style:italic;
+}
+
+.api-page .demo pre,
+.api-page .manual pre {
+	font-size:1em;
+}
+
