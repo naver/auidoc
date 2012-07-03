@@ -67,4 +67,48 @@ $Element(document).attach('domready', function() {
 	    
 	})();
 	
+	(function() {
+	    
+	    var wrap = $('class-columns');
+	    if (!wrap) { return; }
+	    
+        var columns = $$('.column', wrap);
+        var stacks = $$('.stack', wrap);
+        
+        var heights = Array(columns.length);
+        
+        var getMinHeightIndex = function() {
+            
+            var minHeight = Infinity;
+            var minIndex = -1;
+            
+            for (var i = 0, len = heights.length; i < len; i++) {
+                
+                var height = heights[i] || 0;
+                if (height < minHeight) {
+                    minHeight = height;
+                    minIndex = i;
+                }
+                
+            }
+            
+            return minIndex;
+            
+        };
+        
+        for (var i = 0, len = stacks.length; i < len; i++) {
+            
+            var index = getMinHeightIndex();
+            var column = columns[index];
+            
+            var stack = stacks[i];
+            column.appendChild(stack);
+            
+            stack.style.display = 'block';
+            heights[index] = (heights[index] || 0) + stack.offsetHeight;
+
+        }
+	    
+	})();
+	
 });

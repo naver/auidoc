@@ -1,17 +1,20 @@
-<h1><%=this.name%> 키워드</h1>
-
 <% if (HAS(this.keywordClasses)) { %>
-    <ul class="class-list">
-    <% EACH(this.keywordClasses, function(projectRoot) { %>
-        <li>
-            <% if (HAS(this.screenshots)) { %>
-                <img src="<%=this.screenshots[0].href%>" title="<%==this.screenshots[0].description%>" />
-            <% } %>
-            <h2><a href="<%=projectRoot%>classes/<%=this.name%>.html">
-                <%=this.displayName%>
-            </a></h2>
-            <p class="description"><%=this.description%></p>
-        </li>
-    <% }, [ this.projectRoot ]); %>
-    </ul>
+    <h1><%=this.name%> 키워드</h1>
+
+    <div id="class-columns">
+        <ul class="class-list column">
+        <% EACH(this.keywordClasses, function(projectRoot) { %>
+            <li class="stack">
+                <% if (HAS(this.screenshots)) { %>
+                    <img src="<%=this.screenshots[0].href%>" title="<%==this.screenshots[0].description%>" />
+                <% } %>
+                <h2><a href="<%=projectRoot%>classes/<%=this.name%>.html">
+                    <%=this.displayName%>
+                </a></h2>
+                <p class="description"><%=this.description%></p>
+            </li>
+        <% }, [ this.projectRoot ]); %>
+        </ul>
+        <ul class="class-list column"></ul>
+    </div>
 <% } %>

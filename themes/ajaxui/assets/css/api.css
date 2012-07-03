@@ -503,17 +503,24 @@
 	color:#000;
 }
 
-.api-page .class-list {
-	margin-top:10px;
+.api-page #stacks {
 	overflow:hidden;
+}
+
+.api-page .column {
+	float:left;
+	width:339px;
+	margin:10px;
+	overflow:hidden;
+}
+
+.api-page .stack {
+	display:none;
 }
 
 .api-page .class-list li {
 	padding:10px;
-	margin:5px;
-	width:327px;
-	height:100px;
-	float:left;
+	margin:10px 0;
 	overflow:hidden;
 	border:1px solid #ccc;
 	border-radius:5px;
