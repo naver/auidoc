@@ -207,6 +207,7 @@ form#quick-search label {
 #left-columns {
 	float:left;
 	width:220px;
+	margin-top:0;
 	transition:margin-top .3s ease-out;
 	-ms-transition:margin-top .3s ease-out;
 	-webkit-transition:margin-top .3s ease-out;

@@ -1,11 +1,20 @@
 #left-columns {
 	overflow:hidden;
 	overflow-y:scroll;
-	position:relative;
+	position:fixed;
+
+	transition:none
+	-ms-transition:none;
+	-webkit-transition:none;
+	-o-transition:none;
+	-moz-transition:none;
+}
+
+#main {
+	margin-left:220px;
 }
 
 .sidemenu {
-	position:absolute;
 	z-index:1;
 }
 
@@ -213,6 +222,10 @@
 	margin:10px 0 10px 20px;
 }
 
+.api-page .item .history {
+	margin:15px 0;
+}
+
 .api-page .item .params-list {
 	margin:5px 0 5px 15px;
 	padding-left:10px;
@@ -309,7 +322,9 @@
 }
 
 .api-page pre.syntax {
-	background-color:#fff;
+	background-color:#f7f7f7;
+	border:0;
+	padding:5px 10px;
 }
 
 .api-page .sidemenu {
@@ -540,6 +555,7 @@
 
 .api-page .class-list .description {
 	padding:0 0 0 15px;
+	margin:10px 0 0 0;
 	font-size:1.1em;
 	overflow:hidden; text-overflow:ellipsis;
 	display:-webkit-box;
@@ -556,6 +572,7 @@
 	font-weight:bold;
 	font-size:1.2em !important;
 	background-color:#eee;
+	color:#000;
 }
 
 .api-page .history th,
@@ -565,14 +582,23 @@
 	padding:3px 5px;
 }
 
-.api-page .history .version,
+.api-page .history .version {
+	width:70px;
+	text-align:center;
+}
+
 .api-page .history .category {
 	width:100px;
 	text-align:center;
 }
 
+.api-page .history .target {
+	width:15px;
+	text-align:center;
+}
+
 .api-page .history .description {
-	font-size:1em;
+	font-size:1.1em;
 }
 
 .api-page .file {
@@ -616,6 +642,16 @@
 .api-page .sidemenu h3 a span {
 	border-bottom:1px solid #EA2D81;
 }
+
 .api-page .sidemenu h3 a:hover span {
 	color:#EA4D91;
+}
+
+.api-page .content a.internal-link {
+	width:16px; height:16px;
+	overflow:hidden;
+	display:inline-block;
+	text-indent:-9em;
+	border:0 !important;
+	background:url(../images/link.png) no-repeat;
 }

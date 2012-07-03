@@ -29,6 +29,7 @@ $Element(document).attach('domready', function() {
 		    
 		    var nScrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
 		    
+		    /*
 			var nTop = Math.max(0, nScrollTop - 140);
 			var nHeight = elLeft.offsetHeight;
 			var nBottom = nTop + nHeight;
@@ -37,17 +38,26 @@ $Element(document).attach('domready', function() {
 				nTop -= (nBottom - elMain.offsetHeight);
 				nTop = Math.max(0, nTop);
 			}
+			*/
 			
-			elLeft.style.marginTop = nTop + 'px';
+			// elLeft.style.marginTop = nTop + 'px';
+			elLeft.style.marginTop = -Math.min(nScrollTop, 140) + 'px';
 			
             var nClientHeight = $Document().clientSize().height;
-            elLeft.style.height = nClientHeight + Math.min(0, nScrollTop - 140) + 'px';
+            // elLeft.style.height = nClientHeight + Math.min(0, nScrollTop - 140) + 'px';
+
+            var aArea = [
+                Math.max(nScrollTop, 140),
+                Math.min(nScrollTop + nClientHeight, 140 + elMain.offsetHeight)
+            ];
+            
+            elLeft.style.height = aArea[1] - aArea[0] + 'px';
             
             // oScroll.refresh();
 
 		};
 		
-        fpRelocate();
+        setTimeout(fpRelocate, 0);
 		
 		$Element(window).attach('scroll', fpRelocate);
 		$Element(window).attach('resize', fpRelocate);
