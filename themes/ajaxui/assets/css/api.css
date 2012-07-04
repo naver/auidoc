@@ -3,11 +3,15 @@
 	overflow-y:scroll;
 	position:fixed;
 
-	transition:none
-	-ms-transition:none;
-	-webkit-transition:none;
-	-o-transition:none;
-	-moz-transition:none;
+	transition:0s
+	-ms-transition:0s;
+	-webkit-transition:0s;
+	-o-transition:0s;
+	-moz-transition:0s;
+}
+
+*:first-child+html #left-columns { /* IE7 */
+	margin-left:-220px;	
 }
 
 #main {
@@ -672,6 +676,7 @@
 
 .api-page .more-history {
 	text-indent:-9em;
+	overflow:hidden;
 	width:14px; height:14px;
 	background:url(../images/plus.png) no-repeat left top;
 }
