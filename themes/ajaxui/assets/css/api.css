@@ -339,6 +339,11 @@
 	word-wrap:break-word;
 }
 
+.api-page .file pre.code {
+	border:0;
+	background-color:#fff;
+}
+
 .api-page pre.syntax {
 	background-color:#f7f7f7;
 	border:0;
@@ -707,12 +712,12 @@
 	background:url(../images/minus.png) no-repeat left top;
 }
 
-.api-page .inherited,
-.api-page .deprecated {
+.api-page li.inherited, .api-page div.inherited,
+.api-page li.deprecated, .api-page div.deprecated {
 	display:none;
 }
 
-.show-inherited .inherited,
-.show-deprecated .deprecated {
+.show-inherited li.inherited, .show-inherited div.inherited,
+.show-deprecated li.deprecated, .show-deprecated div.deprecated {
 	display:block;
 }
