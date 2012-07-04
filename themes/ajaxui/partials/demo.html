@@ -3,5 +3,7 @@
         <a href="<%=this.href%>" target="_blank"><%=this.name%></a>
         <a href="<%=this.href%>" class="internal-link" title="현재 창으로 열기">현재 창으로 열기</a>
     </h3>
-    <p class="description"><%==this.description%></p>
+    <% if (HAS(this.description)) { %>
+        <p class="description"><%==this.description%></p>
+    <% } %>
 </div>
