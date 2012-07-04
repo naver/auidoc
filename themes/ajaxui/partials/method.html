@@ -81,13 +81,13 @@
         <div class="returns param collapsed">
             <h4>
                 반환값
-                <% if (HAS(this.type)) { %>
-                    <span class="type">&lt;<%=crossLink(this.type)%>&gt;</span>
-                <% } %>
                 
                 <% if (HAS(chainable)) { %>
                     <span class="flag chainable">chainable</span>
+                <% } else { %>
+                    <span class="type">&lt;<%=crossLink(this.type)%>&gt;</span>
                 <% } %>
+                    
             </h4>
 
             <div class="description">
