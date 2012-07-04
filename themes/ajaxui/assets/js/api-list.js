@@ -199,6 +199,27 @@ var apiDocs = function(projectRoot) {
             
         })();
         
+        (function() {
+            
+            var showInherited = jindo.$('api-show-inherited');
+            var showDeprecated = jindo.$('api-show-deprecated');
+            
+            var refresh = function() {
+                $Element(document.body).cssClass({
+                   'show-inherited' : showInherited.checked,
+                   'show-deprecated' : showDeprecated.checked
+                });
+                
+                fpRelocate();
+            };
+
+            $Element(showInherited).attach('click', refresh);
+            $Element(showDeprecated).attach('click', refresh);
+            
+            refresh();
+            
+        })();
+        
     });
     
     

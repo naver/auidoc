@@ -637,6 +637,28 @@
 	margin:15px 0 0 15px;
 }
 
+.api-page .manual .description ul {
+	list-style:disc;
+	margin:0 0 0 2em;
+}
+
+.api-page .manual .description li {
+	margin:5px 0;
+}
+
+.api-page .manual .description img {
+	margin:5px;
+}
+
+.api-page #docs-tab .manual .description h2 {
+	display:block;
+	border:0;
+	padding:0;
+	margin:10px 0;
+	font-size:1.2em;
+	text-shadow:none;
+}
+
 .api-page .demo p,
 .api-page .manual p {
 	margin:10px 0;
@@ -649,7 +671,7 @@
 
 .api-page .demo pre,
 .api-page .manual pre {
-	font-size:1em;
+	font-size:12px;
 }
 
 .api-page .sidemenu h3 a {
@@ -683,4 +705,14 @@
 
 .api-page .show-all-rows .more-history {
 	background:url(../images/minus.png) no-repeat left top;
+}
+
+.api-page .inherited,
+.api-page .deprecated {
+	display:none;
+}
+
+.show-inherited .inherited,
+.show-deprecated .deprecated {
+	display:block;
 }
