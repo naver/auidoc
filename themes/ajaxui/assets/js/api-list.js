@@ -4,6 +4,8 @@ var apiDocs = function(projectRoot) {
     
     var elDocsTabWrap = jindo.$('docs-tab');
     
+    var fpRelocate = function() {};
+    
     var oDocsTab = elDocsTabWrap && new jindo.TabControl(elDocsTabWrap).attach({
         
         'click' : function(oCustomEvent) {
@@ -58,6 +60,8 @@ var apiDocs = function(projectRoot) {
             }, 500);
         }
         
+        fpRelocate();
+        
     };
     
     var oHash = new jindo.Hash({
@@ -79,5 +83,123 @@ var apiDocs = function(projectRoot) {
         }
 
     });
+        
+    $Element(document).delegate('click', 'button.fold', function(oEvent) {
+        
+        var elButton = oEvent.element;
+        var elParent = $$.getSingle('! .param', elButton);
+        
+        elParent && $Element(elParent).toggleClass('collapsed');
+        
+        fpRelocate();
+        
+    });
+        
+    $Element(document).delegate('click', 'button.more-history', function(oEvent) {
+        
+        var elButton = oEvent.element;
+        var elParent = $$.getSingle('! .history', elButton);
+        
+        elParent && $Element(elParent).toggleClass('show-all-rows');
+        
+        fpRelocate();
+        
+    });
+        
+    $Element(document).attach('domready', function() {
+        
+        var elLeft = $('left-columns');
+        var elMain = $('main');
+    
+        // Relocation left-columns
+        (function() {
+            
+            if (!elLeft) { return; }
+        
+            fpRelocate = function() {
+                
+                var nScrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
+                
+                /*
+                var nTop = Math.max(0, nScrollTop - 140);
+                var nHeight = elLeft.offsetHeight;
+                var nBottom = nTop + nHeight;
+                
+                if (nBottom > elMain.offsetHeight) {
+                    nTop -= (nBottom - elMain.offsetHeight);
+                    nTop = Math.max(0, nTop);
+                }
+                */
+                
+                // elLeft.style.marginTop = nTop + 'px';
+                elLeft.style.marginTop = -Math.min(nScrollTop, 140) + 'px';
+                
+                var nClientHeight = $Document().clientSize().height;
+                // elLeft.style.height = nClientHeight + Math.min(0, nScrollTop - 140) + 'px';
+    
+                var aArea = [
+                    Math.max(nScrollTop, 140),
+                    Math.min(nScrollTop + nClientHeight, 140 + elMain.offsetHeight)
+                ];
+                
+                elLeft.style.height = aArea[1] - aArea[0] + 'px';
+                
+                // oScroll.refresh();
+    
+            };
+            
+            setTimeout(fpRelocate, 0);
+            
+            $Element(window).attach('scroll', fpRelocate);
+            $Element(window).attach('resize', fpRelocate);
+    
+        })();
+        
+        (function() {
+            
+            var wrap = $('class-columns');
+            if (!wrap) { return; }
+            
+            var columns = $$('.column', wrap);
+            var stacks = $$('.stack', wrap);
+            
+            var heights = Array(columns.length);
+            
+            var getMinHeightIndex = function() {
+                
+                var minHeight = Infinity;
+                var minIndex = -1;
+                
+                for (var i = 0, len = heights.length; i < len; i++) {
+                    
+                    var height = heights[i] || 0;
+                    if (height < minHeight) {
+                        minHeight = height;
+                        minIndex = i;
+                    }
+                    
+                }
+                
+                return minIndex;
+                
+            };
+            
+            for (var i = 0, len = stacks.length; i < len; i++) {
+                
+                var index = getMinHeightIndex();
+                var column = columns[index];
+                
+                var stack = stacks[i];
+                column.appendChild(stack);
+                
+                stack.style.display = 'block';
+                heights[index] = (heights[index] || 0) + stack.offsetHeight;
+    
+            }
+            
+        })();
+        
+    });
+    
     
 };

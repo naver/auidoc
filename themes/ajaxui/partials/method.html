@@ -61,30 +61,14 @@
         
     <% if (HAS(this.history)) { %>
         <div class="history">
-            <h4>히스토리</h4>
-            <div class="history-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="version">릴리즈</th>
-                            <th class="category">종류</th>
-                            <th class="description">내용</th>
-                        </tr>
-                    </thead>
-                <% EACH(sortHistory(this.history), function() { %>
-                    <tbody>
-                        <tr>
-                            <td class="version"><%==this.version%></td>
-                            <td class="category <%==this.category%>"><%==this.category%></td>
-                            <td class="description"><%==this.description%></td>
-                        </tr>
-                    </tbody>
-                <% }); %>
-                </table>
-            </div>
+            <h4>
+                히스토리
+                <% if (this.history.length > 3) { %><button class="more-history">더보기</button><% } %>
+            </h4>
+            <%=INCLUDE("section.history", this)%>
         </div>
     <% } %>
-
+    
     <% if (HAS(this.params)) { %>
         <div class="params">
             <h4>파라미터</h4>

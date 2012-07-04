@@ -222,6 +222,20 @@
 	margin:10px 0 10px 20px;
 }
 
+.api-page .history-table tbody tr {
+	display:none;
+}
+
+.api-page .show-all-rows .history-table tbody tr {
+	display:table-row;
+}
+
+.api-page .history-table tbody tr.idx_0,
+.api-page .history-table tbody tr.idx_1,
+.api-page .history-table tbody tr.idx_2 {
+	display:table-row;
+}
+
 .api-page .item .history {
 	margin:15px 0;
 }
@@ -654,4 +668,14 @@
 	text-indent:-9em;
 	border:0 !important;
 	background:url(../images/link.png) no-repeat;
+}
+
+.api-page .more-history {
+	text-indent:-9em;
+	width:14px; height:14px;
+	background:url(../images/plus.png) no-repeat left top;
+}
+
+.api-page .show-all-rows .more-history {
+	background:url(../images/minus.png) no-repeat left top;
 }
