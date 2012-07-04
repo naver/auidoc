@@ -18,10 +18,6 @@
             <span class="flag static">static</span>
         <% } %>
     
-        <% if (HAS(this.chainable)) { %>
-            <span class="flag chainable">chainable</span>
-        <% } %>
-    
         <% if (HAS(this.async)) { %>
             <span class="flag async">async</span>
         <% } %>
@@ -81,12 +77,16 @@
         </div>
     <% } %>
     
-    <% EACH(this.return, function() { %>
+    <% EACH(this.return, function(chainable) { %>
         <div class="returns param collapsed">
             <h4>
                 반환값
                 <% if (HAS(this.type)) { %>
                     <span class="type">&lt;<%=crossLink(this.type)%>&gt;</span>
+                <% } %>
+                
+                <% if (HAS(chainable)) { %>
+                    <span class="flag chainable">chainable</span>
                 <% } %>
             </h4>
 
@@ -106,7 +106,7 @@
             <% } %>
             
         </div>
-    <% }); %>
+    <% }, [ this.chainable ]); %>
 
     <% EACH(this.example, function() { %>
         <div class="example">
