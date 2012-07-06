@@ -315,7 +315,7 @@
 	font-size:11px;
 	color:#CA2D71;
 	margin-left:3px;
-	font-family:나눔고딕코딩, Consolas, 'Lucida Console';
+	font-family:나눔고딕코딩, Consolas, 'Lucida Console', Monaco;
 	font-weight:normal;
 	text-shadow:none;
 }
@@ -326,7 +326,7 @@
 
 .api-page .item .default {
 	margin:10px 0 10px 15px;
-	font-family:나눔고딕코딩, Consolas, 'Lucida Console';
+	font-family:나눔고딕코딩, Consolas, 'Lucida Console', Monaco;
 }
 
 .api-page pre.code {
@@ -335,7 +335,7 @@
 	border:1px solid #ddd;
 	margin:10px 0;
 	background-color:#eee;
-	font-family:나눔고딕코딩, Consolas, 'Lucida Console';
+	font-family:나눔고딕코딩, Consolas, 'Lucida Console', Monaco;
 	word-wrap:break-word;
 }
 
