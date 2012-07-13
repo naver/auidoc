@@ -655,13 +655,30 @@
 	margin:5px;
 }
 
-.api-page #docs-tab .manual .description h2 {
+.api-page #docs-tab .manual .description h2,
+.api-page #docs-tab .manual .description h3 {
 	display:block;
 	border:0;
 	padding:0;
 	margin:10px 0;
 	font-size:1.2em;
 	text-shadow:none;
+}
+
+.api-page #docs-tab .manual .description h3 ~ p,
+.api-page #docs-tab .manual .description h3 ~ pre.code {
+	margin-left:30px;
+}
+
+.api-page #docs-tab .manual .description h2 ~ p,
+.api-page #docs-tab .manual .description h2 ~ pre.code {
+	margin-left:15px;
+}
+
+.api-page #docs-tab .manual .description h3 {
+	font-size:1.2em;
+	margin-left:15px;
+	font-weight:normal;
 }
 
 .api-page .demo p,
