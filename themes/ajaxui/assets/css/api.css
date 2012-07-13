@@ -713,6 +713,7 @@
 }
 
 .api-page li.inherited, .api-page div.inherited,
+.api-page li.private, .api-page div.private,
 .api-page li.deprecated, .api-page div.deprecated {
 	display:none;
 }
