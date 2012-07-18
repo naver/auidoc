@@ -30,6 +30,12 @@
         <%=this.propertyDescription%>
     </div>
 
+	<% if (HAS(this.remark)) { %>
+	<div class="remark">
+	    <%=this.remark%>
+	</div>
+	<% } %>
+	
     <dl class="relation">
         
         <% if (HAS(this.overwritten_from)) { %>

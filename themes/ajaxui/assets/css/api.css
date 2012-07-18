@@ -740,12 +740,19 @@
 	display:block;
 }
 
-.api-page .see ul {
+.api-page .refer ul {
 	list-style:disc;
 	margin:5px 0 0 2em;
 	font-size:1.2em;
 }
 
-.api-page .see ul li {
+.api-page .refer ul li {
 	margin:2px 0;	
+}
+
+.api-page .remark {
+	margin-left:10px;
+	padding:3px 0 3px 30px;
+	color:#640;
+	background:url(../images/remark.png) no-repeat left top;
 }

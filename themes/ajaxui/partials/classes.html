@@ -12,6 +12,12 @@
     <%=this.classDescription%>
 </div>
 
+<% if (HAS(this.remark)) { %>
+<div class="remark">
+    <%=this.remark%>
+</div>
+<% } %>
+
 <dl class="relation">
     <% if (HAS(this.requires)) { %>
         <dt>의존</dt>
@@ -65,11 +71,11 @@
     </div>
 <% } %>
 
-<% if (HAS(this.see)) { %>
-    <div class="see">
+<% if (HAS(this.refer)) { %>
+    <div class="refer">
         <h2>참고자료</h2>
         <ul>
-        <% EACH(this.see, function() { %>
+        <% EACH(this.refer, function() { %>
             <li><a href="<%=this.href%>" target="_blank"><%=this.name%></a></li>
         <% }); %>
         </ul>

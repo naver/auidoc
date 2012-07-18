@@ -20,6 +20,12 @@
         <%=this.description%>
     </div>
 
+	<% if (HAS(this.remark)) { %>
+	<div class="remark">
+	    <%=this.remark%>
+	</div>
+	<% } %>
+	
     <% if (hasProps) { %>
         <ul class="params-list">
             <% EACH(this.props, function() { %>
