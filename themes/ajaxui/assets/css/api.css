@@ -739,3 +739,13 @@
 .show-deprecated li.deprecated, .show-deprecated div.deprecated {
 	display:block;
 }
+
+.api-page .see ul {
+	list-style:disc;
+	margin:5px 0 0 2em;
+	font-size:1.2em;
+}
+
+.api-page .see ul li {
+	margin:2px 0;	
+}

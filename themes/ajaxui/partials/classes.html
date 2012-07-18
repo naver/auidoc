@@ -65,6 +65,17 @@
     </div>
 <% } %>
 
+<% if (HAS(this.see)) { %>
+    <div class="see">
+        <h2>참고자료</h2>
+        <ul>
+        <% EACH(this.see, function() { %>
+            <li><a href="<%=this.href%>" target="_blank"><%=this.name%></a></li>
+        <% }); %>
+        </ul>
+    </div>
+<% } %>
+
 <div id="docs-tab">
     <ul class="tabs">
         <% if (HAS(this.constructors)) { %>
