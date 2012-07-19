@@ -18,6 +18,7 @@
 </div>
 <% } %>
 
+<% if (HAS(this.requires) || HAS(this.uses) || HAS(this.extends) || HAS(this.module) || HAS(this.since)) { %>
 <dl class="relation">
     <% if (HAS(this.requires)) { %>
         <dt>의존</dt>
@@ -49,6 +50,7 @@
         <dd><%=this.since%>~</dd>
     <% } %>
 </dl>
+<% } %>
 
 <% if (HAS(this.history)) { %>
     <div class="history">

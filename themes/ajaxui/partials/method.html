@@ -35,6 +35,7 @@
 	</div>
 	<% } %>
 	
+	<% if (HAS(this.overwritten_from) || HAS(this.extended_from) || HAS(this.since)) { %>
     <dl class="relation">
         
         <% if (HAS(this.overwritten_from)) { %>
@@ -58,6 +59,7 @@
             <dd><%=this.since%>~</dd>
         <% } %>
     </dl>
+    <% } %>
     
     <pre class="code syntax"><code class="prettyprint"><%=this.syntax%></code></pre>
         

@@ -87,15 +87,10 @@
 	margin:10px; padding:0;
 }
 
-.api-page .relation dt,
-.api-page .relation dd {
-	margin:0; padding:0;
-	float:left;
-	height:20px;
-}
-
 .api-page .relation dt {
 	clear:both;
+	float:left;
+	height:20px;
 	width:3em;
 	text-align:right;
 	padding-right:1em;
@@ -103,6 +98,16 @@
 	font-size:1.2em;
 	font-weight:normal;
 	text-shadow:2px 2px 5px rgba(0, 0, 0, .2);
+}
+
+.api-page .relation dd {
+	overflow:hidden;
+	min-height:20px;
+	zoom:1
+}
+
+.api-page .relation dd a{
+	color:#CA2D71 !important;
 }
 
 .api-page .flag {
@@ -160,8 +165,11 @@
 	margin:0 -10px;
 }
 
-.api-page #docs-tab .tc-tab a {
+.api-page #docs-tab .tc-tab {
 	float:left;
+}
+
+.api-page #docs-tab .tc-tab a {
 	position:relative;
 	z-index:1;
 	display:block;
@@ -270,7 +278,7 @@
 	overflow:hidden;
 	border:0; margin:0;
 	margin:0 6px 0 -23px;
-	text-indent:-9em;
+	line-height:10em;
 	vertical-align:middle;
 	background:url(../images/minus.png) no-repeat left top;
 }
@@ -320,6 +328,14 @@
 	text-shadow:none;
 }
 
+.api-page .type a{
+	color:#CA2D71 !important;
+}
+
+.api-page .type a:hover{
+	color:#CA2D71 !important;
+}
+
 .api-page .item .example-content {
 	margin-left:20px;
 }
@@ -352,7 +368,7 @@
 
 .api-page .sidemenu {
 	padding-bottom:10px;
-	width:100%;
+	zoom:1
 }
 
 .api-page .sidemenu h3 a {
@@ -755,4 +771,14 @@
 	padding:3px 0 3px 30px;
 	color:#640;
 	background:url(../images/remark.png) no-repeat left top;
+}
+
+.api-page #version {
+	background-color:#aaa;
+	color:#444;
+	position:absolute;
+	right:-5px; top:-5px;
+	padding:5px 10px 0px 5px;
+	border-radius:5px;
+	font-size:.9em
 }

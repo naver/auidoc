@@ -41,19 +41,20 @@
 	</div>
 	<% } %>
 	
+	<% if (HAS(this.overwritten_from) || HAS(this.extended_from) || HAS(this.since)) { %>
     <dl class="relation">
         
         <% if (HAS(this.overwritten_from)) { %>
             <dt>상속</dt>
             <dd>
-                <a href="<%=crossLinkRaw(this.overwritten_from.class)%>#attr_<%=this.overwritten_from.name%>">
+                <a href="<%=crossLinkRaw(this.overwritten_from.class)%>#method_<%=this.overwritten_from.name%>">
                     <%=this.overwritten_from.class%>
                 </a>
             </dd>
         <% } else if (HAS(this.extended_from)) { %>
             <dt>상속</dt>
             <dd>
-                <a href="<%=crossLinkRaw(this.extended_from)%>#attr_<%=this.name%>">
+                <a href="<%=crossLinkRaw(this.extended_from)%>#method_<%=this.name%>">
                     <%=this.extended_from%>
                 </a>
             </dd>
@@ -64,6 +65,7 @@
             <dd><%=this.since%>~</dd>
         <% } %>
     </dl>
+    <% } %>
 
     <% if (HAS(this.default)) { %>
         <h4>기본값</h4>
