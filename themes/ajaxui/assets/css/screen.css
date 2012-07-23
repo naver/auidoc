@@ -73,13 +73,14 @@ select.disabled { display:none; opacity:.5; }
 	color: #fff;
 }
 
+/*color*/
 #nav ul li.selected {
-	background: transparent url(../images/left-tab-new.gif) no-repeat;	
+	background-color:#5fa5e1;
+	border-radius:5px 5px 0 0;
 }
 
 #nav ul li.selected a {	
 	color: #fff;
-	background: transparent url(../images/right-tab-new.gif) no-repeat right top;
 	text-shadow:0 0 3px rgba(255, 255, 255, .5);
 	font-weight:bold;	
 }
@@ -126,12 +127,14 @@ form#quick-search label {
 }
 
 /* logo-text */
+
+/*color*/
 #header {
 	position:relative; height:1.6em;
-	background-color:#5c6f1e;
+	background-color:#5e9cbf;
 	background-image:linear-gradient(bottom, #3c4f00 0%, #5c6f1e 100%);
 	background-image:-ms-linear-gradient(bottom, #3c4f00 0%, #5c6f1e 100%);
-	background-image:-webkit-linear-gradient(bottom, #3c4f00 0%, #5c6f1e 100%);
+	background-image:-webkit-linear-gradient(bottom, #3a658a 0%, #5fa5e1 100%);
 	background-image:-o-linear-gradient(bottom, #3c4f00 0%, #5c6f1e 100%);
 	background-image:-moz-linear-gradient(bottom, #3c4f00 0%, #5c6f1e 100%);
 	border-bottom:1px dotted #ddd;
@@ -144,11 +147,12 @@ form#quick-search label {
 	height:1.5em;
 }
 
+/*color*/
 #header h1#logo-text a {
 	position: absolute; 
 	font: normal 1em Georgia, 'Times New Roman', Times, serif;
 	letter-spacing: -.08em;
-	color: #93b876;
+	color: #74caf8;
 	text-shadow: 0px 0px 15px rgba(0, 0, 0, .5);
 	bottom: -.15em; right: 20px;	
 }
@@ -166,33 +170,31 @@ form#quick-search label {
 	width:80px; height:22px;
 }
 
-.end-page #header h1#logo-text .at,
-.api-page #header h1#logo-text .at {
+.end-page #header h1#logo-text .at {
 	font-size:20px;
 	margin-left:-5px;
 	margin-right:5px;
 }
 
-.end-page #header h1#logo-text img,
-.api-page #header h1#logo-text img {
+.end-page #header h1#logo-text img {
 	width:40px; height:11px;
 }
 
+/*color*/
 #header p#intro {
 	position: absolute;
 	display:inline;
 	font-size: .25em;
 	font-style: italic;
 	letter-spacing: -.5px;
-	color: #7ba45b;
+	color: #74caf8;
 	text-shadow: 0px 0px 10px rgba(0, 0, 0, .7);
 	overflow:hidden;
 	padding:1em;
 	bottom: 2.7em; right: 170px;		
 }
 
-.end-page #header p#intro,
-.api-page #header p#intro {
+.end-page #header p#intro {
 	right: 130px;		
 }
 
@@ -207,7 +209,6 @@ form#quick-search label {
 #left-columns {
 	float:left;
 	width:220px;
-	margin-top:0;
 	transition:margin-top .3s ease-out;
 	-ms-transition:margin-top .3s ease-out;
 	-webkit-transition:margin-top .3s ease-out;
@@ -250,9 +251,10 @@ form#quick-search label {
 	margin-left:-1px;
 }
 
+/*color*/
 .sidemenu ul li a:link,
 .sidemenu ul li a:visited {
-	color: #5b8837;
+	color: #243f56;
 }
 .sidemenu ul li a span {
 	color: #9f9f9f;
@@ -266,8 +268,7 @@ form#quick-search label {
 	overflow:hidden;
 }
 
-.end-page #main,
-.api-page #main {
+.end-page #main {
 	border-left:1px dotted #ddd;
 }
 
@@ -427,11 +428,12 @@ form#quick-search label {
 	margin:0 auto 10px auto;
 }
 
+/*color*/
 #right-banner h3 {
 	background-color:#5C6F1E;
 	background-image:linear-gradient(top, #4c5f0e 0%, #5c6f1e 100%);
 	background-image:-ms-linear-gradient(top, #4c5f0e 0%, #5c6f1e 100%);
-	background-image:-webkit-linear-gradient(top, #4c5f0e 0%, #5c6f1e 100%);
+	background-image:-webkit-linear-gradient(top, #3a658a 0%, #5fa5e1 100%);
 	background-image:-o-linear-gradient(top, #4c5f0e 0%, #5c6f1e 100%);
 	background-image:-moz-linear-gradient(top, #4c5f0e 0%, #5c6f1e 100%);
 	color:#fff;
@@ -517,7 +519,6 @@ form#quick-search label {
 #footer {
 	position:relative;
 	background-color:#444;
-	clear:both;
 	color:#ccc;
 	text-align:center;
 	padding:15px 0;
@@ -757,3 +758,49 @@ form#quick-search label {
 .bts-usage-open .show-bts-help { display:none; }
 
 
+.tree .tree-collapsed ul { display:none; }
+
+.tree .tree-node ul { margin:0; }
+
+.tree .tree-node a {
+	padding:7px 5px; margin-right:-10px;
+	white-space:nowrap;
+}
+
+.tree .tree-node .tree-node a {
+	padding:3px 5px;
+	padding-left:20px;
+}
+
+.tree .tree-node a.tree-selected {
+	/* background-color:#fff; */
+}
+
+.tree .tree-node .tree-button {
+	background-color:transparent; border:0; margin:0;
+	width:9px; height:9px; font-size:0;
+	color:transparent; line-height:200%;
+	position:relative; top:-5px; margin-right:5px;
+	overflow:hidden; display:inline-block; visibility:hidden;
+	background:url(../images/button.gif) no-repeat 0 0 transparent;
+	cursor:pointer; _cursor:hand;
+}
+
+.tree .tree-node .tree-has-child .tree-button {
+	visibility:visible;
+}
+
+.tree .tree-collapsed .tree-has-child .tree-button {
+	background-position:0 -9px !important;
+}
+
+.tree .tree-node .tree-label {
+	display:block;
+	color:inherit;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+#000000;
+rgb(1, 2, 3);
+rgba(1, 2, 3, .5);

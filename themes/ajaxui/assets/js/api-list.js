@@ -106,9 +106,13 @@ var apiDocs = function(projectRoot) {
         
     });
     
-    $Element('classes_options').attach('change', function(oEvent) {
-    	location.href = oEvent.element.value;
-    });
+    if ($('classes_options')) {
+    
+	    $Element('classes_options').attach('change', function(oEvent) {
+	    	location.href = oEvent.element.value;
+		});
+	    
+	}
         
     $Element(document).attach('domready', function() {
         
