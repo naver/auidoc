@@ -74,7 +74,7 @@
 
 .api-page .content h1 {
 	font-size:2em;
-	margin-top:15px;
+	margin-bottom:15px;
 	text-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
 	color:#000;
 	font-weight:bold;
@@ -782,3 +782,24 @@
 	border-radius:5px;
 	font-size:.9em
 }
+
+#left-columns h3 {
+	padding-top:17px;
+	margin: 0 10px 15px 10px;
+}
+
+#left-columns #classes_options {
+	margin:0 10px;
+	padding:2px;
+	width:187px;
+	font-size:1.2em;
+}
+
+#main {
+	padding:0;
+}
+
+#main .body {
+	padding:10px;
+	overflow:hidden;
+}	

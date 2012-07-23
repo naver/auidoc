@@ -39,10 +39,18 @@
 </div>
 
 <div id="no-search">
+    <% if (this.tag === 'class') { %>
+    	<select id="classes_options">
+	        <% EACH(this.classes, function(projectRoot, curName) { %>
+	            <option value="<%=projectRoot%>classes/<%=this.name%>.html" <%=(curName === this.displayName ? 'selected="selected"' : '')%>>
+	                <%=this.displayName.replace(/^jindo\./, '')%>
+	            </option>
+	        <% }, [ this.projectRoot, this.name ]); %>
+    	</select>
+	<% } %>
     <ul class="apis">
     <% if (this.tag === 'class') { %>
         <h4>
-            <a href="<%=this.projectRoot%>index.html" class="goup">[상위]</a>
             <%=this.name%> 클래스
         </h4>
 

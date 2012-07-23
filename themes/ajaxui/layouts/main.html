@@ -64,23 +64,22 @@
 
         <!-- left-columns -->
         <div id="left-columns">
-        	<div id="version">Version <%=this.projectVersion%></div>
-
             <div class="sidemenu">  
+	        	<div id="version">Version <%=this.projectVersion%></div>
                 <%=INCLUDE("sidebar", this)%>
             </div>
         </div>
                 
         <!-- main content -->       
         <div id="main">
-        	
-            <div class="options">
-        	   <%=INCLUDE("options", this)%>
-        	</div>
-            <div class="content">
-            	<%=INCLUDE("layout_content", this)%>
-            </div>
-            
+        	<div class="body">
+	            <div class="options">
+	        	   <%=INCLUDE("options", this)%>
+	        	</div>
+	            <div class="content">
+	            	<%=INCLUDE("layout_content", this)%>
+	            </div>
+			</div>            
         </div>
         
         <!-- footer -->

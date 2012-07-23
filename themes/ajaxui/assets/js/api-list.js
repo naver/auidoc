@@ -105,11 +105,18 @@ var apiDocs = function(projectRoot) {
         fpRelocate();
         
     });
+    
+    $Element('classes_options').attach('change', function(oEvent) {
+    	location.href = oEvent.element.value;
+    });
         
     $Element(document).attach('domready', function() {
         
         var elLeft = $('left-columns');
         var elMain = $('main');
+        
+        var elSidemenu = $$.getSingle('.sidemenu', elLeft);
+        var elBody = $$.getSingle('.body', elMain);
     
         // Relocation left-columns
         (function() {
@@ -118,18 +125,9 @@ var apiDocs = function(projectRoot) {
         
             fpRelocate = function() {
                 
+                elMain.style.height = Math.max(elSidemenu.scrollHeight, elBody.scrollHeight) + 'px';
+
                 var nScrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
-                
-                /*
-                var nTop = Math.max(0, nScrollTop - 140);
-                var nHeight = elLeft.offsetHeight;
-                var nBottom = nTop + nHeight;
-                
-                if (nBottom > elMain.offsetHeight) {
-                    nTop -= (nBottom - elMain.offsetHeight);
-                    nTop = Math.max(0, nTop);
-                }
-                */
                 
                 // elLeft.style.marginTop = nTop + 'px';
                 elLeft.style.marginTop = -Math.min(nScrollTop, 140) + 'px';
