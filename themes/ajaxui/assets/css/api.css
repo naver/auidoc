@@ -802,4 +802,13 @@
 #main .body {
 	padding:10px;
 	overflow:hidden;
+}
+
+#header h1#logo-text a {
+	bottom:10px;
 }	
+
+#header h1#logo-text img {
+	width:160px;
+	height:56px;	
+}
