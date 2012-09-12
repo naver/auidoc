@@ -6,11 +6,11 @@
         <% }); %>
     <% }); %>
 
-    <% if (HAS(this.requires)) { %>
+    <% if (HAS(this.uses)) { %>
         <div class="uses">
-            Requires
+            Uses
             <ul class="inline commas">
-                <% EACH(this.requires, function() { %>
+                <% EACH(this.uses, function() { %>
                     <li><%=crossLinkModule(this)%></li>
                 <% }); %>
             </ul>

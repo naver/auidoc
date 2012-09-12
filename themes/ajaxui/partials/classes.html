@@ -18,16 +18,16 @@
 </div>
 <% } %>
 
-<% if (HAS(this.requires) || HAS(this.uses) || HAS(this.extends) || HAS(this.module) || HAS(this.since)) { %>
+<% if (HAS(this.uses) || HAS(this.mixin) || HAS(this.extends) || HAS(this.module) || HAS(this.since)) { %>
 <dl class="relation">
-    <% if (HAS(this.requires)) { %>
-        <dt>의존</dt>
-        <dd><%=crossLink(this.requires).join(', ')%></dd>
+    <% if (HAS(this.uses)) { %>
+        <dt>사용</dt>
+        <dd><%=crossLink(this.uses).join(', ')%></dd>
     <% } %>
 
-    <% if (HAS(this.uses)) { %>
+    <% if (HAS(this.mixin)) { %>
         <dt>확장</dt>
-        <dd><%=crossLink(this.uses).join(', ')%></dd>
+        <dd><%=crossLink(this.mixin).join(', ')%></dd>
     <% } %>
 
     <% if (HAS(this.extends)) { %>
