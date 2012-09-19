@@ -1,106 +1,124 @@
-<%
-    sortHistory = function(h) {
-        return h.sort(function(a, b) {
-           return a.version > b.version ? -1 : 1; 
-        });
-    };
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html lang="ko">
 <head>
-    <title><%=this.htmlTitle%> - AjaxUI@NHN</title>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" media="screen" href="<%=this.projectAssets%>/lib/prettify/prettify-min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="<%=this.projectAssets%>/css/reset.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="<%=this.projectAssets%>/css/screen.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="<%=this.projectAssets%>/css/search.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="<%=this.projectAssets%>/css/api.css" />
-    <script type="text/javascript" src="<%=this.projectAssets%>/lib/jindo.desktop.min.js"></script>
-    <script type="text/javascript" src="<%=this.projectAssets%>/lib/jindo_component.min.js"></script>
-    <script type="text/javascript" src="<%=this.projectAssets%>/lib/hash.js"></script>
-    <script type="text/javascript">
-    	
-    	console.log(<%=JSON.stringify(this)%>);
-    	
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<title>jindo.CheckBox - <%=this.htmlTitle%> - AjaxUI@NHN</title>
+<link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/prettify/prettify-min.css" media="screen">
+<link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/api.css" media="screen">
+
+<!-- link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/css/respon.css" media="screen and (min-width:640px)" -->
+<!--[if lt IE 9]><script type="text/javascript" src="<%=this.projectAssets%>/respond.min.js"></script><![endif]-->
 </head>
-<body class="api-page"><div id="header-bg"></div>
-    
-    <div id="wrap">
-        
-        <!-- navigation -->
-        <div id="nav">
-            <ul>
-                <li><a href="http://jindo.nhncorp.com/ajaxui_home/index.html">HOME</a></li>
-                <li><a href="http://jindo.nhncorp.com/ajaxui_home/library.html">LIBRARY</a></li>
-                <li class="selected"><a href="http://jindo.nhncorp.com/ajaxui_home/tech_guide.html">TECH GUIDE</a></li>
-                <li><a href="http://jindo.nhncorp.com/ajaxui_home/experiment.html">EXPERIMENT</a></li>
-                <li><a href="http://jindo.nhncorp.com/ajaxui_home/support.html">SUPPORT</a></li>
-            </ul>
+<body class="api-page">
+<div id="wrap">
 
-            <form id="quick-search" class="sc_search">
-                <p>
-                    <label for="qsearch">Search:</label>
-                    <input class="tbox" id="search_txt" type="text" name="qsearch" placeholder="Jindo API 검색" title="Start typing and hit ENTER" />
-                    <input class="btn" alt="Search" type="image" name="searchsubmit" title="Search" src="<%=this.projectAssets%>/images/search.gif"  onclick="return false;"/>
-                </p>
-                <div id="search_suggest" class="ly_sug"></div>
-            </form>
-            
-            <div class="clear-both"></div>
-        </div>
-        
-        <!-- header -->
-        <div id="header">                       
-            <div class="background-pattern"></div>
-            <h1 id="logo-text">
-                <a href="<%=this.projectRoot%>index.html">
-                    <img src="<%=this.projectAssets%>/../../<%=this.projectLogo%>" />
-                </a>
-            </h1>
-        </div>
+	<div id="header">
+		<h1><a href="<%=this.projectRoot%>index.html"><span class="blind">JINDO JS</span></a></h1>
+		<div class="info">
+			<span class="version">version <%=this.projectVersion%></span>
+			<span class="bar">|</span>
+			<span class="help"><span class="ic_help"></span><a href="#">버그신고/문의</a></span>
+		</div>
+		<div class="menu">
+			<button type="button" class="btn_sch"><span class="blind">검색</span></button>
+			<button type="button" class="btn_snb btn_snb_on"><span class="blind">메뉴</span></button>
+			<!-- [D] 클릭시 btn_sch_on,btn_snb_on 추가 -->
+		</div>
+	</div>
 
-        <!-- left-columns -->
-        <div id="left-columns">
-            <div class="sidemenu">  
-	        	<div id="version">Version <%=this.projectVersion%></div>
-                <%=INCLUDE("sidebar", this)%>
-            </div>
-        </div>
-                
-        <!-- main content -->       
-        <div id="main">
-        	<div class="body">
-	            <div class="options">
-	        	   <%=INCLUDE("options", this)%>
-	        	</div>
-	            <div class="content">
-	            	<%=INCLUDE("layout_content", this)%>
-	            </div>
-			</div>            
-        </div>
-        
-        <!-- footer -->
-        <div id="footer">
-            <p>Copyright © <a href="http://nhncorp.com/" target="_blank">NHN</a> - AjaxUI Lab. All Rights Reserved.</p>                     
-        </div>
+	<!-- sch_frm -->
+	<div class="sch_frm ">
+		<h2 class="blind">검색</h2>
+		<div class="filter">
+			<input type="search" id="api-filter" placeholder="검색어를 입력하세요.">
+		</div>
+		<div id="search-tab">
+			<ul class="tabs">
+			<li class="tc-tab ">전체</li>
+			<li class="tc-tab tc-selected">키워드</li>
+			<li class="tc-tab">클래스</li>
+			<li class="tc-tab">메서드</li>
+			<li class="tc-tab">프로퍼티</li>
+			<li class="tc-tab">이벤트</li>
+			</ul>
+			<div class="panels">
+				<ul id="api-keywords" class="tc-panel tc-selected">
+				<li class="result">
+					<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rolling.html">
+					</a>
+					<p class="title">
+						<strong>roll</strong>ing
+						<span class="flag keyword">keyword</span>
+					</p>
+					<ul>
+					<li>CircularRolling</li>
+					<li>Rolling</li>
+					</ul></a>
+				</li>
+				<li class="result">
+					<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rollingchart.html">
+					</a>
+					<p class="title">
+						<strong>roll</strong>ingchart
+						<span class="flag class">class</span>
+					</p>
+					<span class="className type">RollingChart</span></a>
+				</li>
+				<li class="result">
+					<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rolloverarea.html">
+					</a>
+					<p class="title">
+						<strong>roll</strong>overarea
+						<span class="flag method">method</span>
+					</p>
+					<span class="className type">RollingChart</span></a>
+				</li>
+				<li class="result">
+					<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./classes/jindo.CircularRolling.html">
+					</a>
+					<p class="title">jindo.Circular<strong>Roll</strong>ing
+						<span class="flag property">property</span>
+					</p>
+					<p class="description">jindo.CircularRolling 컴포넌트는 리스트의 아이템을 무한대로 순환하여 이동시키는 롤링 컴포넌트이다.</p></a>
+				</li>
+				</ul>
+				<ul id="api-classes" class="tc-panel"></ul>
+				<ul id="api-methods" class="tc-panel"></ul>
+				<ul id="api-properties" class="tc-panel"></ul>
+				<ul id="api-attrs" class="tc-panel"></ul>
+				<ul id="api-events" class="tc-panel"></ul>
+			</div>
 
-    </div>
+		</div>
+	</div>
+	<!-- // sch_frm -->
 
-    <div id="footer-bg"></div>
-    <!--
-    <script type="text/javascript" charset="utf-8" src="/docs/jindo/search/js/background.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/docs/jindo/search/js/app.js"></script>
-    -->
-    <script type="text/javascript" charset="utf-8" src="<%=this.projectAssets%>/lib/prettify/prettify-min.js"></script>
-    <script type="text/javascript" src="<%=this.projectAssets%>/js/api-list.js"></script>
-    <script type="text/javascript" src="<%=this.projectAssets%>/js/api-search.js"></script>
-    <script type="text/javascript" src="<%=this.projectAssets%>/../api.js?callback=APISearch.setData"></script>
-    <script type="text/javascript" charset="utf-8">
-    
-        var projectRoot = location.href.replace(/\/[^\/]*$/, '') + "/<%=this.projectRoot%>";
-        apiDocs(projectRoot);
-        
-    </script>
+	<div id="container" <%=(this.tag === 'class' ? '' : 'class="api_main"')%>>
+		<!-- left-columns -->
+		<div id="left-columns" class="sidemenu">
+			<%=INCLUDE("sidebar", this)%>
+		</div>
+		<!-- // left-columns -->
+
+		<!-- main content -->
+		<div id="main">
+			<div class="main_fix">
+				<%=INCLUDE("layout_content", this)%>
+			</div>
+		</div>
+		<!-- // main content -->
+
+	</div>
+	<!-- // container -->
+
+	<!-- footer -->
+	<div id="footer">
+		<p>Copyright ©<a href="http://nhncorp.com/" target="_blank">NHN Corp.</a> Platform Ajax Team. All Rights Reserved.</p>
+	</div>
+	<!-- // footer -->
+
+</div>
+<!-- // wrap -->
 </body>
 </html>

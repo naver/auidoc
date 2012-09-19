@@ -1,20 +1,331 @@
-<% if (HAS(this.classes)) { %>
-    <h1>클래스</h2>
-    
-    <div id="class-columns">
-        <ul class="class-list column">
-        <% EACH(this.classes, function(projectRoot) { %>
-            <li class="stack">
-                <% if (HAS(this.screenshots)) { %>
-                    <img src="<%=this.screenshots[0].href%>" title="<%==this.screenshots[0].description%>" />
-                <% } %>
-                <h2><a href="<%=projectRoot%>classes/<%=this.name%>.html">
-                    <%=this.displayName.replace(/^jindo\./, '')%>
-                </a></h2>
-                <p class="description"><%=this.description.split('\n')[0]%></p>
-            </li>
-        <% }, [ this.projectRoot ]); %>
-        </ul>
-        <ul class="class-list column"></ul>
-    </div>
-<% } %>
+<div class="section_inn first">
+
+	<div class="intro">
+		<h3 class="h_txt_jd"><span class="blind">jindo js는 nhn에서 제작한 javascript library입니다.</span></h3>
+		<p>JindoJS Component는 JindoJS를 기반으로 개발된 재사용 가능한 독립적인 자바스크립트 모듈입니다. Jindo JS Component는 JindoJS 를 기반으로 개발된 재사용 가능한 독립적인 자바스크립트 모듈입니다.
+		</p>
+		<span class="desc">(zip 압축파일 입니다.)</span>
+	</div>
+
+	<!-- 다운로드 -->
+	<div class="sc_dw">
+		<h2>다운로드</h2>
+		<table class="tbl_board">
+		<caption class="hide">다운로드</caption>
+		<colgroup>
+		<col style="50%">
+		<col style="50%">
+		</colgroup>
+		<tr>
+		<th scope="row">전체 다운로드</th>
+		<th scope="row">선택 다운로드</th>
+		</tr>
+		<tr>
+		<td>
+			<ul>
+			<li>
+				<span class="radio-applied">
+					<span class="radio-mark radio-checked"></span>
+					<input type="radio" id="file" checked="checked" value="">
+				</span><label for="file">압축 함 (267KB)</label>
+			</li>
+			<li>
+				<span class="radio-applied">
+					<span class="radio-mark"></span>
+					<input type="radio" id="file3" value="">
+				</span><label for="file3">압축 안함 (267KB)</label>
+			</li>
+			</ul>
+			<button type="button" class="btn_dw">Download</button>
+		</td>
+		<td>
+			<p>(선택 다운로드 페이지로 이동합니다.)</p>
+			<button type="button" class="btn_dw">Go</button>
+		</td>
+		</tr>
+		</table>
+		<p class="version">현재 릴리즈 버전 :<em>2.2.0</em></p>
+	</div>
+	<!-- // 다운로드 -->
+</div>
+
+<div class="section_inn">
+	<h2>릴리즈 노트</h2>
+	<div class="release">
+		<ol>
+		<li class="selected">
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt">
+					<em>[기능개선내역]</em> LayerManger<br> show/hide 메서드 사용시 동기적으로 수행되도록 수단 제공<br> 1.0.4 항상 비동기적으로 수행됨<br> 1.1.0 변경된 Timer 컴퍼넌트를 사용하여 delay 값으로 음수를 지정하면 동기적으로 수행되도록 변경<br><br> SelectArea<br> deselectAll 의 속도 개선<br> 1.0.4 선택해제시 이미 선택해제 되어 있는 항목도 모두 선택해제를 시도<br> 1.1.0 현재 선택되어 있는 항목만 선택해제하도록 수정<br><br> Timer<br> delay 값을 음수로 지정하면 타이머를 타지 않도록 수정<br> 1.0.4 항상 타이머를 타도록(비동기적으로 수행되도록) 구현<br> 1.1.0 delay 값으로 음수를 사용하면 동기적으로 수행되도록 수정<br>
+				</p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		<li>
+			<dl>
+			<dt>
+				<span class="date">2012-09-11</span>
+				<a href="">Jindo Component 1.1.0 릴리즈노트</a>
+			</dt>
+			<dd>
+				<p class="tit">Jindo 컴퍼넌트 1.1.0 이 릴리즈 되었습니다.</p>
+				<p class="txt"></p>
+			</dd>
+			</dl>
+		</li>
+		</ol>
+	</div>
+	<button type="button" class="btn_more">더보기<span class="ic"></span></button>
+</div>
+
+<div class="section_inn">
+	<h2>지원환경</h2>
+
+	<div class="support">
+		<div class="support_list desktop">
+			<strong class="tit">Desktop</strong>
+			<ul>
+			<li>
+				<span title="Internet Explorer" class="ic ie">IE</span>6.0 이상
+			</li>
+			<li>
+				<span title="Firefox" class="ic ff">Firefox</span>3.0 이상
+			</li>
+			<li>
+				<span title="Safari" class="ic safari">safari</span>4.0 이상
+			</li>
+			<li>
+				<span title="Opera" class="ic opera">opera</span>10.0 이상
+			</li>
+			<li>
+				<span title="Chrome" class="ic chrome">chrome</span>2 이상
+			</li>
+			</ul>
+		</div>
+
+		<div class="support_list mobile">
+			<strong class="tit"><span>Mobile</span></strong>
+			<ul>
+			<li>
+				<span title="Android" class="ic androi">androi</span> 2.1~ 4.1
+			</li>
+			<li>
+				<span title="ios" class="ic ios">ios</span> 3.0 ~ 5.x
+			</li>
+		</ul>
+		</div>
+	</div>
+</div>
+
+<div class="section_inn">
+	<h2>지원환경</h2>
+
+	<div class="support desktop">
+		<strong class="tit">Desktop</strong>
+		<ul>
+		<li>
+			<span title="Internet Explorer" class="ic ie">IE</span>6.0 이상
+		</li>
+		<li>
+			<span title="Firefox" class="ic ff">Firefox</span>3.0 이상
+		</li>
+		<li>
+			<span title="Safari" class="ic safari">safari</span>4.0 이상
+		</li>
+		<li>
+			<span title="Opera" class="ic opera">opera</span>10.0 이상
+		</li>
+		<li>
+			<span title="Chrome" class="ic chrome">chrome</span>2 이상
+		</li>
+		</ul>
+
+	</div>
+</div>
+
+<div class="section_inn">
+	<h2>지원환경</h2>
+
+	<div class="support support_spec">
+		<h3>현재 지원환경</h3>
+		<div class="support_list ios">
+			<strong class="tit">ios</strong>
+			<ul class="">
+			<li>
+				<p class="ver">3.0</p>
+				<p class="txt">iPod Touch</p>
+			</li>
+			<li>
+				<p class="ver">4.3.3</p>
+				<p class="txt">iPhone3GS<br> iPhone4<br> iPad<br> iPad2<br></p>
+			</li>
+			<li>
+				<p class="ver">5.0</p>
+				<p class="txt">iPhone4<br> iPhone4S<br> iPad<br> iPad2<br></p>
+			</li>
+			</ul>
+		</div>
+
+		<div class="support_list android">
+			<strong class="tit">Android</strong>
+			<ul class="">
+			<li>
+				<p class="ver">2.1</p>
+				<p class="txt">갤럭시S</p>
+			</li>
+			<li>
+				<p class="ver">2.2</p>
+				<p class="txt">갤럭시S<br> 갤럭시K<br> 옵티머스2X<br> 베가X<br> 갤럭시Tab<br></p>
+			</li>
+			<li>
+				<p class="ver">2.3</p>
+				<p class="txt">갤럭시S<br> 넥서스S<br> 갤럭시S2<br> 갤럭시 Note<br></p>
+			</li>
+			<li>
+				<p class="ver">3.1</p>
+				<p class="txt">갤럭시Tab<br></p>
+			</li>
+			<li>
+				<p class="ver">4.0</p>
+				<p class="txt">갤럭시Nexus<br> 갤럭시S2<br> 갤럭시 Note<br> 갤럭시S2 LTE<br> 갤럭시S3<br></p>
+			</li>
+			</ul>
+		</div>
+
+		<div class="support_list chrome">
+			<strong class="tit">Chrome</strong>
+			<ul class="">
+			<li>
+				<p class="txt">갤럭시Nexus<br> 갤럭시S2<br> 갤럭시 Note<br> 갤럭시S2 LTE<br> 갤럭시S3<br></p>
+			</li></dd>
+			</ul>
+		</div>
+	</div>
+	<p class="footnote"><i>[표1]</i> 현재 지원환경</p>
+
+	<div class="support">
+		<h3>지원 예정환경</h3>
+		<ul class="plan">
+		<li>ios</li>
+		<li>Android</li>
+		<li>Blackberry</li>
+		<li>Window Phone</li>
+		<li>Samsung Bada</li>
+		</ul>
+	</div>
+	<p class="footnote"><i>[표2]</i> 지원 예정환경</p>
+</div>
