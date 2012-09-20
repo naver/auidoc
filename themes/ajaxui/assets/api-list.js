@@ -79,30 +79,16 @@ var apiDocs = function(projectAssets) {
         // fpRelocate();
         
     });
-       
-    /*
-    $Element(document).delegate('click', 'button.more-history', function(oEvent) {
-        
-        var elButton = oEvent.element;
-        var elParent = $$.getSingle('! .history', elButton);
-        
-        elParent && $Element(elParent).toggleClass('show-all-rows');
-        
-        fpRelocate();
-        
-    });
-    */
-
-	/*    
-    if ($('classes_options')) {
     
-	    $Element('classes_options').attach('change', function(oEvent) {
-	    	location.href = oEvent.element.value;
-		});
-	    
-	}
-	*/
+	$Element(document).delegate('click', 'button.btn_open, button.btn_close', function(oEvent) {
 	
+		var elButton = oEvent.element;
+		var elParent = $$.getSingle('! .history-table', elButton);
+	
+		elParent && $Element(elParent).toggleClass('history-open');
+	    
+	});
+
 	(function() {
 		
 		var welDemoList = $Element('demo_list');
@@ -139,6 +125,16 @@ var apiDocs = function(projectAssets) {
 		});
 		
 		fpSetDemo(welDemoList.query('a').$value());
+		
+	})();
+	
+	(function() {
+		
+		var aHistoryTables = $$('div.history-table');
+		
+		for (var i = 0, nLen = aHistoryTables.length; i < nLen; i++) {
+			var elTable = aHistoryTables[i];
+		}
 		
 	})();
 	

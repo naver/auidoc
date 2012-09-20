@@ -5,7 +5,7 @@
         });
     }
 %>
-<div class="history-table">
+<div class="history-table" >
 	<table class="tbl_board">
 	<caption class="hide">전체 히스토리</caption>
 	<colgroup>
@@ -32,5 +32,8 @@
     <% }); %>
 	</tbody>
 	</table>
+	<% if (this.length > 3) { %>
 	<button type="button" title="접기" class="btn_close"><span class="blind">접기</span><span class="ic"></span></button>
+	<button type="button" title="펼치기" class="btn_open"><span class="blind">펼치기</span><span class="ic"></span></button>
+	<% } %>
 </div>

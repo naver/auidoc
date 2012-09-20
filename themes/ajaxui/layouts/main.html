@@ -143,6 +143,17 @@
 		overflow:hidden;
 	}
 	
+	.api-page .history-table .btn_close { display:none; }
+	.api-page .history-open .btn_close { display:block; }
+	.api-page .history-open .btn_open { display:none; }
+	
+	.api-page .history-table tbody tr { display:none; }
+	.api-page .history-table tbody tr.idx_0,
+	.api-page .history-table tbody tr.idx_1,
+	.api-page .history-table tbody tr.idx_2 { display:table-row; }
+
+	.api-page .history-open tbody tr { display:table-row !important; }
+	
 </style>
 <script type="text/javascript" src="<%=this.projectAssets%>/prettify/prettify-min.js"></script>
 <script type="text/javascript" src="<%=this.projectAssets%>/jindo.desktop.min.js"></script>
