@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-<title>jindo.CheckBox - <%=this.htmlTitle%> - AjaxUI@NHN</title>
+<title><%=this.htmlTitle%> - AjaxUI@NHN</title>
 <link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/prettify/prettify-min.css" media="screen">
 <link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/api.css" media="screen">
 
@@ -11,7 +11,7 @@
 <!--[if lt IE 9]><script type="text/javascript" src="<%=this.projectAssets%>/respond.min.js"></script><![endif]-->
 </head>
 <body class="api-page">
-<div id="wrap">
+<div id="wrap" <%=(this.tag === 'class' ? '' : 'class="lft_fold"')%>><!-- 2Depth 접기 : lft_fold 추가 -->
 
 	<div id="header">
 		<h1><a href="<%=this.projectRoot%>index.html"><span class="blind">JINDO JS</span></a></h1>
@@ -94,9 +94,9 @@
 	</div>
 	<!-- // sch_frm -->
 
-	<div id="container" <%=(this.tag === 'class' ? '' : 'class="api_main"')%>>
+	<div id="container">
 		<!-- left-columns -->
-		<div id="left-columns" class="sidemenu">
+		<div id="left-columns" class="sidemenu has_scrollbar">
 			<%=INCLUDE("sidebar", this)%>
 		</div>
 		<!-- // left-columns -->
@@ -120,5 +120,39 @@
 
 </div>
 <!-- // wrap -->
+
+<style type="text/css">
+
+	.item { border-color:#fff; }
+	.highlight {
+		background-color:#f8f8f8 !important;
+		border:3px solid #3B7BFB !important;
+		margin:-3px;
+		border-radius:10px;
+	}
+	
+	.hide-deprecated .deprecated, .hide-inherited .inherited {
+		display:none;
+	}
+	
+	.scrollbar-v, .scrollbar-h { display:none; }
+	.scrollbar-show { display:block; }
+	
+	.scrollbar-box {
+		position:relative;
+		overflow:hidden;
+	}
+	
+</style>
+<script type="text/javascript" src="<%=this.projectAssets%>/prettify/prettify-min.js"></script>
+<script type="text/javascript" src="<%=this.projectAssets%>/jindo.desktop.min.js"></script>
+<!--<script type="text/javascript" src="<%=this.projectAssets%>/jindo_component.js"></script>-->
+<script type="text/javascript" src="file:///D:/git/auidoc/themes/ajaxui/assets/jindo_component.js"></script>
+<script type="text/javascript" src="<%=this.projectAssets%>/hash.js"></script>
+<!--<script type="text/javascript" src="<%=this.projectAssets%>/api-list.js"></script>-->
+<script type="text/javascript" src="file:///D:/git/auidoc/themes/ajaxui/assets/api-list.js"></script>
+<script type="text/javascript">
+    apiDocs("<%=this.projectAssets%>");	
+</script>
 </body>
 </html>

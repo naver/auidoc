@@ -43,7 +43,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 }
 
 #header{position:relative;width:100%;height:44px;border-bottom:1px solid #2b2b2b;background:#2b2b2b;background:-webkit-gradient(linear, left top, left bottom,from(#686868),to(#434343))}
-#header h1{position:absolute;top:10px;left:10px;width:67px;height:26px;background:url(img/sp_jindo.png) -200px -140px no-repeat}
+#header h1{position:absolute;top:10px;left:10px;width:67px;height:26px;background:url(img/sp_jindo.png) -200px -180px no-repeat}
 #header h1 a{display:block;width:67px;height:26px}
 #header button{position:absolute;top:6px;right:45px;width:32px;height:33px;background:url(img/sp_jindo.png) -40px -160px}
 #header .btn_snb{right:10px;background-position:-120px -160px}
@@ -79,6 +79,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 #header .info{position:absolute;top:10px;left:86px;color:#9f9f9f}
 #header .version{font-size:10px;font-family:tahoma,sans-serif;color:#9f9f9f}
 #header .info .bar,#header .info .help{display:none}
+
 #footer{position:relative;height:28px;border-top:1px solid #373737;background-color:#3f3f3f;line-height:28px;font-size:10px;color:#bfbebe;text-align:center}
 #footer a{font-weight:bold;color:#fff}
 
@@ -95,16 +96,22 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .sidemenu .depth2 a{display:block;overflow:hidden;height:30px;padding-left:10px;line-height:30px;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
 .sidemenu .depth2 h3{display:block;clear:both;height:23px;margin-top:-1px;padding-left:10px;border-top:1px solid #d8dadf;border-bottom:1px solid #bbbfc4;background:#eaeaea;background:-webkit-gradient(linear, left top, left bottom,from(#fcfcfc),to(#eaeaea));font-weight:bold;font-size:13px;line-height:23px;font-weight:bold;color:#000}
 
-.sidemenu .depth2 .api-options li{height:34px;border:0;line-height:34px}
-.sidemenu .depth2 .api-options input{width:13px;height:13px;margin-right:4px;border:0}
-.sidemenu .depth2 .api-options input[type=checkbox]{border:1px solid #2d2d2d;background:-webkit-gradient(linear, left top, left bottom,from(#3d3d3d),to(#585858))}
+.sidemenu .api-options li{width:109px;height:34px;padding-top:6px;border:0}
+.sidemenu .api-options .checkbox-applied{display:inline-block;overflow:hidden;position:relative;width:105px;height:28px;vertical-align:middle;cursor:pointer}
+.sidemenu .api-options .checkbox-applied .checkbox-mark{position:absolute;top:0;left:0;z-index:1;width:105px;height:28px;background:url(img/sp_jindo.png) 0 -200px}
+.sidemenu .api-options .api-show-inherited .checkbox-mark{background-position:0 -200px}
+.sidemenu .api-options .api-show-deprecated .checkbox-mark{background-position:0 -230px}
+.sidemenu .api-options label{display:none}
 
-.sidemenu button{display:block;position:relative;/* z-index:1;position:absolute;top:0;right:0; */top:auto;right:auto;width:100%;height:33px;margin-top:-1px;border:1px solid #bcbcbc;border-width:1px 0;background:#e5e5e5;background:-webkit-gradient(linear, left top, left bottom,from(#f1f1f1),to(#dddddd));line-height:33px;font-weight:bold;font-size:13px;color:#000;text-align:center;text-indent:1px}
+.sidemenu button{display:block;position:relative;top:auto;right:auto;width:100%;height:33px;margin-top:-1px;border:1px solid #bcbcbc;border-width:1px 0;background:#e5e5e5;background:-webkit-gradient(linear, left top, left bottom,from(#f1f1f1),to(#dddddd));line-height:33px;font-weight:bold;font-size:13px;color:#000;text-align:center;text-indent:1px}
 .sidemenu .btn_close{display:block}
 .sidemenu .btn_open{display:none}
 .sidemenu button .ic{display:inline-block;width:11px;height:8px;margin-left:5px;background:url(img/sp_jindo.png) -320px -89px no-repeat}
 .sidemenu .btn_close .ic{background-position:-290px -49px}
 .sidemenu .btn_open .ic{background-position:-290px -69px}
+.lft_fold .sidemenu .depth2{display:none}
+.lft_fold .sidemenu .btn_close{display:none}
+.lft_fold .sidemenu .btn_open{display:block}
 .scrollbar .scrollbar-show{display:none}
 
 #main{float:none;position:relative;width:100%;min-width:320px;margin:0 0 50px}
@@ -117,7 +124,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .intro .desc{display:none}
 
 .sc_dw{display:none}
-.tbl_board{width:100%;/* margin-top:10px; */border-top:1px solid #eee;border-bottom:1px solid #bcbcbc}
+.tbl_board{width:100%;border-top:1px solid #eee;border-bottom:1px solid #bcbcbc}
 .tbl_board caption{border-bottom:1px dashed #bababa;background:#f8f8f8;line-height:30px}
 .tbl_board th{border-top:1px dashed #bababa;border-left:1px dashed #bababa;background:#f3f3f3;font-weight:normal;line-height:28px}
 .tbl_board th.tit{width:76px;border-left:0}
@@ -220,7 +227,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .tc-panel h3 span{font-size:12px;font-weight:normal}
 .tc-panel h4{margin:16px 0 11px;font-weight:bold;font-size:13px}
 .tc-panel .noline{border:0}
-.api-page .btn_code{display:inline-block;overflow:hidden;width:39px;height:18px;background:url(img/sp_jindo.png) -220px -120px no-repeat;vertical-align:middle}
+.api-page .btn_code{display:inline-block;overflow:hidden;width:39px;height:18px;background:url(img/sp_jindo.png) -110px -200px no-repeat;vertical-align:middle}
 .api-page .btn_code a{display:block;width:39px;height:18px}
 
 .api-page .flag{display:inline-block;width:13px;height:13px;background:url(img/sp_jindo_high.png) 0 0 no-repeat;font-size:0;line-height:0;text-indent:-1000em;vertical-align:middle}
@@ -269,7 +276,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 
 .demo{position:relative;height:auto;margin-top:0;border:0}
 .demo .btn_external{display:none;position:absolute;top:4px;right:4px;width:78px;height:21px;border:1px solid #b8b8b8;background:#fafafa;color:#474747}
-.demo_list{overflow:none;overflow-x:hidden;float:none;position:relative;z-index:1;width:100%;height:auto;border-right:0}
+.demo_list{float:none;position:relative;z-index:1;width:100%;height:auto;border-right:0}
 .demo_list li{height:35px;border-bottom:1px solid #bcbcbc;line-height:35px}
 .api-page .content .demo_list li a{display:block;margin-right:10px;padding:0 0 0 8px;background:url(img/arr_link.png) right 50% no-repeat;color:#010101}
 .api-page .content .demo_list li.selected a,.api-page .content .demo_list li a:hover{background:#none;color:#010101}
@@ -314,6 +321,8 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 #header .info .bar{display:inline-block;margin:0 6px}
 #container{position:relative;width:100%}
 #container:after{display:block;clear:both;content:''}
+#footer{position:relative;height:28px;padding-left:299px;border-top:1px solid #373737;background-color:#3f3f3f;line-height:28px;font-size:10px;color:#bfbebe;text-align:center}
+.lft_fold #footer{padding-left:150px}
 
 .sidemenu{position:fixed;top:58px;left:0;bottom:28px;z-index:1000;height:100%}
 .sidemenu:after{display:block;clear:both;content:''}
@@ -324,23 +333,26 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .sidemenu .depth1 a:hover{background:#5d5d5d}
 .sidemenu .depth1 a.selected{background:#3b7bfb}
 .sidemenu .depth1 ul{padding:7px 0}
-.sidemenu .depth2{display:none}
+.sidemenu .depth2{border-width:0 1px 0 0;background:#666}
 .sidemenu .depth2 ul{padding:5px 0;border-bottom:1px solid #3e3e3e}
 .sidemenu .depth2 ul:last-child{border:0}
 .sidemenu .depth2 h3{display:block;width:138px;height:28px;margin:0;padding-left:10px;border-top:1px solid #808080;border-bottom:1px solid #474747;background:#5d5d5d;font-weight:normal;line-height:28px;color:#bfbebe}
 .sidemenu .depth2 li{width:148px;border:0}
 .sidemenu .depth2 a:hover{background:#787878}
 
-.sidemenu .depth2 .api-options li{display:block;overflow:hidden;height:23px;padding-left:10px;border:0;line-height:23px;color:#fff}
-.sidemenu .depth2 .api-options input{width:13px;height:13px;margin-right:4px}
-.sidemenu .depth2 .api-options input[type=checkbox]{border:1px solid #2d2d2d;background:-webkit-gradient(linear, left top, left bottom,from(#3d3d3d),to(#585858))}
-
+.sidemenu .api-options li{display:block;overflow:hidden;height:23px;padding:0 0 0 10px;border:0;line-height:23px;color:#fff}
+.sidemenu .api-options .checkbox-applied{display:inline-block;overflow:hidden;position:relative;width:18px;height:18px;vertical-align:middle}
+.sidemenu .api-options .checkbox-applied .checkbox-mark{position:absolute;top:0;left:0;z-index:1;width:18px;height:18px;background:url(img/sp_jindo.png) no-repeat -220px -120px}
+.sidemenu .api-options .checkbox-applied .checkbox-mark.checkbox-checked{background-position:-240px -120px}
+.sidemenu .api-options label{display:inline-block}
 .sidemenu button{position:absolute;top:1px;right:0;z-index:21;width:16px;height:29px;border:0;background:url(img/sp_jindo.png) 0 -120px no-repeat;font-size:0;line-height:0;text-indent:-1000em}
-.sidemenu .btn_close{display:none;background-position:0 -120px}
-.sidemenu .btn_open{display:block;right:-16px;background-position:0 -150px}
+.sidemenu .btn_close{background-position:0 -120px}
+.has_scrollbar .btn_close{right:14px}
+.sidemenu .btn_open{right:-16px;background-position:0 -150px}
 .sidemenu .btn_close:hover{background-position:-20px -120px}
 .sidemenu .btn_open:hover{background-position:-20px -150px}
 .sidemenu button .ic{display:none}
+.lft_fold .main_fix{margin-left:150px}
 
 /* scrollbar */
 .scrollbar .scrollbar-content{position:absolute;top:0;left:0;z-index:30;width:100%}
@@ -356,22 +368,24 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .depth1 .scrollbar-track-hold{background-color:#33333b}
 .depth1 .scrollbar-thumb{background:#676767;background:-webkit-gradient(linear, left top, left bottom,from(#6d6d6d),to(#636363))}
 .depth1 .scrollbar-thumb-hold{background:#767676;background:-webkit-gradient(linear, left top, left bottom,from(#7c7c7c),to(#737373))}
-.depth1 .scrollbar-button-up{background-position:-200px -170px}
-.depth1 .scrollbar-button-up-hold{background-position:-200px -190px}
-.depth1 .scrollbar-button-down{background-position:-220px -170px}
-.depth1 .scrollbar-button-down-hold{background-position:-220px -190px}
+.depth1 .scrollbar-button-up{background-position:-200px -140px}
+.depth1 .scrollbar-button-down{background-position:-200px -160px}
+.depth1 .scrollbar-button-up-hold{background-position:-220px -140px}
+.depth1 .scrollbar-button-down-hold{background-position:-220px -160px}
 .depth2 .scrollbar-track{background:#555}
 .depth2 .scrollbar-track-hold{background-color:#33333b}
 .depth2 .scrollbar-thumb{background:#9a9a9a;background:-webkit-gradient(linear, left top, left bottom,from(#9d9d9d),to(#969696))}
 .depth2 .scrollbar-thumb-hold{background:#a3a3a3;background:-webkit-gradient(linear, left top, left bottom,from(#a7a7a7),to(#a1a1a1))}
-.depth2 .scrollbar-button-up{background-position:-240px -170px}
-.depth2 .scrollbar-button-up-hold{background-position:-260px -170px}
-.depth2 .scrollbar-button-down{background-position:-240px -190px}
-.depth2 .scrollbar-button-down-hold{background-position:-260px -190px}
+.depth2 .scrollbar-button-up{background-position:-240px -140px}
+.depth2 .scrollbar-button-down{background-position:-240px -160px}
+.depth2 .scrollbar-button-up-hold{background-position:-260px -140px}
+.depth2 .scrollbar-button-down-hold{background-position:-260px -160px}
 
 /* main */
 #main{position:relative;width:100%}
-.main_fix{position:relative;margin:57px 0 0 150px}
+
+/* .main_fix{position:relative;margin:57px 0 0 150px} */
+.main_fix{position:relative;margin:57px 0 0 299px}
 .section_inn{clear:both;position:relative;padding:40px;border-top:3px solid #f1f1f1}
 .section_inn:after{display:block;clear:both;content:''}
 .section_inn.first,.section_inn:first-child{*overflow:hidden;border:0}
@@ -528,7 +542,7 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .demo .btn_external{display:block;position:absolute;top:4px;right:4px;width:78px;height:21px;border:1px solid #b8b8b8;background:#fafafa;color:#474747}
 .demo_list{overflow:scroll;overflow-x:hidden;float:left;position:relative;z-index:1;width:177px;height:100%;border-right:1px solid #bcbcbc}
 .demo_list li{height:25px;background:none;line-height:25px}
-.api-page .content .demo_list li a{display:block;padding:0 0 0 8px;color:#010101}
+.api-page .content .demo_list li a{display:block;margin:0;padding:0 0 0 8px;background:none;color:#010101}
 .api-page .content .demo_list li.selected a,.api-page .content .demo_list li a:hover{background:#969696;color:#fff}
 .demo_example{display:block;float:left;width:100%;height:398px;margin-left:-178px}
 .demo_example .clipboard{display:none;margin-left:178px}
@@ -549,14 +563,7 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 @media all and (min-width:1024px){
 
 /* 1024px 이상 해상도에서 실행할 CSS 코드를 여기에 작성 */
-.sidemenu .depth2{display:block;border-width:0 1px 0 0;background:#666}
-.main_fix{position:relative;margin-left:299px}
 .intro{float:left;width:50%;margin-bottom:0}
 .sc_dw{float:right;position:relative;width:303px}
-.sidemenu .btn_close{display:block}
-.sidemenu .btn_open{display:none}
-.api_main .depth2{display:none}
-.api_main .main_fix{position:relative;margin-left:150px}
-
 }
 /* //Responsive 1024px */

@@ -2,27 +2,27 @@
 <div class="snb depth1 scrollbar">
 	<!-- [D] style="width:135px; height:384px; -->
 	<div class="scrollbar-box">
-
-		<ul>
-	        <% EACH(this.classes, function(projectRoot, className) { %>
-	            <li><a href="<%=projectRoot%>classes/<%=this.name%>.html" class="<%=(this.name === className ? "selected" : "")%>">
-	                <%=this.displayName.replace(/^jindo\./, '')%>
-	            </a></li>
-	        <% }, [ this.projectRoot, this.tag === 'class' && this.name ]); %>
-		</ul>
-		<div>
-			<h3>UI Template</h2>
-			</h3>
-			<ul class="snb_lst">
-			<li><a href="./jindo.m.PageLayoutUI/index.html">PageLayoutUI </a></li>
-			<li><a href="./jindo.m.RevealSidebarUI/index.html">RevealSidebarUI </a></li>
+		<div class="scrollbar-content">
+			<ul>
+		        <% EACH(this.classes, function(projectRoot, className) { %>
+		            <li><a href="<%=projectRoot%>classes/<%=this.name%>.html" class="<%=(this.name === className ? "selected" : "")%>">
+		                <%=this.displayName.replace(/^jindo\./, '')%>
+		            </a></li>
+		        <% }, [ this.projectRoot, this.tag === 'class' && this.name ]); %>
 			</ul>
+			<div>
+				<h3>UI Template</h2>
+				</h3>
+				<ul class="snb_lst">
+				<li><a href="./jindo.m.PageLayoutUI/index.html">PageLayoutUI </a></li>
+				<li><a href="./jindo.m.RevealSidebarUI/index.html">RevealSidebarUI </a></li>
+				</ul>
+			</div>
 		</div>
-	
 	</div>
-	<div class="scrollbar-v scrollbar-show">
+	<div class="scrollbar-v">
 		<div class="scrollbar-button-up rollover"></div>
-		<div class="scrollbar-track rollover" style="height: 290px; ">
+		<div class="scrollbar-track rollover">
 			<div class="scrollbar-thumb rollover" style="top: 0px; height: 222px; "></div>
 		</div>
 		<div class="scrollbar-button-down rollover"></div>
@@ -33,145 +33,155 @@
 	
 <div class="snb depth2 scrollbar">
 	<div class="scrollbar-box">
-
-		<h3 class="blind"><%=this.name%> 클래스</h3>
-	
-		<div class="smanuals">
-	
-			<h3>보기 옵션</h3>
-			<ul class="api-options">
-			<li><input type="checkbox" id="api-show-inherited"><label for="api-show-inherited">상속받은 항목</label></li>
-			<li><input type="checkbox" id="api-show-deprecated"><label for="api-show-deprecated">폐지예정 항목</label></li>
-			</ul>
-
-	        <%
-	        	var lists = this.constructors && this.constructors.filter(function(v) { return v.access !== 'private'; });
-	        	if (HAS(lists)) {
-	        %>
-	            <h3>생성자</h3>
-	
-	            <ul class="constructors<% if (HAS(this.extends)) { %> extends<% } %>">
-	                <% EACH(lists, function() { %>
-	                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-	                        <a href="#constructor_<%=this.name%>">
-	                            <%=this.name.replace(/^jindo\./, '')%>
-	                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
-	                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
-	                        </a>
-	                    </li>
-	                <% }); %>
-	            </ul>
-	        <% } %>
-			
-	        <%
-	        	var lists = this.methods && this.methods.filter(function(v) { return v.access !== 'private'; });
-	        	if (HAS(lists)) {
-	        %>
-	            <h3>메서드</h3>
-	
-	            <ul class="methods<% if (HAS(this.extends)) { %> extends<% } %>">
-	                <% EACH(lists, function() { %>
-	                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-	                        <a href="#method_<%=this.name%>" title="<%==this.description%>">
-	                            <%=this.name%>()
-	                            <% if (HAS(this.chainable)) { %><span class="flag chainable" title="chainable">chainable</span><% } %>
-	                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
-	                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
-	                        </a>
-	                    </li>
-	                <% }); %>
-	            </ul>
-	        <% } %>
-	
-	        <%
-	        	var lists = this.properties && this.properties.filter(function(v) { return v.access !== 'private'; });
-	        	if (HAS(lists)) {
-	        %>
-	            <h3>프로퍼티</h3>
-	
-	            <ul class="properties<% if (this.extends) { %> extends<% } %>">
-	                <% EACH(lists, function() { %>
-	                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-	                        <a href="#property_<%=this.name%>" title="<%==this.description%>">
-	                            <%=this.name%>
-	                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
-	                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
-	                        </a>
-	                    </li>
-	                <% }); %>
-	            </ul>
-	        <% } %>
-	
-	        <%
-	        	var lists = this.attrs && this.attrs.filter(function(v) { return v.access !== 'private'; });
-	        	if (HAS(lists)) {
-	        %>
-	            <h3>속성</h3>
-	
-	            <ul class="attrs<% if (this.extends) { %> extends<% } %>">
-	                <% EACH(lists, function() { %>
-	                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-	                        <a href="#attr_<%=this.name%>" title="<%==this.description%>"><%=this.name%></a>
-	                    </li>
-	                <% }); %>
-	            </ul>
-	        <% } %>
-	
-	        <%
-	        	var lists = this.events && this.events.filter(function(v) { return true; });
-	        	if (HAS(lists)) {
-	        %>
-	            <h3>이벤트</h3>
-	
-	            <ul class="events<% if (this.extends) { %> extends<% } %>">
-	                <% EACH(lists, function() { %>
-	                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-	                        <a href="#event_<%=this.name%>" title="<%==this.description%>">
-	                            <%=this.name%>
-	                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
-	                        </a>   
-	                    </li>
-	                <% }); %>
-	            </ul>
-	        <% } %>
-	
-	        <% if (HAS(this.demos)) { %>
-	            <h3>데모</h3>
-	
-	            <ul class="demos">
-	                <% EACH(this.demos, function() { %>
-	                    <li>
-	                        <a href="#demo_<%=this.uid%>"><%=this.name%></a>
-	                    </li>
-	                <% }); %>
-	            </ul>
-	        <% } %>
-	
-	        <% if (HAS(this.manuals)) { %>
-	            <h3>매뉴얼</h3>
-	
-	            <ul class="manuals">
-	                <% EACH(this.manuals, function() { %>
-	                    <li class="manual">
-	                        <a href="#manual_<%=this.uid%>"><%=this.name%></a>
-	                    </li>
-	                <% }); %>
-	            </ul>
-	        <% } %>
-	
-	        <% if (HAS(this.histories)) { %>
-				<h3>히스토리</h3>
-				<ul>
-					<li><a href="#class-history">전체 히스토리</a></li>
-				</ul>
-	        <% } %>
-
-		</div>
+		<div class="scrollbar-content">
+			<h3 class="blind"><%=this.name%> 클래스</h3>
+			<div class="smanuals">
 		
+				<h3>보기 옵션</h3>
+				<ul class="api-options">
+					<li class="api-show-inherited">
+						<span id="checkbox-inherited">
+							<span class="checkbox-mark checkbox-checked"></span>
+							<input type="checkbox" id="api-show-inherited">
+						</span><label for="api-show-inherited">상속받은 항목</label>
+
+					</li>
+					<li class="api-show-deprecated">
+						<span id="checkbox-deprecated">
+							<span class="checkbox-mark"></span>
+							<input type="checkbox" id="api-show-deprecated">
+						</span><label for="api-show-deprecated">폐지예정 항목</label>
+					</li>
+				</ul>
+	
+		        <%
+		        	var lists = this.constructors && this.constructors.filter(function(v) { return v.access !== 'private'; });
+		        	if (HAS(lists)) {
+		        %>
+		            <h3>생성자</h3>
+		
+		            <ul class="constructors<% if (HAS(this.extends)) { %> extends<% } %>">
+		                <% EACH(lists, function() { %>
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                        <a href="#constructor_<%=this.name%>">
+		                            <%=this.name.replace(/^jindo\./, '')%>
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
+		                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
+		                        </a>
+		                    </li>
+		                <% }); %>
+		            </ul>
+		        <% } %>
+				
+		        <%
+		        	var lists = this.methods && this.methods.filter(function(v) { return v.access !== 'private'; });
+		        	if (HAS(lists)) {
+		        %>
+		            <h3>메서드</h3>
+		
+		            <ul class="methods<% if (HAS(this.extends)) { %> extends<% } %>">
+		                <% EACH(lists, function() { %>
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                        <a href="#method_<%=this.name%>" title="<%==this.description%>">
+		                            <%=this.name%>()
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
+		                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
+		                            <% if (HAS(this.chainable)) { %><span class="flag chainable" title="chainable">chainable</span><% } %>
+		                        </a>
+		                    </li>
+		                <% }); %>
+		            </ul>
+		        <% } %>
+		
+		        <%
+		        	var lists = this.properties && this.properties.filter(function(v) { return v.access !== 'private'; });
+		        	if (HAS(lists)) {
+		        %>
+		            <h3>프로퍼티</h3>
+		
+		            <ul class="properties<% if (this.extends) { %> extends<% } %>">
+		                <% EACH(lists, function() { %>
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                        <a href="#property_<%=this.name%>" title="<%==this.description%>">
+		                            <%=this.name%>
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
+		                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
+		                        </a>
+		                    </li>
+		                <% }); %>
+		            </ul>
+		        <% } %>
+		
+		        <%
+		        	var lists = this.attrs && this.attrs.filter(function(v) { return v.access !== 'private'; });
+		        	if (HAS(lists)) {
+		        %>
+		            <h3>속성</h3>
+		
+		            <ul class="attrs<% if (this.extends) { %> extends<% } %>">
+		                <% EACH(lists, function() { %>
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                        <a href="#attr_<%=this.name%>" title="<%==this.description%>"><%=this.name%></a>
+		                    </li>
+		                <% }); %>
+		            </ul>
+		        <% } %>
+		
+		        <%
+		        	var lists = this.events && this.events.filter(function(v) { return true; });
+		        	if (HAS(lists)) {
+		        %>
+		            <h3>이벤트</h3>
+		
+		            <ul class="events<% if (this.extends) { %> extends<% } %>">
+		                <% EACH(lists, function() { %>
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                        <a href="#event_<%=this.name%>" title="<%==this.description%>">
+		                            <%=this.name%>
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
+		                        </a>   
+		                    </li>
+		                <% }); %>
+		            </ul>
+		        <% } %>
+		
+		        <% if (HAS(this.demos)) { %>
+		            <h3>데모</h3>
+		
+		            <ul class="demos">
+		                <% EACH(this.demos, function() { %>
+		                    <li>
+		                        <a href="#demo_<%=this.uid%>"><%=this.name%></a>
+		                    </li>
+		                <% }); %>
+		            </ul>
+		        <% } %>
+		
+		        <% if (HAS(this.manuals)) { %>
+		            <h3>매뉴얼</h3>
+		
+		            <ul class="manuals">
+		                <% EACH(this.manuals, function() { %>
+		                    <li class="manual">
+		                        <a href="#manual_<%=this.uid%>"><%=this.name%></a>
+		                    </li>
+		                <% }); %>
+		            </ul>
+		        <% } %>
+		
+		        <% if (HAS(this.histories)) { %>
+					<h3>히스토리</h3>
+					<ul>
+						<li><a href="#class-history">전체 히스토리</a></li>
+					</ul>
+		        <% } %>
+	
+			</div>
+		</div>
 	</div>
-	<div class="scrollbar-v scrollbar-show">
+	<div class="scrollbar-v">
 		<div class="scrollbar-button-up rollover"></div>
-		<div class="scrollbar-track rollover" style="height: 290px; ">
+		<div class="scrollbar-track rollover">
 			<div class="scrollbar-thumb rollover" style="top: 0px; height: 222px; "></div>
 		</div>
 		<div class="scrollbar-button-down rollover"></div>

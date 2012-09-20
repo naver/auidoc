@@ -101,7 +101,7 @@
 	<div class="tc-panel first">
 		<dl class="relation">
 		<dt>클래스</dt>
-		<dd><%=this.name.replace(/^jindo\./, '')%>
+		<dd><%=this.name%>
 		    <% if (HAS(this.deprecated)) { %>
 		        <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>">deprecated</span>
 		    <% } %>
@@ -121,9 +121,6 @@
 	        </dd>
 	    <% } %>
 
-		<dt>하위클래스</dt>
-		<dd><a href="..\classes\jindo.HTMLComponent.html">LiveCheckBox</a></dd>
-		
 	    <% if (HAS(this.mixin)) { %>
 		<dt>확장</dt>
 		<dd><%=crossLink(this.mixin).join(', ')%></dd>
@@ -369,18 +366,18 @@
         <div class="tc-panel">
 			<h2>데모</h2>
 			<div class="demo">
-				<ul class="demo_list">
+				<ul class="demo_list" id="demo_list">
 		            <% EACH(this.demos, function() { %>
 		                <li><a href="<%=this.href%>" id="demo_<%=this.uid%>" title="<%==(this.description || '')%>" target="demo_iframe"><%==this.name%></a></li>
 		            <% }); %>
 	            </ul>
 				<div class="demo_example">
 					<div class="clipboard" style="display:block">
-						<p class="description">체크박스에 적용한 예제입니다.</p>
-						<iframe src="about:blank" name="demo_iframe" width="100%" height="366" frameborder="0" scrolling="no"></iframe>
+						<p class="description" id="demo_desc"></p>
+						<iframe src="about:blank" id="demo_iframe" name="demo_iframe" width="100%" height="366" frameborder="0" scrolling="no"></iframe>
 					</div>
 				</div>
-				<button type="button" class="btn_external">새창으로 열기</button>
+				<button type="button" id="btn_external" class="btn_external">새창으로 열기</button>
 			</div>
         </div>
     <% } %>
@@ -400,7 +397,7 @@
 	<% if (HAS(this.histories)) { %>
         <div class="tc-panel">
         	<h2 id="class-history">전체 히스토리</h2>
-	        <%=INCLUDE("section.history", this.histories)%>
+	        <%=INCLUDE("history", this.histories)%>
 	    </div>
 	<% } %>
 

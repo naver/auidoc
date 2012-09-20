@@ -14,14 +14,14 @@
             <span class="flag static" title="static">static</span>
         <% } %>
         <% if (HAS(this.async)) { %>
-            <span class="flag async"> title="async">async</span>
+            <span class="flag async" title="async"> title="async">async</span>
         <% } %>
         <% if (HAS(this.chainable)) { %>
-            <span class="flag chainable"> title="chainable">chainable</span>
+            <span class="flag chainable" title="chainable"> title="chainable">chainable</span>
         <% } %>
 		<span class="btn_code"><a href="<%=this.foundAt%>" title="view source code"><span class="blind">소스코드</span></a></span>
     </h3>
-	<div class="syntax"><code class="prettyprint"><%=addon.SYNTAX(this, addon.className, HAS, crossLink, crossLinkRaw, true)%></code></div>
+	<div class="syntax"><code><%=addon.SYNTAX(this, addon.className, HAS, crossLink, crossLinkRaw, true)%></code></div>
 	<div class="description"><%=this.methodDescription%></div>
 
 	<% if (HAS(this.remark)) { %>
@@ -69,7 +69,7 @@
             <h4>
                 히스토리
             </h4>
-            <%=INCLUDE("section.history", this.history)%>
+            <%=INCLUDE("history", this.history)%>
         </div>
     <% } %>
 
