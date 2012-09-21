@@ -1,6 +1,9 @@
 var apiDocs = function(projectAssets) {
     
-    prettyPrint();
+    prettyPrint(function() {
+    	
+    	console.log('DONE');	
+    });
     
     var fpRelocate = function() {};
    
@@ -21,7 +24,7 @@ var apiDocs = function(projectAssets) {
             welEl.addClass('highlight');
             setTimeout(function() {
                 welEl.removeClass('highlight');
-            }, 500);
+            }, 1000);
         }
         
         // fpRelocate();
@@ -85,7 +88,7 @@ var apiDocs = function(projectAssets) {
 		var elButton = oEvent.element;
 		var elParent = $$.getSingle('! .history-table', elButton);
 	
-		elParent && $Element(elParent).toggleClass('history-open');
+		elParent && $Element(elParent).toggleClass('tbl_fold');
 	    
 	});
 
@@ -95,6 +98,7 @@ var apiDocs = function(projectAssets) {
 		if (!welDemoList) { return; }
 		
 		var welDemoDesc = $Element('demo_desc');
+		var welDemoExample = $Element('demo_example');
 		var welDemoIframe = $Element('demo_iframe');
 		var welBtnExternal = $Element('btn_external');
 		
@@ -115,8 +119,12 @@ var apiDocs = function(projectAssets) {
 		};
 
 		welDemoList.delegate('click', 'a', function(oEvent) {
-			fpSetDemo(oEvent.element);
-			oEvent.stopDefault();
+			
+			if (welDemoExample.visible()) {
+				fpSetDemo(oEvent.element);
+				oEvent.stopDefault();
+			}
+			
 		});
 		
 		welBtnExternal.attach('click', function(oEvent) {
@@ -160,11 +168,48 @@ var apiDocs = function(projectAssets) {
 			nDelta : 32
 		}));
 		
+		var bCurSmall = null;
+		
+		var onMouseWheel = function(oEvent) {
+			bCurSmall && oEvent.stopBubble();
+		};
+		
+		$Element(elDepth1).attach('mousewheel', onMouseWheel);
+		elDepth2 && $Element(elDepth2).attach('mousewheel', onMouseWheel);
+		
 		fpRelocate = function() {
-			oScrBox1.setSize(148, elLeft.offsetHeight - elHeader.offsetHeight);
-			oScrBox2 && oScrBox2.setSize(148, elLeft.offsetHeight - elHeader.offsetHeight);
+
+			var bSmall = $Document().clientSize().width < 768;
+			if (bSmall !== bCurSmall) {
+				
+				if (bSmall) {
+					elDepth1.style.height = '';
+					$$.getSingle('.scrollbar-box', elDepth1).style.height = '';
+					$$.getSingle('.scrollbar-content', elDepth1).style.height = '';
+
+					if (elDepth2) {
+						elDepth2.style.height = '';
+						$$.getSingle('.scrollbar-box', elDepth2).style.height = '';
+						$$.getSingle('.scrollbar-content', elDepth2).style.height = '';
+					}
+
+					console.log('작아졌다');
+				} else {
+					console.log('커졌다');
+				}
+				
+				bCurSmall = bSmall;	
+			}
 			
-			oScrBox2 && $Element(elLeft).cssClass('has_scrollbar', oScrBox2.hasScrollBarVertical());
+			if (!bCurSmall) {
+				
+				oScrBox1.setSize(148, elLeft.offsetHeight - elHeader.offsetHeight);
+				oScrBox2 && oScrBox2.setSize(148, elLeft.offsetHeight - elHeader.offsetHeight);
+				
+				oScrBox2 && $Element(elLeft).cssClass('has_scrollbar', oScrBox2.hasScrollBarVertical());
+				
+			}
+
 		};
 		
 		var oTimer = new jindo.Timer();
@@ -214,8 +259,8 @@ var apiDocs = function(projectAssets) {
         var chkInherited = jindo.$('checkbox-inherited');
         var chkDeprecated = jindo.$('checkbox-deprecated');
         
-        new jindo.CheckBox(chkInherited);
-        new jindo.CheckBox(chkDeprecated);
+        var oInherited = new jindo.CheckBox(chkInherited);
+        var oDeprecated = new jindo.CheckBox(chkDeprecated);
         
         var refresh = function() {
         	
@@ -230,9 +275,14 @@ var apiDocs = function(projectAssets) {
             fpRelocate();
             
         };
+        
+        oInherited.attach('change', refresh);
+        oDeprecated.attach('change', refresh);
 
+		/*
         $Element(showInherited).attach('click', refresh);
         $Element(showDeprecated).attach('click', refresh);
+        */
         
         refresh();
         

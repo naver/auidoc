@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <title><%=this.htmlTitle%> - AjaxUI@NHN</title>
 <link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/prettify/prettify-min.css" media="screen">
-<link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/api.css" media="screen">
+<!--<link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/api.css" media="screen">-->
+<link rel="stylesheet" type="text/css" href="http://ajaxui.nhncorp.com/svnview/yorky/kumju/jindo_site/api.css" media="screen">
 
 <!-- link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/css/respon.css" media="screen and (min-width:640px)" -->
 <!--[if lt IE 9]><script type="text/javascript" src="<%=this.projectAssets%>/respond.min.js"></script><![endif]-->
 </head>
 <body class="api-page">
-<div id="wrap" <%=(this.tag === 'class' ? '' : 'class="lft_fold"')%>><!-- 2Depth 접기 : lft_fold 추가 -->
+<div id="wrap"><!-- 2Depth 접기 : lft_fold 추가 -->
 
 	<div id="header">
 		<h1><a href="<%=this.projectRoot%>index.html"><span class="blind">JINDO JS</span></a></h1>
@@ -94,7 +95,7 @@
 	</div>
 	<!-- // sch_frm -->
 
-	<div id="container">
+	<div id="container" class="<%=(this.tag === 'class' ? '' : 'api-main')%>">
 		<!-- left-columns -->
 		<div id="left-columns" class="sidemenu has_scrollbar">
 			<%=INCLUDE("sidebar", this)%>
@@ -123,45 +124,61 @@
 
 <style type="text/css">
 
-	.item { border-color:#fff; }
-	.highlight {
-		background-color:#f8f8f8 !important;
-		border:3px solid #3B7BFB !important;
-		margin:-3px;
-		border-radius:10px;
+	.item {
+		transition:background .2s linear;
+		-webkit-transition:background .2s linear;
+		-moz-transition:background .2s linear;
+		-o-transition:background .2s linear;
+		-ms-transition:background .2s linear;
 	}
 	
-	.hide-deprecated .deprecated, .hide-inherited .inherited {
+	.highlight {
+		background-color:#ffffd8 !important;
+	}
+	
+	.hide-deprecated .deprecated, .hide-inherited .inherited, .private {
 		display:none;
 	}
 	
 	.scrollbar-v, .scrollbar-h { display:none; }
 	.scrollbar-show { display:block; }
 	
-	.scrollbar-box {
-		position:relative;
-		overflow:hidden;
+	.api-page .tbl_fold .more_history { display:none; }
+
+	/* FILE */
+	.file pre.code {
+		border:1px solid #ccc;
+		padding:0;
 	}
 	
-	.api-page .history-table .btn_close { display:none; }
-	.api-page .history-open .btn_close { display:block; }
-	.api-page .history-open .btn_open { display:none; }
-	
-	.api-page .history-table tbody tr { display:none; }
-	.api-page .history-table tbody tr.idx_0,
-	.api-page .history-table tbody tr.idx_1,
-	.api-page .history-table tbody tr.idx_2 { display:table-row; }
+	.file ol {
+		padding-left: 4em;
+		background-color: #f9f9f9;
+	}
 
-	.api-page .history-open tbody tr { display:table-row !important; }
+	.file ol li {
+		list-style: decimal;
+		border-left:1px solid #ccc;
+		padding:2px 4px;
+	}
+	
+	.file li.L1, .file li.L3, .file li.L5, .file li.L7, .file li.L9 {
+		background-color: #f9f9f9;	
+	}
+
+	.file li.L0, .file li.L2, .file li.L4, .file li.L6, .file li.L8 { 
+		background-color: #f0f0f0;
+	}
+
 	
 </style>
 <script type="text/javascript" src="<%=this.projectAssets%>/prettify/prettify-min.js"></script>
 <script type="text/javascript" src="<%=this.projectAssets%>/jindo.desktop.min.js"></script>
 <!--<script type="text/javascript" src="<%=this.projectAssets%>/jindo_component.js"></script>-->
-<script type="text/javascript" src="file:///D:/git/auidoc/themes/ajaxui/assets/jindo_component.js"></script>
+<script type="text/javascript" src="http://10.64.80.137/git/auidoc/themes/ajaxui/assets/jindo_component.js"></script>
 <script type="text/javascript" src="<%=this.projectAssets%>/hash.js"></script>
 <!--<script type="text/javascript" src="<%=this.projectAssets%>/api-list.js"></script>-->
-<script type="text/javascript" src="file:///D:/git/auidoc/themes/ajaxui/assets/api-list.js"></script>
+<script type="text/javascript" src="http://10.64.80.137/git/auidoc/themes/ajaxui/assets/api-list.js"></script>
 <script type="text/javascript">
     apiDocs("<%=this.projectAssets%>");	
 </script>

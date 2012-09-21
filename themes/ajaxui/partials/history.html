@@ -5,7 +5,7 @@
         });
     }
 %>
-<div class="history-table" >
+<div class="history-table tbl_fold" >
 	<table class="tbl_board">
 	<caption class="hide">전체 히스토리</caption>
 	<colgroup>
@@ -23,7 +23,7 @@
 	</thead>
 	<tbody>
     <% var idx = 0; EACH(SORT_HISTORY(this), function() { %>
-		<tr class="idx_<%=(idx++)%>">
+		<tr class="<%=(idx >= 3 ? 'more_history' : '')%> idx_<%=(idx++)%>">
 		<td><%==this.version%></td>
 		<td><%==this.category%></td>
 		<td><%==this.target%></td>
@@ -33,7 +33,7 @@
 	</tbody>
 	</table>
 	<% if (this.length > 3) { %>
-	<button type="button" title="접기" class="btn_close"><span class="blind">접기</span><span class="ic"></span></button>
 	<button type="button" title="펼치기" class="btn_open"><span class="blind">펼치기</span><span class="ic"></span></button>
+	<button type="button" title="접기" class="btn_close"><span class="blind">접기</span><span class="ic"></span></button>
 	<% } %>
 </div>

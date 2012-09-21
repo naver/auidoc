@@ -177,7 +177,7 @@
 			<colgroup>
 			<col style="width:22px">
 			<col />
-			<col style="width:100px">
+			<col style="width:160px">
 			</colgroup>
 			<thead>
 			<tr>
@@ -188,7 +188,7 @@
 			</thead>
 			<tbody>
 	            <% EACH(this.constructors, function(className) { if (this.access === 'private') { return; } %>
-					<tr>
+					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
 					<td>
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
@@ -216,7 +216,7 @@
 			<colgroup>
 			<col style="width:22px">
 			<col style="">
-			<col style="width:100px">
+			<col style="width:160px">
 			</colgroup>
 			<thead>
 			<tr>
@@ -227,7 +227,7 @@
 			</thead>
 			<tbody>
 	            <% EACH(this.methods, function(className) { if (this.access === 'private') { return; } %>
-					<tr>
+					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
 					<td>
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
@@ -255,7 +255,7 @@
 			<colgroup>
 			<col style="width:22px">
 			<col style="">
-			<col style="width:100px">
+			<col style="width:160px">
 			</colgroup>
 			<thead>
 			<tr>
@@ -266,7 +266,7 @@
 			</thead>
 			<tbody>
 	            <% EACH(this.properties, function(className) { if (this.access === 'private') { return; } %>
-					<tr>
+					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
 					<td>
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
@@ -294,7 +294,7 @@
 			<colgroup>
 			<col style="width:22px">
 			<col style="">
-			<col style="width:100px">
+			<col style="width:160px">
 			</colgroup>
 			<thead>
 			<tr>
@@ -305,7 +305,7 @@
 			</thead>
 			<tbody>
 	            <% EACH(this.events, function(className) { %>
-					<tr>
+					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
 					<td>
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
@@ -326,34 +326,46 @@
         <% } %>			
 	</div>
 
-	<% if (HAS(this.constructors)) { %>
+	<%
+		var lists = this.constructors && this.constructors.filter(function(v) { return v.access !== 'private'; });
+		if (HAS(lists)) {
+	%>
 		<div class="tc-panel">
 			<h2>생성자 세부 정보</h2>
-	        <% EACH(this.constructors, function(className) { %>
+	        <% EACH(lists, function(className) { %>
 	            <%=INCLUDE("constructor", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
 	        <% }, [ this.name ]); %>
 	    </div>
     <% } %>
 
-	<% if (HAS(this.methods)) { %>
+	<%
+		var lists = this.methods && this.methods.filter(function(v) { return v.access !== 'private'; });
+		if (HAS(lists)) {
+	%>
 		<div class="tc-panel">
 			<h2>메서드 세부 정보</h2>
-	        <% EACH(this.methods, function(className) { %>
+	        <% EACH(lists, function(className) { %>
 	            <%=INCLUDE("method", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
 	        <% }, [ this.name ]); %>
 	    </div>
     <% } %>
 	
-	<% if (HAS(this.properties)) { %>
+	<%
+		var lists = this.properties && this.properties.filter(function(v) { return v.access !== 'private'; });
+		if (HAS(lists)) {
+	%>
 		<div class="tc-panel">
 			<h2>프로퍼티 세부 정보</h2>
-	        <% EACH(this.properties, function(className) { %>
+	        <% EACH(lists, function(className) { %>
 	            <%=INCLUDE("property", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
 	        <% }, [ this.name ]); %>
 	    </div>
     <% } %>
 	
-	<% if (HAS(this.events)) { %>
+	<%
+		var lists = this.events && this.events.filter(function(v) { return v.access !== 'private'; });
+		if (HAS(lists)) {
+	%>
 		<div class="tc-panel">
 			<h2>이벤트 세부 정보</h2>
 	        <% EACH(this.events, function(className) { %>
@@ -368,10 +380,10 @@
 			<div class="demo">
 				<ul class="demo_list" id="demo_list">
 		            <% EACH(this.demos, function() { %>
-		                <li><a href="<%=this.href%>" id="demo_<%=this.uid%>" title="<%==(this.description || '')%>" target="demo_iframe"><%==this.name%></a></li>
+		                <li><a href="<%=this.href%>" id="demo_<%=this.uid%>" title="<%==(this.description || '')%>" target="_blank"><%==this.name%></a></li>
 		            <% }); %>
 	            </ul>
-				<div class="demo_example">
+				<div class="demo_example" id="demo_example">
 					<div class="clipboard" style="display:block">
 						<p class="description" id="demo_desc"></p>
 						<iframe src="about:blank" id="demo_iframe" name="demo_iframe" width="100%" height="366" frameborder="0" scrolling="no"></iframe>
