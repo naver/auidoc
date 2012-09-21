@@ -70,9 +70,13 @@
 					syntax.push('<span title="deprecated" class="flag deprecated">deprecated</span>');
 				}
 				
+				if (HAS(obj.extended_from)) { 
+					syntax.push('<span title="inherited" class="flag inherited">inherited</span>');
+				}
+				
 			}
 				
-			ret.push(syntax.join(''));
+			ret.push(syntax.join('\n'));
 			
 		}
 		
@@ -189,7 +193,7 @@
 			<tbody>
 	            <% EACH(this.constructors, function(className) { if (this.access === 'private') { return; } %>
 					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
-					<td>
+					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
 				        <% } %>
@@ -228,7 +232,7 @@
 			<tbody>
 	            <% EACH(this.methods, function(className) { if (this.access === 'private') { return; } %>
 					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
-					<td>
+					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
 				        <% } %>
@@ -267,7 +271,7 @@
 			<tbody>
 	            <% EACH(this.properties, function(className) { if (this.access === 'private') { return; } %>
 					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
-					<td>
+					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
 				        <% } %>
@@ -306,7 +310,7 @@
 			<tbody>
 	            <% EACH(this.events, function(className) { %>
 					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
-					<td>
+					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
 				        <% } %>

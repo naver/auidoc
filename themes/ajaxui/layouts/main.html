@@ -34,59 +34,55 @@
 		<div class="filter">
 			<input type="search" id="api-filter" placeholder="검색어를 입력하세요.">
 		</div>
-		<div id="search-tab">
+		<div id="search-tab" style="display:none;">
 			<ul class="tabs">
-			<li class="tc-tab ">전체</li>
-			<li class="tc-tab tc-selected">키워드</li>
+			<li class="tc-tab">전체</li>
+			<li class="tc-tab">키워드</li>
 			<li class="tc-tab">클래스</li>
 			<li class="tc-tab">메서드</li>
 			<li class="tc-tab">프로퍼티</li>
 			<li class="tc-tab">이벤트</li>
 			</ul>
 			<div class="panels">
-				<ul id="api-keywords" class="tc-panel tc-selected">
-				<li class="result">
-					<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rolling.html">
-					</a>
-					<p class="title">
-						<strong>roll</strong>ing
-						<span class="flag keyword">keyword</span>
-					</p>
-					<ul>
-					<li>CircularRolling</li>
-					<li>Rolling</li>
-					</ul></a>
-				</li>
-				<li class="result">
-					<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rollingchart.html">
-					</a>
-					<p class="title">
-						<strong>roll</strong>ingchart
-						<span class="flag class">class</span>
-					</p>
-					<span class="className type">RollingChart</span></a>
-				</li>
-				<li class="result">
-					<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rolloverarea.html">
-					</a>
-					<p class="title">
-						<strong>roll</strong>overarea
-						<span class="flag method">method</span>
-					</p>
-					<span class="className type">RollingChart</span></a>
-				</li>
-				<li class="result">
-					<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./classes/jindo.CircularRolling.html">
-					</a>
-					<p class="title">jindo.Circular<strong>Roll</strong>ing
-						<span class="flag property">property</span>
-					</p>
-					<p class="description">jindo.CircularRolling 컴포넌트는 리스트의 아이템을 무한대로 순환하여 이동시키는 롤링 컴포넌트이다.</p></a>
-				</li>
+				<ul id="api-all" class="tc-panel"></ul>
+				<ul id="api-keywords" class="tc-panel">
+					<li class="result">
+						<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rolling.html">
+						<p class="title">
+							<strong>roll</strong>ing
+							<span class="flag keyword">keyword</span>
+						</p>
+						<ul>
+						<li>CircularRolling</li>
+						<li>Rolling</li>
+						</ul></a>
+					</li>
+					<li class="result">
+						<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rollingchart.html">
+						<p class="title">
+							<strong>roll</strong>ingchart
+							<span class="flag class">class</span>
+						</p>
+						<span class="className type">RollingChart</span></a>
+					</li>
+					<li class="result">
+						<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rolloverarea.html">
+						<p class="title">
+							<strong>roll</strong>overarea
+							<span class="flag method">method</span>
+						</p>
+						<span class="className type">RollingChart</span></a>
+					</li>
+					<li class="result">
+						<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./classes/jindo.CircularRolling.html">
+						<p class="title">jindo.Circular<strong>Roll</strong>ing
+							<span class="flag property">property</span>
+						</p>
+						<p class="description">jindo.CircularRolling 컴포넌트는 리스트의 아이템을 무한대로 순환하여 이동시키는 롤링 컴포넌트이다.</p></a>
+					</li>
 				</ul>
 				<ul id="api-classes" class="tc-panel"></ul>
 				<ul id="api-methods" class="tc-panel"></ul>
-				<ul id="api-properties" class="tc-panel"></ul>
 				<ul id="api-attrs" class="tc-panel"></ul>
 				<ul id="api-events" class="tc-panel"></ul>
 			</div>
@@ -144,6 +140,13 @@
 	.scrollbar-show { display:block; }
 	
 	.api-page .tbl_fold .more_history { display:none; }
+	
+	.small-body #search-tab .panels,
+	.small-body .scrollbar,
+	.small-body .scrollbar-box,
+	.small-body .scrollbar-content {
+		height:auto !important;
+	}
 
 	/* FILE */
 	.file pre.code {
@@ -169,7 +172,6 @@
 	.file li.L0, .file li.L2, .file li.L4, .file li.L6, .file li.L8 { 
 		background-color: #f0f0f0;
 	}
-
 	
 </style>
 <script type="text/javascript" src="<%=this.projectAssets%>/prettify/prettify-min.js"></script>
@@ -179,8 +181,13 @@
 <script type="text/javascript" src="<%=this.projectAssets%>/hash.js"></script>
 <!--<script type="text/javascript" src="<%=this.projectAssets%>/api-list.js"></script>-->
 <script type="text/javascript" src="http://10.64.80.137/git/auidoc/themes/ajaxui/assets/api-list.js"></script>
+<script type="text/javascript" src="http://10.64.80.137/git/auidoc/themes/ajaxui/assets/api-search.js"></script>
+<script type="text/javascript" src="<%=this.projectAssets%>/../api.js?callback=APISearch.setData"></script>
 <script type="text/javascript">
-    apiDocs("<%=this.projectAssets%>");	
+	var projectRoot = "<%=this.projectRoot%>";
+	var projectAssets = "<%=this.projectAssets%>";
+	
+    apiDocs(projectAssets);	
 </script>
 </body>
 </html>

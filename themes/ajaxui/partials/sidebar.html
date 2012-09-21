@@ -69,6 +69,7 @@
 		                            <%=this.name.replace(/^jindo\./, '')%>
 		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
 		                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
 		                        </a>
 		                    </li>
 		                <% }); %>
@@ -89,6 +90,7 @@
 		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
 		                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
 		                            <% if (HAS(this.chainable)) { %><span class="flag chainable" title="chainable">chainable</span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
 		                        </a>
 		                    </li>
 		                <% }); %>
@@ -108,6 +110,7 @@
 		                            <%=this.name%>
 		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
 		                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
 		                        </a>
 		                    </li>
 		                <% }); %>
@@ -123,7 +126,11 @@
 		            <ul class="attrs<% if (this.extends) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
 		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
-		                        <a href="#attr_<%=this.name%>" title="<%==this.description%>"><%=this.name%></a>
+		                        <a href="#attr_<%=this.name%>" title="<%==this.description%>">
+		                        	<%=this.name%>
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
+		                        </a>
 		                    </li>
 		                <% }); %>
 		            </ul>
@@ -141,6 +148,7 @@
 		                        <a href="#event_<%=this.name%>" title="<%==this.description%>">
 		                            <%=this.name%>
 		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
 		                        </a>   
 		                    </li>
 		                <% }); %>

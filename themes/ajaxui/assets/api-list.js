@@ -1,8 +1,10 @@
 var apiDocs = function(projectAssets) {
     
     prettyPrint(function() {
-    	
-    	console.log('DONE');	
+		var aLine = $$('#file li');
+		for (var i = 0, len = aLine.length; i < len; i++) {
+			aLine[i].id = 'l' + (i+1);	
+		}
     });
     
     var fpRelocate = function() {};
@@ -17,9 +19,7 @@ var apiDocs = function(projectAssets) {
         if (welEl) {
             
             var nTop = welEl.offset().top;
-            
             document.documentElement.scrollTop = document.body.scrollTop = nTop - 90;
-            window.scrollBy(0, 0);
             
             welEl.addClass('highlight');
             setTimeout(function() {
@@ -56,7 +56,7 @@ var apiDocs = function(projectAssets) {
         'frameSrc' : projectAssets + '/hash.html'
     }).attach('change', onHashChange);
     
-    onHashChange({ hash : oHash.get() });
+    setTimeout(function() { onHashChange({ hash : oHash.get() }); }, 0);
     
     $Element(document).delegate('click', 'a', function(oEvent) {
         
@@ -108,7 +108,7 @@ var apiDocs = function(projectAssets) {
 			
 			var welLI = $Element($$.getSingle('! li', elAnchor));
 			
-			welDemoDesc.text(elAnchor.title);
+			welDemoDesc.html(elAnchor.title);
 			welDemoIframe.$value().src = elAnchor.href;
 			
 			welLastLI && welLastLI.removeClass('selected');
@@ -181,23 +181,7 @@ var apiDocs = function(projectAssets) {
 
 			var bSmall = $Document().clientSize().width < 768;
 			if (bSmall !== bCurSmall) {
-				
-				if (bSmall) {
-					elDepth1.style.height = '';
-					$$.getSingle('.scrollbar-box', elDepth1).style.height = '';
-					$$.getSingle('.scrollbar-content', elDepth1).style.height = '';
-
-					if (elDepth2) {
-						elDepth2.style.height = '';
-						$$.getSingle('.scrollbar-box', elDepth2).style.height = '';
-						$$.getSingle('.scrollbar-content', elDepth2).style.height = '';
-					}
-
-					console.log('작아졌다');
-				} else {
-					console.log('커졌다');
-				}
-				
+				$Element(document.body).cssClass('small-body', bSmall);
 				bCurSmall = bSmall;	
 			}
 			

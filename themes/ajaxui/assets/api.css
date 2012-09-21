@@ -42,8 +42,8 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .im,.u_gnbn{background-image:url(http://static.snber.net/www/m/im3/im2_v10.png);background-size:162px 310px;-webkit-background-size:162px 310px}
 }
 
-#header{position:relative;width:100%;height:44px;border-bottom:1px solid #2b2b2b;background:#2b2b2b;background:-webkit-gradient(linear, left top, left bottom,from(#686868),to(#434343))}
-#header h1{position:absolute;top:10px;left:10px;width:67px;height:26px;background:url(img/sp_jindo.png) -200px -180px no-repeat}
+#header{position:relative;width:100%;height:44px;border-bottom:1px solid #2b2b2b;background:#474747;background:-webkit-gradient(linear, left top, left bottom,from(#686868),to(#434343))}
+#header h1{position:absolute;top:10px;left:10px;width:67px;height:26px;background:url(img/sp_jindo.png) -220px -200px no-repeat}
 #header h1 a{display:block;width:67px;height:26px}
 #header button{position:absolute;top:6px;right:45px;width:32px;height:33px;background:url(img/sp_jindo.png) -40px -160px}
 #header .btn_snb{right:10px;background-position:-120px -160px}
@@ -54,20 +54,21 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .api-page .filter{padding:4px 9px 3px;border-bottom:1px solid #aaa;background:#e1e1e1}
 .api-page .filter input{width:100%;height:30px;padding:0 0 0 30px;border:1px solid #d4d4d4;background:#fff url(img/sp_jindo.png) -295px -177px no-repeat;color:#191919}
 
-#search-tab{border-bottom:1px solid #bebebe}
+#search-tab{position:relative;border-bottom:1px solid #bebebe;background:#f0f0f0;font-size:13px}
+#search-tab .tabs{overflow:hidden;height:30px;border-bottom:1px solid #ababab;line-height:30px;color:#545454}
 #search-tab .tabs:after{display:block;clear:both;content:''}
-#search-tab .tabs .tc-tab{float:left;width:16.4%;height:30px;border:1px solid #ababab;border-width:0 1px 1px 0;background-color:#f0f0f0;line-height:30px;color:#545454;text-align:center;cursor:pointer;_cursor:hand}
+#search-tab .tabs .tc-tab{float:left;width:16.4%;border-right:1px solid #ababab;text-align:center;white-space:nowrap;cursor:pointer;_cursor:hand}
 #search-tab .tabs .tc-tab:last-child{border-right:0}
 #search-tab .tabs .tc-selected{display:block;border-bottom:1px solid #fff;background:#fff;font-weight:bold;color:#010101}
-#search-tab .panels .tc-panel{display:none;clear:both;margin:0;padding:0}
+#search-tab .panels .tc-panel{display:none;clear:both;margin:0;padding:0;background:#fff}
 #search-tab .panels .tc-selected{display:block}
 #search-tab .result{padding:5px 10px;border-bottom:1px solid #ddd}
-#search-tab .result a{display:block;position:relative;background:url(img/arr_link.png) right 50% no-repeat}
+#search-tab .result a{display:block;background:url(img/arr_link.png) right 50% no-repeat}
 #search-tab .result .title{font-size:16px;line-height:21px;line-height:color:#010101}
 #search-tab .result strong{font-weight:bold;color:#0a5afa}
-#search-tab .result ul{margin:8px 0 -5px;font-size:13px}
+#search-tab .result ul{margin:8px 0 -5px}
 #search-tab .result li{height:30px;padding-left:16px;border-top:1px solid #f2f2f2;background:url(img/sp_jindo.png) -316px -80px no-repeat;line-height:30px}
-#search-tab .result .description,#search-tab .result .className{margin:0 15px;font-size:13px;color:#545454}
+#search-tab .result .description,#search-tab .result .className{margin:0 15px;color:#545454}
 #search-tab .result .description{display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 #search-tab .result .flag{display:inline-block;width:auto;height:13px;padding:0 3px;border-radius:3px;font-size:9px;line-height:13px;font-family:Arial;color:#fff;text-indent:1px;-moz-border-radius:3px;-webkit-border-radius:3px}
 #search-tab .result .keyword{background:#8f82bc}
@@ -79,12 +80,11 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 #header .info{position:absolute;top:10px;left:86px;color:#9f9f9f}
 #header .version{font-size:10px;font-family:tahoma,sans-serif;color:#9f9f9f}
 #header .info .bar,#header .info .help{display:none}
-
 #footer{position:relative;height:28px;border-top:1px solid #373737;background-color:#3f3f3f;line-height:28px;font-size:10px;color:#bfbebe;text-align:center}
 #footer a{font-weight:bold;color:#fff}
 
 .sidemenu{float:none;border-right:0}
-.sidemenu .snb{float:none;width:100% !important;height:auto !important}
+.sidemenu .snb{overflow:hidden;float:none}
 .sidemenu .snb ul:after{display:block;clear:both;content:''}
 .sidemenu .depth1{border:1px solid #212121;border-width:0 0 1px 1px;background:#3c3c3c}
 .sidemenu .depth1 li{float:left;width:33%;border:1px solid #252525;border-width:1px 0 0 1px;background:#2e2e2e}
@@ -101,8 +101,11 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .sidemenu .api-options .checkbox-applied .checkbox-mark{position:absolute;top:0;left:0;z-index:1;width:105px;height:28px;background:url(img/sp_jindo.png) 0 -200px}
 .sidemenu .api-options .api-show-inherited .checkbox-mark{background-position:0 -200px}
 .sidemenu .api-options .api-show-deprecated .checkbox-mark{background-position:0 -230px}
-.sidemenu .api-options label{display:none}
+.sidemenu .api-options .api-show-inherited .checkbox-checked{background-position:-110px -200px}
+.sidemenu .api-options .api-show-deprecated .checkbox-checked{background-position:-110px -230px}
 
+.sidemenu .api-options label{display:none}
+.sidemenu .api-options *{text-decoration:none}
 .sidemenu button{display:block;position:relative;top:auto;right:auto;width:100%;height:33px;margin-top:-1px;border:1px solid #bcbcbc;border-width:1px 0;background:#e5e5e5;background:-webkit-gradient(linear, left top, left bottom,from(#f1f1f1),to(#dddddd));line-height:33px;font-weight:bold;font-size:13px;color:#000;text-align:center;text-indent:1px}
 .sidemenu .btn_close{display:block}
 .sidemenu .btn_open{display:none}
@@ -112,17 +115,18 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .lft_fold .sidemenu .depth2{display:none}
 .lft_fold .sidemenu .btn_close{display:none}
 .lft_fold .sidemenu .btn_open{display:block}
+.api-main .sidemenu button{display:none}
+.scrollbar{width:100% !important}
+.scrollbar .scrollbar-box,.scrollbar .scrollbar-content{width:100% !important}
 .scrollbar .scrollbar-show{display:none}
 
 #main{float:none;position:relative;width:100%;min-width:320px;margin:0 0 50px}
 .main_fix{position:relative;margin:0}
 .section_inn{position:relative}
 .section_inn h2{height:30px;margin-top:-1px;padding-left:10px;border-top:1px solid #d8dadf;border-bottom:1px solid #bbbfc4;background:#fafafb;background:-webkit-gradient(linear, left top, left bottom,from(#fcfcfd),to(#e8e8e9));font-size:13px;font-weight:bold;line-height:30px}
-
 .intro{float:none;position:relative;padding:40px 10px;line-height:20px;color:#2c2d2f}
 .intro h3{width:203px;height:76px;margin:0 auto 40px;background:url(img/sp_jindo.png) 0 0 no-repeat;text-align:center}
 .intro .desc{display:none}
-
 .sc_dw{display:none}
 .tbl_board{width:100%;border-top:1px solid #eee;border-bottom:1px solid #bcbcbc}
 .tbl_board caption{border-bottom:1px dashed #bababa;background:#f8f8f8;line-height:30px}
@@ -132,6 +136,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .tbl_board th:first-child{border-left:0}
 .tbl_board td:first-child{border-left:0}
 .tbl_board td span{display:inline-block;margin:0 auto;text-align:left}
+.tbl_board td a{word-break:break-all;word-wrap:break-word}
 .tbl_board .ic{display:block;width:34px;height:34px;margin:0 auto 4px;background:url(img/sp_jindo.png) 0 -80px no-repeat;font-size:0;line-height:0;text-indent:-1000em}
 .tbl_board .ie{background-position:0 -80px}
 .tbl_board .ff{background-position:-40px -80px}
@@ -202,15 +207,14 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .tc-panel .board dl.constructor dd{float:none}
 .tc-panel .board dd{float:left;padding:0 10px;line-height:18px}
 
-.release{overflow:hidden;position:relative;border-top:1px solid #eee}
-.release dt{overflow:hidden;width:100%;height:35px;padding-left:10px;border:1px solid #d8dadf;border-width:0 0 1px;line-height:35px}
-.release dt a{display:inline-block;overflow:hidden;width:95%;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
-.release dt .date{display:none}
-.release dd{display:none}
+.release{position:relative;border-top:1px solid #eee}
+.release li{overflow:hidden;height:35px;padding:0 10px;border-bottom:1px dashed #bababa;line-height:35px}
+.release li a{display:block;overflow:hidden;width:100%;background:url(img/arr_link.png) right 50% no-repeat;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
+.release li .date{display:none}
+
 .btn_more{position:absolute;top:5px;right:10px;width:52px;height:20px;border:0;background:none;font-size:12px}
 .btn_more .ic{display:inline-block;position:relative;width:7px;height:14px;margin:-0 0 0 3px;background:url(img/sp_jindo.png) -320px -57px no-repeat}
 .footnote{display:none}
-
 .api-page .content a{color:#1760f6}
 .relation{line-height:20px;font-size:13px}
 .relation:after{display:block;clear:both;content:''}
@@ -227,17 +231,17 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .tc-panel h3 span{font-size:12px;font-weight:normal}
 .tc-panel h4{margin:16px 0 11px;font-weight:bold;font-size:13px}
 .tc-panel .noline{border:0}
-.api-page .btn_code{display:inline-block;overflow:hidden;width:39px;height:18px;background:url(img/sp_jindo.png) -110px -200px no-repeat;vertical-align:middle}
+.api-page .btn_code{display:inline-block;overflow:hidden;width:39px;height:18px;background:url(img/sp_jindo.png) -200px -180px no-repeat;vertical-align:middle}
 .api-page .btn_code a{display:block;width:39px;height:18px}
 
 .api-page .flag{display:inline-block;width:13px;height:13px;background:url(img/sp_jindo_high.png) 0 0 no-repeat;font-size:0;line-height:0;text-indent:-1000em;vertical-align:middle}
 .api-page .flag.chainable{background-position:0 0}
 .api-page .flag.deprecated{background-position:-20px 0}
+.api-page .flag.inherited{background-position:-40px 0}
 .api-page .flag.static{background-position:-60px 0}
-.api-page .flag.args_e{background-position:-40px 0}
 .api-page .flag.optional{background:none}
-.api-page .flag.inherited{width:11px;height:11px;background-position:-100px 0}
-.api-page .flag.deprecate{width:12px;height:12px;background-position:-80px 0}
+.api-page .type .flag.inherited{width:11px;height:11px;background-position:-100px 0}
+.api-page .type .flag.deprecate{width:12px;height:12px;background-position:-80px 0}
 .api-page .item{padding:10px;border-bottom:1px dashed #ddd}
 .api-page .item:last-child{border:0}
 .api-page .api-options{padding-left:10px}
@@ -255,6 +259,11 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .api-page .tbl_board .target br{line-height:22px}
 
 .api-page .history-table button{position:relative;width:100%;height:13px;margin-top:-1px;border:1px solid #bcbcbc;background:#f4f4f4;background:-webkit-gradient(linear, left top, left bottom,from(#fff),to(#f4f4f4));vertical-align:top}
+.api-page .history-table .btn_open{display:none}
+.api-page .history-table .btn_close{display:block}
+.api-page .tbl_fold .btn_open{display:block}
+.api-page .tbl_fold .btn_close{display:none}
+
 .api-page .history-table button .ic{display:block;width:5px;height:3px;margin:0 auto;background-color:#f5f5f5b;background-image:url(img/sp_jindo.png);background-repeat:no-repeat;text-align:center}
 .api-page .history-table .btn_open .ic{bottom:auto;background-position:-290px -120px}
 .api-page .history-table .btn_close .ic{bottom:auto;background-position:-290px -100px}
@@ -293,8 +302,9 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .api-page .manual p{margin:0}
 .api-page .manual .description strong ~ p,.api-page .manual .description strong ~ pre.code{margin-left:15px}
 
-/* iphone */
-body.s3,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25em}
+@media all and (-webkit-min-device-pixel-ratio:15){
+body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25em}
+}
 
 /* Responsive */
 @media all and (min-width:768px){
@@ -307,13 +317,20 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .wrap:after{display:block;clear:both;content:''}
 #header{position:fixed;top:0;left:0;z-index:1000;width:100%;height:57px;border-bottom:1px solid #080809;background:#2b2b2b}
 #header h1{position:absolute;top:11px;left:14px;width:101px;height:38px;background:url(img/sp_jindo.png) -210px 0 no-repeat}
+#header h1 a{width:101px;height:38px}
 #header .menu{display:none}
 .api-page .sch_frm{position:relative;position:fixed;z-index:1010}
-.api-page .filter{position:absolute;top:-39px;left:126px;z-index:10;padding:0;border:0;border:3px solid #01d90e}
-.api-page .filter input{width:280px;height:19px;padding:0 0 0 20px;border:0;background:#2c2c30 url(img/sp_jindo.png) -308px -148px no-repeat;color:#bababa}
-
+.api-page .filter{position:absolute;top:-39px;left:126px;z-index:10;width:345px;padding:0;border:0;border:3px solid #01d90e;background:#2c2c30}
+.api-page .filter input{width:325px;height:19px;padding:0 0 0 20px;border:0;background:url(img/sp_jindo.png) -308px -148px no-repeat;color:#bababa}
 .api-page .sch_frm .btn_sch{position:relative;top:auto;right:auto;width:42px;height:25px;background:url(img/sp_jindo.png) -130px -120px no-repeat;vertical-align:top}
-.api-page .sch_frm #search-tab{display:none}
+#search-tab{position:absolute;top:-16px;left:129px;z-index:15;width:343px;border:1px solid #888d95;border-width:0 1px 1px;background:#fff;font-size:12px}
+#search-tab .tabs{height:23px;border-bottom:1px solid #cacaca;background:#f0f0f0;line-height:23px;color:#6e6e6e}
+#search-tab .result .title{font-size:13px}
+#search-tab .panels{overflow:scroll;overflow-x:hidden}
+#search-tab .result a{background:none}
+#search-tab .result li{height:22px;background:url(img/sp_jindo.png) -316px -85px no-repeat;line-height:22px}
+#search-tab .result .description,#search-tab .result .className{color:#585858}
+
 #header .info{position:absolute;top:10px;right:10px;left:auto;color:#9f9f9f}
 #header .version{font-size:10px;font-family:tahoma,sans-serif;color:#9f9f9f}
 #header .info .help{display:inline-block;font-size:11px}
@@ -326,7 +343,7 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 
 .sidemenu{position:fixed;top:58px;left:0;bottom:28px;z-index:1000;height:100%}
 .sidemenu:after{display:block;clear:both;content:''}
-.sidemenu .snb{float:left;position:relative;z-index:20;width:148px !important;height:100% !important;border:1px solid #212121;border-width:0 1px}
+.sidemenu .snb{float:left;position:relative;z-index:20;border:1px solid #212121;border-width:0 1px}
 .sidemenu .snb li{float:none;width:100%;border:0;background:none}
 .sidemenu .snb a{display:block;overflow:hidden;height:23px;padding-left:10px;border:0;line-height:23px;color:#fff;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
 .sidemenu .depth1{border-width:0 1px;background:#474747}
@@ -354,25 +371,31 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .lft_fold .main_fix{margin-left:150px}
 
 /* scrollbar */
-.scrollbar .scrollbar-content{position:absolute;top:0;left:0;z-index:30;width:100%}
+.scrollbar,.scrollbar .scrollbar-box,.scrollbar .scrollbar-content{width:148px !important}
+
+.has_scrollbar .depth1 .scrollbar-box,.has_scrollbar .depth1 .scrollbar-content,.has_scrollbar .depth2 .scrollbar-box,.has_scrollbar .depth2 .scrollbar-content{width:134px !important}
+.scrollbar .scrollbar-content{position:absolute;top:0;left:0;z-index:30}
 .scrollbar .scrollbar-v{position:absolute;top:0;right:0;z-index:40;width:14px;height:100%}
-.scrollbar .scrollbar-track{position:relative;top:0;width:13px;height:100%;margin:-1px 0;border:1px solid #212121}
+
+.scrollbar .scrollbar-track{position:relative;top:0;width:14px;height:100%;margin:-1px 0;border-right:1px solid #212121}
 .scrollbar .scrollbar-thumb{overflow:hidden;position:relative;top:2px;width:13px;height:100px}
-.scrollbar .scrollbar-button-up,.scrollbar .scrollbar-button-down{overflow:hidden;position:relative;top:0;width:13px;height:14px;border:1px solid #212121;background-image:url(img/sp_jindo.png)}
+.scrollbar .scrollbar-button-up,.scrollbar .scrollbar-button-down{overflow:hidden;position:relative;top:0;width:13px;height:14px;border:1px solid #343434;border-right:1px solid #212121;background-image:url(img/sp_jindo.png)}
 .scrollbar .scrollbar-noscript .scrollbar-box{z-index:30;width:150px}
 .scrollbar .scrollbar-noscript .scrollbar-v{display:none}
 .scrollbar .scrollbar-show{display:block}
-.depth1 .scrollbar-track{background:#313131}
-.depth1 .scrollbar-track-hold{background-color:#33333b}
-.depth1 .scrollbar-thumb{background:#676767;background:-webkit-gradient(linear, left top, left bottom,from(#6d6d6d),to(#636363))}
+
+.depth1 .scrollbar-track{background:#404040}
+.depth1 .scrollbar-track-hold{background-color:#3a3a3a}
+.depth1 .scrollbar-thumb{border:1px solid #343434;background:#676767;background:-webkit-gradient(linear, left top, left bottom,from(#6d6d6d),to(#636363))}
 .depth1 .scrollbar-thumb-hold{background:#767676;background:-webkit-gradient(linear, left top, left bottom,from(#7c7c7c),to(#737373))}
 .depth1 .scrollbar-button-up{background-position:-200px -140px}
 .depth1 .scrollbar-button-down{background-position:-200px -160px}
 .depth1 .scrollbar-button-up-hold{background-position:-220px -140px}
 .depth1 .scrollbar-button-down-hold{background-position:-220px -160px}
-.depth2 .scrollbar-track{background:#555}
-.depth2 .scrollbar-track-hold{background-color:#33333b}
-.depth2 .scrollbar-thumb{background:#9a9a9a;background:-webkit-gradient(linear, left top, left bottom,from(#9d9d9d),to(#969696))}
+
+.depth2 .scrollbar-track{background:#585858}
+.depth2 .scrollbar-track-hold{background-color:#4f4f4f}
+.depth2 .scrollbar-thumb{border:1px solid #343434;background:#9a9a9a;background:-webkit-gradient(linear, left top, left bottom,from(#9d9d9d),to(#969696))}
 .depth2 .scrollbar-thumb-hold{background:#a3a3a3;background:-webkit-gradient(linear, left top, left bottom,from(#a7a7a7),to(#a1a1a1))}
 .depth2 .scrollbar-button-up{background-position:-240px -140px}
 .depth2 .scrollbar-button-down{background-position:-240px -160px}
@@ -381,18 +404,14 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 
 /* main */
 #main{position:relative;width:100%}
-
-/* .main_fix{position:relative;margin:57px 0 0 150px} */
 .main_fix{position:relative;margin:57px 0 0 299px}
 .section_inn{clear:both;position:relative;padding:40px;border-top:3px solid #f1f1f1}
 .section_inn:after{display:block;clear:both;content:''}
 .section_inn.first,.section_inn:first-child{*overflow:hidden;border:0}
 .section_inn h2{height:32px;padding-left:4px;border:0;background:none;font-size:20px;font-weight:normal;line-height:20px}
-
 .intro{float:none;position:relative;margin-bottom:40px;padding:0;line-height:20px;color:#2c2d2f}
 .intro h3{width:203px;height:76px;margin-bottom:40px;background:url(img/sp_jindo.png) 0 0 no-repeat}
 .intro .desc{position:absolute;top:60px;left:220px;color:#48494c}
-
 .sc_dw{display:block;position:relative;width:303px}
 .sc_dw table{width:303px}
 .sc_dw .version{position:absolute;top:0;right:0}
@@ -408,7 +427,7 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .radio-applied .radio-mark.radio-checked{background-position:-200px -120px}
 
 .api_main .sidemenu{display:block}
-.tbl_board{width:100%;/* margin-top:10px; */border-top:1px solid #1f2026;border-bottom:1px solid #bcbcbc}
+.tbl_board{width:100%;border-top:1px solid #1f2026;border-bottom:1px solid #bcbcbc}
 .tbl_board caption{display:none}
 .tbl_board th{border-top:1px dashed #bababa;border-left:1px dashed #bababa;background:#f3f3f3;font-weight:normal;line-height:28px}
 .tbl_board th.tit{width:76px;border-left:0}
@@ -440,7 +459,6 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .support ul.plan{float:none;width:100%;height:50px}
 .support ul.plan li{width:19.8%;height:50px;padding:0;border-width:0 1px 0 0;line-height:50px}
 .support ul.plan li:nth-child(3){width:19.8%;border-right:1px dashed #bababa}
-
 .support span.ic{display:block;width:34px;height:34px;margin:0 auto 4px;background:url(img/sp_jindo.png) 0 -80px no-repeat;font-size:0;line-height:0;text-indent:-1000em}
 .support span.ie{background-position:0 -80px}
 .support span.ff{background-position:-40px -80px}
@@ -463,17 +481,12 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .panel .tbl_board td:first-child{width:22px;text-align:center;vertical-align:middle}
 
 .release{position:relative;border-top:1px solid #1f2026;border-bottom:1px solid #bcbcbc}
-.release li{height:27px}
+.release li{overflow:hidden;height:27px;padding:0;border-bottom:1px dashed #bababa;line-height:27px;color:#363636;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
+.release li a{display:inline-block;background:none}
 .release a:hover{color:#0a5afa}
-.release dt{overflow:hidden;position:relative;z-index:1;width:47%;height:27px;padding:0;border:1px dashed #bababa;border-width:1px 1px 0 0;line-height:27px;color:#363636;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
-.release dt a{overflow:hidden;width:58%;text-overflow:ellipsis;-o-text-overflow:ellipsis}
-.release dt .date{display:inline-block;width:100px;padding-left:15px;vertical-align:top}
-.release li:first-child dt{border-top:0}
-.release dd{display:none;overflow:scroll;overflow-x:hidden;position:absolute;top:0;right:0;/* z-index:1; */width:48%;height:257px;padding:20px 25px;background:#fff;font-size:12px;line-height:18px;color:#363636}
-.release li.selected dt{border-right:0}
-.release li.selected dd{display:block}
-.release li.selected dd .tit{padding-bottom:10px}
-.release li.selected dd .txt em{display:block;padding-bottom:10px}
+.release li .date{display:inline-block;width:85px;padding-left:15px;vertical-align:top}
+.release li:last-child{border:0}
+
 .btn_more{position:absolute;top:38px;right:40px;width:52px;height:20px;border:1px solid #d9d9d9;border-radius:3px;background:#fafafb;background:-webkit-gradient(linear, left top, left bottom,from(#ffffff),to(#fafafb));line-height:20px;font-size:12px;color:#2c2d2f;text-align:center;text-align:center;-moz-border-radius:3px;-webkit-border-radius:3px}
 .btn_more .ic{display:inline-block;width:5px;height:7px;margin:0 0 0 3px;background:url(img/sp_jindo.png) -320px -120px no-repeat}
 .footnote{display:block;margin-bottom:35px;padding-top:5px;color:#000}
@@ -482,29 +495,28 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .relation{line-height:20px;font-size:13px}
 .relation:after{display:block;clear:both;content:''}
 .relation dt{float:left;clear:both;width:80px;font-weight:bold}
-.api-page div.description{margin:17px 0 20px;font-size:13px;line-height:18px/* padding:0 .5em;font-size:1.2em; */}
+.api-page div.description{margin:17px 0 20px;font-size:13px;line-height:18px}
 .api-page .refer{font-size:13px}
-.api-page .refer ul{margin:5px 0 0 2em;line-height:18px/* font-size:1.2em;list-style:disc */}
+.api-page .refer ul{margin:5px 0 0 2em;line-height:18px}
 
 .tc-panel{position:relative;padding:40px;border-top:3px solid #f1f1f1}
 .tc-panel:after{display:block;clear:both;content:''}
 .tc-panel.first,.tc-panel:first-child{padding:40px;border:0}
 .tc-panel h2{padding:0 0 15px;border-bottom:1px solid #bcbcbc;font-weight:bold;font-size:18px}
-.tc-panel h3{padding:7px 0 4px;font-weight:bold;font-size:16px;/* line-height:30px; */color:#000}
+.tc-panel h3{padding:7px 0 4px;font-weight:bold;font-size:16px;color:#000}
 .tc-panel h3 span{font-size:12px;font-weight:normal}
 .tc-panel h4{margin:16px 0 11px;font-weight:bold;font-size:13px}
 .tc-panel .noline{border-bottom:0}
-
 .api-page .btn_code{display:inline-block;overflow:hidden;width:24px;height:12px;background:url(img/sp_jindo.png) -200px -100px no-repeat;vertical-align:middle}
 .api-page .btn_code a{display:block;width:24px;height:12px}
 .api-page .flag{display:inline-block;width:13px;height:13px;background:url(img/sp_jindo_high.png) 0 0 no-repeat;font-size:0;line-height:0;text-indent:-1000em;vertical-align:middle}
 .api-page .flag.chainable{background-position:0 0}
 .api-page .flag.deprecated{background-position:-20px 0}
+.api-page .flag.inherited{background-position:-40px 0}
 .api-page .flag.static{background-position:-60px 0}
-.api-page .flag.args_e{background-position:-40px 0}
 .api-page .flag.optional{background:none}
-.api-page .flag.inherited{width:11px;height:11px;background-position:-100px 0}
-.api-page .flag.deprecate{width:12px;height:12px;background-position:-80px 0}
+.api-page .type .flag.inherited{width:11px;height:11px;background-position:-100px 0}
+.api-page .type .flag.deprecate{width:12px;height:12px;background-position:-80px 0}
 .api-page .item{padding:10px;border-bottom:1px dashed #ddd}
 .api-page .item:last-child{border:0}
 .api-page .tc-panel .api-options{padding:0}
@@ -517,10 +529,7 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .api-page .history-table button{position:absolute;right:0;z-index:1;width:80px;height:11px;margin:0;border:0;background:url(img/sp_jindo.png) -50px -120px no-repeat}
 .api-page .history-table .btn_open{bottom:-11px;background-position:-40px -140px}
 .api-page .history-table .btn_close{bottom:1px;background-position:-40px -120px}
-.api-page .history-table .btn_open{display:block}
-.api-page .history-table .btn_close{display:none}
-.api-page .tbl_fold .btn_open{display:none}
-.api-page .tbl_fold .btn_close{display:block}
+
 .api-page .history-table button .ic{display:none}
 .api-page .tbl_board .ver{width:60px}
 .api-page .tbl_board .cate{width:67px}
@@ -558,6 +567,8 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
 .api-page .manual .description img{margin:5px 0}
 .api-page .manual p{margin:0}
 .api-page .manual .description strong ~ p,.api-page .manual .description strong ~ pre.code{margin-left:15px}
+.api-main .main_fix{margin-left:150px}
+
 }
 /* //Responsive768px */
 
