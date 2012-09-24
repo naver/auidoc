@@ -3,20 +3,21 @@
 	<!-- [D] style="width:135px; height:384px; -->
 	<div class="scrollbar-box">
 		<div class="scrollbar-content">
-			<ul>
-		        <% EACH(this.classes, function(projectRoot, className) { %>
-		            <li><a href="<%=projectRoot%>classes/<%=this.name%>.html" class="<%=(this.name === className ? "selected" : "")%>">
-		                <%=this.displayName.replace(/^jindo\./, '')%>
-		            </a></li>
-		        <% }, [ this.projectRoot, this.tag === 'class' && this.name ]); %>
-			</ul>
+			<div>
+				<ul>
+			        <% EACH(this.classes, function(projectRoot, className) { %>
+			            <li><a href="<%=projectRoot%>classes/<%=this.name%>.html" class="<%=(this.name === className ? "selected" : "")%>">
+			                <%=this.displayName.replace(/^jindo\./, '')%>
+			            </a></li>
+			        <% }, [ this.projectRoot, this.tag === 'class' && this.name ]); %>
+				</ul>
+			</div>
 			<!--
 			<div>
-				<h3>UI Template</h2>
-				</h3>
+				<h3>UI Template</h3>
 				<ul class="snb_lst">
-				<li><a href="./jindo.m.PageLayoutUI/index.html">PageLayoutUI </a></li>
-				<li><a href="./jindo.m.RevealSidebarUI/index.html">RevealSidebarUI </a></li>
+					<li><a href="./jindo.m.PageLayoutUI/index.html">PageLayoutUI </a></li>
+					<li><a href="./jindo.m.RevealSidebarUI/index.html">RevealSidebarUI </a></li>
 				</ul>
 			</div>
 			-->
