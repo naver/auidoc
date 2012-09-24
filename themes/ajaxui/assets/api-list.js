@@ -154,11 +154,25 @@ var apiDocs = function(projectAssets) {
 		var elDepth1 = $$.getSingle('div.depth1');
 		var elDepth2 = $$.getSingle('div.depth2');
 		
+		var oScrollTimer = null;
+		
 		var oScrBox1 = new jindo.ScrollBox(elDepth1, {
 			sOverflowX : 'hidden',
 			sOverflowY : 'auto',
 			bAdjustThumbSize : true,
 			nDelta : 32
+		}).attach('scroll', function(oCustomEvent) {
+			
+			var nPosition = oCustomEvent.nPosition;
+			
+			if (oCustomEvent.sDirection !== 'top') { return; }
+			
+			if (oScrollTimer) { clearTimeout(oScrollTimer); }
+			setTimeout(function() {
+				oStorage.set('scroll-top', nPosition);
+				oScrollTimer = null;
+			}, 500);
+						
 		});
 		
 		var oScrBox2 = elDepth2 && (new jindo.ScrollBox(elDepth2, {
@@ -167,6 +181,9 @@ var apiDocs = function(projectAssets) {
 			bAdjustThumbSize : true,
 			nDelta : 32
 		}));
+		
+		var bScrollFirst = true;
+		var elDepth1Selected = $$.getSingle('a.selected', elDepth1);
 		
 		var bCurSmall = null;
 		
@@ -178,7 +195,7 @@ var apiDocs = function(projectAssets) {
 		elDepth2 && $Element(elDepth2).attach('mousewheel', onMouseWheel);
 		
 		fpRelocate = function() {
-
+			
 			var bSmall = $Document().clientSize().width < 768;
 			if (bSmall !== bCurSmall) {
 				$Element(document.body).cssClass('small-body', bSmall);
@@ -187,11 +204,49 @@ var apiDocs = function(projectAssets) {
 			
 			if (!bCurSmall) {
 				
+				var nTmpTop = oScrBox1.getScrollTop();
 				oScrBox1.setSize(148, elLeft.offsetHeight - elHeader.offsetHeight);
-				oScrBox2 && oScrBox2.setSize(148, elLeft.offsetHeight - elHeader.offsetHeight);
+				oScrBox1.setScrollTop(nTmpTop);
 				
-				oScrBox2 && $Element(elLeft).cssClass('has_scrollbar', oScrBox2.hasScrollBarVertical());
+				if (oScrBox2) {
 				
+					nTmpTop = oScrBox2.getScrollTop();
+					
+					oScrBox2.setSize(148, elLeft.offsetHeight - elHeader.offsetHeight);
+					$Element(elLeft).cssClass('has_scrollbar', oScrBox2.hasScrollBarVertical());
+					
+					oScrBox2.setScrollTop(nTmpTop);
+					
+				}
+				
+			}
+			
+			if (bScrollFirst) {
+				
+				if (elDepth1Selected) {
+					
+					var aItem = [ elDepth1Selected.offsetTop + elDepth1Selected.offsetParent.offsetTop ];
+					aItem[1] = aItem[0] + elDepth1Selected.offsetHeight;
+					
+				}
+				
+				var nTop = Number(oStorage.get('scroll-top'));
+				if (nTop) { oScrBox1.setScrollTop(nTop); }
+				
+				if (elDepth1Selected) {
+					
+					var aRange = [ oScrBox1.getScrollTop() ];
+					aRange[1] = aRange[0] + elDepth1.offsetHeight;
+					
+					if (aItem[0] < aRange[0]) {
+						oScrBox1.setScrollTop(aRange[0] - (aRange[0] - aItem[0]));
+					} else if (aItem[1] > aRange[1]) {
+						oScrBox1.setScrollTop(aRange[0] + (aItem[1] - aRange[1]));
+					}
+					
+				}
+				
+				bScrollFirst = false;
 			}
 
 		};
