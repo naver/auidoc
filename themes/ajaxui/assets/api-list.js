@@ -317,11 +317,6 @@ var apiDocs = function(projectAssets) {
         
         oInherited.attach('change', refresh);
         oDeprecated.attach('change', refresh);
-
-		/*
-        $Element(showInherited).attach('click', refresh);
-        $Element(showDeprecated).attach('click', refresh);
-        */
         
         refresh();
         
