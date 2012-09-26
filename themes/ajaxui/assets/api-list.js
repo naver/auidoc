@@ -148,6 +148,10 @@ var apiDocs = function(projectAssets) {
 	
 	(function() {
 		
+		if (isMobile) { return; }
+		
+		var elContainer = $('container');
+		
 		var elHeader = $('header');
         var elLeft = $('left-columns');
 
@@ -156,67 +160,71 @@ var apiDocs = function(projectAssets) {
 		
 		var oScrollTimer = null;
 		
-		var oScrBox1 = new jindo.ScrollBox(elDepth1, {
-			sOverflowX : 'hidden',
-			sOverflowY : 'auto',
-			bAdjustThumbSize : true,
-			nDelta : 32
-		}).attach('scroll', function(oCustomEvent) {
+		if (false) {
 			
-			var nPosition = oCustomEvent.nPosition;
+			elDepth1.style.overflowY = 'auto';
+			elDepth2 && (elDepth2.style.overflowY = 'auto');
 			
-			if (oCustomEvent.sDirection !== 'top') { return; }
-			
-			if (oScrollTimer) { clearTimeout(oScrollTimer); }
-			setTimeout(function() {
-				oStorage.set('scroll-top', nPosition);
-				oScrollTimer = null;
-			}, 500);
-						
-		});
+		} else {
 		
-		var oScrBox2 = elDepth2 && (new jindo.ScrollBox(elDepth2, {
-			sOverflowX : 'hidden',
-			sOverflowY : 'auto',
-			bAdjustThumbSize : true,
-			nDelta : 32
-		}));
+			var oScrBox1 = new jindo.ScrollBox(elDepth1, {
+				sOverflowX : 'hidden',
+				sOverflowY : 'auto',
+				bAdjustThumbSize : true,
+				nDelta : 32
+			}).attach('scroll', function(oCustomEvent) {
+				
+				var nPosition = oCustomEvent.nPosition;
+				
+				if (oCustomEvent.sDirection !== 'top') { return; }
+				
+				if (oScrollTimer) { clearTimeout(oScrollTimer); }
+				setTimeout(function() {
+					oStorage.set('scroll-top', nPosition);
+					oScrollTimer = null;
+				}, 500);
+							
+			});
+			
+			var oScrBox2 = elDepth2 && (new jindo.ScrollBox(elDepth2, {
+				sOverflowX : 'hidden',
+				sOverflowY : 'auto',
+				bAdjustThumbSize : true,
+				nDelta : 32
+			}));
+			
+		}
 		
 		var bScrollFirst = true;
 		var elDepth1Selected = $$.getSingle('a.selected', elDepth1);
 		
-		var bCurSmall = null;
-		
-		var onMouseWheel = function(oEvent) {
-			bCurSmall && oEvent.stopBubble();
-		};
-		
-		$Element(elDepth1).attach('mousewheel', onMouseWheel);
-		elDepth2 && $Element(elDepth2).attach('mousewheel', onMouseWheel);
-		
 		fpRelocate = function() {
+
+			var nHeight = elLeft.offsetHeight - elHeader.offsetHeight;
 			
-			var bSmall = $Document().clientSize().width < 768;
-			if (bSmall !== bCurSmall) {
-				$Element(document.body).cssClass('small-body', bSmall);
-				bCurSmall = bSmall;	
+			if (false) {
+				var nTmpTop = elDepth1.scrollTop;
+				elDepth1.style.height = nHeight + 'px';
+				elDepth1.scrollTop = nTmpTop;
+			} else {
+				var nTmpTop = oScrBox1.getScrollTop();
+				oScrBox1.setSize(148, nHeight);
+				oScrBox1.setScrollTop(nTmpTop);
 			}
 			
-			if (!bCurSmall) {
+			if ((false && elDepth2) || oScrBox2) {
 				
-				var nTmpTop = oScrBox1.getScrollTop();
-				oScrBox1.setSize(148, elLeft.offsetHeight - elHeader.offsetHeight);
-				oScrBox1.setScrollTop(nTmpTop);
-				
-				if (oScrBox2) {
-				
+				if (false) {
+					var nTmpTop = elDepth2.scrollTop;
+					elDepth2.style.height = nHeight + 'px';
+					elDepth2.scrollTop = nTmpTop;
+				} else {
 					nTmpTop = oScrBox2.getScrollTop();
 					
-					oScrBox2.setSize(148, elLeft.offsetHeight - elHeader.offsetHeight);
+					oScrBox2.setSize(148, nHeight);
 					$Element(elLeft).cssClass('has_scrollbar', oScrBox2.hasScrollBarVertical());
 					
 					oScrBox2.setScrollTop(nTmpTop);
-					
 				}
 				
 			}
@@ -231,17 +239,40 @@ var apiDocs = function(projectAssets) {
 				}
 				
 				var nTop = Number(oStorage.get('scroll-top'));
-				if (nTop) { oScrBox1.setScrollTop(nTop); }
+				if (nTop) {
+					
+					if (false) {
+						elDepth1.scrollTop = nTop + 'px';
+					} else {
+						oScrBox1.setScrollTop(nTop);
+					}
+					
+				}
 				
 				if (elDepth1Selected) {
 					
-					var aRange = [ oScrBox1.getScrollTop() ];
-					aRange[1] = aRange[0] + elDepth1.offsetHeight;
+					if (false) {
+
+						var aRange = [ elDepth1.scrollTop ];
+						aRange[1] = aRange[0] + elDepth1.offsetHeight;
+						
+						if (aItem[0] < aRange[0]) {
+							elDepth1.scrollTop = (aRange[0] - (aRange[0] - aItem[0]));
+						} else if (aItem[1] > aRange[1]) {
+							elDepth1.scrollTop = (aRange[0] + (aItem[1] - aRange[1]));
+						}
 					
-					if (aItem[0] < aRange[0]) {
-						oScrBox1.setScrollTop(aRange[0] - (aRange[0] - aItem[0]));
-					} else if (aItem[1] > aRange[1]) {
-						oScrBox1.setScrollTop(aRange[0] + (aItem[1] - aRange[1]));
+					} else {						
+					
+						var aRange = [ oScrBox1.getScrollTop() ];
+						aRange[1] = aRange[0] + elDepth1.offsetHeight;
+						
+						if (aItem[0] < aRange[0]) {
+							oScrBox1.setScrollTop(aRange[0] - (aRange[0] - aItem[0]));
+						} else if (aItem[1] > aRange[1]) {
+							oScrBox1.setScrollTop(aRange[0] + (aItem[1] - aRange[1]));
+						}
+						
 					}
 					
 				}
@@ -253,6 +284,8 @@ var apiDocs = function(projectAssets) {
 		
 		var oTimer = new jindo.Timer();
 		$Element(window).attach('resize', function() {
+			oTimer.start(fpRelocate, 100);
+		}).attach('scroll', function() {
 			oTimer.start(fpRelocate, 100);
 		});
 		
@@ -279,6 +312,30 @@ var apiDocs = function(projectAssets) {
 			oStorage.set('show-left-fold', false);
 			fpRelocate();
 		});
+		
+		var welToggleSearchBtn = $Element('toggle_search_btn');
+		var welToggleListBtn = $Element('toggle_list_btn');
+		
+		var welSearchEl = $Element($$.getSingle('div.sch_frm'));
+		var welListEl = $Element($$.getSingle('div.depth1'));
+		
+		welToggleSearchBtn.attach('click', function() {
+			this.toggleClass('btn_sch_on');
+			welSearchEl.cssClass('hide_when_small', !this.hasClass('btn_sch_on'));
+			oStorage.set('show-search', this.hasClass('btn_sch_on'));
+		});
+		
+		welToggleListBtn.attach('click', function() {
+			this.toggleClass('btn_snb_on');
+			welListEl.cssClass('hide_when_small', !this.hasClass('btn_snb_on'));
+			oStorage.set('show-list', this.hasClass('btn_snb_on'));
+		});
+		
+		welToggleSearchBtn.cssClass('btn_sch_on', oStorage.get('show-search') === 'true');
+		welToggleListBtn.cssClass('btn_snb_on', oStorage.get('show-list') === 'true');
+		
+		welSearchEl.cssClass('hide_when_small', !welToggleSearchBtn.hasClass('btn_sch_on'));
+		welListEl.cssClass('hide_when_small', !welToggleListBtn.hasClass('btn_snb_on'));
 		
 	})();
         

@@ -5,27 +5,27 @@
         <span class="type">&lt;<%=crossLink(this.type)%>&gt;</span>
         
         <% if (HAS(this.deprecated)) { %>
-            <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>">deprecated</span>
+            <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>"><span class="blind">deprecated</span></span>
         <% } %>
     
         <% if (HAS(this.access)) { %>
-            <span class="flag <%=this.access%>"><%=this.access%></span>
+            <span class="flag <%=this.access%>"><span class="blind"><%=this.access%></span></span>
         <% } %>
     
         <% if (HAS(this.final)) { %>
-            <span class="flag final">final</span>
+            <span class="flag final"><span class="blind">final</span></span>
         <% } %>
     
         <% if (HAS(this.static)) { %>
-            <span class="flag static">static</span>
+            <span class="flag static"><span class="blind">static</span></span>
         <% } %>
     
         <% if (HAS(this.optional)) { %>
-            <span class="flag optional">optional</span>
+            <span class="flag optional"><span class="blind">optional</span></span>
         <% } %>
     
         <% if (HAS(this.required)) { %>
-            <span class="flag required">required</span>
+            <span class="flag required"><span class="blind">required</span></span>
         <% } %>
     
         <span class="foundAt"><a href="<%=this.foundAt%>" title="<%==this.file%>:<%=this.line%>">소스코드</a></span>

@@ -48,7 +48,7 @@
 				syntax.push('<a href="#' + itemtype +'_' + obj.name + '">' + name + '</a>');
 			}
 			
-			param && syntax.push('(' + param + ')');
+			syntax.push('(' + (param || ' ') + ')');
 			
 			if (returnType) {
 				syntax.push(':' + crossLink(returnType));
@@ -59,19 +59,19 @@
 				syntax.push(' ');
 				
 				if (HAS(obj.chainable)) { 
-					syntax.push('<span title="chainable" class="flag chainable">chainable</span>');
+					syntax.push('<span title="chainable" class="flag chainable"><span class="blind">chainable</span></span>');
 				}
 				
 				if (HAS(obj.static)) { 
-					syntax.push('<span title="static" class="flag static">static</span>');
+					syntax.push('<span title="static" class="flag static"><span class="blind">static</span></span>');
 				}
 				
 				if (HAS(obj.deprecated)) { 
-					syntax.push('<span title="deprecated" class="flag deprecated">deprecated</span>');
+					syntax.push('<span title="deprecated" class="flag deprecated"><span class="blind">deprecated</span></span>');
 				}
 				
 				if (HAS(obj.extended_from)) { 
-					syntax.push('<span title="inherited" class="flag inherited">inherited</span>');
+					syntax.push('<span title="inherited" class="flag inherited"><span class="blind">inherited</span></span>');
 				}
 				
 			}
@@ -107,7 +107,7 @@
 		<dt>클래스</dt>
 		<dd><%=this.name%>
 		    <% if (HAS(this.deprecated)) { %>
-		        <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>">deprecated</span>
+		        <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>"><span class="blind">deprecated</span></span>
 		    <% } %>
 			<span class="btn_code"><a href="<%=this.foundAt%>" title="view source code"><span class="blind">소스코드</span></a></span>
 		</dd>
@@ -119,7 +119,7 @@
 	        	<%
 	        		var exts = this.extends;
 	        		while (exts = FIND_EXTEND(exts, this.classes)) {
-	        			%> → <%=crossLink(exts)%><%
+	        			%><span class="arrow">→</span><%=crossLink(exts)%><%
 	        		}
 	        	%>
 	        </dd>
@@ -195,10 +195,10 @@
 					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
 					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
-				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
+				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>
 				        <% } %>
 				        <% if (HAS(this.extended_from)) { %>
-				        	<span title="inherited" class="flag inherited">inherited</span>
+				        	<span title="inherited" class="flag inherited"><span class="blind">inherited</span></span>
 				        <% } %>
 					</td>
 					<td>
@@ -234,10 +234,10 @@
 					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
 					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
-				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
+				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>
 				        <% } %>
 				        <% if (HAS(this.extended_from)) { %>
-				        	<span title="inherited" class="flag inherited">inherited</span>
+				        	<span title="inherited" class="flag inherited"><span class="blind">inherited</span></span>
 				        <% } %>
 					</td>
 					<td>
@@ -273,10 +273,10 @@
 					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
 					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
-				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
+				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>
 				        <% } %>
 				        <% if (HAS(this.extended_from)) { %>
-				        	<span title="inherited" class="flag inherited">inherited</span>
+				        	<span title="inherited" class="flag inherited"><span class="blind">inherited</span></span>
 				        <% } %>
 					</td>
 					<td>
@@ -312,10 +312,10 @@
 					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
 					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
-				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate">폐지예정</span>
+				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>
 				        <% } %>
 				        <% if (HAS(this.extended_from)) { %>
-				        	<span title="inherited" class="flag inherited">inherited</span>
+				        	<span title="inherited" class="flag inherited"><span class="blind">inherited</span></span>
 				        <% } %>
 					</td>
 					<td>

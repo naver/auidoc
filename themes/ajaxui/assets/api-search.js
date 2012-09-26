@@ -15,6 +15,8 @@ var APISearch = (function() {
 	var layerManager = new jindo.LayerManager(searchingNode, { sCheckEvent : 'mousedown', nCheckDelay : 0, nHideDelay : 100 }).link(searchingNode, inputNode);
 	var fpFitResultLayer = function() {
 		
+		if (isMobile) { return; }
+		
 		if (!layerManager.getVisible()) { return; }
 		
 		resultPanel.css('height', '');
@@ -121,7 +123,7 @@ var APISearch = (function() {
 			if (item.type !== 'keyword') { html.push('<a href="' + memberAnchor(item) + '">'); }
 			
 			html.push('<p class="title">' + item.matchName);
-			html.push('<span class="flag ' + item.type + '">' + item.type + '</span></p>');
+			html.push('<span class="flag ' + item.type + '"><span class="blind">' + item.type + '</span></span></p>');
 			
 			if (item.type === 'keyword') {
 				html.push('<ul>');

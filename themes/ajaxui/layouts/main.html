@@ -5,17 +5,24 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <title><%=this.htmlTitle%> - AjaxUI@NHN</title>
 <link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/prettify/prettify-min.css" media="screen">
-<!--<link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/api.css" media="screen">-->
-<link rel="stylesheet" type="text/css" href="http://ajaxui.nhncorp.com/svnview/yorky/kumju/jindo_site/api.css" media="screen">
+<script type="text/javascript">
+	var isMobile = (function() {
+		var r = window.devicePixelRatio || 1;
+		var s = Math.max(screen.width / r, screen.height / r);
+		
+		var m = s < 1024;
+		var href = m ? "api.mobile.css" : "api.css";
+		document.write('<link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/' + href + '" media="screen">');
+		
+		return m;
+	})();
+</script>
 
-<!-- link rel="stylesheet" type="text/css" href="<%=this.projectAssets%>/css/respon.css" media="screen and (min-width:640px)" -->
-<!--[if lt IE 9]><script type="text/javascript" src="<%=this.projectAssets%>/respond.min.js"></script><![endif]-->
 <script type="text/javascript" src="<%=this.projectAssets%>/jindo.desktop.min.js"></script>
-<!--<script type="text/javascript" src="<%=this.projectAssets%>/jindo_component.js"></script>-->
-<script type="text/javascript" src="http://10.64.80.137/git/auidoc/themes/ajaxui/assets/jindo_component.js"></script>
+<script type="text/javascript" src="<%=this.projectAssets%>/jindo_component.min.js"></script>
 </head>
 <body class="api-page">
-<div id="wrap"><!-- 2Depth 접기 : lft_fold 추가 -->
+<div id="wrap" class="<%=(this.tag === 'class' ? '' : 'api-main')%>"><!-- 2Depth 접기 : lft_fold 추가 -->
 
 	<div id="header">
 		<h1><a href="<%=this.projectRoot%>index.html"><span class="blind">JINDO JS</span></a></h1>
@@ -25,14 +32,14 @@
 			<span class="help"><span class="ic_help"></span><a href="<%=this.projectSupport%>" target="_blank">버그신고/문의</a></span>
 		</div>
 		<div class="menu">
-			<button type="button" class="btn_sch"><span class="blind">검색</span></button>
-			<button type="button" class="btn_snb btn_snb_on"><span class="blind">메뉴</span></button>
+			<button type="button" id="toggle_search_btn" class="btn_sch"><span class="blind">검색</span></button>
+			<button type="button" id="toggle_list_btn" class="btn_snb btn_snb_on"><span class="blind">메뉴</span></button>
 			<!-- [D] 클릭시 btn_sch_on,btn_snb_on 추가 -->
 		</div>
 	</div>
 
 	<!-- sch_frm -->
-	<div class="sch_frm ">
+	<div class="sch_frm hide_when_small">
 		<h2 class="blind">검색</h2>
 		<div class="filter">
 			<input type="search" id="api-filter" placeholder="검색어를 입력하세요.">
@@ -48,42 +55,7 @@
 			</ul>
 			<div class="panels">
 				<ul id="api-all" class="tc-panel"></ul>
-				<ul id="api-keywords" class="tc-panel">
-					<li class="result">
-						<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rolling.html">
-						<p class="title">
-							<strong>roll</strong>ing
-							<span class="flag keyword">keyword</span>
-						</p>
-						<ul>
-						<li>CircularRolling</li>
-						<li>Rolling</li>
-						</ul></a>
-					</li>
-					<li class="result">
-						<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rollingchart.html">
-						<p class="title">
-							<strong>roll</strong>ingchart
-							<span class="flag class">class</span>
-						</p>
-						<span class="className type">RollingChart</span></a>
-					</li>
-					<li class="result">
-						<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./keywords/rolloverarea.html">
-						<p class="title">
-							<strong>roll</strong>overarea
-							<span class="flag method">method</span>
-						</p>
-						<span class="className type">RollingChart</span></a>
-					</li>
-					<li class="result">
-						<a href="http://jindo.nhncorp.com/docs/jindo-component/archive/latest/docs/./classes/jindo.CircularRolling.html">
-						<p class="title">jindo.Circular<strong>Roll</strong>ing
-							<span class="flag property">property</span>
-						</p>
-						<p class="description">jindo.CircularRolling 컴포넌트는 리스트의 아이템을 무한대로 순환하여 이동시키는 롤링 컴포넌트이다.</p></a>
-					</li>
-				</ul>
+				<ul id="api-keywords" class="tc-panel"></ul>
 				<ul id="api-classes" class="tc-panel"></ul>
 				<ul id="api-methods" class="tc-panel"></ul>
 				<ul id="api-attrs" class="tc-panel"></ul>
@@ -94,7 +66,8 @@
 	</div>
 	<!-- // sch_frm -->
 
-	<div id="container" class="<%=(this.tag === 'class' ? '' : 'api-main')%>">
+	<!-- container -->
+	<div id="container">
 		<!-- left-columns -->
 		<div id="left-columns" class="sidemenu has_scrollbar">
 			<%=INCLUDE("sidebar", this)%>
@@ -135,6 +108,10 @@
 		background-color:#ffffd8 !important;
 	}
 	
+	li.selected a.highlight {
+		background-color:#aa8 !important;
+	}
+	
 	.hide-deprecated .deprecated, .hide-inherited .inherited, .private {
 		display:none;
 	}
@@ -144,13 +121,6 @@
 	
 	.api-page .tbl_fold .more_history { display:none; }
 	
-	.small-body #search-tab .panels,
-	.small-body .scrollbar,
-	.small-body .scrollbar-box,
-	.small-body .scrollbar-content {
-		height:auto !important;
-	}
-
 	/* FILE */
 	.file pre.code {
 		border:1px solid #ccc;
@@ -179,9 +149,8 @@
 </style>
 <script type="text/javascript" src="<%=this.projectAssets%>/prettify/prettify-min.js"></script>
 <script type="text/javascript" src="<%=this.projectAssets%>/hash.js"></script>
-<!--<script type="text/javascript" src="<%=this.projectAssets%>/api-list.js"></script>-->
-<script type="text/javascript" src="http://10.64.80.137/git/auidoc/themes/ajaxui/assets/api-list.js"></script>
-<script type="text/javascript" src="http://10.64.80.137/git/auidoc/themes/ajaxui/assets/api-search.js"></script>
+<script type="text/javascript" src="<%=this.projectAssets%>/api-list.js"></script>
+<script type="text/javascript" src="<%=this.projectAssets%>/api-search.js"></script>
 <script type="text/javascript" src="<%=this.projectAssets%>/../api.js?callback=APISearch.setData"></script>
 <script type="text/javascript">
 	var projectRoot = "<%=this.projectRoot%>";

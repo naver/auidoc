@@ -1,5 +1,5 @@
 <h2 class="blind"><a href="<%=this.projectRoot%>index.html"><span>APIs</span></a></h2>
-<div class="snb depth1 scrollbar">
+<div class="snb depth1 scrollbar hide_when_small">
 	<!-- [D] style="width:135px; height:384px; -->
 	<div class="scrollbar-box">
 		<div class="scrollbar-content">
@@ -24,11 +24,11 @@
 		</div>
 	</div>
 	<div class="scrollbar-v">
-		<div class="scrollbar-button-up rollover"></div>
-		<div class="scrollbar-track rollover">
-			<div class="scrollbar-thumb rollover" style="top: 0px; height: 222px; "></div>
+		<div class="scrollbar-button-up"></div>
+		<div class="scrollbar-track">
+			<div class="scrollbar-thumb" style="top: 0px; height: 222px; "></div>
 		</div>
-		<div class="scrollbar-button-down rollover"></div>
+		<div class="scrollbar-button-down"></div>
 	</div>
 </div>
 
@@ -68,9 +68,9 @@
 		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
 		                        <a href="#constructor_<%=this.name%>">
 		                            <%=this.name.replace(/^jindo\./, '')%>
-		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
-		                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
-		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>
+		                            <% if (HAS(this.static)) { %><span class="flag static" title="static"><span class="blind">static</span></span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited"><span class="blind">inherited</span></span><% } %>
 		                        </a>
 		                    </li>
 		                <% }); %>
@@ -88,10 +88,10 @@
 		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
 		                        <a href="#method_<%=this.name%>" title="<%==this.description%>">
 		                            <%=this.name%>()
-		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
-		                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
-		                            <% if (HAS(this.chainable)) { %><span class="flag chainable" title="chainable">chainable</span><% } %>
-		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>
+		                            <% if (HAS(this.static)) { %><span class="flag static" title="static"><span class="blind">static</span></span><% } %>
+		                            <% if (HAS(this.chainable)) { %><span class="flag chainable" title="chainable"><span class="blind">chainable</span></span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited"><span class="blind">inherited</span></span><% } %>
 		                        </a>
 		                    </li>
 		                <% }); %>
@@ -109,9 +109,9 @@
 		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
 		                        <a href="#property_<%=this.name%>" title="<%==this.description%>">
 		                            <%=this.name%>
-		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
-		                            <% if (HAS(this.static)) { %><span class="flag static" title="static">static</span><% } %>
-		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>
+		                            <% if (HAS(this.static)) { %><span class="flag static" title="static"><span class="blind">static</span></span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited"><span class="blind">inherited</span></span><% } %>
 		                        </a>
 		                    </li>
 		                <% }); %>
@@ -129,8 +129,8 @@
 		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
 		                        <a href="#attr_<%=this.name%>" title="<%==this.description%>">
 		                        	<%=this.name%>
-		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
-		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited"><span class="blind">inherited</span></span><% } %>
 		                        </a>
 		                    </li>
 		                <% }); %>
@@ -148,8 +148,8 @@
 		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
 		                        <a href="#event_<%=this.name%>" title="<%==this.description%>">
 		                            <%=this.name%>
-		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated">deprecated</span><% } %>
-		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited">inherited</span><% } %>
+		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>
+		                            <% if (HAS(this.extended_from)) { %><span class="flag inherited" title="inherited"><span class="blind">inherited</span></span><% } %>
 		                        </a>   
 		                    </li>
 		                <% }); %>
@@ -191,11 +191,11 @@
 		</div>
 	</div>
 	<div class="scrollbar-v">
-		<div class="scrollbar-button-up rollover"></div>
-		<div class="scrollbar-track rollover">
-			<div class="scrollbar-thumb rollover" style="top: 0px; height: 222px; "></div>
+		<div class="scrollbar-button-up"></div>
+		<div class="scrollbar-track">
+			<div class="scrollbar-thumb" style="top: 0px; height: 222px; "></div>
 		</div>
-		<div class="scrollbar-button-down rollover"></div>
+		<div class="scrollbar-button-down"></div>
 	</div>
 </div>
 <% } %>

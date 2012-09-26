@@ -2,23 +2,26 @@
 	<h3><%=this.name%>
 		<span>이벤트</span>
         <% if (HAS(this.deprecated)) { %>
-            <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>">deprecated</span>
+            <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>"><span class="blind">deprecated</span></span>
         <% } %>
         <% if (HAS(this.access)) { %>
-            <span class="flag <%=this.access%>" title="<%=this.access%>"><%=this.access%></span>
+            <span class="flag <%=this.access%>" title="<%=this.access%>"><span class="blind"><%=this.access%></span></span>
         <% } %>
         <% if (HAS(this.final)) { %>
-            <span class="flag final" title="final">final</span>
+            <span class="flag final" title="final"><span class="blind">final</span></span>
         <% } %>
         <% if (HAS(this.static)) { %>
-            <span class="flag static" title="static">static</span>
+            <span class="flag static" title="static"><span class="blind">static</span></span>
         <% } %>
         <% if (HAS(this.async)) { %>
-            <span class="flag async" title="async"> title="async">async</span>
+            <span class="flag async" title="async"><span class="blind">async</span></span>
         <% } %>
         <% if (HAS(this.chainable)) { %>
-            <span class="flag chainable" title="chainable"> title="chainable">chainable</span>
+            <span class="flag chainable" title="chainable"><span class="blind">chainable</span></span>
         <% } %>
+		<% if (HAS(this.extended_from)) { %> 
+			<span class="flag inherited" title="inherited"><span class="blind">inherited</span></span>
+		<% } %>
 		<span class="btn_code"><a href="<%=this.foundAt%>" title="view source code"><span class="blind">소스코드</span></a></span>
     </h3>
 	<div class="description"><%=this.eventDescription%></div>
@@ -34,9 +37,14 @@
 			<h4>속성</h4>
 
             <ul class="params-list">
-            <% EACH(this.params, function() { %>
-                <%=INCLUDE("param", this)%>
-            <% }); %>
+            <%
+            	var len = (this.params && this.params.length) || 0;
+            	var idx = 0;
+            	
+            	EACH(this.params, function() {
+            		print(INCLUDE("param", this, { isLast : len === (++idx) }));
+	            });
+            %>
             </ul>
         </div>
     <% } %>
