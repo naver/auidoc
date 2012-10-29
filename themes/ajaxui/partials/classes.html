@@ -3,7 +3,7 @@
 		
 		var fpGetType = function(varname) {
 			
-			var params = obj.params;
+			var params = obj.params || [];
 			for (var i = 0; i < params.length; i++) {
 				if (params[i].name === varname) {
 					return crossLink(params[i].type);
