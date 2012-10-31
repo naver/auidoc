@@ -1,3 +1,4 @@
+<% var className = addon.className; %>
 <div id="method_<%=this.name%>" class="method item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
 	<h3><%=this.name%>()
 		<span>메서드</span>
@@ -50,6 +51,37 @@
         </div>
     <% } %>
 	
+    <% if (HAS(this.return)) { %>
+        <div class="params">
+			<h4>반환값</h4>
+            <ul class="params-list">
+            <%
+            	EACH(this.return, function() {
+            		print(INCLUDE("return", this, { className : className }));
+	            });
+            %>
+            </ul>
+        </div>
+    <% } %>
+    	
+    <% if (HAS(this.throws)) { %>
+        <div class="params">
+			<h4>예외발생</h4>
+            <ul class="params-list">
+            <%
+            	EACH(this.throws, function() {
+            		%>
+            		<li>
+						<span class="type"><%=crossLink(this.type)%></span>
+						- <span class="description"><%=this.description%></span>
+            		</li>
+            		<%
+	            });
+            %>
+            </ul>
+        </div>
+    <% } %>
+        	
     <% EACH(this.example, function() { %>
         <div class="example">
             <h4>예제</h4>
@@ -59,6 +91,17 @@
             </div>
         </div>
     <% }); %>
+    
+    <% if (HAS(this.see)) { %>
+        <div class="see">
+            <h4>참고</h4>
+		    <% EACH(this.see, function() { %>
+	            <div class="example-content">
+	                <a href="<%=this.href%>" target="<%=this.target%>"><%=this.description%></a>
+	            </div>
+		    <% }); %>
+        </div>
+    <% } %>
     
     <% if (HAS(this.since)) { %>
         <div class="since">
