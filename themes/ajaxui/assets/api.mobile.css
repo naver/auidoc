@@ -1,7 +1,5 @@
 @charset "utf-8";
-
-/* Reset */
-html{overflow-y:scroll}
+/* Reset */html{overflow-y:scroll}
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select,pre{margin:0;padding:0}
 body,input,textarea,select,button,table,code,pre{font-family:'나눔고딕',nanumgothic,'돋움',Dotum,helvetica,sans-serif;font-size:14px;line-height:1.25em}
 body{background-color:#fff;-webkit-text-size-adjust:none;*word-break:break-all;-ms-word-break:break-all}
@@ -20,7 +18,7 @@ input,select,button{vertical-align:middle}
 input:focus{outline:none}
 input{border-radius:0;-webkit-appearance:none;-webkit-border-radius:0}
 input[type=text]{border-radius:0;-webkit-appearance:none;-webkit-border-radius:0}
-input:checked[type=checkbox]{background-color:#fff;-webkit-appearance:checkbox}
+input:checked[type=checkbox]{/* background-color:#fff; */-webkit-appearance:checkbox}
 input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 
 /* Common */
@@ -47,8 +45,8 @@ body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25
 #header .btn_snb_on{background-position:-160px -160px}
 #header .btn_sch_on{background-position:-80px -160px}
 .sch_frm{padding:4px 9px 3px;border-bottom:1px solid #aaa;background:#e1e1e1}
-.sch_frm .filter{width:100%;height:30px;border:1px solid #d4d4d4;background:#fff url(img/sp_jindo.png) -295px -177px no-repeat;color:#191919}
-.sch_frm .filter input{width:80%;margin:6px 0 0 30px;border:0;}
+.sch_frm .filter{width:100%;height:30px;border:1px solid #d4d4d4;background:url(img/sp_jindo.png) -295px -177px no-repeat;color:#191919}
+.sch_frm .filter input{width:80%;margin:6px 0 0 30px;border:0}
 #search-tab{position:relative;border-bottom:1px solid #bebebe;background:#f0f0f0;font-size:13px}
 #search-tab .tabs{overflow:hidden;height:30px;border-bottom:1px solid #ababab;line-height:30px;color:#545454}
 #search-tab .tabs:after{display:block;clear:both;content:''}
@@ -72,6 +70,7 @@ body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25
 #search-tab .result .property{background:#00a0e9}
 #search-tab .result .event{background:#005982}
 #search-tab .no-result{padding:20px 0;font-size:1.2em;text-align:center}
+
 #header .info{position:absolute;top:10px;left:86px;color:#9f9f9f}
 #header .version{font-size:10px;font-family:tahoma,sans-serif;color:#9f9f9f}
 #header .info .bar,#header .info .help{display:none}
@@ -79,12 +78,13 @@ body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25
 #footer a{font-weight:bold;color:#fff}
 
 .sidemenu .snb ul:after{display:block;clear:both;content:''}
-.sidemenu .depth1{border-bottom:1px solid #212121;/*border:1px solid #212121;border-width:0 0 1px 1px;*/background:#3c3c3c}
+.sidemenu .depth1{border-bottom:1px solid #212121;/* border:1px solid #212121;border-width:0 0 1px 1px; */background:#3c3c3c}
 .sidemenu .depth1 li{float:left;width:33%;border:1px solid #252525;border-width:1px 0 0 1px;background:#2e2e2e}
 .sidemenu .depth1 a{display:block;overflow:hidden;height:34px;padding-left:10px;border:1px solid #3a3a3a;border-width:1px 0 0 1px;line-height:34px;color:#fff;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
 .sidemenu .depth1 h3{display:block;height:23px;padding-left:10px;border-top:1px solid #6b6b6b;background:#5c5c5c;background:-webkit-gradient(linear, left top, left bottom,from(#888888),to(#5c5c5c));line-height:23px;font-weight:bold;font-size:13px;color:#e4e4e4}
 .sidemenu .depth2 li{float:left;width:49.7%;border:1px solid #ddd;border-width:0 1px 1px 0}
-/*.sidemenu .depth2 ul li:nth-child(even){border-right:0}*/
+
+/* .sidemenu .depth2 ul li:nth-child(even){border-right:0} */
 .sidemenu .depth2 ul.history li{border-right:0}
 .sidemenu .depth2 a{display:block;overflow:hidden;height:30px;padding-left:10px;line-height:30px;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis}
 .sidemenu .depth2 h3{display:block;clear:both;height:23px;margin-top:-1px;padding-left:10px;border-top:1px solid #d8dadf;border-bottom:1px solid #bbbfc4;background:#eaeaea;background:-webkit-gradient(linear, left top, left bottom,from(#fcfcfc),to(#eaeaea));font-weight:bold;font-size:13px;line-height:23px;font-weight:bold;color:#000}
@@ -115,7 +115,8 @@ body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25
 .scrollbar .scrollbar-show{display:none}
 
 #main{position:relative;width:100%;min-width:320px;margin:0 0 50px}
-/*.main_fix{position:relative;margin:0}*/
+
+/* .main_fix{position:relative;margin:0} */
 .section_inn{position:relative}
 .section_inn h2{height:30px;margin-top:-1px;padding-left:10px;border-top:1px solid #d8dadf;border-bottom:1px solid #bbbfc4;background:#fafafb;background:-webkit-gradient(linear, left top, left bottom,from(#fcfcfd),to(#e8e8e9));font-size:13px;font-weight:bold;line-height:30px}
 .intro{float:none;position:relative;padding:40px 10px;line-height:20px;color:#2c2d2f}
@@ -268,7 +269,7 @@ body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25
 .api-page .item button.fold{overflow:hidden;width:14px;height:14px;margin:0 6px 0 -23px;background:url(img/sp_jindo.png) -250px -100px no-repeat;line-height:10em;vertical-align:middle}
 .api-page .item .collapsed button.fold{background-position:-230px -100px}
 .api-page .item .returns .params-list .params-list,.api-page .item .params-list .params-list{margin:-5px 0 0 20px;padding:0;border-left:1px solid #ddd}
-.api-page .params-list .params-list .param{margin-left:-1px;padding-left:15px;background:url(img/sp_jindo.png) -310px -210px no-repeat;line-height:16px;}
+.api-page .params-list .params-list .param{margin-left:-1px;padding-left:15px;background:url(img/sp_jindo.png) -310px -210px no-repeat;line-height:16px}
 .api-page .params-list .params-list .last{background-position:-310px -280px}
 .api-page .item .example-content{margin-left:20px}
 .api-page .returns .description{margin:0 0 0 25px}

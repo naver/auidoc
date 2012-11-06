@@ -1,7 +1,5 @@
 @charset "utf-8";
-
-/* Reset */
-html{overflow-y:scroll}
+/* Reset */html{overflow-y:scroll}
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select,pre{margin:0;padding:0}
 body,input,textarea,select,button,table,code,pre{font-family:'나눔고딕',nanumgothic,'돋움',Dotum,helvetica,sans-serif;font-size:12px;line-height:1.25em}
 body{background-color:#fff;-webkit-text-size-adjust:none;*word-break:break-all;-ms-word-break:break-all}
@@ -33,38 +31,64 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .fl{float:left}
 .fr{float:right}
 
-/* 768px 이상 해상도에서 실행할 CSS 코드를 */
+@media all and (-webkit-min-device-pixel-ratio:15){
+body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25em}
+}
+
 #wrap{position:relative;text-align:left}
 .wrap:after{display:block;clear:both;content:''}
 #header{position:fixed;top:0;left:0;z-index:1000;width:100%;height:57px;border-bottom:1px solid #080809;background:#2b2b2b}
 #header h1{position:absolute;top:11px;left:14px;width:101px;height:38px;background:url(img/sp_jindo.png) -210px 0 no-repeat}
-#header h1 a{width:101px;height:38px}
+#header h1 a{display:block;width:101px;height:38px}
 #header .menu{display:none}
-
 .api-page .sch_frm{position:relative;position:fixed;z-index:1010}
-.api-page .filter{position:absolute;top:-39px;left:126px;z-index:10;width:345px;padding:0;border:0;border:3px solid #01d90e;background:#2c2c30}
-.api-page .filter input{width:325px;height:19px;padding:0 0 0 20px;border:0;background:url(img/sp_jindo.png) -308px -148px no-repeat;color:#bababa}
+.api-page .sch_frm .filter{position:absolute;top:-39px;*top:17px;left:126px;width:345px;height:19px;border:3px solid #01d90e;background:#2c2c30 url(img/sp_jindo.png) -308px -148px no-repeat}
+.api-page .sch_frm .filter input{width:325px;height:18px;margin-left:20px;border:0;background:#2c2c30;color:#bababa}
+/*
+.api-page .sch_frm .filter{margin:15px 0 0 126px;z-index:10;width:345px;height:19px;border:3px solid #01d90e;background:#2c2c30 url(img/sp_jindo.png) -308px -148px no-repeat}
+*/
 .api-page .sch_frm .btn_sch{position:relative;top:auto;right:auto;width:42px;height:25px;background:url(img/sp_jindo.png) -130px -120px no-repeat;vertical-align:top}
 #search-tab{position:absolute;top:-16px;left:129px;z-index:15;width:343px;border:1px solid #888d95;border-width:0 1px 1px;background:#fff;font-size:12px}
-#search-tab .tabs{height:23px;border-bottom:1px solid #cacaca;background:#f0f0f0;line-height:23px;color:#6e6e6e}
-#search-tab .result .title{font-size:13px}
+#search-tab .tabs{overflow:hidden;height:23px;border-bottom:1px solid #cacaca;background:#f0f0f0;line-height:23px;color:#6e6e6e}
+#search-tab .tabs:after{display:block;clear:both;content:''}
+#search-tab .tabs .tc-tab{float:left;width:16.4%;border-right:1px solid #ababab;text-align:center;white-space:nowrap;cursor:pointer;_cursor:hand}
+#search-tab .tabs .tc-tab:last-child{border-right:0}
+#search-tab .tabs .tc-selected{display:block;border-bottom:1px solid #fff;background:#fff;font-weight:bold;color:#010101}
 #search-tab .panels{overflow:scroll;overflow-x:hidden}
-#search-tab .result a{background:none}
-#search-tab .result li{height:22px;background:url(img/sp_jindo.png) -316px -85px no-repeat;line-height:22px}
-#search-tab .result .description,#search-tab .result .className{color:#585858}
+#search-tab .panels .tc-panel{display:none;clear:both;margin:0;padding:0;background:#fff}
+#search-tab .panels .tc-selected{display:block}
+#search-tab .result{padding:5px 10px;border-bottom:1px solid #ddd}
+#search-tab .result a{display:block}
+#search-tab .result .title{font-size:13px;line-height:21px;line-height:color:#010101}
+#search-tab .result strong{font-weight:bold;color:#0a5afa}
+#search-tab .result ul{margin:8px 0 -5px}
+#search-tab .result li{height:22px;padding-left:16px;border-top:1px solid #f2f2f2;background:url(img/sp_jindo.png) -316px -85px no-repeat;line-height:22px}
+#search-tab .result .description,#search-tab .result .className{margin:0 15px;color:#585858}
+#search-tab .result .description{display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+#search-tab .result .flag{display:inline-block;width:auto;height:13px;padding:0 3px;border-radius:3px;font-size:9px;line-height:13px;font-family:Arial;color:#fff;text-indent:1px;-moz-border-radius:3px;-webkit-border-radius:3px}
+#search-tab .result .keyword{background:#8f82bc}
+#search-tab .result .class{background:#88abda}
+#search-tab .result .method{background:#84ccc9}
+#search-tab .result .property{background:#00a0e9}
+#search-tab .result .event{background:#005982}
+#search-tab .no-result{padding:20px 0;font-size:1.2em;text-align:center}
 
-#header .info{position:absolute;top:10px;right:10px;left:auto;color:#9f9f9f}
-#header .version{font-size:10px;font-family:tahoma,sans-serif;color:#9f9f9f}
-#header .info .help{display:inline-block;font-size:11px}
-#header .info .ic_help{display:inline-block;width:11px;height:12px;margin-right:6px;background:url(img/sp_jindo.png) -270px -100px no-repeat;font-size:0;line-height:0;text-indent:-1000em;vertical-align:middle}
+#header .info{position:absolute;top:10px;right:10px;left:auto;}
+#header .version{font-size:10px;font-family:tahoma,sans-serif;}
+#header .info,#header .info a{color:#9f9f9f}
+#header .info .help{display:inline-block;font-size:11px;}
+#header .info .ic_help{display:inline-block;overflow:hidden;width:11px;height:12px;margin-right:6px;background:url(img/sp_jindo.png) -270px -100px no-repeat;font-size:0;line-height:0;vertical-align:middle}
 #header .info .bar{display:inline-block;margin:0 6px}
-#container{position:relative;width:100%;min-width:780px;}
+#container{position:relative;width:100%/* min-width:780px; */z-index:1;}
 #container:after{display:block;clear:both;content:''}
-#footer{position:relative;position:fixed;left:0;bottom:0;z-index:1;width:100%;height:28px;border-top:1px solid #373737;background-color:#3f3f3f;line-height:28px;font-size:10px;color:#bfbebe;text-align:center;text-align:center}
-#footer p{padding-left:299px}
-.lft_fold #footer p,.api-main #footer p{padding-left:150px}
+#footer{position:relative;position:fixed;left:0;bottom:0;z-index:2;width:100%;height:28px;border-top:1px solid #373737;background-color:#3f3f3f;line-height:28px;font-size:10px;color:#bfbebe;text-align:center;text-align:center}
 
-.sidemenu{position:fixed;top:58px;left:0;bottom:28px;z-index:1000;height:100%}
+#footer a{font-weight:bold;color:#fff}
+/*
+#footer p{padding-left:299px;*padding:0;}
+.lft_fold #footer p,.api-main #footer p{padding-left:150px;*padding:0;}
+*/
+.sidemenu{position:fixed;top:58px;left:0;bottom:28px;z-index:1000;height:100%;background:#666;z-index:1}
 .sidemenu:after{display:block;clear:both;content:''}
 .sidemenu .snb{overflow:hidden;float:left;position:relative;z-index:20;border:1px solid #212121;border-width:0 1px}
 .sidemenu .snb li{float:none;width:100%;border:0;background:none}
@@ -131,10 +155,10 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .section_inn:after{display:block;clear:both;content:''}
 .section_inn.first,.section_inn:first-child{*overflow:hidden;border:0}
 .section_inn h2{height:32px;padding-left:4px;border:0;background:none;font-size:20px;font-weight:normal;line-height:20px}
-.intro{float:none;position:relative;margin-bottom:40px;padding:0;line-height:20px;color:#2c2d2f}
+.intro{float:left;width:50%;margin-bottom:0;padding:0;line-height:20px;color:#2c2d2f}
 .intro h3{width:203px;height:76px;margin-bottom:40px;background:url(img/sp_jindo.png) 0 0 no-repeat}
 .intro .desc{position:absolute;top:60px;left:220px;color:#48494c}
-.sc_dw{display:block;position:relative;width:303px}
+.sc_dw{float:right;position:relative;width:303px;width:303px}
 .sc_dw table{width:303px}
 .sc_dw .version{position:absolute;top:0;right:0}
 .sc_dw .version em{color:#1760f6}
@@ -148,7 +172,6 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .radio-applied .radio-mark{position:absolute;top:0;left:0;z-index:1;width:18px;height:18px;background:url(img/sp_jindo.png) no-repeat -180px -120px}
 .radio-applied .radio-mark.radio-checked{background-position:-200px -120px}
 
-.api_main .sidemenu{display:block}
 .tbl_board{width:100%;border-top:1px solid #1f2026;border-bottom:1px solid #bcbcbc}
 .tbl_board caption{display:none}
 .tbl_board th{border-top:1px dashed #bababa;border-left:1px dashed #bababa;background:#f3f3f3;font-weight:normal;line-height:28px}
@@ -173,6 +196,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .support .mobile li{height:63px}
 .support_spec .ios,.support_spec .android{float:none;width:100%}
 .support_spec .android{border:1px dashed #bababa;border-width:0}
+.support_spec .chrome{border:1px dashed #bababa;border-width:1px 0 0 0}
 .support .ios li{width:33%;height:125px;padding:0}
 .support .android li{width:19.8%;height:145px;padding:0}
 .support .chrome li{width:100%;padding:0}
@@ -217,12 +241,12 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .relation{line-height:20px;font-size:13px}
 .relation:after{display:block;clear:both;content:''}
 .relation dt{float:left;clear:both;width:80px;font-weight:bold}
-.relation .arrow{display:inline-block;overflow:hidden;width:15px;height:9px;margin:0 3px;background:url(img/sp_jindo.png) -270px -120px no-repeat}
+.relation .arrow{display:inline-block;overflow:hidden;width:15px;height:9px;margin:0 3px;background:url(img/sp_jindo.png) -270px -120px no-repeat;font-size:0;line-height:0;text-indent:-1000em;vertical-align:middle}
 .api-page div.description{margin:17px 0 20px;font-size:13px;line-height:18px}
 .api-page .refer{font-size:13px}
 .api-page .refer ul{margin:5px 0 0 2em;line-height:18px}
 
-.tc-panel{position:relative;padding:40px;border:0/* border-top:3px solid #f1f1f1 */}
+.tc-panel{position:relative;padding:40px;border-top:3px solid #f1f1f1}
 .tc-panel:after{display:block;clear:both;content:''}
 .tc-panel.first,.tc-panel:first-child{padding:40px;border:0}
 .tc-panel h2{padding:0 0 15px;border-bottom:1px solid #bcbcbc;font-weight:bold;font-size:18px}
@@ -248,6 +272,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .api-page .tc-panel .api-options li.collapsed{background-position:-320px -24px}
 .api-page .history-table{position:relative;margin:0;padding:0}
 .api-page .history .history-table{margin:0 0 0 20px}
+.api-page .history-table .tbl_board th{text-align:center;}
 .api-page .history-table .tbl_board th:nth-child(3){display:table-cell}
 .api-page .history-table button{position:absolute;right:0;z-index:1;width:80px;height:11px;margin:0;border:0;background:url(img/sp_jindo.png) -50px -120px no-repeat}
 .api-page .history-table .btn_open{bottom:-11px;background-position:-40px -140px}
@@ -257,7 +282,6 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .api-page .tbl_board .cate{width:67px}
 .api-page .tbl_board .target{width:141px}
 
-
 .api-page .item .params-list{margin:5px 0 5px 15px;padding-left:10px}
 .api-page .item .returns .params-list{margin:-5px 0 0 45px;padding-left:15px;border-left:1px dashed #ddd}
 .api-page .item .collapsed .params-list{display:none}
@@ -265,7 +289,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .api-page .item button.fold{overflow:hidden;width:14px;height:14px;margin:0 6px 0 -23px;background:url(img/sp_jindo.png) -250px -100px no-repeat;line-height:10em;vertical-align:middle}
 .api-page .item .collapsed button.fold{background-position:-230px -100px}
 .api-page .item .returns .params-list .params-list,.api-page .item .params-list .params-list{margin:-5px 0 0 20px;padding:0;border-left:1px solid #ddd}
-.api-page .params-list .params-list .param{margin-left:-1px;padding-left:15px;background:url(img/sp_jindo.png) -310px -210px no-repeat;line-height:16px;}
+.api-page .params-list .params-list .param{margin-left:-1px;padding-left:15px;background:url(img/sp_jindo.png) -310px -210px no-repeat;line-height:16px}
 .api-page .params-list .params-list .last{background-position:-310px -280px}
 .api-page .item .example-content{margin-left:20px}
 .api-page .returns .description{margin:0 0 0 25px}
@@ -275,11 +299,10 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 .api-page pre.code{margin:10px 0;padding:5px;border:1px solid #ddd;background-color:#eee;font-size:12px;word-break:break-all;word-wrap:break-word}
 .api-page pre.code code{font-family:'나눔고딕코딩',Consolas,'Lucida Console',Monaco}
 
-
 .demo{position:relative;height:398px;margin-top:-1px;border:1px solid #bcbcbc}
-.demo .btn_external{display:block;position:absolute;top:4px;right:4px;width:78px;height:21px;border:1px solid #b8b8b8;background:#fafafa;color:#474747}
+.demo .btn_external{display:block;position:absolute;top:4px;right:4px;width:80px;height:21px;border:1px solid #b8b8b8;background:#fafafa;color:#474747}
 .demo_list{overflow:scroll;overflow-x:hidden;float:left;position:relative;z-index:1;width:177px;height:100%;border-right:1px solid #bcbcbc}
-.demo_list li{/*height:25px;*/height:auto;background:none;line-height:16px}
+.demo_list li{/* height:25px; */height:auto;background:none;line-height:16px}
 .api-page .content .demo_list li a{display:block;margin:0;padding:7px 0 7px 8px;background:none;color:#010101}
 .api-page .content .demo_list li.selected a,.api-page .content .demo_list li a:hover{background:#969696;color:#fff}
 .demo_example{display:block;float:left;width:100%;height:398px;margin-left:-178px}
@@ -301,6 +324,7 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
 @media all and (min-width:1024px){
 
 /* 1024px 이상 해상도에서 실행할 CSS 코드를 여기에 작성 */
-.intro{float:left;width:50%;margin-bottom:0}
-.sc_dw{float:right;position:relative;width:303px}
+
 }
+
+span.type { color:#6823da; }

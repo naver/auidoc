@@ -17,17 +17,17 @@
 	<tr>
 	<th scope="col" class="ver">릴리즈</th>
 	<th scope="col" class="cate">종류</th>
-	<th scope="col" class="target">대상</th>
+	<% if (!addon.noTarget) { %><th scope="col" class="target">대상</th><% } %>
 	<th scope="col">내용</th>
 	</tr>
 	</thead>
 	<tbody>
     <% var idx = 0; EACH(SORT_HISTORY(this), function() { %>
 		<tr class="<%=(idx >= 3 ? 'more_history' : '')%> idx_<%=(idx++)%>">
-		<td><%==this.version%></td>
-		<td><%==this.category%></td>
-		<td><%==this.target%></td>
-		<td class="txt"><%==this.description%></td>
+		<td><%=this.version%></td>
+		<td><%=this.category%></td>
+		<% if (!addon.noTarget) { %><td><%=this.target%></td><% } %>
+		<td class="txt"><%=this.description%></td>
 		</tr>
     <% }); %>
 	</tbody>

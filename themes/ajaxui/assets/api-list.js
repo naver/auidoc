@@ -153,6 +153,7 @@ var apiDocs = function(projectAssets) {
 		var elContainer = $('container');
 		
 		var elHeader = $('header');
+		var elFooter = $('footer');
         var elLeft = $('left-columns');
 
 		var elDepth1 = $$.getSingle('div.depth1');
@@ -166,7 +167,10 @@ var apiDocs = function(projectAssets) {
 			elDepth2 && (elDepth2.style.overflowY = 'auto');
 			
 		} else {
-		
+			
+			$$.getSingle('.scrollbar-box', elDepth1).style.height = '100px';
+			elDepth2 && ($$.getSingle('.scrollbar-box', elDepth2).style.height = '100px');
+			
 			var oScrBox1 = new jindo.ScrollBox(elDepth1, {
 				sOverflowX : 'hidden',
 				sOverflowY : 'auto',
@@ -200,7 +204,7 @@ var apiDocs = function(projectAssets) {
 		
 		fpRelocate = function() {
 
-			var nHeight = elLeft.offsetHeight - elHeader.offsetHeight;
+			var nHeight = elLeft.offsetHeight - elHeader.offsetHeight - elFooter.offsetHeight;
 			
 			if (false) {
 				var nTmpTop = elDepth1.scrollTop;

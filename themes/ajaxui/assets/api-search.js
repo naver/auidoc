@@ -123,7 +123,7 @@ var APISearch = (function() {
 			if (item.type !== 'keyword') { html.push('<a href="' + memberAnchor(item) + '">'); }
 			
 			html.push('<p class="title">' + item.matchName);
-			html.push('<span class="flag ' + item.type + '"><span class="blind">' + item.type + '</span></span></p>');
+			html.push('<span class="flag ' + item.type + '">' + item.type + '</span></p>');
 			
 			if (item.type === 'keyword') {
 				html.push('<ul>');
@@ -146,7 +146,7 @@ var APISearch = (function() {
   
 	function refreshResults() {
 		
-		var value = inputNode.$value().value.trim();
+		var value = inputNode.$value().value.replace(/(^\s+|\s+$)/g, '');
 		layerManager[value ? 'show' : 'hide'](0);
 		
 		var html = [];

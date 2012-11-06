@@ -7,9 +7,11 @@
         <% if (HAS(this.access)) { %>
             <span class="flag <%=this.access%>" title="<%=this.access%>"><span class="blind"><%=this.access%></span></span>
         <% } %>
+        <!--
         <% if (HAS(this.final)) { %>
             <span class="flag final" title="final"><span class="blind">final</span></span>
         <% } %>
+        -->
         <% if (HAS(this.static)) { %>
             <span class="flag static" title="static"><span class="blind">static</span></span>
         <% } %>
@@ -89,7 +91,7 @@
             <h4>
                 히스토리
             </h4>
-            <%=INCLUDE("history", this.history)%>
+            <%=INCLUDE("history", this.history, { noTarget : true })%>
         </div>
     <% } %>
 
