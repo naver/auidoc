@@ -347,7 +347,7 @@
 		if (HAS(lists)) {
 	%>
 		<div class="tc-panel">
-			<h2>생성자 세부 정보</h2>
+			<h2 id="constructor">생성자 세부 정보</h2>
 	        <% EACH(lists, function(className) { %>
 	            <%=INCLUDE("constructor", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
 	        <% }, [ this.name ]); %>
@@ -359,7 +359,7 @@
 		if (HAS(lists)) {
 	%>
 		<div class="tc-panel">
-			<h2>메서드 세부 정보</h2>
+			<h2 id="method">메서드 세부 정보</h2>
 	        <% EACH(lists, function(className) { %>
 	            <%=INCLUDE("method", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
 	        <% }, [ this.name ]); %>
@@ -371,7 +371,7 @@
 		if (HAS(lists)) {
 	%>
 		<div class="tc-panel">
-			<h2>프로퍼티 세부 정보</h2>
+			<h2 id="property">프로퍼티 세부 정보</h2>
 	        <% EACH(lists, function(className) { %>
 	            <%=INCLUDE("property", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
 	        <% }, [ this.name ]); %>
@@ -383,7 +383,7 @@
 		if (HAS(lists)) {
 	%>
 		<div class="tc-panel">
-			<h2>이벤트 세부 정보</h2>
+			<h2 id="event">이벤트 세부 정보</h2>
 	        <% EACH(this.events, function(className) { %>
 	            <%=INCLUDE("event", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
 	        <% }, [ this.name ]); %>
@@ -392,7 +392,7 @@
 
     <% if (HAS(this.demos)) { %>
         <div class="tc-panel">
-			<h2>데모</h2>
+			<h2 id="demo">데모</h2>
 			<div class="demo">
 				<ul class="demo_list" id="demo_list">
 		            <% EACH(this.demos, function() { %>
@@ -412,7 +412,7 @@
 
     <% if (HAS(this.manuals)) { %>
         <div class="tc-panel">
-			<h2>매뉴얼</h2>
+			<h2 id="manual">매뉴얼</h2>
             <% EACH(this.manuals, function() { %>
 				<div id="manual_<%=this.uid%>" class="manual item">
 				    <h3><%=this.name%></h3>
@@ -424,7 +424,7 @@
 	    
 	<% if (HAS(this.histories)) { %>
         <div class="tc-panel">
-        	<h2 id="class-history">전체 히스토리</h2>
+        	<h2 id="history">전체 히스토리</h2>
 	        <%=INCLUDE("history", this.histories)%>
 	    </div>
 	<% } %>

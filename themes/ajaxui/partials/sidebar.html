@@ -6,9 +6,12 @@
 			<div>
 				<ul>
 			        <% EACH(this.classes, function(projectRoot, className) { %>
-			            <li><a href="<%=projectRoot%>classes/<%=this.name%>.html" class="<%=(this.name === className ? "selected" : "")%>">
-			                <%=this.displayName.replace(/^jindo\./, '')%>
-			            </a></li>
+			            <li>
+			            	<a href="<%=projectRoot%>classes/<%=this.name%>.html" class="<%=(this.name === className ? "selected" : "")%>">
+			                	<%=this.displayName.replace(/^jindo\./, '')%>
+			            	</a>
+			            	<!--<% if ('new' in this.details) { %>NEW<% } %>-->
+			            </li>
 			        <% }, [ this.projectRoot, this.tag === 'class' && this.name ]); %>
 				</ul>
 			</div>
@@ -61,7 +64,7 @@
 		        	var lists = this.constructors && this.constructors.filter(function(v) { return v.access !== 'private'; });
 		        	if (HAS(lists)) {
 		        %>
-		            <h3>생성자</h3>
+		            <h3><a href="#constructor">생성자</a></h3>
 		
 		            <ul class="constructors<% if (HAS(this.extends)) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
@@ -81,7 +84,7 @@
 		        	var lists = this.methods && this.methods.filter(function(v) { return v.access !== 'private'; });
 		        	if (HAS(lists)) {
 		        %>
-		            <h3>메서드</h3>
+		            <h3><a href="#method">메서드</a></h3>
 		
 		            <ul class="methods<% if (HAS(this.extends)) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
@@ -102,7 +105,7 @@
 		        	var lists = this.properties && this.properties.filter(function(v) { return v.access !== 'private'; });
 		        	if (HAS(lists)) {
 		        %>
-		            <h3>프로퍼티</h3>
+		            <h3><a href="#property">프로퍼티</a></h3>
 		
 		            <ul class="properties<% if (this.extends) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
@@ -122,7 +125,7 @@
 		        	var lists = this.attrs && this.attrs.filter(function(v) { return v.access !== 'private'; });
 		        	if (HAS(lists)) {
 		        %>
-		            <h3>속성</h3>
+		            <h3><a href="#attribute">속성</a></h3>
 		
 		            <ul class="attrs<% if (this.extends) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
@@ -141,7 +144,7 @@
 		        	var lists = this.events && this.events.filter(function(v) { return true; });
 		        	if (HAS(lists)) {
 		        %>
-		            <h3>이벤트</h3>
+		            <h3><a href="#event">이벤트</a></h3>
 		
 		            <ul class="events<% if (this.extends) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
@@ -157,19 +160,11 @@
 		        <% } %>
 		
 		        <% if (HAS(this.demos)) { %>
-		            <h3>데모</h3>
-		
-		            <ul class="demos">
-		                <% EACH(this.demos, function() { %>
-		                    <li>
-		                        <a href="#demo_<%=this.uid%>"><%=this.name%></a>
-		                    </li>
-		                <% }); %>
-		            </ul>
+		            <h3><a href="#demo">데모</a></h3>
 		        <% } %>
 		
 		        <% if (HAS(this.manuals)) { %>
-		            <h3>매뉴얼</h3>
+		            <h3><a href="#manual">매뉴얼</a></h3>
 		
 		            <ul class="manuals">
 		                <% EACH(this.manuals, function() { %>
@@ -181,10 +176,7 @@
 		        <% } %>
 		
 		        <% if (HAS(this.histories)) { %>
-					<h3>히스토리</h3>
-					<ul>
-						<li><a href="#class-history">전체 히스토리</a></li>
-					</ul>
+					<h3><a href="#history">전체 히스토리</a></h3>
 		        <% } %>
 	
 			</div>
