@@ -297,6 +297,3 @@ body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25
 .api-page .manual .description img{margin:5px 0}
 .api-page .manual p{margin:0}
 .api-page .manual .description strong ~ p,.api-page .manual .description strong ~ pre.code{margin-left:15px}
-
-.hide_when_small { display:none; }
-.api-page .manual .description img { max-width: 100%; }

@@ -45,7 +45,7 @@
 				var ret = varname + ':' + fpGetType(varname);
 				
 				if (info.multiple) { ret += '…'; }
-				if (info.optdefault) { ret += '=' + info.optdefault; }
+				// if (info.optdefault) { ret += '=' + info.optdefault; }
 				if (info.optional) { ret = '[' + ret + ']'; }
 				
 				return ret;
@@ -60,7 +60,9 @@
 				syntax.push('<a href="#' + itemtype +'_' + obj.name + '">' + name + '</a>');
 			}
 			
-			syntax.push('(' + (param || ' ') + ')');
+			if (itemtype === 'constructor' || itemtype === 'method') {
+				syntax.push('(' + (param || ' ') + ')');
+			}
 			
 			if (returnType) {
 				syntax.push(':' + crossLink(returnType));

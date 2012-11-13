@@ -31,7 +31,7 @@
 
 	<div class="type">
         <h4>타입</h4>
-        <p><%==this.type%></p>
+        <p><span class="type"><%=crossLink(this.type)%></span></p>
     </div>
 	
     <% if (HAS(this.default)) { %>
@@ -73,6 +73,17 @@
             </div>
         </div>
     <% }); %>
+    
+    <% if (HAS(this.see)) { %>
+        <div class="see">
+            <h4>관련정보</h4>
+		    <% EACH(this.see, function() { %>
+	            <div class="example-content">
+	                <a href="<%=this.href%>" target="<%=this.target%>"><%=this.description%></a>
+	            </div>
+		    <% }); %>
+        </div>
+    <% } %>
     
     <% if (HAS(this.since)) { %>
         <div class="since">

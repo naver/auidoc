@@ -6,17 +6,20 @@
     <% if (HAS(this.optional)) { %>
         <code class="name optional"><%=this.name%></code>
         <span class="type">: <%=crossLink(this.type)%></span>
-        <span class="optional" title="<% if (HAS(this.optdefault)) { %>기본값 : <%==this.optdefault%><% } else { %>생략 가능<% } %>">(optional)</span>
+        <span class="default"><% if (HAS(this.optdefault)) { %>(기본값 : <%==this.optdefault%>)<% } else { %>(생략 가능)<% } %></span>
     <% } else { %>
         <code class="name"><%=this.name%></code>
         <span class="type">: <%=crossLink(this.type)%></span>
     <% } %>
 
+	<!--
     <% if (HAS(this.multiple)) { %>
         <span class="flag multiple" title="이 파라미터는 한번 이상 반복 될 수 있습니다."><span class="blind">multiple</span></span>
     <% } %>
+    
+    -->
 
-    - <span class="description"><%=this.description%></span>
+    <p class="description"><%=this.description%></p>
 
 	<% if (HAS(this.remark)) { %>
 	<div class="remark">
