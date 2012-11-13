@@ -9,8 +9,9 @@
 			            <li>
 			            	<a href="<%=projectRoot%>classes/<%=this.name%>.html" class="<%=(this.name === className ? "selected" : "")%>">
 			                	<%=this.displayName.replace(/^jindo\./, '')%>
+								<% if ('new' in this.details) { %><span title="new" class="ic new"><span class="blind">new</span></span><% } %>
+								<% if ('update' in this.details) { %><span title="update" class="ic update"><span class="blind">Update</span></span><% } %>
 			            	</a>
-			            	<!--<% if ('new' in this.details) { %>NEW<% } %>-->
 			            </li>
 			        <% }, [ this.projectRoot, this.tag === 'class' && this.name ]); %>
 				</ul>
