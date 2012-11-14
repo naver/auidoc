@@ -61,6 +61,18 @@
 					</li>
 				</ul>
 	
+		        <% if (HAS(this.manuals)) { %>
+		            <h3><a href="#manual">매뉴얼</a></h3>
+		
+		            <ul class="manuals">
+		                <% EACH(this.manuals, function() { %>
+		                    <li class="manual">
+		                        <a href="#manual_<%=this.uid%>"><%=this.name%></a>
+		                    </li>
+		                <% }); %>
+		            </ul>
+		        <% } %>
+		
 		        <%
 		        	var lists = this.constructors && this.constructors.filter(function(v) { return v.access !== 'private'; });
 		        	if (HAS(lists)) {
@@ -162,18 +174,6 @@
 		
 		        <% if (HAS(this.demos)) { %>
 		            <h3><a href="#demo">데모</a></h3>
-		        <% } %>
-		
-		        <% if (HAS(this.manuals)) { %>
-		            <h3><a href="#manual">매뉴얼</a></h3>
-		
-		            <ul class="manuals">
-		                <% EACH(this.manuals, function() { %>
-		                    <li class="manual">
-		                        <a href="#manual_<%=this.uid%>"><%=this.name%></a>
-		                    </li>
-		                <% }); %>
-		            </ul>
 		        <% } %>
 		
 		        <% if (HAS(this.histories)) { %>

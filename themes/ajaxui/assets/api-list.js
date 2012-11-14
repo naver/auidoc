@@ -341,6 +341,12 @@ var apiDocs = function(projectAssets) {
 		welSearchEl.cssClass('hide_when_small', !welToggleSearchBtn.hasClass('btn_sch_on'));
 		welListEl.cssClass('hide_when_small', !welToggleListBtn.hasClass('btn_snb_on'));
 		
+		var welBtnTop = $Element('btn_top');
+		welBtnTop && welBtnTop.attach('click', function(oEvent) {
+			window.scrollTo(0);
+			oEvent.stopDefault();
+		});
+		
 	})();
         
     (function() {

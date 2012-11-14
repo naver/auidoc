@@ -32,8 +32,10 @@
 
 	<% if (HAS(this.remark)) { %>
 	<div class="remark">
-		<h4>관련정보</h4>
-    	<%=this.remark%>
+		<h4>참고</h4>
+	    <% EACH(this.remark, function() { %>
+            <div class="example-content"><%=this%></div>
+	    <% }); %>
 	</div>
 	<% } %>
 	
@@ -76,7 +78,7 @@
             		%>
             		<li>
 						<span class="type"><%=crossLink(this.type)%></span>
-						- <span class="description"><%=this.description%></span>
+						<p class="description"><%=this.description%></p>
             		</li>
             		<%
 	            });

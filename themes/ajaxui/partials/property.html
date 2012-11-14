@@ -43,7 +43,10 @@
 	
 	<% if (HAS(this.remark)) { %>
 	<div class="remark">
-	    <%=this.remark%>
+		<h4>참고</h4>
+	    <% EACH(this.remark, function() { %>
+            <div class="example-content"><%=this%></div>
+	    <% }); %>
 	</div>
 	<% } %>
 	

@@ -44,7 +44,7 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .wrap:after{display:block;clear:both;content:''}
 #header{position:fixed;top:0;left:0;z-index:1000;width:100%;height:57px;border-bottom:1px solid #080809;background:#2b2b2b}
 #header h1{position:absolute;top:11px;left:14px;width:101px;height:38px;background:url(img/sp_jindo.png) -210px 0 no-repeat}
-#header h1.jindo{width:78px;height:23px;background-position:-220px -200px}
+#header h1.jindo{overflow:hidden;top:20px;width:78px;height:23px;background-position:-220px -200px}
 #header h1.jc{width:79px;height:30px;background-position:-220px -230px}
 #header h1.jmc{width:80px;height:39px;background-position:-220px -270px}
 #header h1 a{display:block;width:101px;height:38px}
@@ -188,7 +188,7 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .tbl_board caption{display:none}
 .tbl_board th{border-top:1px dashed #bababa;border-left:1px dashed #bababa;background:#f3f3f3;font-weight:normal;line-height:28px}
 .tbl_board th.tit{width:76px;border-left:0}
-.tbl_board td{margin:0 auto;padding:10px 0;border-top:1px dashed #bababa;border-left:1px dashed #bababa;font-size:12px;line-height:16px;text-align:center}
+.tbl_board td{margin:0 auto;padding:10px 0;border-top:1px dashed #bababa;border-left:1px dashed #bababa;font-size:12px;line-height:16px;text-align:center;word-break:break-all; word-wrap:break-word;}
 .tbl_board th:first-child{border-left:0}
 .tbl_board td:first-child{border-left:0}
 .tbl_board td span{display:inline-block;margin:0 auto;text-align:left}
@@ -233,7 +233,7 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .tc-panel .tbl_board th{border-top:0;background:#f6f7f7;font-weight:bold;color:#3f3f3f;text-align:center}
 .tc-panel .tbl_board tr:first-child td{border-top:1px solid #bcbcbc}
 .tc-panel .tbl_board tr:nth-child(even){background:#f9fafa}
-.tc-panel .tbl_board td.txt{padding:10px;text-align:left}
+.tc-panel .tbl_board td.txt{padding:10px;text-align:left;line-height:18px;}
 .tc-panel .tbl_board .bold{font-weight:bold;color:#3f3f3f}
 
 .panel .tbl_board{width:100%;margin:10px 0 40px}
@@ -305,9 +305,10 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .item .params-list .description{padding:5px 15px;color:#777;line-height:18px}
 .item .params-list .flag{display:inline-block;width:auto;height:13px;padding:0 5px 0 3px;border-radius:6px;font-size:9px;line-height:13px;font-family:Arial;color:#fff;text-indent:1px;-moz-border-radius:6px;-webkit-border-radius:6px}
 .item .params-list .flag.optional{background:#bbb}
+.item .params-list .default{padding:0 2px;color:#333;font-size:12px}
 
 .item .param{margin:8px 0}
-.item .params-list .params-list{margin:0}
+.item .params-list .params-list{margin:0 !important}
 .item .param .name{font-size:13px;font-weight:bold;color:#000}
 
 .item button.fold{overflow:hidden;width:14px;height:14px;margin:0 6px 0 -23px;background:url(img/sp_jindo.png) -250px -100px no-repeat;line-height:10em;vertical-align:middle}
@@ -320,7 +321,7 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .item .params-list button ~ .description{margin:0 0 0 10px;padding-left:15px;border-left:1px solid #ddd}
 
 .item .param .description ul{margin:4px 0 0 1em;list-style:disc}
-.item .params-list .params-list ul{margin-left:15px;}
+.item .params-list .params-list .param ul{margin-left:15px}
 .item .params-list .params-list li{padding-left:9px;background:url(img/sp_jindo.png) -320px -132px no-repeat;color:#777;font-size:12px;line-height:18px;}
 .item .params-list .params-list table{margin-left:15px;width:60%;line-height:20px;}
 .item .params-list .params-list table td{padding:6px 0}
@@ -378,7 +379,7 @@ span.type {color:#6823da}
 .api-page .tumb_list li img{display:block;text-align:center;}
 
 
-.btn_top{position:fixed;position:absolute;bottom:40px;right:16px;z-index:100;width:41px;height:34px}
+.btn_top{position:fixed;bottom:40px;right:16px;z-index:100;width:41px;height:34px}
 .btn_top a{display:block;width:41px;height:34px;background:url(img/sp_jindo.png) -210px -320px}
 .btn_top a:hover{background-position:-260px -320px}
 

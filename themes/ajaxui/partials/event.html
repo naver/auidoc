@@ -30,7 +30,10 @@
 
 	<% if (HAS(this.remark)) { %>
 	<div class="remark">
-	    <%=this.remark%>
+		<h4>참고</h4>
+	    <% EACH(this.remark, function() { %>
+            <div class="example-content"><%=this%></div>
+	    <% }); %>
 	</div>
 	<% } %>
 	
@@ -60,6 +63,17 @@
             </div>
         </div>
     <% }); %>
+    
+    <% if (HAS(this.see)) { %>
+        <div class="see">
+            <h4>관련정보</h4>
+		    <% EACH(this.see, function() { %>
+	            <div class="example-content">
+	                <a href="<%=this.href%>" target="<%=this.target%>"><%=this.description%></a>
+	            </div>
+		    <% }); %>
+        </div>
+    <% } %>
     
     <% if (HAS(this.since)) { %>
         <div class="since">

@@ -170,10 +170,29 @@
 		<div class="description"><%=this.classDescription%></div>
 		
 		<% if (HAS(this.remark)) { %>
-		<div class="remark"><%=this.remark%></div>
+		<div class="remark">
+			<strong>참고</strong>
+	        <ul>
+		    <% EACH(this.remark, function() { %>
+		    	<li><%=this%></li>
+		    <% }); %>
+		    </ul>
+		</div>
 		<% } %>
-		
+
+	    <% if (HAS(this.see)) { %>
+	        <div class="see">
+	            <h4>관련정보</h4>
+		        <ul>
+		        <% EACH(this.see, function() { %>
+		            <li><a href="<%=this.href%>" target="<%=this.target%>"><%=this.description%></a></li>
+		        <% }); %>
+		        </ul>
+	        </div>
+	    <% } %>
+	    
 		<% if (HAS(this.refer)) { %>
+		    <!--
 		    <div class="refer">
 		        <strong>참고자료</strong>
 		        <ul>
@@ -182,6 +201,7 @@
 		        <% }); %>
 		        </ul>
 		    </div>
+			-->
 		<% } %>
 	</div>
 
@@ -344,6 +364,18 @@
         <% } %>			
 	</div>
 
+    <% if (HAS(this.manuals)) { %>
+        <div class="tc-panel">
+			<h2 id="manual">매뉴얼</h2>
+            <% EACH(this.manuals, function() { %>
+				<div id="manual_<%=this.uid%>" class="manual item">
+				    <h3><%=this.name%></h3>
+				    <div class="description"><%=this.description%></div>
+				</div>
+            <% }); %>
+        </div>
+    <% } %>
+
 	<%
 		var lists = this.constructors && this.constructors.filter(function(v) { return v.access !== 'private'; });
 		if (HAS(lists)) {
@@ -411,18 +443,6 @@
 			</div>
         </div>
     <% } %>
-
-    <% if (HAS(this.manuals)) { %>
-        <div class="tc-panel">
-			<h2 id="manual">매뉴얼</h2>
-            <% EACH(this.manuals, function() { %>
-				<div id="manual_<%=this.uid%>" class="manual item">
-				    <h3><%=this.name%></h3>
-				    <div class="description"><%=this.description%></div>
-				</div>
-            <% }); %>
-        </div>
-    <% } %>
 	    
 	<% if (HAS(this.histories)) { %>
         <div class="tc-panel">
@@ -430,6 +450,10 @@
 	        <%=INCLUDE("history", this.histories)%>
 	    </div>
 	<% } %>
+	
+	<div class="btn_top" id="btn_top">
+		<a title="맨위로" href="#"><span class="blind">맨위로</span></a>
+	</div>	
 
 </div>
 <!-- // content -->
