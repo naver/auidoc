@@ -32,7 +32,7 @@
 			} else if (itemtype === 'property') {
 				/^()(.*)()$/.test(parts[i]);
 			} else {
-				/^()([\$\w]+)\((.*)\)/.test(parts[i]);
+				/^()([\$\.\w]+)\((.*)\)/.test(parts[i]);
 			}
 			
 			var maybeNew = RegExp.$1;
