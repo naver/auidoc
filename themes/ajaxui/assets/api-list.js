@@ -109,7 +109,7 @@ var apiDocs = function(projectAssets) {
 			var welLI = $Element($$.getSingle('! li', elAnchor));
 			
 			welDemoDesc.html(elAnchor.title);
-			welDemoIframe.$value().src = elAnchor.href;
+			welDemoIframe.$value().src = elAnchor.href + "?data-title=no";
 			
 			welLastLI && welLastLI.removeClass('selected');
 			welLI.addClass('selected');
@@ -128,7 +128,7 @@ var apiDocs = function(projectAssets) {
 		});
 		
 		welBtnExternal.attach('click', function(oEvent) {
-			open(welDemoIframe.$value().src);
+			open(welDemoIframe.$value().src.replace(/\?data\-title=no$/, ''));
 			oEvent.stopDefault();
 		});
 		
