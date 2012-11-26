@@ -171,7 +171,7 @@
 		
 		<% if (HAS(this.remark)) { %>
 		<div class="remark">
-			<strong>참고</strong>
+			<strong>중요</strong>
 	        <ul>
 		    <% EACH(this.remark, function() { %>
 		    	<li><%=this%></li>
@@ -182,7 +182,7 @@
 
 	    <% if (HAS(this.see)) { %>
 	        <div class="see">
-	            <h4>관련정보</h4>
+	            <h4>참고</h4>
 		        <ul>
 		        <% EACH(this.see, function() { %>
 		            <li><a href="<%=this.href%>" target="<%=this.target%>"><%=this.description%></a></li>
@@ -190,6 +190,21 @@
 		        </ul>
 	        </div>
 	    <% } %>
+	    
+		<div class="qr_code">
+			<strong>QR code</strong>
+		
+			<div id="QRView"></div>
+			<script type="text/javascript">
+
+				new jindo.QRCode(jindo.$("QRView"), {
+					nWidth : 148,
+					nHeight : 148,
+					nCorrectLevel : jindo.QRCode.CorrectLevel.L
+				}).makeCode(location.href);
+
+			</script>
+		</div>	    
 	    
 		<% if (HAS(this.refer)) { %>
 		    <!--
@@ -246,45 +261,6 @@
 			</table>
 		<% } %>
 
-        <% if (HAS(this.methods)) { %>
-			<h2 class="noline">메서드</h2>
-			
-			<table class="tbl_board">
-			<caption class="hide">메서드</caption>
-			<colgroup>
-			<col style="width:22px">
-			<col style="">
-			<col style="width:160px">
-			</colgroup>
-			<thead>
-			<tr>
-			<th scope="col"></th>
-			<th scope="col">메서드</th>
-			<th scope="col">정의 주체</th>
-			</tr>
-			</thead>
-			<tbody>
-	            <% EACH(this.methods, function(className) { if (this.access === 'private') { return; } %>
-					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
-					<td class="type">
-				        <% if (HAS(this.deprecated)) { %>
-				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>
-				        <% } %>
-				        <% if (HAS(this.extended_from)) { %>
-				        	<span title="inherited" class="flag inherited"><span class="blind">inherited</span></span>
-				        <% } %>
-					</td>
-					<td>
-						<%=SYNTAX(this, className, HAS, crossLink, crossLinkRaw)%>
-						<p><%=this.methodDescription%></p>
-					</td>
-					<td><%=(this.class === className ? className : crossLink(this.class))%></td>
-					</tr>
-	            <% }, [ this.name ]); %>
-			</tbody>
-			</table>
-        <% } %>
-
         <% if (HAS(this.properties)) { %>
 			<h2 class="noline">프로퍼티</h2>
 			
@@ -316,6 +292,45 @@
 					<td>
 						<%=SYNTAX(this, className, HAS, crossLink, crossLinkRaw)%>
 						<p><%=this.propertyDescription%></p>
+					</td>
+					<td><%=(this.class === className ? className : crossLink(this.class))%></td>
+					</tr>
+	            <% }, [ this.name ]); %>
+			</tbody>
+			</table>
+        <% } %>
+
+        <% if (HAS(this.methods)) { %>
+			<h2 class="noline">메서드</h2>
+			
+			<table class="tbl_board">
+			<caption class="hide">메서드</caption>
+			<colgroup>
+			<col style="width:22px">
+			<col style="">
+			<col style="width:160px">
+			</colgroup>
+			<thead>
+			<tr>
+			<th scope="col"></th>
+			<th scope="col">메서드</th>
+			<th scope="col">정의 주체</th>
+			</tr>
+			</thead>
+			<tbody>
+	            <% EACH(this.methods, function(className) { if (this.access === 'private') { return; } %>
+					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
+					<td class="type">
+				        <% if (HAS(this.deprecated)) { %>
+				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>
+				        <% } %>
+				        <% if (HAS(this.extended_from)) { %>
+				        	<span title="inherited" class="flag inherited"><span class="blind">inherited</span></span>
+				        <% } %>
+					</td>
+					<td>
+						<%=SYNTAX(this, className, HAS, crossLink, crossLinkRaw)%>
+						<p><%=this.methodDescription%></p>
 					</td>
 					<td><%=(this.class === className ? className : crossLink(this.class))%></td>
 					</tr>
@@ -389,18 +404,6 @@
     <% } %>
 
 	<%
-		var lists = this.methods && this.methods.filter(function(v) { return v.access !== 'private'; });
-		if (HAS(lists)) {
-	%>
-		<div class="tc-panel">
-			<h2 id="method">메서드 세부 정보</h2>
-	        <% EACH(lists, function(className) { %>
-	            <%=INCLUDE("method", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
-	        <% }, [ this.name ]); %>
-	    </div>
-    <% } %>
-	
-	<%
 		var lists = this.properties && this.properties.filter(function(v) { return v.access !== 'private'; });
 		if (HAS(lists)) {
 	%>
@@ -408,6 +411,18 @@
 			<h2 id="property">프로퍼티 세부 정보</h2>
 	        <% EACH(lists, function(className) { %>
 	            <%=INCLUDE("property", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
+	        <% }, [ this.name ]); %>
+	    </div>
+    <% } %>
+	
+	<%
+		var lists = this.methods && this.methods.filter(function(v) { return v.access !== 'private'; });
+		if (HAS(lists)) {
+	%>
+		<div class="tc-panel">
+			<h2 id="method">메서드 세부 정보</h2>
+	        <% EACH(lists, function(className) { %>
+	            <%=INCLUDE("method", this, { 'className' : className, 'SYNTAX' : SYNTAX })%>
 	        <% }, [ this.name ]); %>
 	    </div>
     <% } %>

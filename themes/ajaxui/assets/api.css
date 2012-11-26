@@ -101,6 +101,7 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .sidemenu .depth1 a:hover{background:#5d5d5d}
 .sidemenu .depth1 a.selected{background:#3b7bfb}
 .sidemenu .depth1 ul{padding:7px 0}
+.sidemenu .depth1 h3{display:block;width:138px;height:28px;margin:0;padding-left:10px;border-top:1px solid #808080;border-bottom:1px solid #474747;background:#5d5d5d;font-weight:normal;line-height:28px;color:#bfbebe}
 .sidemenu .depth2{border-width:0 1px 0 0;background:#666}
 .sidemenu .depth2 ul{padding:5px 0;border-bottom:1px solid #3e3e3e}
 .sidemenu .depth2 ul:last-child{border:0}
@@ -132,6 +133,7 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .sidemenu .ic{display:inline-block;overflow:hidden;width:14px;height:13px;background-image:url(img/sp_jindo_high.png);vertical-align:middle}
 .sidemenu .new{background-position:-120px 0}
 .sidemenu .update{background-position:-140px 0}
+.sidemenu .beta{width:27px;background-position:-160px 0}
 
 /* scrollbar */
 .scrollbar,.scrollbar .scrollbar-box,.scrollbar .scrollbar-content{width:148px !important}
@@ -178,6 +180,7 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .sc_dw .tbl_board td{padding:12px 18px;line-height:20px;text-align:center}
 .sc_dw .tbl_board th:first-child,.sc_dw .tbl_board td:first-child{border-left:0}
 .sc_dw .btn_dw{display:inline-block;width:95px;height:26px;margin-top:10px;border:1px solid #d9d9d9;border-radius:3px;background:#fafafb;background:-webkit-gradient(linear, left top, left bottom,from(#ffffff),to(#fafafb));line-height:26px;color:#424243;text-align:center;text-align:center;-moz-border-radius:3px;-webkit-border-radius:3px}
+.sc_dw.jindo .btn_dw{margin-top:0}
 .sc_dw .btn_dw:hover{color:#0a5afa}
 .sc_dw .tbl_board td ul{text-align:left;white-space:nowrap}
 .radio-applied{display:inline-block;overflow:hidden;position:relative;width:18px;height:18px;vertical-align:middle}
@@ -202,7 +205,7 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .support_list{width:100%;border:1px dashed #bababa;border-width:0 0 1px}
 .support_list:last-child{border-width:0}
 .support_list:after{display:block;clear:both;content:''}
-.support .tit{float:left;width:10%;height:100%;padding-top:28px;/* background:#f3f3f3; */font-size:13px;font-weight:bold;text-align:center;vertical-align:middle}
+.support .tit{float:left;width:10%;height:100%;padding-top:28px;/* background:#f3f3f3; */color:#333 !important;font-size:13px;font-weight:bold !important;text-align:center;vertical-align:middle}
 .support ul{float:right;margin:0 !important;width:90%;list-style:none !important}
 .support li{float:left;width:19.8%;padding:10px 0;border:1px dashed #bababa;border-width:0 0 0 1px;background:#fff;text-align:center;list-style:none !important}
 .support li:last-child{border-right:0}
@@ -211,15 +214,15 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .support_spec .ios,.support_spec .android{float:none;width:100%}
 .support_spec .android{border:1px dashed #bababa;border-width:0}
 .support_spec .chrome{border:1px dashed #bababa;border-width:1px 0 0 0}
-.support .ios li{width:33%;height:125px;padding:0}
-.support .android li{width:19.8%;height:145px;padding:0}
+.support .ios li{width:33%;height:140px;padding:0}
+.support .android li{width:19.8%;height:180px;padding:0}
 .support .chrome li{width:100%;padding:0}
 .support_spec .txt{display:inline-block;margin:0 auto;padding:10px;border:0;line-height:18px;text-align:left}
 .support_spec .ver{float:none;width:100%;padding:0;border-bottom:1px dashed #bababa;background:#f3f3f3;font-weight:normal;line-height:28px}
 .support ul.plan{float:none;width:100%;height:50px}
 .support ul.plan li{width:19.8%;height:50px;padding:0;border-width:0 1px 0 0;line-height:50px}
 .support ul.plan li:nth-child(3){width:19.8%;border-right:1px dashed #bababa}
-.support span.ic{display:block;width:34px;height:34px;margin:0 auto 4px;background:url(img/sp_jindo.png) 0 -80px no-repeat;font-size:0;line-height:0;text-indent:-1000em}
+.support span.ic{display:block;width:34px;height:34px;margin:0 auto 4px;background:url(img/sp_jindo.png) 0 -80px no-repeat;border:0;font-size:0;line-height:0;text-indent:-1000em}
 .support span.ie{background-position:0 -80px}
 .support span.ff{background-position:-40px -80px}
 .support span.safari{background-position:-80px -80px}
@@ -260,7 +263,8 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .api-page div.description{margin:17px 0 20px;font-size:13px;line-height:18px}
 .api-page .refer{font-size:13px}
 .api-page .refer ul{margin:5px 0 0 2em;line-height:18px}
-
+.qr_code{margin-top:20px;font-size:13px}
+.qr_code img{display:block;/*width:120px;height:120px;*/margin:5px 0 0 2em;padding:7px;border:4px solid #eee;}
 .tc-panel{position:relative;padding:40px;border-top:3px solid #f1f1f1}
 .tc-panel:after{display:block;clear:both;content:''}
 .tc-panel.first,.tc-panel:first-child{padding:40px;border:0}
@@ -306,7 +310,6 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .item .params-list .flag{display:inline-block;width:auto;height:13px;padding:0 5px 0 3px;border-radius:6px;font-size:9px;line-height:13px;font-family:Arial;color:#fff;text-indent:1px;-moz-border-radius:6px;-webkit-border-radius:6px}
 .item .params-list .flag.optional{background:#bbb}
 .item .params-list .default{padding:0 2px;color:#333;font-size:12px}
-
 .item .param{margin:8px 0}
 .item .params-list .params-list{margin:0 !important}
 .item .param .name{font-size:13px;font-weight:bold;color:#000}
@@ -319,7 +322,6 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 
 .optional{font-style:italic !important}
 .item .params-list button ~ .description{margin:0 0 0 10px;padding-left:15px;border-left:1px solid #ddd}
-
 .item .param .description ul{margin:4px 0 0 1em;list-style:disc}
 .item .params-list .params-list .param ul{margin-left:15px}
 .item .params-list .params-list li{padding-left:9px;background:url(img/sp_jindo.png) -320px -132px no-repeat;color:#777;font-size:12px;line-height:18px;}
@@ -344,45 +346,51 @@ pre.code code{font-family:'나눔고딕코딩',Consolas,'Lucida Console',Monaco}
 .demo_example .clipboard{display:none;margin-left:178px}
 .demo_example .description{padding:0 0 0 14px;background:#f1f1f1;line-height:32px;font-size:13px;color:#727272}
 
-.api-page .manual h3{display:block;margin:0;border:0;background:none}
-.api-page .manual .description{margin:15px 0 0 15px;padding:0}
-.api-page .manual .description h4{display:inline-block;margin:15px 0 0;line-height:25px}
-.api-page .manual .description h5{display:block;margin:15px 0 0 15px;font-size:12px;line-height:25px}
-.api-page .manual .description h4 em{color:#E11B10}
-.api-page .manual .description ul{margin:0 0 0 35px;list-style:disc}
-.api-page .manual .description li{list-style:disc}
-.api-page .manual .description li strong{color:#E11B10}
-.api-page .manual .description ol{margin:0 0 0 35px;list-style:decimal}
-.api-page .manual .description ol li{margin:20px 0 0 0;list-style:decimal}
-.api-page .manual .description ol li strong{color:#69C}
+.manual h3{display:block;margin:0;border:0;background:none}
+.manual .description{margin:15px 0 0 15px;padding:0}
+.manual .description h4{display:inline-block;margin:15px 0 0;line-height:25px}
+.manual .description h5{display:block;margin:15px 0 0 15px;font-size:12px;line-height:25px}
+.manual .description h4 em{color:#E11B10}
+.manual .description ul{margin:0 0 0 35px;list-style:disc}
+.manual .description li{list-style:disc}
+.manual .description li strong{color:#E11B10}
+.manual .description ol{margin:0 0 0 35px;list-style:decimal}
+.manual .description ol li{margin:20px 0 0 0;list-style:decimal}
+.manual .description ol li strong{color:#69C}
+.manual .description strong{color:#ff0000;font-weight:normal}
+.manual .description img{margin:5px 0}
+.manual .description small{display:block;margin-top:7px;color:#777}
+.manual p{margin:0}
+.manual .description h4 ~ p,.manual .description h4 ~ pre.code{margin-left:15px}
+.manual .description h5 ~ p,.manual .description h5 ~ pre.code{margin-left:30px}
+.manual .description h4 ~ p strong{color:#E11B10}
+.manual .description h5 ~ p.post{margin-top:10px;font-size:12px;color:#666;}
+.manual .description ul.tumb_list,
+.manual .description ul.tumb_list li{list-style:none}
+.manual .description ul.tumb_list{margin-left:15px;}
 
-.api-page .manual .description img{margin:5px 0}
-.api-page .manual p{margin:0}
-.api-page .manual .description h4 ~ p,.api-page .manual .description h4 ~ pre.code{margin-left:15px}
-.api-page .manual .description h5 ~ p,.api-page .manual .description h5 ~ pre.code{margin-left:30px}
-.api-page .manual .description h4 ~ p small{display:block;margin-top:7px;color:#777}
-.api-page .manual .description h4 ~ p strong{color:#E11B10}
-.api-page .manual .description h5 ~ p.post{margin-top:10px;font-size:12px;color:#666;}
-.api-main .main_fix{margin-left:150px}
+.tumb_list:after{display:block;clear:both;content:''}
+.tumb_list li{display:list-item;float:left;width:auto;height:150px;padding:10px;text-align:center;}
+.tumb_list li img{display:block;text-align:center;}
+
+.description .support .tit{width:15%;padding-top:10px;}
+.description .support  ul{width:85%}
+.description .support .ios li{width:24.7%;height:80px}
+.description .support .android li{width:19.7%;height:80px}
+.description .support_spec .txt{padding:18px;line-height:18px}
 
 .api-page ul.disc{margin:0 0 0 35px;list-style:disc}
 .api-page ul.disc > li{list-style:disc}
+.api-page .params .disc{color:#777}
 .api-page ol.decimal{margin:0 0 0 35px;list-style:decimal}
 .api-page ol.decimal > li{list-style:decimal}
 span.type {color:#6823da}
-
-.api-page .manual .description ul.tumb_list,
-.api-page .manual .description ul.tumb_list li{list-style:none}
-.api-page .manual .description ul.tumb_list{margin-left:15px;}
-.api-page .tumb_list:after{display:block;clear:both;content:''}
-.api-page .tumb_list li{display:list-item;float:left;width:auto;height:150px;padding:10px;text-align:center;}
-.api-page .tumb_list li img{display:block;text-align:center;}
-
 
 .btn_top{position:fixed;bottom:40px;right:16px;z-index:100;width:41px;height:34px}
 .btn_top a{display:block;width:41px;height:34px;background:url(img/sp_jindo.png) -210px -320px}
 .btn_top a:hover{background-position:-260px -320px}
 
+.api-main .main_fix{margin-left:150px}
 
 /* Responsive 1024px */
 @media all and (min-width:1024px){

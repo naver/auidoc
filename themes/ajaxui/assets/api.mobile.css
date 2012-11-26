@@ -219,6 +219,8 @@ body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25
 .api-page div.description{margin:17px 0 20px;font-size:13px;line-height:18px/* padding:0 .5em;font-size:1.2em; */}
 .api-page .refer{font-size:13px}
 .api-page .refer ul{margin:5px 0 0 27px;line-height:18px/* font-size:1.2em;list-style:disc */}
+.qr_code{margin-top:20px;font-size:13px}
+.qr_code img{display:block;width:120px;height:120px;margin:5px 0 0 2em;padding:7px;border:4px solid #eee;}
 .tc-panel{position:relative;padding:40px 0;border-top:3px solid #f1f1f1}
 .tc-panel:after{display:block;clear:both;content:''}
 .tc-panel.first,.tc-panel:first-child{padding:10px;border:0}
@@ -247,37 +249,50 @@ body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25
 
 .api-page .history-table{position:relative;margin:0 10px;padding:0}
 .api-page .history .history-table{margin:0 0 0 20px}
-.api-page .history .history-table .tbl_board th:nth-child(3){display:none}
-.api-page .history .history-table .tbl_board td:nth-child(3){display:none}
+.api-page .history-table .tbl_board th{text-align:center}
+.api-page .history-table .tbl_board th:nth-child(3){display:table-cell}
+.api-page .history-table button{position:absolute;right:0;z-index:1;width:80px;height:11px;margin:0;border:0;background:url(img/sp_jindo.png) -50px -120px no-repeat}
+.api-page .history-table .btn_open{display:none;bottom:-11px;background-position:-40px -140px}
+.api-page .history-table .btn_open{display:none;bottom:-11px;background-position:-40px -140px}
+.api-page .history-table .btn_close{display:block;bottom:1px;background-position:-40px -120px}
+.api-page .history-table.tbl_fold .btn_open{display:block}
+.api-page .history-table.tbl_fold .btn_close{display:none}
 .api-page .tbl_board .ver{width:10%}
 .api-page .tbl_board .cate{width:15%}
 .api-page .tbl_board .target{width:20%;padding:10px;line-height:13px;-moz-hyphens:auto;-ms-hyphens:auto;-webkit-hyphens:auto;hyphens:auto;word-break:break-all;word-wrap:break-word}
 .api-page .tbl_board .target br{line-height:22px}
 
-.api-page .history-table button{position:relative;width:100%;height:13px;margin-top:-1px;border:1px solid #bcbcbc;background:#f4f4f4;background:-webkit-gradient(linear, left top, left bottom,from(#fff),to(#f4f4f4));vertical-align:top}
-.api-page .history-table .btn_open{display:none}
-.api-page .history-table .btn_close{display:block}
-.api-page .tbl_fold .btn_open{display:block}
-.api-page .tbl_fold .btn_close{display:none}
-.api-page .history-table button .ic{display:block;width:5px;height:3px;margin:0 auto;background-color:#f5f5f5b;background-image:url(img/sp_jindo.png);background-repeat:no-repeat;text-align:center}
-.api-page .history-table .btn_open .ic{bottom:auto;background-position:-290px -120px}
-.api-page .history-table .btn_close .ic{bottom:auto;background-position:-290px -100px}
-.api-page .item .params-list{margin:5px 0 5px 15px;padding-left:10px}
-.api-page .item .returns .params-list{margin:-5px 0 0 45px;padding-left:15px;border-left:1px solid #ddd}
-.api-page .item .collapsed .params-list{display:none}
-.api-page .item .param{margin:8px 0}
-.api-page .item button.fold{overflow:hidden;width:14px;height:14px;margin:0 6px 0 -23px;background:url(img/sp_jindo.png) -250px -100px no-repeat;line-height:10em;vertical-align:middle}
-.api-page .item .collapsed button.fold{background-position:-230px -100px}
-.api-page .item .returns .params-list .params-list,.api-page .item .params-list .params-list{margin:-5px 0 0 20px;padding:0;border-left:1px solid #ddd}
-.api-page .params-list .params-list .param{margin-left:-1px;padding-left:15px;background:url(img/sp_jindo.png) -310px -210px no-repeat;line-height:16px}
-.api-page .params-list .params-list .last{background-position:-310px -280px}
-.api-page .item .example-content{margin-left:20px}
-.api-page .returns .description{margin:0 0 0 25px}
-.api-page .returns .param .description{margin:0 0 0 20px}
-.api-page .param .description ul{margin:5px 0 0 2em;list-style:disc}
-.api-page .param .name{font-size:13px;color:#000}
-.api-page pre.code{margin:10px 0;padding:5px;border:1px solid #ddd;background-color:#eee;font-size:12px;word-break:break-all;word-wrap:break-word}
-.api-page pre.code code{font-size:12px;font-family:'나눔고딕코딩',Consolas,'Lucida Console',Monaco}
+.item .params-list{margin:5px 0 5px 15px;padding-left:10px}
+.item .collapsed .params-list{display:none}
+.item .params-list .description{padding:5px 15px;color:#777;line-height:18px}
+.item .params-list .flag{display:inline-block;width:auto;height:13px;padding:0 5px 0 3px;border-radius:6px;font-size:9px;line-height:13px;font-family:Arial;color:#fff;text-indent:1px;-moz-border-radius:6px;-webkit-border-radius:6px}
+.item .params-list .flag.optional{background:#bbb}
+.item .params-list .default{padding:0 2px;color:#333;font-size:12px}
+.item .param{margin:8px 0}
+.item .params-list .params-list{margin:0 !important}
+.item .param .name{font-size:13px;font-weight:bold;color:#000}
+
+.item button.fold{overflow:hidden;width:14px;height:14px;margin:0 6px 0 -23px;background:url(img/sp_jindo.png) -250px -100px no-repeat;line-height:10em;vertical-align:middle}
+.item .collapsed button.fold{background-position:-230px -100px}
+.item .params-list .collapsed .description{border-left:1px solid #fff}
+.item .params-list .params-list .param{margin:0;padding:3px 0 3px 15px;background:url(img/sp_jindo.png) -312px -204px no-repeat;line-height:16px;border-left:1px solid #ddd}
+.item .params-list .params-list .last{border:0;background-position:-310px -350px}
+
+.optional{font-style:italic !important}
+.item .params-list button ~ .description{margin:0 0 0 10px;padding-left:15px;border-left:1px solid #ddd}
+.item .param .description ul{margin:4px 0 0 1em;list-style:disc}
+.item .params-list .params-list .param ul{margin-left:15px}
+.item .params-list .params-list li{padding-left:9px;background:url(img/sp_jindo.png) -320px -132px no-repeat;color:#777;font-size:12px;line-height:18px;}
+.item .params-list .params-list table{margin-left:15px;width:60%;line-height:20px;}
+.item .params-list .params-list table td{padding:6px 0}
+
+.item .example-content{margin-left:20px}
+pre.code{margin:10px 0;padding:5px;border:1px solid #ddd;background-color:#eee;font-size:12px;word-break:break-all;word-wrap:break-word}
+pre.code code{font-family:'나눔고딕코딩',Consolas,'Lucida Console',Monaco}
+
+.item .returns .description{margin:0 0 0 25px}
+.item .returns .params-list{margin:-5px 0 0 45px;padding-left:15px;border-left:1px dashed #ddd}
+.item .returns .param .description{margin:0 0 0 20px}
 
 .demo{position:relative;height:auto;margin-top:0;border:0}
 .demo .btn_external{display:none;position:absolute;top:4px;right:4px;width:78px;height:21px;border:1px solid #b8b8b8;background:#fafafa;color:#474747}
@@ -289,11 +304,42 @@ body,input,textarea,select,button,table,code,pre{font-size:15px;line-height:1.25
 .demo_example .clipboard{display:none;margin-left:178px}
 .demo_example .description{padding:0 0 0 14px;background:#f1f1f1;line-height:32px;font-size:13px;color:#bcbcbc}
 
-.api-page .manual h3{display:block;margin:-11px -10px 0;padding-left:10px;border-top:1px solid #d8dadf;border-bottom:1px solid #bbbfc4;background:#ededed;background:-webkit-gradient(linear, left top, left bottom,from(#fcfcfd),to(#e8e8e9))}
-.api-page .manual .description{margin:15px 0 0;padding:0}
-.api-page .manual .description strong{display:inline-block;margin:15px 0 0;line-height:25px}
-.api-page .manual .description ul{margin:0 0 0 35px;list-style:disc}
-.api-page .manual .description li{list-style:disc}
-.api-page .manual .description img{margin:5px 0}
-.api-page .manual p{margin:0}
-.api-page .manual .description strong ~ p,.api-page .manual .description strong ~ pre.code{margin-left:15px}
+.manual h3{display:block;margin:-11px -10px 0;padding-left:10px;border-top:1px solid #d8dadf;border-bottom:1px solid #bbbfc4;background:#ededed;background:-webkit-gradient(linear, left top, left bottom,from(#fcfcfd),to(#e8e8e9))}
+.manual .description{margin:15px 0 0;padding:0}
+.manual .description h4{display:inline-block;margin:15px 0 0;line-height:25px}
+.manual .description h5{display:block;margin:15px 0 0 15px;font-size:12px;line-height:25px}
+.manual .description h4 em{color:#E11B10}
+.manual .description strong{display:inline-block;margin:15px 0 0;line-height:25px}
+.manual .description ul{margin:0 0 0 35px;list-style:disc}
+.manual .description li{list-style:disc}
+.manual .description ol{margin:0 0 0 35px;list-style:decimal}
+.manual .description ol li{margin:20px 0 0 0;list-style:decimal}
+.manual .description ol li strong{color:#69C}
+.manual .description strong{color:#ff0000;font-weight:normal}
+.manual .description img{margin:5px 0}
+.manual .description small{display:block;margin-top:7px;color:#777}
+.manual p{margin:0}
+.manual .description h4 ~ p,.manual .description h4 ~ pre.code{margin-left:15px}
+.manual .description h5 ~ p,.manual .description h5 ~ pre.code{margin-left:30px}
+.manual .description h4 ~ p strong{color:#E11B10}
+.manual .description h5 ~ p.post{margin-top:10px;font-size:12px;color:#666;}
+.manual .description ul.tumb_list,
+.manual .description ul.tumb_list li{list-style:none}
+.manual .description ul.tumb_list{margin-left:15px;}
+
+.tumb_list:after{display:block;clear:both;content:''}
+.tumb_list li{display:list-item;float:left;width:auto;height:150px;padding:10px;text-align:center;}
+.tumb_list li img{display:block;text-align:center;}
+
+.description .support .tit{width:15%;padding-top:10px;}
+.description .support  ul{width:85%}
+.description .support .ios li{width:24.7%;height:80px}
+.description .support .android li{width:19.7%;height:80px}
+.description .support_spec .txt{padding:18px;line-height:18px}
+
+.api-page ul.disc{margin:0 0 0 35px;list-style:disc}
+.api-page ul.disc > li{list-style:disc}
+.api-page .params .disc{color:#777}
+.api-page ol.decimal{margin:0 0 0 35px;list-style:decimal}
+.api-page ol.decimal > li{list-style:decimal}
+span.type {color:#6823da}
