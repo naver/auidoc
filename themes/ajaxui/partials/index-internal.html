@@ -39,15 +39,15 @@
 				</span><label for="file_unzipped">압축 안 함 (665KB)</label>
 			</li>
 			</ul>
-			<a href="http://jindo.nhncorp.com/utils/downloader/?target=jindo_component&action=download" target="_blank" class="btn_dw" onclick="doDownload(this); return false;">Download</a>
+			<a href="http://jindo.nhncorp.com/utils/downloader/?target=jindo_component&action=download&version=<%=this.projectVersion%>" target="_blank" class="btn_dw" onclick="doDownload(this); return false;">Download</a>
 		</td>
 		<td>
 			<p>(선택 다운로드 페이지로 이동합니다.)</p>
-			<a href="http://jindo.nhncorp.com/utils/downloader/?target=jindo_component" target="_blank" class="btn_dw">Go</a>
+			<a href="http://jindo.nhncorp.com/utils/downloader/?target=jindo_component&version=<%=this.projectVersion%>" target="_blank" class="btn_dw">Go</a>
 		</td>
 		</tr>
 		</table>
-		<p class="version">현재 릴리즈 버전 :<em>1.2.0</em></p>
+		<p class="version">버전 :<em><%=this.projectVersion%></em></p>
 	</div>
 	<!-- // 다운로드 -->
 </div>
