@@ -9,6 +9,8 @@
 <script type="text/javascript">
 	var isMobile = (function() {
 		var r = window.devicePixelRatio || 1;
+		if (/windows phone/i.test(navigator.userAgent)) { r = 2; }
+		
 		var s = Math.max(screen.width / r, screen.height / r);
 		
 		var m = s < 1024;
