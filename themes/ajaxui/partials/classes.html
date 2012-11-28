@@ -57,7 +57,7 @@
 			if (callView) {
 				syntax.push(maybeNew + name);
 			} else {
-				syntax.push('<a href="#' + itemtype +'_' + obj.name + '">' + name + '</a>');
+				syntax.push('<a href="#' + itemtype +'_' + obj.name + '" class="name">' + name + '</a>');
 			}
 			
 			if (itemtype === 'constructor' || itemtype === 'method') {
@@ -369,7 +369,7 @@
 				        <% } %>
 					</td>
 					<td>
-						<a href="#event_<%=this.name%>"><%=this.name%></a>
+						<a href="#event_<%=this.name%>" class="name"><%=this.name%></a>
 						<p><%=this.eventDescription%></p>
 					</td>
 					<td><%=(this.class === className ? className : crossLink(this.class))%></td>
