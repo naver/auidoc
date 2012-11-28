@@ -194,16 +194,17 @@
 		<div class="qr_code">
 			<strong>QR code</strong>
 		
-			<div id="QRView"></div>
+			<div id="QRView">
 			<script type="text/javascript">
 
-				new jindo.QRCode(jindo.$("QRView"), {
-					nWidth : 148,
-					nHeight : 148,
-					nCorrectLevel : jindo.QRCode.CorrectLevel.L
-				}).makeCode(location.href);
+				document.write([
+					'<img src="http://chart.apis.google.com/chart?cht=qr&chs=220x220&chl=',
+					encodeURIComponent(location.href.replace(/#.*$/, '')),
+					'&choe=UTF-8" />'
+				].join(''));
 
 			</script>
+			</div>
 		</div>	    
 	    
 		<% if (HAS(this.refer)) { %>
