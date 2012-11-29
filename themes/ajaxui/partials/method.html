@@ -1,5 +1,5 @@
 <% var className = addon.className; %>
-<div id="method_<%=this.name%>" class="method item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+<div id="method_<%=this.name%>" class="method item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated-item<% } %><% if (HAS(this.extended_from)) { %> inherited-item<% } %>">
 	<h3><%=this.name%>()
 		<span>메서드</span>
         <% if (HAS(this.deprecated)) { %>

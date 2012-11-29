@@ -50,11 +50,18 @@
 					%><ul><%
 					
 			        EACH(group, function(projectRoot, className) { %>
-			            <li>
+			            <li class="<%=this.details.deprecated ? "deprecated-item" : ""%>">
 			            	<a href="<%=projectRoot%>classes/<%=this.name%>.html" class="<%=(this.name === className ? "selected" : "")%>">
 			                	<%=this.displayName.replace(/^jindo\./, '')%>
 								<% if ('new' in this.details) { %><span title="new" class="ic new"><span class="blind">new</span></span><% } %>
 								<% if ('update' in this.details) { %><span title="update" class="ic update"><span class="blind">Update</span></span><% } %>
+
+							    <% if (this.details.deprecated) { %>
+							        <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>"><span class="blind">deprecated</span></span>
+							    <% } %>
+						        <% if (this.details.static) { %>
+						            <span class="flag static" title="static"><span class="blind">static</span></span>
+						        <% } %>
 			            	</a>
 			            </li>
 			        <% }, [ this.projectRoot, this.tag === 'class' && this.name ]);
@@ -125,7 +132,7 @@
 		
 		            <ul class="constructors<% if (HAS(this.extends)) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
-		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated-item<% } %><% if (HAS(this.overwritten_from)) { %> inherited-item<% } %><% if (HAS(this.extended_from)) { %> inherited-item<% } %>">
 		                        <a href="#constructor_<%=this.name%>">
 		                            <%=this.name.replace(/^jindo\./, '')%>
 		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>
@@ -145,7 +152,7 @@
 		
 		            <ul class="properties<% if (this.extends) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
-		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated-item<% } %><% if (HAS(this.overwritten_from)) { %> inherited-item<% } %><% if (HAS(this.extended_from)) { %> inherited-item<% } %>">
 		                        <a href="#property_<%=this.name%>" title="<%==this.description%>">
 		                            <%=this.name%>
 		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>
@@ -165,7 +172,7 @@
 		
 		            <ul class="methods<% if (HAS(this.extends)) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
-		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated-item<% } %><% if (HAS(this.overwritten_from)) { %> inherited-item<% } %><% if (HAS(this.extended_from)) { %> inherited-item<% } %>">
 		                        <a href="#method_<%=this.name%>" title="<%==this.description%>">
 		                            <%=this.name%>()
 		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>
@@ -186,7 +193,7 @@
 		
 		            <ul class="attrs<% if (this.extends) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
-		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated-item<% } %><% if (HAS(this.overwritten_from)) { %> inherited-item<% } %><% if (HAS(this.extended_from)) { %> inherited-item<% } %>">
 		                        <a href="#attr_<%=this.name%>" title="<%==this.description%>">
 		                        	<%=this.name%>
 		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>
@@ -205,7 +212,7 @@
 		
 		            <ul class="events<% if (this.extends) { %> extends<% } %>">
 		                <% EACH(lists, function() { %>
-		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.overwritten_from)) { %> inherited<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+		                    <li class="<% if (HAS(this.access)) { %><%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated-item<% } %><% if (HAS(this.overwritten_from)) { %> inherited-item<% } %><% if (HAS(this.extended_from)) { %> inherited-item<% } %>">
 		                        <a href="#event_<%=this.name%>" title="<%==this.description%>">
 		                            <%=this.name%>
 		                            <% if (HAS(this.deprecated)) { %><span class="flag deprecated" title="deprecated"><span class="blind">deprecated</span></span><% } %>

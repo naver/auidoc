@@ -1,4 +1,4 @@
-<div id="constructor_<%=this.name%>" class="constructor item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated<% } %><% if (HAS(this.extended_from)) { %> inherited<% } %>">
+<div id="constructor_<%=this.name%>" class="constructor item<% if (HAS(this.access)) { %> <%=this.access%><% } %><% if (HAS(this.deprecated)) { %> deprecated-item<% } %><% if (HAS(this.extended_from)) { %> inherited-item<% } %>">
 	<h3><%=this.class%>()
 		<span>생성자</span>
         <% if (HAS(this.deprecated)) { %>

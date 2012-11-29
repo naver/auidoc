@@ -123,6 +123,9 @@
 		    <% if (HAS(this.deprecated)) { %>
 		        <span class="flag deprecated" title="<%==this.deprecationMessage||'deprecated'%>"><span class="blind">deprecated</span></span>
 		    <% } %>
+	        <% if (HAS(this.static)) { %>
+	            <span class="flag static" title="static"><span class="blind">static</span></span>
+	        <% } %>
 			<span class="btn_code"><a href="<%=this.foundAt%>" title="view source code"><span class="blind">소스코드</span></a></span>
 		</dd>
 
@@ -242,7 +245,7 @@
 			</thead>
 			<tbody>
 	            <% EACH(this.constructors, function(className) { if (this.access === 'private') { return; } %>
-					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
+					<tr class="<%=(HAS(this.deprecated) ? "deprecated-item" : "")%> <%=(HAS(this.extended_from) ? "inherited-item" : "")%>">
 					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>
@@ -281,7 +284,7 @@
 			</thead>
 			<tbody>
 	            <% EACH(this.properties, function(className) { if (this.access === 'private') { return; } %>
-					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
+					<tr class="<%=(HAS(this.deprecated) ? "deprecated-item" : "")%> <%=(HAS(this.extended_from) ? "inherited-item" : "")%>">
 					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>
@@ -320,7 +323,7 @@
 			</thead>
 			<tbody>
 	            <% EACH(this.methods, function(className) { if (this.access === 'private') { return; } %>
-					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
+					<tr class="<%=(HAS(this.deprecated) ? "deprecated-item" : "")%> <%=(HAS(this.extended_from) ? "inherited-item" : "")%>">
 					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>
@@ -359,7 +362,7 @@
 			</thead>
 			<tbody>
 	            <% EACH(this.events, function(className) { %>
-					<tr class="<%=(HAS(this.deprecated) ? "deprecated" : "")%> <%=(HAS(this.extended_from) ? "inherited" : "")%>">
+					<tr class="<%=(HAS(this.deprecated) ? "deprecated-item" : "")%> <%=(HAS(this.extended_from) ? "inherited-item" : "")%>">
 					<td class="type">
 				        <% if (HAS(this.deprecated)) { %>
 				        	<span title="<%==this.deprecationMessage||'deprecated'%>" class="flag deprecate"><span class="blind">deprecated</span></span>

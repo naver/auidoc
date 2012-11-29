@@ -235,7 +235,7 @@ var apiDocs = function(projectAssets) {
 			
 			if (bScrollFirst) {
 				
-				if (elDepth1Selected) {
+				if (elDepth1Selected && elDepth1Selected.offsetParent) {
 					
 					var aItem = [ elDepth1Selected.offsetTop + elDepth1Selected.offsetParent.offsetTop ];
 					aItem[1] = aItem[0] + elDepth1Selected.offsetHeight;
@@ -253,7 +253,7 @@ var apiDocs = function(projectAssets) {
 					
 				}
 				
-				if (elDepth1Selected) {
+				if (elDepth1Selected && elDepth1Selected.offsetParent) {
 					
 					if (false) {
 
