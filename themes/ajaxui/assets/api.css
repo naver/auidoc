@@ -322,16 +322,17 @@ body,input,textarea,select,button,table,code,pre{font-size:14px;line-height:1.25
 .item button.fold{overflow:hidden;width:14px;height:14px;margin:0 6px 0 -23px;background:url(img/sp_jindo.png) -250px -100px no-repeat;line-height:10em;vertical-align:middle}
 .item .collapsed button.fold{background-position:-230px -100px}
 .item .params-list .collapsed .description{border-left:1px solid #fff}
-.item .params-list .params-list .param{margin:0;padding:3px 0 3px 15px;background:url(img/sp_jindo.png) -312px -204px no-repeat;line-height:16px;border-left:1px solid #ddd}
-.item .params-list .params-list .last{border:0;background-position:-310px -350px}
+.item .params-list .params-list .param{margin:0;padding:3px 0 3px 15px;background:url(img/sp_jindo_li.png) -2px 6px no-repeat;line-height:16px;border-left:1px solid #ddd}
+.item .params-list .params-list .last{border:0;background:url(img/sp_jindo.png) -310px -350px no-repeat}
 
 .optional{font-style:italic !important}
 .item .params-list button ~ .description{margin:0 0 0 10px;padding-left:15px;border-left:1px solid #ddd}
 .item .param .description ul{margin:4px 0 0 1em;list-style:disc}
 .item .params-list .params-list .param ul{margin-left:15px}
-.item .params-list .params-list li{padding-left:9px;background:url(img/sp_jindo.png) -320px -132px no-repeat;color:#777;font-size:12px;line-height:18px;}
+.item .params-list .params-list li{padding-left:9px;background:url(img/sp_jindo_li2.png) 0 8px no-repeat;color:#777;font-size:12px;line-height:18px;}
 .item .params-list .params-list table{margin-left:15px;width:60%;line-height:20px;}
 .item .params-list .params-list table td{padding:6px 0}
+.item .params-list .params-list .decimal li{padding-left:0;background:none}
 
 .item .example-content{margin-left:20px}
 pre.code{margin:10px 0;padding:5px;border:1px solid #ddd;background-color:#eee;font-size:12px;word-break:break-all;word-wrap:break-word}
