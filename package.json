@@ -2,17 +2,9 @@
     "name": "auidocjs",
     "version": "0.0.1",
     "description": "AUIDoc from YUIDoc",
-    "author": "Dav Glass <davglass@gmail.com>",
+    "author": "hooriza <hooriza.nospam@gmail.com>",
     "bugs": { "url" : "http://github.com/hooriza/auidoc/issues" },
-    "contributors": [
-        { "name": "Adam Moore", "email": "amoore@gmail.com" },
-        { "name": "Ryan Grove", "email": "ryan@wonko.com" },
-        { "name": "Eric Ferraiuolo", "email": "eferraiuolo@gmail.com" },
-        { "name": "Felipe Gasper", "email": "felipe@cpanel.net" },
-        { "name": "Evan Goer", "email": "evan@goer.org" },
-        { "name": "Alberto Gragera", "email": "albgra@gmail.com" },
-        { "name": "Pat Cavit", "email": "pcavit@gmail.com" }
-    ],
+    "contributors": [],
     "engines": {
         "node" : ">=0.4.0"
     },
