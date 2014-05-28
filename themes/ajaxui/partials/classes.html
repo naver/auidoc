@@ -43,7 +43,11 @@
 			param = param.replace(/([\$\w]+)/g, function(_, varname) {
 				var info = fpParamInfo(varname);
 				var ret = varname + ':' + fpGetType(varname);
-				
+
+				if (!info) {
+					console.log('ERROR : "' + className + ':' + varname + '" not found!', obj);
+				}
+
 				if (info.multiple) { ret += '…'; }
 				// if (info.optdefault) { ret += '=' + info.optdefault; }
 				if (info.optional) { ret = '[' + ret + ']'; }
