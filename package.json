@@ -1,6 +1,6 @@
 {
     "name": "auidocjs",
-    "version": "0.0.6",
+    "version": "0.0.8",
     "description": "AUIDoc from YUIDoc",
     "author": "hooriza <hooriza.nospam@gmail.com>",
     "bugs": { "url" : "http://github.com/hooriza/auidoc/issues" },
