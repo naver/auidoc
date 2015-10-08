@@ -1,6 +1,6 @@
 {
     "name": "auidocjs",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "AUIDoc from YUIDoc",
     "author": "hooriza <hooriza.nospam@gmail.com>",
     "bugs": { "url" : "http://github.com/hooriza/auidoc/issues" },
@@ -20,7 +20,7 @@
     "main": "./lib/index",
     "bin" : { "auidoc" : "./lib/cli.js" },
     "dependencies": {
-        "yui": "3.5.1",
+        "yui": "3.6.0",
         "rimraf": "~2.0.0",
         "node-markdown": "~0.1.0",
         "minimatch": "~0.1.0",
